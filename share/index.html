@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share Your Barrel Shipping Experience — BarrelCompare</title>
+<meta name="description" content="Tell the diaspora community about your experience with a UK barrel shipping company. Verified reviews only. Help other senders make informed choices.">
+<meta name="theme-color" content="#0a2540">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="manifest" href="/manifest.json">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="beta-banner">Beta — your reviews build the platform's credibility.</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Barrel<span class="accent">Compare</span><span class="tagline">Independent · UK · Free</span></a>
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="/compare/">Compare prices</a>
+      <a href="/quote/">Get a quote</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/about/">About</a>
+      <a href="https://wa.me/447542539430" class="btn btn-whatsapp" style="padding: 10px 18px; min-height: 0;">WhatsApp us</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <a href="/compare/">Compare prices</a>
+    <a href="/quote/">Get a quote</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Guides &amp; news</a>
+    <a href="/disclosure/">How we make money</a>
+    <a href="https://wa.me/447542539430" class="btn btn-whatsapp btn-block whatsapp-cta">WhatsApp us</a>
+  </nav>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Share your <span class="accent">experience</span></h1>
+    <p>Used a UK barrel shipper? Tell the community what really happened — good or bad. Verified reviews only.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="form-wrapper">
+
+      <div class="card" style="margin-bottom: 32px; border-color: rgba(245,166,35,0.3);">
+        <div style="display: flex; gap: 16px; align-items: flex-start;">
+          <div style="font-size: 1.5rem;">📋</div>
+          <div>
+            <h3 style="font-size: 1.05rem; margin-bottom: 6px; color: var(--orange-500);">Why we verify reviews</h3>
+            <p style="margin: 0; color: var(--text-muted-dark); font-size: 0.92rem;">Fake reviews are the single biggest problem in this market. Before publishing, we check that you actually shipped a barrel — usually a tracking number or booking reference. We never publish your contact details, only your first name and review.</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="reviewForm" action="https://formspree.io/f/xrejbkjz " method="POST" novalidate>
+
+        <div class="form-success" id="successMsg" style="display: none;">
+          ✓ Review submitted. We'll verify and publish within 3 working days.
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">Your first name <span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" class="form-control" required>
+            <small>Only your first name will be published.</small>
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" class="form-control" required>
+            <small>For verification only — never published.</small>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="supplier">Which shipper did you use? <span class="required">*</span></label>
+            <input type="text" id="supplier" name="supplier" class="form-control" placeholder="e.g. West Indies Direct" required>
+          </div>
+          <div class="form-group">
+            <label for="destination">Destination <span class="required">*</span></label>
+            <select id="destination" name="destination" class="form-control" required>
+              <option value="">Choose...</option>
+              <option value="Jamaica">Jamaica</option>
+              <option value="Trinidad &amp; Tobago">Trinidad &amp; Tobago</option>
+              <option value="Guyana">Guyana</option>
+              <option value="Ghana">Ghana</option>
+              <option value="Nigeria">Nigeria</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="rating">Overall rating <span class="required">*</span></label>
+            <select id="rating" name="rating" class="form-control" required>
+              <option value="">Choose...</option>
+              <option value="5">★★★★★ Excellent</option>
+              <option value="4">★★★★ Good</option>
+              <option value="3">★★★ OK</option>
+              <option value="2">★★ Poor</option>
+              <option value="1">★ Avoid</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="shipDate">Approximate ship date</label>
+            <input type="month" id="shipDate" name="shipDate" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="reviewText">Your review <span class="required">*</span></label>
+          <textarea id="reviewText" name="reviewText" class="form-control" required placeholder="What was the price? Did the barrel arrive on time? Was it handled well? Any hidden fees? What would you tell a friend?"></textarea>
+          <small>Be specific and factual. We won't publish unverifiable accusations or personal attacks.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="proof">Proof of shipping (helps us verify faster)</label>
+          <input type="text" id="proof" name="proof" class="form-control" placeholder="e.g. tracking number, booking reference">
+          <small>Optional but speeds up verification. Never published.</small>
+        </div>
+
+        <div class="form-group checkbox-row">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I confirm this is my honest experience and I'm happy for my first name and review text to be published. <span class="required">*</span></label>
+        </div>
+
+        <button type="submit" class="btn btn-orange btn-block">Submit review</button>
+        <p style="text-align: center; color: var(--text-muted-dark); font-size: 0.85rem; margin-top: 16px;">Verified before publishing · Your contact details are never shared</p>
+
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom: 12px;">Barrel<span class="accent">Compare</span></div>
+        <p class="footer-tagline">UK's first independent barrel shipping comparison platform.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Compare</h4>
+        <ul>
+          <li><a href="/compare/?destination=jamaica">Jamaica</a></li>
+          <li><a href="/compare/?destination=trinidad">Trinidad &amp; Tobago</a></li>
+          <li><a href="/compare/?destination=guyana">Guyana</a></li>
+          <li><a href="/compare/?destination=ghana">Ghana</a></li>
+          <li><a href="/compare/?destination=nigeria">Nigeria</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/blog/">Guides &amp; news</a></li>
+          <li><a href="/collection-finder/">Collection finder</a></li>
+          <li><a href="/share/">Share your experience</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About us</a></li>
+          <li><a href="/disclosure/">How we make money</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/quote/">Get a quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 BarrelCompare</div>
+      <div class="disclosure">Independent of all shipping companies · Read our <a href="/disclosure/" style="color: var(--orange-500);">funding disclosure</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mobileNav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>

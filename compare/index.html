@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare Barrel Shipping Prices UK | Jamaica, Trinidad, Guyana, Ghana, Nigeria — BarrelCompare</title>
+<meta name="description" content="Compare verified UK barrel shipping companies side-by-side. Real prices, transit times, customer reviews. Independent. Free. No obligation.">
+<meta name="theme-color" content="#0a2540">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="manifest" href="/manifest.json">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="beta-banner">Beta — adding verified suppliers weekly. <a href="/contact/" style="text-decoration: underline;">Suggest a shipper</a></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Barrel<span class="accent">Compare</span><span class="tagline">Independent · UK · Free</span></a>
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="/compare/" class="active">Compare prices</a>
+      <a href="/quote/">Get a quote</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/about/">About</a>
+      <a href="https://wa.me/447542539430" class="btn btn-whatsapp" style="padding: 10px 18px; min-height: 0;">WhatsApp us</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <a href="/compare/">Compare prices</a>
+    <a href="/quote/">Get a quote</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Guides &amp; news</a>
+    <a href="/disclosure/">How we make money</a>
+    <a href="https://wa.me/447542539430" class="btn btn-whatsapp btn-block whatsapp-cta">WhatsApp us</a>
+  </nav>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Compare <span class="accent">verified</span> UK barrel shippers</h1>
+    <p>Side-by-side. No commission tricks. No fake reviews. Filter by destination and we'll show you what's really on offer.</p>
+  </div>
+</section>
+
+<!-- Filter bar -->
+<div class="filter-bar">
+  <div class="container filter-row">
+    <label for="destination">Destination</label>
+    <select id="destination" aria-label="Filter by destination">
+      <option value="jamaica">Jamaica</option>
+      <option value="trinidad">Trinidad &amp; Tobago</option>
+      <option value="guyana">Guyana</option>
+      <option value="ghana">Ghana</option>
+      <option value="nigeria">Nigeria</option>
+    </select>
+
+    <label for="service">Service</label>
+    <select id="service" aria-label="Filter by service type">
+      <option value="all">All services</option>
+      <option value="door">Door-to-door</option>
+      <option value="dropoff">Drop-off</option>
+      <option value="pickup">UK pickup</option>
+    </select>
+
+    <label for="sort">Sort by</label>
+    <select id="sort" aria-label="Sort suppliers">
+      <option value="verified">Verified first</option>
+      <option value="price">Price (low to high)</option>
+      <option value="transit">Transit time (fastest)</option>
+    </select>
+
+    <span class="results-count" id="resultsCount">1 verified · 4 pending</span>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+
+    <!-- Trust note -->
+    <div class="card" style="margin-bottom: 32px; border-color: rgba(245,166,35,0.3);">
+      <div style="display: flex; gap: 16px; align-items: flex-start;">
+        <div style="font-size: 1.5rem;">⚖️</div>
+        <div>
+          <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--orange-500);">Why some prices say "contact for pricing"</h3>
+          <p style="margin: 0; color: var(--text-muted-dark); font-size: 0.95rem;">We refuse to list prices we haven't verified directly with each shipper. Quoted prices change with fuel, season, and barrel size. Cards marked "Verified" have confirmed current pricing — others are in our verification queue.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="font-size: 1.5rem; margin-bottom: 20px;">Suppliers shipping to <span style="color: var(--orange-500);" id="destLabel">Jamaica</span></h2>
+
+    <div class="supplier-grid" id="supplierGrid">
+
+      <article class="supplier-card" data-destination="jamaica,trinidad,guyana" data-verified="true">
+        <span class="badge">Verified</span>
+        <h3>West Indies Direct</h3>
+        <p class="supplier-meta">London-based · Sea freight · Caribbean specialist</p>
+        <div class="price-row">
+          <span class="price">Contact</span>
+          <span class="price-label">for current pricing</span>
+        </div>
+        <p class="transit">Transit: ~3 weeks · Door-to-door &amp; drop-off</p>
+        <ul>
+          <li>UK-wide collection available</li>
+          <li>Delivery to all parishes (Jamaica)</li>
+          <li>Sea freight tracking</li>
+          <li>Established Caribbean operator</li>
+        </ul>
+        <div class="cta-row">
+          <a href="/quote/?supplier=west-indies-direct" class="btn btn-primary" style="flex: 1;">Get a quote</a>
+          <a href="https://wa.me/447542539430" class="btn btn-whatsapp" style="flex: 1;">WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="supplier-card pending" data-destination="all" data-verified="false">
+        <span class="badge pending-badge">Verification in progress</span>
+        <h3>Supplier slot — Caribbean</h3>
+        <p class="supplier-meta">Adding next · awaiting confirmed pricing</p>
+        <div class="price-row">
+          <span class="price">—</span>
+          <span class="price-label">to be confirmed</span>
+        </div>
+        <p class="transit">We're verifying: licence, insurance, customer track record.</p>
+        <ul>
+          <li>Checking Companies House registration</li>
+          <li>Confirming freight forwarder credentials</li>
+          <li>Gathering verified customer reviews</li>
+        </ul>
+        <div class="cta-row">
+          <a href="/contact/" class="btn btn-secondary" style="flex: 1;">Suggest a shipper</a>
+        </div>
+      </article>
+
+      <article class="supplier-card pending" data-destination="all" data-verified="false">
+        <span class="badge pending-badge">Verification in progress</span>
+        <h3>Supplier slot — West Africa</h3>
+        <p class="supplier-meta">Ghana &amp; Nigeria coverage · adding next</p>
+        <div class="price-row">
+          <span class="price">—</span>
+          <span class="price-label">to be confirmed</span>
+        </div>
+        <p class="transit">Want to recommend one? <a href="/contact/" style="color: var(--orange-500);">Tell us</a></p>
+        <ul>
+          <li>Specialist West African freight</li>
+          <li>Lagos &amp; Tema port coverage</li>
+          <li>Verifying customs &amp; duty handling</li>
+        </ul>
+        <div class="cta-row">
+          <a href="/quote/" class="btn btn-secondary" style="flex: 1;">Get a quote instead</a>
+        </div>
+      </article>
+
+      <article class="supplier-card pending" data-destination="all" data-verified="false">
+        <span class="badge pending-badge">Verification in progress</span>
+        <h3>Supplier slot — Door-to-door specialist</h3>
+        <p class="supplier-meta">Premium service · adding next</p>
+        <div class="price-row">
+          <span class="price">—</span>
+          <span class="price-label">to be confirmed</span>
+        </div>
+        <p class="transit">For door collection &amp; door delivery overseas.</p>
+        <ul>
+          <li>UK doorstep collection</li>
+          <li>Overseas address delivery</li>
+          <li>Customs handling included</li>
+        </ul>
+        <div class="cta-row">
+          <a href="/quote/" class="btn btn-secondary" style="flex: 1;">Get a quote</a>
+        </div>
+      </article>
+
+      <article class="supplier-card pending" data-destination="all" data-verified="false">
+        <span class="badge pending-badge">Verification in progress</span>
+        <h3>Supplier slot — Budget option</h3>
+        <p class="supplier-meta">Drop-off only · adding next</p>
+        <div class="price-row">
+          <span class="price">—</span>
+          <span class="price-label">to be confirmed</span>
+        </div>
+        <p class="transit">For self-drop-off at UK warehouse · cheapest tier.</p>
+        <ul>
+          <li>You drop barrel at UK depot</li>
+          <li>Recipient collects from overseas port</li>
+          <li>Lowest-cost tier</li>
+        </ul>
+        <div class="cta-row">
+          <a href="/contact/" class="btn btn-secondary" style="flex: 1;">Recommend a shipper</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Help block -->
+    <div class="card" style="margin-top: 48px; text-align: center;">
+      <h3 style="margin-bottom: 12px;">Can't find what you need?</h3>
+      <p style="color: var(--text-muted-dark); margin-bottom: 20px;">Our verification queue is growing daily. If you've used a UK barrel shipper you'd recommend, or want a custom quote, we'll help.</p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="/quote/" class="btn btn-orange">Get a custom quote</a>
+        <a href="/contact/" class="btn btn-secondary">Suggest a supplier</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom: 12px;">Barrel<span class="accent">Compare</span></div>
+        <p class="footer-tagline">UK's first independent barrel shipping comparison platform. Built for the Caribbean and West African diaspora.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Compare</h4>
+        <ul>
+          <li><a href="/compare/?destination=jamaica">Jamaica</a></li>
+          <li><a href="/compare/?destination=trinidad">Trinidad &amp; Tobago</a></li>
+          <li><a href="/compare/?destination=guyana">Guyana</a></li>
+          <li><a href="/compare/?destination=ghana">Ghana</a></li>
+          <li><a href="/compare/?destination=nigeria">Nigeria</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/blog/">Guides &amp; news</a></li>
+          <li><a href="/collection-finder/">Collection finder</a></li>
+          <li><a href="/share/">Share your experience</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About us</a></li>
+          <li><a href="/disclosure/">How we make money</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/quote/">Get a quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 BarrelCompare · Independent comparison service</div>
+      <div class="disclosure">Independent of all shipping companies · Read our <a href="/disclosure/" style="color: var(--orange-500);">funding disclosure</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mobileNav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Read URL param for destination
+  const params = new URLSearchParams(window.location.search);
+  const dest = params.get('destination');
+  const destSelect = document.getElementById('destination');
+  const destLabel = document.getElementById('destLabel');
+  const labels = {
+    jamaica: 'Jamaica',
+    trinidad: 'Trinidad & Tobago',
+    guyana: 'Guyana',
+    ghana: 'Ghana',
+    nigeria: 'Nigeria'
+  };
+  if (dest && labels[dest]) {
+    destSelect.value = dest;
+    destLabel.textContent = labels[dest];
+  }
+  destSelect.addEventListener('change', (e) => {
+    const v = e.target.value;
+    destLabel.textContent = labels[v];
+    // update URL without reload
+    const url = new URL(window.location);
+    url.searchParams.set('destination', v);
+    window.history.replaceState({}, '', url);
+  });
+</script>
+
+</body>
+</html>

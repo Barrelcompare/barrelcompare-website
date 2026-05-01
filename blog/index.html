@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guides &amp; News — Barrel Shipping UK | BarrelCompare</title>
+<meta name="description" content="Practical guides, customs updates and shipping news for the UK diaspora sending barrels to the Caribbean and West Africa.">
+<meta name="theme-color" content="#0a2540">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="manifest" href="/manifest.json">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="beta-banner">Beta — first guides being published soon. <a href="/contact/" style="text-decoration: underline;">Suggest a topic</a></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Barrel<span class="accent">Compare</span><span class="tagline">Independent · UK · Free</span></a>
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="/compare/">Compare prices</a>
+      <a href="/quote/">Get a quote</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/about/">About</a>
+      <a href="https://wa.me/447542539430" class="btn btn-whatsapp" style="padding: 10px 18px; min-height: 0;">WhatsApp us</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <a href="/compare/">Compare prices</a>
+    <a href="/quote/">Get a quote</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Guides &amp; news</a>
+    <a href="/disclosure/">How we make money</a>
+    <a href="https://wa.me/447542539430" class="btn btn-whatsapp btn-block whatsapp-cta">WhatsApp us</a>
+  </nav>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Guides &amp; <span class="accent">news</span></h1>
+    <p>Practical advice, customs updates and shipping news — written for senders, not for SEO.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="coming-soon-block">
+      <h2>First guides coming soon</h2>
+      <p>We're writing a launch series covering: how to pack a barrel properly, navigating Caribbean customs, the Christmas shipping cut-off, and how to spot a dodgy shipper. Want a topic prioritised?</p>
+      <a href="/contact/" class="btn btn-orange">Suggest a topic</a>
+    </div>
+
+    <div style="max-width: 720px; margin: 48px auto 0;">
+      <h2 style="font-size: 1.5rem; margin-bottom: 20px;">In the meantime</h2>
+      <div class="card-grid">
+        <a href="/faq/" class="card" style="text-decoration: none;">
+          <h3 style="margin-bottom: 8px;">FAQ</h3>
+          <p style="color: var(--text-muted-dark); margin: 0; font-size: 0.95rem;">The questions UK senders ask most — sizes, customs, transit times, what you can send.</p>
+        </a>
+        <a href="/compare/" class="card" style="text-decoration: none;">
+          <h3 style="margin-bottom: 8px;">Compare suppliers</h3>
+          <p style="color: var(--text-muted-dark); margin: 0; font-size: 0.95rem;">Verified UK shippers side-by-side — prices, transit, what's included.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom: 12px;">Barrel<span class="accent">Compare</span></div>
+        <p class="footer-tagline">UK's first independent barrel shipping comparison platform.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Compare</h4>
+        <ul>
+          <li><a href="/compare/?destination=jamaica">Jamaica</a></li>
+          <li><a href="/compare/?destination=trinidad">Trinidad &amp; Tobago</a></li>
+          <li><a href="/compare/?destination=guyana">Guyana</a></li>
+          <li><a href="/compare/?destination=ghana">Ghana</a></li>
+          <li><a href="/compare/?destination=nigeria">Nigeria</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/blog/">Guides &amp; news</a></li>
+          <li><a href="/collection-finder/">Collection finder</a></li>
+          <li><a href="/share/">Share your experience</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About us</a></li>
+          <li><a href="/disclosure/">How we make money</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/quote/">Get a quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 BarrelCompare</div>
+      <div class="disclosure">Independent of all shipping companies · Read our <a href="/disclosure/" style="color: var(--orange-500);">funding disclosure</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mobileNav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>

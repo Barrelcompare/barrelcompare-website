@@ -1,0 +1,17 @@
+{
+  "name": "BarrelCompare",
+  "short_name": "BarrelCompare",
+  "description": "UK's first independent barrel shipping comparison platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a2540",
+  "theme_color": "#0a2540",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
