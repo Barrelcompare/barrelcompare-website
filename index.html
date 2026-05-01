@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1f3d" />
+  <title>BarrelCompare — UK's first independent barrel shipping comparison</title>
+  <meta name="description" content="Compare UK barrel shipping suppliers side by side. Transparent pricing, verified service, no markup. Send to the Caribbean with confidence." />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:title" content="BarrelCompare — Know your options before you ship" />
+  <meta property="og:description" content="The UK's first independent barrel shipping comparison platform. Compare prices, transit times and service fairly." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://barrelcompare.co.uk/" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- Schema.org Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BarrelCompare",
+    "url": "https://barrelcompare.co.uk",
+    "description": "UK's first independent barrel shipping comparison platform.",
+    "areaServed": "United Kingdom"
+  }
+  </script>
+
+  <style>
+    /* ---- DESIGN TOKENS ---- */
+    :root {
+      --navy-900: #061327;
+      --navy-800: #0a1f3d;
+      --navy-700: #112a4d;
+      --navy-600: #1a3760;
+      --orange-500: #f5a623;
+      --orange-600: #e6951a;
+      --blue-500: #2d6cdf;
+      --blue-600: #1f57c4;
+      --green-500: #25d366;
+      --white: #ffffff;
+      --grey-100: #f5f7fa;
+      --grey-200: #e4e9f0;
+      --grey-400: #9aa5b5;
+      --grey-600: #5d6b7e;
+      --text-on-dark: rgba(255, 255, 255, 0.92);
+      --text-muted-dark: rgba(255, 255, 255, 0.65);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --max-width: 1180px;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    /* ---- RESET ---- */
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font); color: var(--text-on-dark); background: var(--navy-800); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { margin: 0 0 0.5em; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+    p { margin: 0 0 1em; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+    /* ---- LAYOUT ---- */
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+    section { padding: 64px 0; }
+    @media (min-width: 768px) { section { padding: 96px 0; } }
+
+    /* ---- ALERTS TICKER ---- */
+    .alerts-bar {
+      background: var(--orange-500);
+      color: var(--navy-900);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .alerts-bar .live-tag {
+      background: var(--navy-900);
+      color: var(--white);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-right: 12px;
+    }
+    .ticker {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      animation: scroll 40s linear infinite;
+    }
+    .ticker span { display: inline-flex; align-items: center; gap: 8px; }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ---- BETA BANNER ---- */
+    .beta-banner {
+      background: var(--blue-600);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* ---- HEADER ---- */
+    .site-header {
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 31, 61, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+    .logo .accent { color: var(--orange-500); }
+    .logo .tagline { display: block; font-size: 0.75rem; font-weight: 400; color: var(--text-muted-dark); margin-top: -2px; letter-spacing: 0.02em; }
+
+    .nav-desktop { display: none; gap: 28px; align-items: center; }
+    .nav-desktop a { font-size: 0.95rem; color: var(--text-on-dark); transition: color 0.2s; }
+    .nav-desktop a:hover { color: var(--orange-500); }
+    @media (min-width: 900px) { .nav-desktop { display: flex; } .menu-toggle { display: none; } }
+
+    .menu-toggle {
+      width: 44px; height: 44px;
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+    }
+    .menu-toggle svg { width: 24px; height: 24px; }
+
+    /* Mobile menu */
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: var(--navy-900);
+      padding: 80px 24px 24px;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      z-index: 99;
+      overflow-y: auto;
+    }
+    .nav-mobile.open { transform: translateY(0); }
+    .nav-mobile a { display: block; padding: 16px 0; font-size: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .nav-mobile .whatsapp-cta { margin-top: 24px; }
+
+    /* ---- BUTTONS ---- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.15s, background 0.2s, border-color 0.2s;
+      text-align: center;
+      min-height: 48px;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { background: var(--blue-500); color: var(--white); }
+    .btn-primary:hover { background: var(--blue-600); }
+    .btn-secondary { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); }
+    .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+    .btn-orange { background: var(--orange-500); color: var(--navy-900); }
+    .btn-orange:hover { background: var(--orange-600); }
+    .btn-whatsapp { background: var(--green-500); color: var(--white); }
+    .btn-whatsapp:hover { background: #1eba56; }
+
+    /* ---- HERO ---- */
+    .hero { padding: 64px 0 80px; text-align: center; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37, 211, 102, 0.12);
+      color: #6fe39d;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green-500); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .hero h1 {
+      font-size: 2.25rem;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+    .hero h1 .highlight { color: var(--orange-500); }
+    @media (min-width: 768px) { .hero h1 { font-size: 3.5rem; } }
+    @media (min-width: 1024px) { .hero h1 { font-size: 4rem; } }
+
+    .hero p.lede {
+      font-size: 1.125rem;
+      max-width: 580px;
+      margin: 0 auto 12px;
+      color: var(--text-on-dark);
+    }
+    .hero p.sub {
+      font-size: 0.95rem;
+      color: var(--text-muted-dark);
+      margin: 0 auto 36px;
+    }
+
+    /* Territory chips */
+    .territory-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      color: var(--text-on-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .chip:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); }
+    .chip.active { background: var(--blue-500); border-color: var(--blue-500); color: var(--white); }
+    .chip.disabled { opacity: 0.55; cursor: not-allowed; }
+
+    .hero-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 24px; }
+    .hero-meta { font-size: 0.85rem; color: var(--text-muted-dark); max-width: 520px; margin: 0 auto; }
+
+    /* Trustpilot placeholder */
+    .trustpilot-strip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 32px;
+      padding: 12px 24px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 100px;
+      font-size: 0.9rem;
+      color: var(--text-muted-dark);
+    }
+    .trustpilot-star { color: #00b67a; font-size: 1.1rem; }
+
+    /* ---- TRUST STRIP ---- */
+    .trust-strip { background: var(--navy-700); padding: 40px 0; }
+    .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
+    .trust-stat .num { font-size: 2.25rem; font-weight: 800; color: var(--orange-500); display: block; }
+    .trust-stat .label { font-size: 0.8rem; color: var(--text-muted-dark); letter-spacing: 0.02em; }
+    @media (min-width: 768px) {
+      .trust-stat .num { font-size: 3rem; }
+      .trust-stat .label { font-size: 0.95rem; }
+    }
+
+    /* ---- SECTION HEADINGS ---- */
+    .section-eyebrow { color: var(--orange-500); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: 1.75rem; max-width: 640px; }
+    .section-title .accent { color: var(--blue-500); }
+    .section-lede { color: var(--text-muted-dark); max-width: 580px; font-size: 1.05rem; margin-bottom: 48px; }
+    @media (min-width: 768px) { .section-title { font-size: 2.5rem; } }
+
+    /* ---- HOW IT WORKS ---- */
+    .how-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+    @media (min-width: 768px) { .how-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .step-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .step-card:hover { transform: translateY(-4px); border-color: rgba(245,166,35,0.3); }
+    .step-num {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--blue-500);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .step-card h3 { font-size: 1.25rem; margin-bottom: 8px; }
+    .step-card p { color: var(--text-muted-dark); margin: 0; font-size: 0.95rem; }
+
+    /* ---- WHY US ---- */
+    .why-section { background: var(--navy-900); }
+    .why-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
+    @media (min-width: 768px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .why-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .why-card { padding: 24px; }
+    .why-card .icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(245,166,35,0.12);
+      color: var(--orange-500);
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .why-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .why-card p { color: var(--text-muted-dark); font-size: 0.92rem; margin: 0; }
+
+    /* ---- FEATURED COMPARISON PREVIEW ---- */
+    .compare-preview { background: var(--navy-700); }
+    .supplier-card {
+      background: var(--navy-900);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .supplier-card .badge {
+      display: inline-block;
+      background: var(--orange-500);
+      color: var(--navy-900);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .supplier-card h3 { font-size: 1.4rem; margin-bottom: 4px; }
+    .supplier-card .supplier-meta { color: var(--text-muted-dark); font-size: 0.9rem; margin-bottom: 20px; }
+    .supplier-card .price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+    .supplier-card .price { font-size: 2rem; font-weight: 800; color: var(--orange-500); }
+    .supplier-card .price-label { color: var(--text-muted-dark); font-size: 0.95rem; }
+    .supplier-card .transit { color: var(--text-muted-dark); font-size: 0.9rem; margin-bottom: 20px; }
+    .supplier-card ul { padding-left: 0; list-style: none; margin: 0 0 20px; }
+    .supplier-card ul li { padding: 6px 0; font-size: 0.95rem; }
+    .supplier-card ul li::before { content: "✓"; color: var(--green-500); font-weight: 700; margin-right: 8px; }
+
+    /* ---- FAQ TEASER ---- */
+    .faq-section { background: var(--navy-800); }
+    details {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      transition: background 0.2s;
+    }
+    details[open] { background: rgba(255,255,255,0.07); }
+    summary {
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      font-size: 1.5rem;
+      color: var(--orange-500);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    details[open] summary::after { content: "−"; }
+    details p { color: var(--text-muted-dark); margin: 16px 0 0; font-size: 0.95rem; }
+
+    /* ---- FINAL CTA ---- */
+    .final-cta {
+      background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
+      text-align: center;
+    }
+    .final-cta h2 { font-size: 2rem; margin-bottom: 16px; }
+    @media (min-width: 768px) { .final-cta h2 { font-size: 2.75rem; } }
+    .final-cta p { color: var(--text-muted-dark); max-width: 540px; margin: 0 auto 32px; font-size: 1.1rem; }
+    .final-cta .cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+    /* ---- FOOTER ---- */
+    footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-grid { display: grid; gap: 40px; grid-template-columns: 1fr; margin-bottom: 40px; }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
+    .footer-col h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--orange-500); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-col li { padding: 6px 0; }
+    .footer-col a { color: var(--text-muted-dark); font-size: 0.95rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-tagline { color: var(--text-muted-dark); font-size: 0.95rem; max-width: 320px; }
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted-dark);
+    }
+    .footer-bottom .disclosure { max-width: 640px; }
+
+    /* ---- ACCESSIBILITY ---- */
+    :focus-visible { outline: 3px solid var(--orange-500); outline-offset: 3px; border-radius: 4px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- LIVE ALERTS TICKER -->
+  <div class="alerts-bar" role="region" aria-label="Live shipping alerts">
+    <div class="container" style="display: flex; align-items: center;">
+      <span class="live-tag">LIVE</span>
+      <div class="ticker" id="ticker">
+        <span>⚓ Port congestion: Kingston, Jamaica — allow extra 2–3 days on current bookings</span>
+        <span>⛽ Fuel surcharge increases reported across two suppliers — check before booking</span>
+        <span>📦 Peak season approaching — book 4–6 weeks ahead for Christmas delivery</span>
+        <!-- duplicate for seamless scroll -->
+        <span>⚓ Port congestion: Kingston, Jamaica — allow extra 2–3 days on current bookings</span>
+        <span>⛽ Fuel surcharge increases reported across two suppliers — check before booking</span>
+        <span>📦 Peak season approaching — book 4–6 weeks ahead for Christmas delivery</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BETA BANNER -->
+  <div class="beta-banner">
+    BETA — site is launching shortly. Pricing and supplier details are being finalised.
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="BarrelCompare home">
+        Barrel<span class="accent">Compare</span>
+        <span class="tagline">Ship it easy</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="/compare/">Compare prices</a>
+        <a href="/blog/">Blog</a>
+        <a href="/share/">Share your experience</a>
+        <a href="/collection-finder/">Collection finder</a>
+        <a href="/faq/">FAQ</a>
+        <a href="#whatsapp" class="btn btn-whatsapp" style="padding: 10px 18px; font-size: 0.9rem;">Join WhatsApp</a>
+      </nav>
+
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="menuToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <nav class="nav-mobile" id="mobileMenu" aria-label="Mobile">
+      <a href="/compare/">Compare prices</a>
+      <a href="/blog/">Blog</a>
+      <a href="/share/">Share your experience</a>
+      <a href="/collection-finder/">Collection finder</a>
+      <a href="/faq/">FAQ</a>
+      <a href="#whatsapp" class="btn btn-whatsapp whatsapp-cta">Join WhatsApp community</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        UK's first independent barrel comparison
+      </div>
+      <h1>Sending a barrel home?<br><span class="highlight">Know your options</span> before you ship.</h1>
+      <p class="lede">Compare typical costs, delivery times, and what to expect — so you can send with confidence.</p>
+      <p class="sub">No guesswork. No pressure. Just clearer choices.</p>
+
+      <div class="territory-chips" role="tablist" aria-label="Choose destination">
+        <button class="chip active" role="tab" aria-selected="true" data-territory="caribbean">🌴 Caribbean</button>
+        <button class="chip disabled" role="tab" aria-selected="false" aria-disabled="true" data-territory="india">India — Coming Soon</button>
+        <button class="chip disabled" role="tab" aria-selected="false" aria-disabled="true" data-territory="africa">Africa — Coming Soon</button>
+      </div>
+
+      <div class="hero-cta">
+        <a href="/compare/" class="btn btn-primary">Compare options</a>
+        <a href="#whatsapp" class="btn btn-secondary">Join the BarrelCompare WhatsApp channel</a>
+      </div>
+      <p class="hero-meta">Get tips, alerts and insider knowledge. Learn how to ship faster, save money and avoid surprises.</p>
+
+      <div class="trustpilot-strip">
+        <span class="trustpilot-star">★</span>
+        <span>Trustpilot reviews coming soon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="trust-strip" aria-label="Key facts">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-stat">
+          <span class="num">6+</span>
+          <span class="label">Verified UK suppliers</span>
+        </div>
+        <div class="trust-stat">
+          <span class="num">Free</span>
+          <span class="label">Always free to compare</span>
+        </div>
+        <div class="trust-stat">
+          <span class="num">3</span>
+          <span class="label">Territories covered</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-eyebrow">How it works</div>
+      <h2 class="section-title">Three simple steps to send <span class="accent">with confidence</span>.</h2>
+      <p class="section-lede">Plain-English process. No jargon, no upsells, no hidden steps.</p>
+
+      <div class="how-grid">
+        <article class="step-card">
+          <span class="step-num">1</span>
+          <h3>Select your territory</h3>
+          <p>Choose Caribbean, India or Africa. Suppliers, prices and transit times update automatically.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num">2</span>
+          <h3>Compare side by side</h3>
+          <p>See verified prices, transit times and reliability indicators for every supplier in one place — free and independent.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num">3</span>
+          <h3>Request a quote</h3>
+          <p>Choose the supplier that fits. Hit Get Quote and your request goes directly to them — no middleman, no markup.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-section">
+    <div class="container">
+      <div class="section-eyebrow">Why BarrelCompare</div>
+      <h2 class="section-title">Built around four <span class="accent">simple principles</span>.</h2>
+      <p class="section-lede">A consumer-first platform — closer to a consumer champion than a marketplace. We exist to help you choose well, not to push you toward any one supplier.</p>
+
+      <div class="why-grid">
+        <article class="why-card">
+          <div class="icon">⚖</div>
+          <h3>Clarity</h3>
+          <p>Understand the offer instantly. No jargon, no hidden small print, no clever wording.</p>
+        </article>
+        <article class="why-card">
+          <div class="icon">⚡</div>
+          <h3>Fairness</h3>
+          <p>Comparisons are balanced and easy to interpret. We measure what matters to you.</p>
+        </article>
+        <article class="why-card">
+          <div class="icon">★</div>
+          <h3>Confidence</h3>
+          <p>You decide when you have the facts — informed, not pressured into anything.</p>
+        </article>
+        <article class="why-card">
+          <div class="icon">✓</div>
+          <h3>Accountability</h3>
+          <p>Suppliers are presented in a way that rewards good service and visible value.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED COMPARISON PREVIEW -->
+  <section class="compare-preview">
+    <div class="container">
+      <div class="section-eyebrow">Featured supplier</div>
+      <h2 class="section-title">A taste of what you'll see when you <span class="accent">compare</span>.</h2>
+      <p class="section-lede">Each supplier is shown with verified pricing, transit times, what's included, and what to watch out for. No paid placement.</p>
+
+      <article class="supplier-card">
+        <span class="badge">Best Value</span>
+        <h3>West Indies Direct</h3>
+        <p class="supplier-meta">London's premier Caribbean agent</p>
+        <div class="price-row">
+          <span class="price">£95</span>
+          <span class="price-label">from / barrel to Jamaica</span>
+        </div>
+        <p class="transit">⏱ Weekly &amp; fortnightly sailings · 5–7 weeks</p>
+        <ul>
+          <li>Beats any written quote by 10%</li>
+          <li>7-day collection &amp; delivery service</li>
+          <li>10% off when sending 2+ barrels</li>
+          <li>Weekly sailings to Jamaica, Trinidad, Barbados, St Lucia</li>
+        </ul>
+        <a href="/compare/" class="btn btn-orange" style="width: 100%;">See full comparison →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ TEASER -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-eyebrow">Common questions</div>
+      <h2 class="section-title">Questions people ask <span class="accent">before they ship</span>.</h2>
+      <p class="section-lede">Quick answers to the most common questions. See the full FAQ for more.</p>
+
+      <details>
+        <summary>How does BarrelCompare make money?</summary>
+        <p>We may receive a small fee when you request a quote through us — but this never influences ranking, listing position or what we tell you about a supplier. Suppliers cannot pay for better placement.</p>
+      </details>
+      <details>
+        <summary>Are the prices guaranteed?</summary>
+        <p>Prices shown are starting points and based on standard barrel size, weight, and route. Final pricing comes directly from the supplier you choose, based on your specific shipment.</p>
+      </details>
+      <details>
+        <summary>How long does shipping usually take?</summary>
+        <p>Caribbean routes typically take 5–7 weeks door-to-door, depending on supplier, sailing schedule, and current port conditions. Check the live alerts at the top of every page for up-to-date delays.</p>
+      </details>
+      <details>
+        <summary>What can I send in a barrel?</summary>
+        <p>Most personal items, clothing, non-perishable food, household goods and small gifts. Each supplier has slightly different rules — always check the prohibited items list before packing.</p>
+      </details>
+
+      <div style="text-align: center; margin-top: 32px;">
+        <a href="/faq/" class="btn btn-secondary">See all FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="whatsapp">
+    <div class="container">
+      <h2>Ready to ship smarter?</h2>
+      <p>Compare verified UK suppliers in two minutes — or join the WhatsApp community for tips, alerts and insider knowledge.</p>
+      <div class="cta-row">
+        <a href="/compare/" class="btn btn-orange">Compare suppliers now</a>
+        <a href="https://chat.whatsapp.com/" target="_blank" rel="noopener" class="btn btn-whatsapp">Join WhatsApp community</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom: 12px;">
+            Barrel<span class="accent">Compare</span>
+            <span class="tagline">Ship it easy</span>
+          </div>
+          <p class="footer-tagline">UK's first independent barrel shipping comparison platform. Built for clarity, fairness and confidence.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Compare</h4>
+          <ul>
+            <li><a href="/compare/">All suppliers</a></li>
+            <li><a href="/compare/?territory=caribbean">Caribbean routes</a></li>
+            <li><a href="/collection-finder/">Collection finder</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/share/">Share your experience</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>About</h4>
+          <ul>
+            <li><a href="/about/">Our methodology</a></li>
+            <li><a href="/disclosure/">How we make money</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> BarrelCompare. All rights reserved.</p>
+        <p class="disclosure">Independent comparison. Suppliers cannot pay for better ranking. We may earn a referral fee on completed bookings — this never influences listings.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    // Close mobile menu when clicking a link
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }));
+
+    // Territory selector
+    document.querySelectorAll('.territory-chips .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        if (chip.classList.contains('disabled')) return;
+        document.querySelectorAll('.territory-chips .chip').forEach(c => {
+          c.classList.remove('active');
+          c.setAttribute('aria-selected', 'false');
+        });
+        chip.classList.add('active');
+        chip.setAttribute('aria-selected', 'true');
+      });
+    });
+
+    // Auto-update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
