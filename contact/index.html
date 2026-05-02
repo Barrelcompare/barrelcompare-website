@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact BarrelCompare — Suggest a Supplier or Ask a Question</title>
+<meta name="description" content="Contact BarrelCompare. Suggest a UK barrel shipper to verify, report a problem, ask a question, or share feedback on the platform.">
+<meta name="theme-color" content="#0a2540">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="manifest" href="/manifest.json">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="beta-banner">Beta — your feedback shapes the platform.</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Barrel<span class="accent">Compare</span><span class="tagline">Independent · UK · Free</span></a>
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="/compare/">Compare prices</a>
+      <a href="/quote/">Get a quote</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/about/">About</a>
+      <a href="https://wa.me/447542539430" class="btn btn-whatsapp" style="padding: 10px 18px; min-height: 0;">WhatsApp us</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <a href="/compare/">Compare prices</a>
+    <a href="/quote/">Get a quote</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Guides &amp; news</a>
+    <a href="/disclosure/">How we make money</a>
+    <a href="https://wa.me/447542539430" class="btn btn-whatsapp btn-block whatsapp-cta">WhatsApp us</a>
+  </nav>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Get in <span class="accent">touch</span></h1>
+    <p>Suggest a supplier, ask a question, or report a problem. Same-day reply on weekdays.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="form-wrapper">
+
+      <!-- Quick contact options -->
+      <div class="card-grid" style="margin-bottom: 40px;">
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 8px;">💬</div>
+          <h3 style="font-size: 1.1rem; margin-bottom: 8px;">WhatsApp</h3>
+          <p style="color: var(--text-muted-dark); margin-bottom: 16px; font-size: 0.95rem;">Fastest reply during UK working hours.</p>
+          <a href="https://wa.me/447542539430" class="btn btn-whatsapp btn-block">Open WhatsApp</a>
+        </div>
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 8px;">✉️</div>
+          <h3 style="font-size: 1.1rem; margin-bottom: 8px;">Email</h3>
+          <p style="color: var(--text-muted-dark); margin-bottom: 16px; font-size: 0.95rem;">For longer questions or attachments.</p>
+          <a href="mailto:hello@barrelcompare.co.uk" class="btn btn-secondary btn-block">hello@barrelcompare.co.uk</a>
+        </div>
+      </div>
+
+      <h2 style="font-size: 1.5rem; text-align: center;">Or use the form</h2>
+
+      <form id="contactForm" action="https://formspree.io/f/xrejbkjz " method="POST" novalidate style="margin-top: 24px;">
+
+        <div class="form-success" id="successMsg" style="display: none;">
+          ✓ Message received. We'll reply within 1 working day.
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your name <span class="required">*</span></label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="topic">What's this about? <span class="required">*</span></label>
+          <select id="topic" name="topic" class="form-control" required>
+            <option value="">Choose...</option>
+            <option value="Suggest a supplier">Suggest a supplier to verify</option>
+            <option value="Report a problem">Report a problem with a supplier</option>
+            <option value="Question about shipping">Question about shipping a barrel</option>
+            <option value="Feedback on the platform">Feedback on the platform</option>
+            <option value="I'm a shipper / want to be listed">I'm a shipper / want to be listed</option>
+            <option value="Press / media">Press / media</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your message <span class="required">*</span></label>
+          <textarea id="message" name="message" class="form-control" required placeholder="Tell us what's on your mind..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-orange btn-block">Send message</button>
+        <p style="text-align: center; color: var(--text-muted-dark); font-size: 0.85rem; margin-top: 16px;">We never share your details with third parties.</p>
+
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom: 12px;">Barrel<span class="accent">Compare</span></div>
+        <p class="footer-tagline">UK's first independent barrel shipping comparison platform.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Compare</h4>
+        <ul>
+          <li><a href="/compare/?destination=jamaica">Jamaica</a></li>
+          <li><a href="/compare/?destination=trinidad">Trinidad &amp; Tobago</a></li>
+          <li><a href="/compare/?destination=guyana">Guyana</a></li>
+          <li><a href="/compare/?destination=ghana">Ghana</a></li>
+          <li><a href="/compare/?destination=nigeria">Nigeria</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/blog/">Guides &amp; news</a></li>
+          <li><a href="/collection-finder/">Collection finder</a></li>
+          <li><a href="/share/">Share your experience</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About us</a></li>
+          <li><a href="/disclosure/">How we make money</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/quote/">Get a quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 BarrelCompare</div>
+      <div class="disclosure">Independent of all shipping companies · Read our <a href="/disclosure/" style="color: var(--orange-500);">funding disclosure</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mobileNav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
