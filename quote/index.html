@@ -78,7 +78,7 @@
               <option value="Trinidad &amp; Tobago">Trinidad &amp; Tobago</option>
               <option value="Guyana">Guyana</option>
               <option value=""></option>
-              <option value="Nigeria">Nigeria</option>
+              <option value=""></option>
               <option value="Other">Other (tell us in notes)</option>
             </select>
           </div>
@@ -187,7 +187,7 @@
           <li><a href="/compare/?destination=trinidad">Trinidad &amp; Tobago</a></li>
           <li><a href="/compare/?destination=guyana">Guyana</a></li>
           <li><a href="/compare/?destination="></a></li>
-          <li><a href="/compare/?destination=nigeria">Nigeria</a></li>
+          <li><a href="/compare/?destination="></a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -232,7 +232,7 @@
   const params = new URLSearchParams(window.location.search);
   const dest = params.get('destination');
   if (dest) {
-    const map = { jamaica: 'Jamaica', trinidad: 'Trinidad & Tobago', guyana: 'Guyana', : '', nigeria: 'Nigeria' };
+    const map = { jamaica: 'Jamaica', trinidad: 'Trinidad & Tobago', guyana: 'Guyana', : '', : '' };
     if (map[dest]) document.getElementById('destination').value = map[dest];
   }
 </script>
