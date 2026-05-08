@@ -112,6 +112,7 @@ section { padding: 64px 0; }
 .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
 .logo .accent { color: var(--orange-500); }
 .logo .tagline { display: block; font-size: 0.75rem; font-weight: 400; color: var(--text-muted-dark); margin-top: -2px; letter-spacing: 0.02em; }
+.logo-standfirst { display: block; font-size: 0.8rem; font-style: italic; color: var(--orange-500); font-weight: 500; margin-top: 1px; letter-spacing: 0.01em; }
 
 .nav-desktop { display: none; gap: 28px; align-items: center; }
 .nav-desktop a { font-size: 0.95rem; color: var(--text-on-dark); transition: color 0.2s; }
@@ -471,6 +472,58 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
   color: var(--text-muted-dark); font-style: italic;
 }
 .prose strong { color: var(--white); font-weight: 700; }
+
+/* ---- WHITE BACKGROUND SECTIONS ---- */
+.hero-white {
+  background: #ffffff;
+  color: var(--navy-900);
+}
+.hero-white .hero-badge { background: rgba(37, 211, 102, 0.12); color: #1a7a3e; }
+.hero-white .hero-badge .dot { background: #25a855; }
+.hero-white h1 { color: var(--navy-900); }
+.hero-white .highlight { color: var(--orange-500); }
+.hero-white .lede { color: var(--navy-800); }
+.hero-white .sub { color: var(--grey-600); }
+.hero-white .hero-meta { color: var(--grey-600); }
+.hero-white .chip { background: rgba(6,19,39,0.06); border-color: rgba(6,19,39,0.15); color: var(--navy-800); }
+.hero-white .chip:hover { background: rgba(6,19,39,0.1); border-color: rgba(6,19,39,0.3); }
+.hero-white .chip.active { background: var(--blue-500); border-color: var(--blue-500); color: var(--white); }
+.hero-white .btn-secondary { color: var(--navy-800); border-color: rgba(6,19,39,0.3); }
+
+.section-white { background: #ffffff; }
+.section-white .section-eyebrow { color: var(--orange-500); }
+.section-white .section-title { color: var(--navy-900); }
+.section-white .section-lede { color: var(--grey-600); }
+.section-white .step-card { background: var(--grey-100); border-color: var(--grey-200); }
+.section-white .step-card h3 { color: var(--navy-900); }
+.section-white .step-card p { color: var(--grey-600); }
+
+/* ---- REVIEWS STRIP (B9) ---- */
+.reviews-strip-section { background: var(--navy-700); padding: 64px 0; }
+.reviews-scroll-container {
+  min-height: 120px;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+.review-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  min-width: 260px;
+  max-width: 320px;
+  flex-shrink: 0;
+}
+.review-stars { color: var(--orange-500); font-size: 1rem; margin-bottom: 8px; }
+.review-text { color: var(--text-on-dark); font-size: 0.95rem; margin-bottom: 10px; font-style: italic; }
+.review-meta { color: var(--text-muted-dark); font-size: 0.8rem; margin: 0; }
+
+/* ---- TRUSTPILOT SECTION (B10) ---- */
+.trustpilot-section { background: var(--navy-900); padding: 48px 0; }
 
 /* ---- COMING SOON ---- */
 .coming-soon-block {
