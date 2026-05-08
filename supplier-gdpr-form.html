@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supplier Data Processing Agreement — BarrelCompare</title>
+<meta name="description" content="BarrelCompare supplier GDPR data processing agreement. Complete this form before receiving customer quote requests.">
+<meta name="theme-color" content="#0a2540">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .preview-banner {
+    background: #ffffff;
+    color: #f5a623;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .dpa-intro {
+    background: rgba(245,166,35,0.07);
+    border-left: 4px solid var(--orange-500);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .dpa-intro p { color: var(--text-on-dark); margin: 0; font-size: 0.95rem; line-height: 1.6; }
+  .dpa-clause {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .dpa-clause h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--orange-500);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .dpa-clause p { color: var(--text-muted-dark); font-size: 0.92rem; margin: 0; line-height: 1.6; }
+  .agreement-box {
+    background: rgba(37,211,102,0.05);
+    border: 1.5px solid rgba(37,211,102,0.25);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .agreement-box h3 { font-size: 1rem; margin-bottom: 16px; color: var(--white); }
+  .sign-row { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 600px) { .sign-row { grid-template-columns: 1fr 1fr; } }
+  /* Honeypot */
+  .hp-field { opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; }
+</style>
+</head>
+<body>
+
+<div class="preview-banner">You're viewing a preview of our new website. Welcome — and well done on finding us so early. We'll continue refining and enhancing the experience over the coming weeks, and we'd love to hear your feedback along the way.</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Barrel<span class="accent">Compare</span><span class="tagline">Independent · UK · Free</span></a>
+    <span style="display:block;font-size:0.8rem;font-style:italic;color:#f5a623;margin-top:2px;font-weight:400;">Ship It Easy</span>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Supplier <span class="accent">Data Agreement</span></h1>
+    <p>Complete and sign this agreement before receiving customer quote requests from BarrelCompare.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="form-wrapper" style="max-width: 720px;">
+
+      <div class="dpa-intro">
+        <p><strong>Why this is required:</strong> Under UK GDPR (UK General Data Protection Regulation), BarrelCompare must have a signed Data Processing Agreement in place with every supplier before sharing customer personal data. This includes names, email addresses, phone numbers, and postcodes submitted via quote requests. You will not receive customer contact details until this agreement is signed and confirmed by BarrelCompare.</p>
+      </div>
+
+      <!-- DPA Clauses -->
+      <div class="dpa-clause">
+        <h4>1. Purpose of data sharing</h4>
+        <p>BarrelCompare will share customer personal data (name, email address, phone number, UK postcode, destination, and barrel details) solely for the purpose of responding to a customer's quote request. Data must not be used for any other purpose.</p>
+      </div>
+
+      <div class="dpa-clause">
+        <h4>2. Your obligations as data processor</h4>
+        <p>You agree to: process customer data only on documented instructions from BarrelCompare; keep data confidential and not disclose it to third parties; delete or return all customer data within 30 days of the quote process being completed or abandoned; implement appropriate technical and organisational security measures to protect the data.</p>
+      </div>
+
+      <div class="dpa-clause">
+        <h4>3. No marketing use</h4>
+        <p>Customer data shared via BarrelCompare quote requests must not be added to any marketing list, newsletter, or CRM system for the purpose of future marketing communications unless the customer has given separate, explicit consent directly to you.</p>
+      </div>
+
+      <div class="dpa-clause">
+        <h4>4. Data breach notification</h4>
+        <p>In the event of a data breach involving customer data received via BarrelCompare, you must notify BarrelCompare at hello@barrelcompare.co.uk within 24 hours of becoming aware of the breach.</p>
+      </div>
+
+      <div class="dpa-clause">
+        <h4>5. Sub-processing</h4>
+        <p>You must not pass customer data to any third party or sub-processor without prior written consent from BarrelCompare.</p>
+      </div>
+
+      <div class="dpa-clause">
+        <h4>6. Governing law</h4>
+        <p>This agreement is governed by the laws of England and Wales. Both parties agree to comply with all applicable UK data protection legislation including UK GDPR and the Data Protection Act 2018.</p>
+      </div>
+
+      <!-- Signature form -->
+      <div class="agreement-box">
+        <h3>Sign the agreement</h3>
+
+        <form
+          id="dpaForm"
+          action="https://formspree.io/f/xrejbkjz"
+          method="POST"
+          novalidate
+        >
+          <!-- Honeypot anti-spam field -->
+          <input class="hp-field" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          <!-- Hidden subject line for Formspree -->
+          <input type="hidden" name="_subject" value="New Supplier DPA Submission — BarrelCompare">
+          <!-- CC to BarrelCompare -->
+          <input type="hidden" name="_cc" value="hello@barrelcompare.co.uk">
+
+          <div class="form-success" id="successMsg" style="display:none;">
+            ✓ Agreement received. BarrelCompare will review and confirm your activation within 2 working days.
+          </div>
+          <div class="form-error" id="errorMsg" style="display:none;">
+            Something went wrong. Please email hello@barrelcompare.co.uk directly.
+          </div>
+
+          <div class="sign-row">
+            <div class="form-group">
+              <label for="company_name">Company / trading name <span class="required">*</span></label>
+              <input type="text" id="company_name" name="company_name" class="form-control" required placeholder="e.g. Caribbean Cargo Ltd">
+            </div>
+            <div class="form-group">
+              <label for="company_number">Companies House number <span class="required">*</span></label>
+              <input type="text" id="company_number" name="company_number" class="form-control" required placeholder="e.g. 12345678">
+              <small>Enter N/A if sole trader</small>
+            </div>
+          </div>
+
+          <div class="sign-row">
+            <div class="form-group">
+              <label for="signatory_name">Full name of signatory <span class="required">*</span></label>
+              <input type="text" id="signatory_name" name="signatory_name" class="form-control" required placeholder="The person signing on behalf of the business">
+            </div>
+            <div class="form-group">
+              <label for="signatory_role">Role / job title <span class="required">*</span></label>
+              <input type="text" id="signatory_role" name="signatory_role" class="form-control" required placeholder="e.g. Director, Owner">
+            </div>
+          </div>
+
+          <div class="sign-row">
+            <div class="form-group">
+              <label for="business_email">Business email address <span class="required">*</span></label>
+              <input type="email" id="business_email" name="business_email" class="form-control" required placeholder="The email that will receive customer quotes">
+            </div>
+            <div class="form-group">
+              <label for="business_phone">Business phone number <span class="required">*</span></label>
+              <input type="tel" id="business_phone" name="business_phone" class="form-control" required placeholder="e.g. 07700 900000">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="business_address">Registered UK business address <span class="required">*</span></label>
+            <textarea id="business_address" name="business_address" class="form-control" required placeholder="Full address including postcode" style="min-height:80px;"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="ico_number">ICO registration number <span class="required">*</span></label>
+            <input type="text" id="ico_number" name="ico_number" class="form-control" required placeholder="e.g. Z1234567">
+            <small>You must be registered with the ICO to process customer data. Register at ico.org.uk — fee is £40/year for most small businesses.</small>
+          </div>
+
+          <div class="form-group" style="margin-top: 24px;">
+            <div class="checkbox-row">
+              <input type="checkbox" id="agree_dpa" name="agree_dpa" value="agreed" required>
+              <label for="agree_dpa">I have read and understood the Data Processing Agreement above. I am authorised to sign on behalf of the business named. I agree to all terms set out in clauses 1–6. <span class="required">*</span></label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox-row">
+              <input type="checkbox" id="agree_gdpr" name="agree_gdpr" value="agreed" required>
+              <label for="agree_gdpr">I confirm this business complies with UK GDPR and the Data Protection Act 2018, and is registered with the ICO. <span class="required">*</span></label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-orange btn-block" style="margin-top: 8px;">Submit signed agreement</button>
+          <p style="text-align:center; color:var(--text-muted-dark); font-size:0.8rem; margin-top:12px;">Submission is timestamped and logged. BarrelCompare will confirm activation within 2 working days.</p>
+
+        </form>
+      </div>
+
+      <div class="card" style="margin-top: 24px; text-align: center;">
+        <p style="color: var(--text-muted-dark); font-size: 0.9rem; margin: 0;">Questions about this agreement? Contact us at <a href="mailto:hello@barrelcompare.co.uk" style="color: var(--orange-500);">hello@barrelcompare.co.uk</a></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <div>&copy; 2026 BarrelCompare</div>
+      <div class="disclosure">Independent of all shipping companies</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('dpaForm');
+  const successMsg = document.getElementById('successMsg');
+  const errorMsg = document.getElementById('errorMsg');
+
+  // Rate limiting — max 1 submission per session
+  if (sessionStorage.getItem('dpa_submitted')) {
+    form.innerHTML = '<div class="form-success">✓ You have already submitted this agreement in this session. BarrelCompare will be in touch within 2 working days.</div>';
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Honeypot check
+    if (form._gotcha && form._gotcha.value) return;
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        successMsg.style.display = 'block';
+        form.querySelectorAll('input, textarea, button, select').forEach(el => el.disabled = true);
+        submitBtn.style.display = 'none';
+        sessionStorage.setItem('dpa_submitted', 'true');
+        window.scrollTo({ top: successMsg.offsetTop - 100, behavior: 'smooth' });
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch {
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit signed agreement';
+    }
+  });
+</script>
+
+</body>
+</html>
