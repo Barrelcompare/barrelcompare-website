@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compare Barrel Shipping Options UK | Jamaica, Trinidad, Guyana & Caribbean — BarrelCompare</title>
-<meta name="description" content="Compare verified UK barrel shipping companies side-by-side. Real prices, transit times, customer reviews. Independent. Free. No obligation.">
-<meta name="theme-color" content="#0a2540">
+<title>Compare UK Barrel Shipping Companies — Jamaica, Trinidad, Caribbean | BarrelCompare</title>
+<meta name="description" content="Compare verified UK barrel shipping companies side by side. Real prices, transit times and reviews for shipping barrels to Jamaica, Trinidad, Guyana, Barbados and the Caribbean. Free and independent.">
+<meta name="theme-color" content="#0a1f3d">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="manifest" href="/manifest.json">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Compare UK Barrel Shipping Companies — BarrelCompare">
+<meta property="og:description" content="Compare verified barrel shipping prices to the Caribbean. Independent. Free. No obligation.">
+<meta property="og:url" content="https://barrelcompare.co.uk/compare/">
 <style>
 /* ============================================
    BarrelCompare — Shared stylesheet
@@ -500,91 +504,55 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 :focus-visible { outline: 3px solid var(--orange-500); outline-offset: 3px; border-radius: 4px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
-</style>
-<style>
-  .preview-banner {
-    background: #ffffff;
-    color: #f5a623;
-    text-align: center;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
+.preview-banner { background:#ffffff;color:#f5a623;text-align:center;padding:10px 20px;font-size:0.9rem;font-weight:500; }
 
-  /* C5 — Terminology key */
-  .terminology-key {
-    margin-bottom: 24px;
-  }
-  .terminology-key details {
-    background: rgba(45,108,223,0.06);
-    border: 1px solid rgba(45,108,223,0.2);
-  }
-  .terminology-key summary {
-    color: var(--text-on-dark);
-    font-size: 0.95rem;
-  }
-  .terminology-key .term-grid {
-    display: grid;
-    gap: 12px;
-    grid-template-columns: 1fr;
-    margin-top: 16px;
-  }
-  @media (min-width: 768px) {
-    .terminology-key .term-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  .term-item { padding: 12px 16px; background: rgba(255,255,255,0.04); border-radius: 8px; }
-  .term-item strong { color: var(--orange-500); display: block; margin-bottom: 4px; font-size: 0.9rem; }
-  .term-item span { color: var(--text-muted-dark); font-size: 0.88rem; line-height: 1.5; }
+/* View toggle */
+.view-toggle { display:flex;gap:8px;align-items:center; }
+.view-btn { width:36px;height:36px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--text-muted-dark);cursor:pointer;transition:all 0.2s; }
+.view-btn.active { background:var(--orange-500);border-color:var(--orange-500);color:var(--navy-900); }
 
-  /* C2 — View toggle */
-  .view-toggle { display: flex; gap: 8px; align-items: center; }
-  .view-btn {
-    width: 36px; height: 36px;
-    border-radius: 8px;
-    display: inline-flex; align-items: center; justify-content: center;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: var(--text-muted-dark);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .view-btn.active { background: var(--orange-500); border-color: var(--orange-500); color: var(--navy-900); }
+/* Table view */
+.supplier-table { width:100%;border-collapse:collapse;display:none;overflow-x:auto; }
+.supplier-table.visible { display:table; }
+.supplier-grid.hidden { display:none; }
+.supplier-table th { text-align:left;padding:12px 16px;background:var(--navy-900);color:var(--text-muted-dark);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid rgba(255,255,255,0.08);white-space:nowrap;position:relative; }
+.supplier-table td { padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.9rem;vertical-align:middle; }
+.supplier-table tr:hover td { background:rgba(255,255,255,0.02); }
 
-  /* Table view */
-  .supplier-table { width: 100%; border-collapse: collapse; display: none; }
-  .supplier-table.visible { display: table; }
-  .supplier-grid.hidden { display: none; }
-  .supplier-table th {
-    text-align: left; padding: 12px 16px;
-    background: var(--navy-900);
-    color: var(--text-muted-dark);
-    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .supplier-table td {
-    padding: 14px 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    font-size: 0.92rem;
-    vertical-align: middle;
-  }
-  .supplier-table tr:hover td { background: rgba(255,255,255,0.02); }
-  .supplier-table .badge { display: inline-block; }
+/* Tooltip on table headers */
+.th-tooltip { position:relative;display:inline-flex;align-items:center;gap:6px;cursor:help; }
+.th-tooltip .tt { visibility:hidden;opacity:0;background:var(--navy-900);color:var(--text-on-dark);font-size:0.8rem;border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:10px 14px;position:absolute;z-index:20;top:130%;left:0;width:220px;line-height:1.5;transition:opacity 0.2s;pointer-events:none;font-weight:400;text-transform:none;letter-spacing:0; }
+.th-tooltip:hover .tt { visibility:visible;opacity:1; }
+.th-icon { width:14px;height:14px;border-radius:50%;background:rgba(245,166,35,0.2);color:var(--orange-500);font-size:0.65rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0; }
 
-  /* C9 — Insurance modal hidden */
-  /* INSURANCE MODAL - HIDDEN - ACTIVATE WHEN PARTNER CONFIRMED */
-  #insuranceModal { display: none; }
+/* Terminology key */
+.terminology-key { margin-bottom:20px; }
+.terminology-key details { background:rgba(45,108,223,0.06);border:1px solid rgba(45,108,223,0.2); }
+.term-grid { display:grid;gap:12px;grid-template-columns:1fr;margin-top:16px; }
+@media (min-width:768px) { .term-grid { grid-template-columns:repeat(2,1fr); } }
+.term-item { padding:12px 16px;background:rgba(255,255,255,0.04);border-radius:8px; }
+.term-item strong { color:var(--orange-500);display:block;margin-bottom:4px;font-size:0.88rem; }
+.term-item span { color:var(--text-muted-dark);font-size:0.85rem;line-height:1.5; }
+
+/* Ask questions section */
+.ask-section { background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:32px;margin-top:48px;text-align:center; }
+.ask-section h3 { margin-bottom:8px; }
+.ask-section p { color:var(--text-muted-dark);margin-bottom:20px;font-size:0.95rem; }
+.ask-form { max-width:480px;margin:0 auto; }
+
+/* Insurance modal hidden */
+#insuranceModal { display:none; }
+/* BC RECOMMENDED BADGE - PHASE 2 ACTIVATION */
 </style>
 </head>
 <body>
 
-<!-- Preview banner -->
 <div class="preview-banner">You're viewing a preview of our new website. Welcome — and well done on finding us so early. We'll continue refining and enhancing the experience over the coming weeks, and we'd love to hear your feedback along the way.</div>
 
-<!-- Header — A2, A3, F1, disclosure removed -->
 <header class="site-header">
   <div class="container header-inner">
     <div>
-      <a href="/" class="logo">Barrel<span class="accent">Compare</span><span class="tagline">Independent · UK · Free</span></a>
+      <a href="/" class="logo">Barrel<span class="accent">Compare</span></a>
       <span style="display:block;font-size:0.8rem;font-style:italic;color:#f5a623;margin-top:2px;font-weight:400;">Ship It Easy</span>
     </div>
     <nav class="nav-desktop" aria-label="Primary">
@@ -592,8 +560,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
       <a href="/quote/">Get a quote</a>
       <a href="/faq/">FAQ</a>
       <a href="/about/">About</a>
-      <a href="/blog/">Guides &amp; news</a>
-      <a href="https://wa.me/447542539430" class="btn btn-whatsapp" style="padding: 10px 18px; min-height: 0;">WhatsApp us</a>
+      <a href="/blog/">Caribbean Shipping Guides</a>
+      <a href="https://wa.me/447542539430" class="btn btn-whatsapp" style="padding:10px 18px;min-height:0;">WhatsApp us</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -604,21 +572,22 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
     <a href="/quote/">Get a quote</a>
     <a href="/faq/">FAQ</a>
     <a href="/about/">About</a>
-    <a href="/blog/">Guides &amp; news</a>
+    <a href="/blog/">Caribbean Shipping Guides</a>
     <a href="https://wa.me/447542539430" class="btn btn-whatsapp btn-block whatsapp-cta">WhatsApp us</a>
   </nav>
 </header>
 
 <section class="page-header">
   <div class="container">
-    <h1>Compare <span class="accent">verified</span> UK barrel shippers</h1>
-    <p>Side-by-side. No commission tricks. No fake reviews. Filter by destination and we'll show you what's really on offer.</p>
+    <h1>Compare <span class="accent">UK Barrel Shippers</span></h1>
+    <p>Side-by-side. No commission tricks. No fake reviews. Filter by destination and see what's really on offer.</p>
   </div>
 </section>
 
-<!-- Filter bar — C1 full port list, C3 sort by rating added, A1 India/Africa removed -->
+<!-- Filter bar -->
 <div class="filter-bar">
   <div class="container filter-row">
+
     <label for="destination">Destination</label>
     <select id="destination" aria-label="Filter by destination">
       <optgroup label="Jamaica">
@@ -679,9 +648,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
       <option value="pickup">UK pickup</option>
     </select>
 
-    <!-- C7 — Contents dropdown -->
     <label for="contents">Sending</label>
-    <select id="contents" aria-label="Filter by contents">
+    <select id="contents" aria-label="What are you sending">
       <option value="all">All contents</option>
       <option value="food">Food and groceries</option>
       <option value="clothing">Clothing and textiles</option>
@@ -692,9 +660,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
       <option value="other">Other</option>
     </select>
 
-    <!-- C3 — Sort by rating added -->
-    <label for="sort">Sort by</label>
-    <select id="sort" aria-label="Sort suppliers">
+    <label for="sort" style="font-weight:700;color:var(--text-on-dark);">Sort by</label>
+    <select id="sort" aria-label="Sort suppliers" style="border-color:rgba(245,166,35,0.4);">
       <option value="verified">Verified first</option>
       <option value="alpha">Alphabetical</option>
       <option value="price">Price (low to high)</option>
@@ -702,127 +669,104 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
       <option value="rating">Rating</option>
     </select>
 
-    <!-- C2 — View toggle, card default -->
-    <div class="view-toggle" style="margin-left: auto;">
-      <button class="view-btn active" id="cardViewBtn" aria-label="Card view" title="Card view">
+    <div class="view-toggle">
+      <span style="font-size:0.78rem;color:var(--text-muted-dark);margin-right:4px;">View:</span>
+      <button class="view-btn active" id="cardViewBtn" title="View in Tile Format" aria-label="View in Tile Format">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
       </button>
-      <button class="view-btn" id="tableViewBtn" aria-label="Table view" title="Table view">
+      <button class="view-btn" id="tableViewBtn" title="View in Table Format" aria-label="View in Table Format">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="14" height="3" rx="1"/><rect x="1" y="6" width="14" height="3" rx="1"/><rect x="1" y="11" width="14" height="3" rx="1"/></svg>
       </button>
     </div>
 
-    <span class="results-count" id="resultsCount">1 verified · 4 pending</span>
+    <span class="results-count" id="resultsCount">1 verified · 3 pending</span>
   </div>
 </div>
 
 <section>
   <div class="container">
 
-    <!-- C5 — Terminology key -->
+    <!-- Terminology key -->
     <div class="terminology-key">
       <details>
         <summary>What do these terms mean?</summary>
         <div class="term-grid">
-          <div class="term-item">
-            <strong>Door-to-door</strong>
-            <span>Supplier collects from your UK address and delivers to the recipient's address overseas.</span>
-          </div>
-          <div class="term-item">
-            <strong>Drop-off</strong>
-            <span>You take the barrel to the supplier's UK depot. Recipient collects from the overseas port.</span>
-          </div>
-          <div class="term-item">
-            <strong>UK pickup</strong>
-            <span>Supplier collects from your UK address. Recipient collects from the overseas port.</span>
-          </div>
-          <div class="term-item">
-            <strong>Distribution</strong>
-            <span>Supplier handles onward delivery from the overseas port to the final address.</span>
-          </div>
+          <div class="term-item"><strong>Door-to-door</strong><span>Supplier collects from your UK address and delivers to the recipient's address overseas.</span></div>
+          <div class="term-item"><strong>Drop-off</strong><span>You take the barrel to the supplier's UK depot. Recipient collects from the overseas port.</span></div>
+          <div class="term-item"><strong>UK pickup</strong><span>Supplier collects from your UK address. Recipient collects from the overseas port.</span></div>
+          <div class="term-item"><strong>Distribution</strong><span>Supplier handles onward delivery from the overseas port to the final address.</span></div>
         </div>
       </details>
     </div>
 
-    <!-- C7 caveat -->
-    <div style="background: rgba(245,166,35,0.06); border: 1px solid rgba(245,166,35,0.2); border-radius: 8px; padding: 12px 16px; margin-bottom: 24px; font-size: 0.88rem; color: var(--text-muted-dark);">
-      ⚠️ <strong style="color: var(--orange-500);">Customs note:</strong> Customs restrictions may apply depending on your destination. Destination-specific guidance will be added in a future update.
+    <!-- Customs note -->
+    <div style="background:rgba(245,166,35,0.08);border:1.5px solid rgba(245,166,35,0.3);border-radius:10px;padding:14px 20px;margin-bottom:20px;font-size:0.95rem;cursor:pointer;" onclick="window.location='/faq/'">
+      ⚠️ <strong style="color:var(--orange-500);">Customs &amp; duty notice:</strong> Customs restrictions and duties may apply depending on your destination. Click to read our customs guide. <span style="color:var(--orange-500);font-size:0.85rem;">Learn more →</span>
     </div>
 
-    <!-- C4 — Updated contact for pricing copy -->
-    <div class="card" style="margin-bottom: 32px; border-color: rgba(245,166,35,0.3);">
-      <div style="display: flex; gap: 16px; align-items: flex-start;">
-        <div style="font-size: 1.5rem;">⚖️</div>
+    <!-- Delivery town -->
+    <div style="margin-bottom:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+      <label for="deliveryTown" style="font-size:0.88rem;color:var(--text-muted-dark);white-space:nowrap;">Delivery town / area:</label>
+      <input type="text" id="deliveryTown" placeholder="e.g. Kingston, Bridgetown..." style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--text-on-dark);padding:10px 14px;border-radius:8px;font-size:0.92rem;min-width:220px;font-family:inherit;">
+    </div>
+
+    <!-- Contact for pricing explainer -->
+    <div class="card" style="margin-bottom:28px;border-color:rgba(245,166,35,0.3);">
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="font-size:1.5rem;">⚖️</div>
         <div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--orange-500);">Why some prices say "contact for pricing"</h3>
-          <p style="margin: 0; color: var(--text-muted-dark); font-size: 0.95rem;">We recommend choosing a Verified supplier where possible. Verified suppliers have had their pricing, credentials and customer track record independently confirmed by BarrelCompare. Unverified suppliers are in our queue — we are checking their details before we can display confirmed pricing.</p>
+          <h3 style="font-size:1.05rem;margin-bottom:6px;color:var(--orange-500);">Why some prices say "contact for pricing"</h3>
+          <p style="margin:0;color:var(--text-muted-dark);font-size:0.92rem;">We recommend choosing a supplier where possible whose pricing has been confirmed. Suppliers whose pricing has been confirmed have had their credentials and customer track record independently confirmed by BarrelCompare. Others are in our queue — we are checking their details before we can display confirmed pricing.</p>
         </div>
       </div>
     </div>
 
-    <h2 style="font-size: 1.5rem; margin-bottom: 20px;">Suppliers shipping to <span style="color: var(--orange-500);" id="destLabel">Jamaica</span></h2>
+    <h2 style="font-size:1.4rem;margin-bottom:20px;">Suppliers shipping to <span style="color:var(--orange-500);" id="destLabel">Jamaica</span></h2>
 
-    <!-- C6 — Delivery town free text field -->
-    <div style="margin-bottom: 24px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-      <label for="deliveryTown" style="font-size: 0.88rem; color: var(--text-muted-dark); white-space: nowrap;">Delivery town / area:</label>
-      <input type="text" id="deliveryTown" name="delivery_town" placeholder="e.g. Kingston, Bridgetown, San Fernando..." style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--text-on-dark); padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; min-width: 240px; font-family: inherit;">
-    </div>
-
-    <!-- C2 — Card view (default) -->
+    <!-- CARD VIEW (default) -->
     <div class="supplier-grid" id="supplierGrid">
 
-      <!-- C3.1 — Featured supplier always first -->
-      <article class="supplier-card" data-destination="jamaica,trinidad,guyana" data-verified="true" data-featured="true">
+      <article class="supplier-card" data-service="door pickup dropoff" data-verified="true">
         <span class="badge">Verified</span>
         <!-- BC RECOMMENDED BADGE - PHASE 2 ACTIVATION -->
         <!-- <span class="badge" style="background:var(--orange-500);">BarrelCompare Recommended</span> -->
         <h3>West Indies Direct</h3>
         <p class="supplier-meta">London-based · Sea freight · Caribbean specialist</p>
-        <div class="price-row">
-          <span class="price">Contact</span>
-          <span class="price-label">for current pricing</span>
-        </div>
-        <p class="transit">Transit: ~3 weeks · Door-to-door &amp; drop-off</p>
+        <div class="price-row"><span class="price">Contact</span><span class="price-label">for current pricing</span></div>
+        <p class="transit">Transit: ~3–4 weeks · Total delivery: ~4–6 weeks · Door-to-door &amp; drop-off</p>
         <ul>
           <li>UK-wide collection available</li>
           <li>Delivery to all parishes (Jamaica)</li>
-          <li>Sea freight tracking</li>
+          <li>Tracked sea freight</li>
           <li>Established Caribbean operator</li>
         </ul>
         <div class="cta-row">
-          <!-- C9 — Insurance modal trigger wired, hidden -->
-          <a href="/quote/?supplier=west-indies-direct" class="btn btn-primary quote-btn" style="flex: 1;" data-supplier="West Indies Direct">Get a quote</a>
-          <a href="https://wa.me/447542539430" class="btn btn-whatsapp" style="flex: 1;">WhatsApp</a>
+          <a href="/quote/?supplier=west-indies-direct" class="btn btn-primary quote-btn" style="flex:1;" data-supplier="West Indies Direct">Get a Quote</a>
+          <a href="https://wa.me/447542539430" class="btn btn-whatsapp" style="flex:1;">WhatsApp</a>
         </div>
       </article>
 
-      <article class="supplier-card pending" data-destination="all" data-verified="false">
+      <article class="supplier-card pending" data-service="all" data-verified="false">
         <span class="badge pending-badge">Verification in progress</span>
         <h3>Supplier slot — Caribbean</h3>
         <p class="supplier-meta">Adding next · awaiting confirmed pricing</p>
-        <div class="price-row">
-          <span class="price">—</span>
-          <span class="price-label">to be confirmed</span>
-        </div>
+        <div class="price-row"><span class="price">—</span><span class="price-label">to be confirmed</span></div>
         <p class="transit">We're verifying: licence, insurance, customer track record.</p>
         <ul>
           <li>Checking Companies House registration</li>
           <li>Confirming freight forwarder credentials</li>
-          <li>Gathering verified customer reviews</li>
+          <li>Gathering community reviews</li>
         </ul>
         <div class="cta-row">
-          <a href="/contact/" class="btn btn-secondary" style="flex: 1;">Suggest a shipper</a>
+          <a href="/contact/" class="btn btn-secondary" style="flex:1;">Ask Questions</a>
         </div>
       </article>
 
-      <article class="supplier-card pending" data-destination="all" data-verified="false">
+      <article class="supplier-card pending" data-service="door" data-verified="false">
         <span class="badge pending-badge">Verification in progress</span>
         <h3>Supplier slot — Door-to-door specialist</h3>
         <p class="supplier-meta">Premium service · adding next</p>
-        <div class="price-row">
-          <span class="price">—</span>
-          <span class="price-label">to be confirmed</span>
-        </div>
+        <div class="price-row"><span class="price">—</span><span class="price-label">to be confirmed</span></div>
         <p class="transit">For door collection &amp; door delivery overseas.</p>
         <ul>
           <li>UK doorstep collection</li>
@@ -830,86 +774,111 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
           <li>Customs handling included</li>
         </ul>
         <div class="cta-row">
-          <a href="/quote/" class="btn btn-secondary" style="flex: 1;">Get a quote</a>
+          <a href="/quote/" class="btn btn-secondary" style="flex:1;">Get a Quote</a>
         </div>
       </article>
 
-      <article class="supplier-card pending" data-destination="all" data-verified="false">
+      <article class="supplier-card pending" data-service="dropoff" data-verified="false">
         <span class="badge pending-badge">Verification in progress</span>
         <h3>Supplier slot — Budget option</h3>
         <p class="supplier-meta">Drop-off only · adding next</p>
-        <div class="price-row">
-          <span class="price">—</span>
-          <span class="price-label">to be confirmed</span>
-        </div>
-        <p class="transit">For self-drop-off at UK warehouse · cheapest tier.</p>
+        <div class="price-row"><span class="price">—</span><span class="price-label">to be confirmed</span></div>
+        <p class="transit">For self-drop-off at UK warehouse · lowest-cost tier.</p>
         <ul>
           <li>You drop barrel at UK depot</li>
           <li>Recipient collects from overseas port</li>
           <li>Lowest-cost tier</li>
         </ul>
         <div class="cta-row">
-          <a href="/contact/" class="btn btn-secondary" style="flex: 1;">Recommend a shipper</a>
+          <a href="/quote/" class="btn btn-secondary" style="flex:1;">Get a Quote</a>
         </div>
       </article>
 
     </div>
 
-    <!-- C2 — Table view (hidden by default) -->
-    <table class="supplier-table" id="supplierTable">
-      <thead>
-        <tr>
-          <th>Supplier</th>
-          <th>Status</th>
-          <th>Price</th>
-          <th>Transit</th>
-          <th>Service</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>West Indies Direct</strong><br><small style="color:var(--text-muted-dark);">London-based · Caribbean specialist</small></td>
-          <td><span class="badge">Verified</span></td>
-          <td style="color:var(--orange-500); font-weight:700;">Contact for pricing</td>
-          <td>~3 weeks</td>
-          <td>Door-to-door &amp; drop-off</td>
-          <td><a href="/quote/?supplier=west-indies-direct" class="btn btn-primary quote-btn" style="padding:8px 14px; font-size:0.85rem;" data-supplier="West Indies Direct">Get a quote</a></td>
-        </tr>
-        <tr>
-          <td><strong>Supplier slot — Caribbean</strong><br><small style="color:var(--text-muted-dark);">Adding next</small></td>
-          <td><span class="badge pending-badge">Verification in progress</span></td>
-          <td style="color:var(--text-muted-dark);">—</td>
-          <td>—</td>
-          <td>—</td>
-          <td><a href="/contact/" class="btn btn-secondary" style="padding:8px 14px; font-size:0.85rem;">Suggest a shipper</a></td>
-        </tr>
-        <tr>
-          <td><strong>Supplier slot — Door-to-door</strong><br><small style="color:var(--text-muted-dark);">Premium service</small></td>
-          <td><span class="badge pending-badge">Verification in progress</span></td>
-          <td style="color:var(--text-muted-dark);">—</td>
-          <td>—</td>
-          <td>Door-to-door</td>
-          <td><a href="/quote/" class="btn btn-secondary" style="padding:8px 14px; font-size:0.85rem;">Get a quote</a></td>
-        </tr>
-        <tr>
-          <td><strong>Supplier slot — Budget</strong><br><small style="color:var(--text-muted-dark);">Drop-off only</small></td>
-          <td><span class="badge pending-badge">Verification in progress</span></td>
-          <td style="color:var(--text-muted-dark);">—</td>
-          <td>—</td>
-          <td>Drop-off</td>
-          <td><a href="/contact/" class="btn btn-secondary" style="padding:8px 14px; font-size:0.85rem;">Recommend a shipper</a></td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- TABLE VIEW -->
+    <div style="overflow-x:auto;">
+      <table class="supplier-table" id="supplierTable">
+        <thead>
+          <tr>
+            <th>
+              <span class="th-tooltip">Supplier<span class="th-icon">?</span><span class="tt">The name and base location of the shipping company.</span></span>
+            </th>
+            <th>
+              <span class="th-tooltip">Status<span class="th-icon">?</span><span class="tt">Whether this supplier has been independently verified by BarrelCompare.</span></span>
+            </th>
+            <th>
+              <span class="th-tooltip">Service<span class="th-icon">?</span><span class="tt">The type of collection and delivery service offered. See the terminology key above for definitions.</span></span>
+            </th>
+            <th>
+              <span class="th-tooltip">Price<span class="th-icon">?</span><span class="tt">Starting price per barrel. Final price depends on your location, destination port, and contents.</span></span>
+            </th>
+            <th>
+              <span class="th-tooltip">Transit time<span class="th-icon">?</span><span class="tt">How long the barrel spends at sea once it has departed the UK port.</span></span>
+            </th>
+            <th>
+              <span class="th-tooltip">Total delivery time<span class="th-icon">?</span><span class="tt">Full estimated time from UK collection or drop-off to final delivery or port collection at destination. Includes packing, processing, sailing and clearance.</span></span>
+            </th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr data-service="door pickup dropoff" data-verified="true">
+            <td><strong>West Indies Direct</strong><br><small style="color:var(--text-muted-dark);">London-based · Caribbean specialist</small></td>
+            <td><span class="badge" style="display:inline-block;">Verified</span></td>
+            <td>Door-to-door &amp; drop-off</td>
+            <td style="color:var(--orange-500);font-weight:700;">Contact for pricing</td>
+            <td>~3–4 weeks</td>
+            <td>~4–6 weeks</td>
+            <td><a href="/quote/?supplier=west-indies-direct" class="btn btn-primary quote-btn" style="padding:8px 14px;font-size:0.82rem;" data-supplier="West Indies Direct">Get a Quote</a></td>
+          </tr>
+          <tr data-service="all" data-verified="false">
+            <td><strong>Supplier slot — Caribbean</strong><br><small style="color:var(--text-muted-dark);">Adding next</small></td>
+            <td><span class="badge pending-badge" style="display:inline-block;">Verification in progress</span></td>
+            <td>—</td>
+            <td style="color:var(--text-muted-dark);">—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><a href="/contact/" class="btn btn-secondary" style="padding:8px 14px;font-size:0.82rem;">Ask Questions</a></td>
+          </tr>
+          <tr data-service="door" data-verified="false">
+            <td><strong>Supplier slot — Door-to-door</strong><br><small style="color:var(--text-muted-dark);">Premium service</small></td>
+            <td><span class="badge pending-badge" style="display:inline-block;">Verification in progress</span></td>
+            <td>Door-to-door</td>
+            <td style="color:var(--text-muted-dark);">—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><a href="/quote/" class="btn btn-secondary" style="padding:8px 14px;font-size:0.82rem;">Get a Quote</a></td>
+          </tr>
+          <tr data-service="dropoff" data-verified="false">
+            <td><strong>Supplier slot — Budget</strong><br><small style="color:var(--text-muted-dark);">Drop-off only</small></td>
+            <td><span class="badge pending-badge" style="display:inline-block;">Verification in progress</span></td>
+            <td>Drop-off</td>
+            <td style="color:var(--text-muted-dark);">—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><a href="/quote/" class="btn btn-secondary" style="padding:8px 14px;font-size:0.82rem;">Get a Quote</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <!-- Help block — A4 custom quote removed -->
-    <div class="card" style="margin-top: 48px; text-align: center;">
-      <h3 style="margin-bottom: 12px;">Can't find what you need?</h3>
-      <p style="color: var(--text-muted-dark); margin-bottom: 20px;">Our verification queue is growing daily. If you've used a UK barrel shipper you'd recommend, or want a quote, we'll help.</p>
-      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="/quote/" class="btn btn-orange">Get a quote</a>
-        <a href="/contact/" class="btn btn-secondary">Suggest a supplier</a>
+    <!-- Ask Questions section -->
+    <div class="ask-section">
+      <h3>Can't find what you need?</h3>
+      <p>Our verification queue is growing. Have a question before you commit? Ask us directly — we'll route your enquiry to the right team.</p>
+      <div class="ask-form">
+        <select id="deptSelect" class="form-control" style="margin-bottom:12px;text-align:left;">
+          <option value="">Select a department...</option>
+          <option value="Customer Support">Customer Support — user issues, complaints, account help</option>
+          <option value="Sales &amp; Partnerships">Sales &amp; Partnerships — vendors, affiliates, B2B interest</option>
+          <option value="Marketing &amp; PR">Marketing &amp; PR — media, influencers, brand requests</option>
+          <option value="Product / Technical">Product / Technical — bugs, feature requests, site issues</option>
+          <option value="Finance &amp; Admin">Finance &amp; Admin — invoices, payments, billing queries</option>
+          <option value="Legal / Compliance">Legal / Compliance — GDPR requests, formal complaints</option>
+          <option value="General">General — anything else</option>
+        </select>
+        <button class="btn btn-orange btn-block" id="askBtn" onclick="askQuestion()">Ask Questions</button>
       </div>
     </div>
 
@@ -918,19 +887,14 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 
 <!-- INSURANCE MODAL - HIDDEN - ACTIVATE WHEN PARTNER CONFIRMED -->
 <div id="insuranceModal" style="display:none;">
-  <div style="padding: 32px; max-width: 480px; margin: 0 auto; text-align: center;">
-    <h3 style="margin-bottom: 12px;">Protect your shipment</h3>
-    <p style="color: var(--text-muted-dark);">Insurer partner — to be confirmed</p>
-    <button id="closeInsurance" class="btn btn-secondary">Continue without insurance</button>
-  </div>
+  <p>Insurer partner — to be confirmed</p>
 </div>
 
-<!-- Footer — A1, A2, F2, disclosure removed -->
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <div class="logo" style="margin-bottom: 4px;">Barrel<span class="accent">Compare</span></div>
+        <div class="logo" style="margin-bottom:4px;">Barrel<span class="accent">Compare</span></div>
         <div style="font-size:0.8rem;font-style:italic;color:#f5a623;margin-bottom:12px;font-weight:400;">Ship It Easy</div>
         <p class="footer-tagline">UK's first independent barrel shipping comparison platform. Built for the Caribbean community.</p>
       </div>
@@ -954,7 +918,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
         <h4>Resources</h4>
         <ul>
           <li><a href="/faq/">FAQ</a></li>
-          <li><a href="/blog/">Guides &amp; news</a></li>
+          <li><a href="/blog/">Caribbean Shipping Guides</a></li>
           <li><a href="/collection-finder/">Collection finder</a></li>
           <li><a href="/share/">Share your experience</a></li>
           <li><a href="/customs/">Customs &amp; duty</a></li>
@@ -979,85 +943,86 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 </footer>
 
 <script>
-  // Mobile menu
-  const toggle = document.getElementById('menuToggle');
-  const nav = document.getElementById('mobileNav');
-  toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open);
+// Mobile menu
+const toggle = document.getElementById('menuToggle');
+const nav = document.getElementById('mobileNav');
+toggle.addEventListener('click', () => { const open = nav.classList.toggle('open'); toggle.setAttribute('aria-expanded', open); });
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }));
+
+// Destination label
+const labels = {
+  jamaica:'Jamaica','jamaica-montego':'Jamaica — Montego Bay','jamaica-ocho':'Jamaica — Ocho Rios','jamaica-portland':'Jamaica — Port Antonio',
+  trinidad:'Trinidad & Tobago','trinidad-lisas':'Trinidad — Pointe Lisas',
+  guyana:'Guyana','guyana-amsterdam':'Guyana — Port of Amsterdam','guyana-linden':'Guyana — Port of Linden','guyana-parika':'Guyana — Port of Parika',
+  dominicanrepublic:'Dominican Republic','dominicanrepublic-caucedo':'Dominican Republic — Caucedo','dominicanrepublic-puertoplata':'Dominican Republic — Puerto Plata',
+  barbados:'Barbados','barbados-stcharles':'Barbados — Port St Charles','barbados-ferdinand':'Barbados — Port Ferdinand',
+  stlucia:'St Lucia','stlucia-vieuxfort':'St Lucia — Vieux Fort',
+  antigua:'Antigua & Barbuda','antigua-crabbs':'Antigua — Crabbs Port',
+  grenada:'Grenada','grenada-grenville':'Grenada — Grenville',
+  dominica:'Dominica',bahamas:'The Bahamas',
+  stvincent:'St Vincent & the Grenadines','stvincent-campden':'St Vincent — Campden Park'
+};
+const params = new URLSearchParams(window.location.search);
+const dest = params.get('destination');
+const destSelect = document.getElementById('destination');
+const destLabel = document.getElementById('destLabel');
+if (dest && labels[dest]) { destSelect.value = dest; destLabel.textContent = labels[dest]; }
+destSelect.addEventListener('change', e => {
+  const v = e.target.value;
+  if (labels[v]) destLabel.textContent = labels[v];
+  const url = new URL(window.location);
+  url.searchParams.set('destination', v);
+  window.history.replaceState({}, '', url);
+});
+
+// View toggle
+const cardViewBtn = document.getElementById('cardViewBtn');
+const tableViewBtn = document.getElementById('tableViewBtn');
+const supplierGrid = document.getElementById('supplierGrid');
+const supplierTable = document.getElementById('supplierTable');
+cardViewBtn.addEventListener('click', () => {
+  supplierGrid.classList.remove('hidden'); supplierTable.classList.remove('visible');
+  cardViewBtn.classList.add('active'); tableViewBtn.classList.remove('active');
+});
+tableViewBtn.addEventListener('click', () => {
+  supplierGrid.classList.add('hidden'); supplierTable.classList.add('visible');
+  tableViewBtn.classList.add('active'); cardViewBtn.classList.remove('active');
+});
+
+// Service filter — shows/hides cards and table rows based on selected service
+document.getElementById('service').addEventListener('change', function() {
+  const val = this.value;
+  // Cards
+  document.querySelectorAll('#supplierGrid .supplier-card').forEach(card => {
+    const services = card.dataset.service || 'all';
+    card.style.display = (val === 'all' || services === 'all' || services.includes(val)) ? '' : 'none';
   });
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    nav.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-  }));
-
-  // Destination labels — A1: Ghana/Nigeria removed, C1: all 11 territories
-  const labels = {
-    jamaica: 'Jamaica', 'jamaica-montego': 'Jamaica — Montego Bay',
-    'jamaica-ocho': 'Jamaica — Ocho Rios', 'jamaica-portland': 'Jamaica — Port Antonio',
-    trinidad: 'Trinidad & Tobago', 'trinidad-lisas': 'Trinidad — Pointe Lisas',
-    guyana: 'Guyana', 'guyana-amsterdam': 'Guyana — Port of Amsterdam',
-    'guyana-linden': 'Guyana — Port of Linden', 'guyana-parika': 'Guyana — Port of Parika',
-    dominicanrepublic: 'Dominican Republic', 'dominicanrepublic-caucedo': 'Dominican Republic — Caucedo',
-    'dominicanrepublic-puertoplata': 'Dominican Republic — Puerto Plata',
-    barbados: 'Barbados', 'barbados-stcharles': 'Barbados — Port St Charles',
-    'barbados-ferdinand': 'Barbados — Port Ferdinand',
-    stlucia: 'St Lucia', 'stlucia-vieuxfort': 'St Lucia — Vieux Fort',
-    antigua: 'Antigua & Barbuda', 'antigua-crabbs': 'Antigua — Crabbs Port',
-    grenada: 'Grenada', 'grenada-grenville': 'Grenada — Grenville',
-    dominica: 'Dominica',
-    bahamas: 'The Bahamas',
-    stvincent: 'St Vincent & the Grenadines', 'stvincent-campden': 'St Vincent — Campden Park'
-  };
-
-  const params = new URLSearchParams(window.location.search);
-  const dest = params.get('destination');
-  const destSelect = document.getElementById('destination');
-  const destLabel = document.getElementById('destLabel');
-
-  if (dest && labels[dest]) {
-    destSelect.value = dest;
-    destLabel.textContent = labels[dest];
-  }
-
-  destSelect.addEventListener('change', (e) => {
-    const v = e.target.value;
-    if (labels[v]) destLabel.textContent = labels[v];
-    const url = new URL(window.location);
-    url.searchParams.set('destination', v);
-    window.history.replaceState({}, '', url);
+  // Table rows
+  document.querySelectorAll('#tableBody tr').forEach(row => {
+    const services = row.dataset.service || 'all';
+    row.style.display = (val === 'all' || services === 'all' || services.includes(val)) ? '' : 'none';
   });
+  // Update count
+  const visible = document.querySelectorAll('#supplierGrid .supplier-card:not([style*="none"])').length;
+  document.getElementById('resultsCount').textContent = visible + ' supplier' + (visible !== 1 ? 's' : '') + ' shown';
+});
 
-  // C2 — View toggle (card default)
-  const cardViewBtn = document.getElementById('cardViewBtn');
-  const tableViewBtn = document.getElementById('tableViewBtn');
-  const supplierGrid = document.getElementById('supplierGrid');
-  const supplierTable = document.getElementById('supplierTable');
+// Ask questions — opens mail client with department pre-filled
+function askQuestion() {
+  const dept = document.getElementById('deptSelect').value;
+  if (!dept) { alert('Please select a department first.'); return; }
+  const subject = encodeURIComponent('BarrelCompare Enquiry — ' + dept);
+  window.location.href = 'mailto:hello@barrelcompare.co.uk?subject=' + subject;
+}
 
-  cardViewBtn.addEventListener('click', () => {
-    supplierGrid.classList.remove('hidden');
-    supplierTable.classList.remove('visible');
-    cardViewBtn.classList.add('active');
-    tableViewBtn.classList.remove('active');
+// INSURANCE MODAL - HIDDEN - ACTIVATE WHEN PARTNER CONFIRMED
+document.querySelectorAll('.quote-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Uncomment when insurer confirmed:
+    // e.preventDefault();
+    // document.getElementById('insuranceModal').style.display = 'block';
   });
-
-  tableViewBtn.addEventListener('click', () => {
-    supplierGrid.classList.add('hidden');
-    supplierTable.classList.add('visible');
-    tableViewBtn.classList.add('active');
-    cardViewBtn.classList.remove('active');
-  });
-
-  // C9 — Insurance modal wired to quote button click, hidden
-  // INSURANCE MODAL - HIDDEN - ACTIVATE WHEN PARTNER CONFIRMED
-  document.querySelectorAll('.quote-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      // Modal activation: remove comment below when insurer confirmed
-      // e.preventDefault();
-      // document.getElementById('insuranceModal').style.display = 'block';
-    });
-  });
+});
 </script>
-
 </body>
 </html>
