@@ -785,6 +785,12 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  cursor: pointer;
 }
 
+
+/* ---- FORM LOADING STATES ---- */
+.btn[disabled] { opacity: 0.7; cursor: not-allowed; transform: none; }
+#contactBtnSpinner, #gateBtnSpinner { letter-spacing: 4px; animation: dotpulse 1s infinite; }
+@keyframes dotpulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
 </style>
 </head>
 <body>
@@ -1222,6 +1228,8 @@ function filterReviews() {
 }
 
 window.addEventListener('resize', updateCarousel);
+  var rts = document.getElementById('reviewTimestamp'); if (rts) rts.value = new Date().toISOString();
+
 document.addEventListener('DOMContentLoaded', () => {
  updateCarousel();
  resetAutoScroll();

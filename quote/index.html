@@ -662,6 +662,12 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  .gdpr-notice strong { color: var(--white); }
  /* Honeypot */
  .hp-field { opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; }
+
+/* ---- FORM LOADING STATES ---- */
+.btn[disabled] { opacity: 0.7; cursor: not-allowed; transform: none; }
+#contactBtnSpinner, #gateBtnSpinner { letter-spacing: 4px; animation: dotpulse 1s infinite; }
+@keyframes dotpulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
 </style>
 </head>
 <body>
@@ -768,25 +774,18 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  =====================================================================
  -->
 
- <label class="supplier-select-card" id="card_supplier1">
- <input type="radio" name="supplier_select" value="supplier1" data-formid="FORM_ID_HERE" data-suppliername="Supplier Name Here">
- <div>
- <div class="supplier-label">Supplier Name Here</div>
- <div class="supplier-sub">Destinations covered · e.g. Jamaica, Trinidad</div>
- </div>
- <span class="verified-badge">Verified</span>
- </label>
-
- <label class="supplier-select-card" id="card_supplier2">
- <input type="radio" name="supplier_select" value="supplier2" data-formid="FORM_ID_HERE" data-suppliername="Supplier Name Here">
- <div>
- <div class="supplier-label">Supplier Name Here</div>
- <div class="supplier-sub">Destinations covered · e.g. Guyana, Barbados</div>
- </div>
- <span class="verified-badge">Verified</span>
- </label>
-
- <!-- Add more supplier blocks above this line -->
+         <label class="supplier-select-card" id="card_wid">
+           <input type="radio" name="supplier_select" value="wid"
+             data-formid="xrejbkjz"
+             data-suppliername="West Indies Direct">
+           <!-- FORMSPREE: replace xrejbkjz above with West Indies Direct's dedicated endpoint -->
+           <div>
+             <div class="supplier-label">West Indies Direct</div>
+             <div class="supplier-sub">Jamaica, Trinidad, Barbados, Guyana and more &middot; London &amp; Home Counties collection</div>
+           </div>
+           <span class="verified-badge">Verified</span>
+         </label>
+         <!-- Add more supplier cards here as suppliers are verified -->
  </div>
 
  <button class="btn btn-orange btn-block" style="margin-top:24px;" id="toStep2" disabled>Continue to shipment details →</button>
@@ -885,6 +884,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <form id="quoteForm" method="POST" novalidate>
  <!-- Honeypot anti-spam -->
  <input class="hp-field" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+         <input type="hidden" name="_timestamp" id="quoteTimestamp">
+         <input type="hidden" name="_source" id="quoteSource">
  <input type="hidden" name="_subject" id="formSubject" value="New Quote Request, BarrelCompare">
  <input type="hidden" name="_cc" value="hello@barrelcompare.co.uk">
  <!-- Hidden fields carried from steps 1 & 2 -->

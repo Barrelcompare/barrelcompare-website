@@ -671,6 +671,12 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .gate-error { color: #ff8888; font-size: 0.85rem; margin-bottom: 12px; display: none; }
 .gate-skip { color: var(--text-muted-dark); font-size: 0.8rem; margin-top: 16px; cursor: pointer; text-decoration: underline; }
 
+
+/* ---- FORM LOADING STATES ---- */
+.btn[disabled] { opacity: 0.7; cursor: not-allowed; transform: none; }
+#contactBtnSpinner, #gateBtnSpinner { letter-spacing: 4px; animation: dotpulse 1s infinite; }
+@keyframes dotpulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
 </style>
 </head>
 <body>
@@ -738,14 +744,19 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
   <div class="gate-box">
     <div style="font-size:2rem;margin-bottom:12px;">&#128274;</div>
     <h2>Get free access</h2>
-    <p>Enter your email to unlock this guide. Free forever, no spam, unsubscribe any time.</p>
+    <p>Enter your details to unlock this guide. Free forever, no spam, unsubscribe any time.</p>
+    <input type="text" class="gate-input" id="gateName" placeholder="Your first name" style="margin-bottom:8px;">
     <input type="email" class="gate-input" id="gateEmail" placeholder="Your email address">
     <div class="gate-error" id="gateError">Please enter a valid email address.</div>
-    <button class="btn btn-orange btn-block" onclick="unlockContent()">Unlock free guide</button>
+    <button class="btn btn-orange btn-block" id="gateUnlockBtn" onclick="unlockContent()">
+      <span id="gateBtnText">Unlock free guide</span>
+      <span id="gateBtnSpinner" style="display:none;">&#9679;&#9679;&#9679;</span>
+    </button>
     <p class="gate-skip" onclick="skipGate()">I'll browse without unlocking</p>
   </div>
 </div>
 <style>body.gate-open { overflow: hidden; }</style>
+
 
 <section class="page-header">
  <div class="container">
@@ -915,6 +926,7 @@ if (searchInput) {
 }
 </script>
 
+
 <script>
 (function() {
   var key = 'bc_gate_unlocked';
@@ -926,24 +938,53 @@ if (searchInput) {
   }
 })();
 
+// FORMSPREE ENDPOINT: replace xrejbkjz with your dedicated downloads/newsletter form ID
+var FS_DOWNLOADS = 'xrejbkjz';
+
 function unlockContent() {
-  var email = document.getElementById('gateEmail').value.trim();
+  var name = (document.getElementById('gateName') || {}).value || '';
+  var email = (document.getElementById('gateEmail') || {}).value.trim();
   var err = document.getElementById('gateError');
+  var btn = document.getElementById('gateUnlockBtn');
+  var btnText = document.getElementById('gateBtnText');
+  var btnSpinner = document.getElementById('gateBtnSpinner');
+
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    err.style.display = 'block';
+    if (err) err.style.display = 'block';
     return;
   }
-  err.style.display = 'none';
+  if (err) err.style.display = 'none';
+
+  // Loading state
+  if (btn) btn.disabled = true;
+  if (btnText) btnText.style.display = 'none';
+  if (btnSpinner) btnSpinner.style.display = 'inline';
+
   localStorage.setItem('bc_gate_unlocked', '1');
-  // Silently log to Formspree
-  fetch('https://formspree.io/f/xrejbkjz', {
+
+  // Submit to Formspree
+  fetch('https://formspree.io/f/' + FS_DOWNLOADS, {
     method: 'POST',
-    body: JSON.stringify({ email: email, _subject: 'Guide unlock - BarrelCompare', source: window.location.pathname }),
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      _subject: 'Guide unlock | ' + document.title + ' | BarrelCompare',
+      source: window.location.pathname,
+      _timestamp: new Date().toISOString()
+    }),
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
-  }).catch(() => {});
-  var g = document.getElementById('contentGate');
-  if (g) g.style.display = 'none';
-  document.body.classList.remove('gate-open');
+  }).catch(function() {}).finally(function() {
+    var g = document.getElementById('contentGate');
+    if (g) g.style.display = 'none';
+    document.body.classList.remove('gate-open');
+    // GA4 event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'download_unlock', {
+        event_category: 'Forms',
+        event_label: window.location.pathname
+      });
+    }
+  });
 }
 
 function skipGate() {
@@ -952,6 +993,7 @@ function skipGate() {
   document.body.classList.remove('gate-open');
 }
 </script>
+
 
 </body>
 </html>

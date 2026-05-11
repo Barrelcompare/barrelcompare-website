@@ -624,6 +624,12 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  text-align: center;
 }
 
+
+/* ---- FORM LOADING STATES ---- */
+.btn[disabled] { opacity: 0.7; cursor: not-allowed; transform: none; }
+#contactBtnSpinner, #gateBtnSpinner { letter-spacing: 4px; animation: dotpulse 1s infinite; }
+@keyframes dotpulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
 </style>
 </head>
 <body>
@@ -713,49 +719,63 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 
  <h2 style="font-size:1.5rem;text-align:center;margin-bottom:24px;">Or use the form</h2>
 
- <form id="contactForm" action="https://formspree.io/f/xrejbkjz" method="POST" novalidate style="margin-top:8px;">
- <input type="text" name="_gotcha" style="display:none;" tabindex="-1">
- <input type="hidden" name="_cc" value="hello@barrelcompare.co.uk">
+<form id="contactForm" novalidate style="margin-top:8px;">
+  <!-- FORMSPREE ENDPOINT: replace xrejbkjz with your contact form ID from formspree.io -->
+  <!-- Route: hello@barrelcompare.co.uk -->
+  <input type="text" name="_gotcha" style="display:none;" tabindex="-1">
+  <input type="hidden" name="_subject" id="contactSubject" value="Contact enquiry, BarrelCompare">
+  <input type="hidden" name="_timestamp" id="contactTimestamp">
+  <input type="hidden" name="_source" value="/contact/">
 
- <div class="form-success" id="successMsg" style="display:none;">
- ✓ Message received. We do our best to respond on the same day.
- </div>
+  <div class="form-success" id="successMsg" style="display:none;">
+    &#x2713; Message received. We aim to respond the same day.
+  </div>
+  <div class="form-error" id="errorMsg" style="display:none;">
+    Something went wrong. Please try again or email <a href="mailto:hello@barrelcompare.co.uk" style="color:var(--orange-500);">hello@barrelcompare.co.uk</a> directly.
+  </div>
 
- <div class="form-row">
- <div class="form-group">
- <label for="name">Your name <span class="required">*</span></label>
- <input type="text" id="name" name="name" class="form-control" required>
- </div>
- <div class="form-group">
- <label for="email">Email <span class="required">*</span></label>
- <input type="email" id="email" name="email" class="form-control" required>
- </div>
- </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="name">Your name <span class="required">*</span></label>
+      <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email <span class="required">*</span></label>
+      <input type="email" id="email" name="email" class="form-control" required>
+    </div>
+  </div>
 
- <div class="form-group">
- <label for="department">Which team do you need? <span class="required">*</span></label>
- <select id="department" name="department" class="form-control" required>
- <option value="">Select a department...</option>
- <option value="Customer Support">Customer Support, user issues, complaints, refunds, account help</option>
- <option value="Sales &amp; Partnerships">Sales &amp; Partnerships, vendors, affiliates, advertisers, B2B interest</option>
- <option value="Marketing &amp; PR">Marketing &amp; PR, media enquiries, influencers, collaborations, brand requests</option>
- <option value="Product / Technical">Product / Technical, bugs, feature requests, site issues, comparison errors</option>
- <option value="Finance &amp; Admin">Finance &amp; Admin, invoices, payments, billing queries</option>
- <option value="Legal / Compliance">Legal / Compliance, GDPR requests, takedowns, formal complaints</option>
- <option value="General">General, anything else</option>
- </select>
- <small>Your enquiry will be routed to the right team.</small>
- </div>
+  <div class="form-group">
+    <label for="phone">Phone number <span style="color:var(--text-muted-dark);font-weight:400;">(optional)</span></label>
+    <input type="tel" id="phone" name="phone" class="form-control" placeholder="e.g. 07700 900000">
+  </div>
 
- <div class="form-group">
- <label for="message">Your message <span class="required">*</span></label>
- <textarea id="message" name="message" class="form-control" required placeholder="Tell us what's on your mind..."></textarea>
- </div>
+  <div class="form-group">
+    <label for="department">Which team do you need? <span class="required">*</span></label>
+    <select id="department" name="department" class="form-control" required>
+      <option value="">Select a department...</option>
+      <option value="Customer Support">Customer Support, user issues, complaints, refunds, account help</option>
+      <option value="Sales &amp; Partnerships">Sales &amp; Partnerships, vendors, affiliates, advertisers, B2B interest</option>
+      <option value="Marketing &amp; PR">Marketing &amp; PR, media enquiries, influencers, collaborations, brand requests</option>
+      <option value="Product / Technical">Product / Technical, bugs, feature requests, site issues, comparison errors</option>
+      <option value="Finance &amp; Admin">Finance &amp; Admin, invoices, payments, billing queries</option>
+      <option value="Legal / Compliance">Legal / Compliance, GDPR requests, takedowns, formal complaints</option>
+      <option value="General">General, anything else</option>
+    </select>
+    <small>Your enquiry will be routed to the right team.</small>
+  </div>
 
- <button type="submit" class="btn btn-orange btn-block">Send message</button>
- <p style="text-align:center;color:var(--text-muted-dark);font-size:0.85rem;margin-top:16px;">We never share your details with third parties.</p>
+  <div class="form-group">
+    <label for="message">Your message <span class="required">*</span></label>
+    <textarea id="message" name="message" class="form-control" required placeholder="Tell us what's on your mind..."></textarea>
+  </div>
 
- </form>
+  <button type="submit" class="btn btn-orange btn-block" id="contactSubmitBtn">
+    <span id="contactBtnText">Send message</span>
+    <span id="contactBtnSpinner" style="display:none;">&#9679;&#9679;&#9679;</span>
+  </button>
+  <p style="text-align:center;color:var(--text-muted-dark);font-size:0.85rem;margin-top:16px;">We never share your details with third parties.</p>
+</form>
 
  </div>
  </div>
@@ -835,6 +855,93 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <ul class="search-results" id="searchResults"></ul>
  </div>
 </div>
+
+<script>
+// ── Contact form ──────────────────────────────────────────────────────────────
+// FORMSPREE ENDPOINT: replace xrejbkjz with your dedicated contact form ID
+var FS_CONTACT = 'xrejbkjz';
+
+document.getElementById('contactTimestamp').value = new Date().toISOString();
+
+var contactForm = document.getElementById('contactForm');
+var contactSubmitBtn = document.getElementById('contactSubmitBtn');
+var contactBtnText = document.getElementById('contactBtnText');
+var contactBtnSpinner = document.getElementById('contactBtnSpinner');
+var contactSuccess = document.getElementById('successMsg');
+var contactError = document.getElementById('errorMsg');
+
+if (contactForm) {
+  // Update subject line based on department selection
+  var deptSelect = document.getElementById('department');
+  if (deptSelect) {
+    deptSelect.addEventListener('change', function() {
+      var subj = document.getElementById('contactSubject');
+      if (subj) subj.value = 'Contact: ' + (this.value || 'General') + ' | BarrelCompare';
+    });
+  }
+
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    contactError.style.display = 'none';
+
+    // Validate required fields
+    var fields = ['name', 'email', 'department', 'message'];
+    var valid = true;
+    fields.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el || !el.value.trim()) {
+        if (el) el.style.borderColor = 'var(--red-500)';
+        valid = false;
+      } else {
+        if (el) el.style.borderColor = '';
+      }
+    });
+    if (!valid) {
+      contactError.textContent = 'Please fill in all required fields.';
+      contactError.style.display = 'block';
+      return;
+    }
+
+    // Honeypot check
+    var hp = contactForm.querySelector('input[name="_gotcha"]');
+    if (hp && hp.value) return;
+
+    // Loading state
+    contactSubmitBtn.disabled = true;
+    contactBtnText.style.display = 'none';
+    contactBtnSpinner.style.display = 'inline';
+
+    try {
+      var res = await fetch('https://formspree.io/f/' + FS_CONTACT, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        contactForm.style.display = 'none';
+        contactSuccess.style.display = 'block';
+        contactSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // GA4 event
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'contact_submit', {
+            event_category: 'Forms',
+            event_label: document.getElementById('department') ? document.getElementById('department').value : 'unknown'
+          });
+        }
+      } else {
+        throw new Error('failed');
+      }
+    } catch(err) {
+      contactError.textContent = 'Something went wrong. Please try again or email hello@barrelcompare.co.uk directly.';
+      contactError.style.display = 'block';
+      contactSubmitBtn.disabled = false;
+      contactBtnText.style.display = 'inline';
+      contactBtnSpinner.style.display = 'none';
+    }
+  });
+}
+</script>
 
 <script>
 const SEARCH_INDEX = [
