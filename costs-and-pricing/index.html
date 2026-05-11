@@ -12,9 +12,15 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get a Quote, BarrelCompare</title>
-<meta name="description" content="Request a barrel shipping quote from a verified UK supplier. Free, independent, no pressure.">
-<meta name="theme-color" content="#0a2540">
+<title>Barrel shipping costs and pricing | BarrelCompare</title>
+<meta name="description" content="Why barrel shipping prices vary and what affects your quote.">
+<meta name="theme-color" content="#0a1f3d">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="manifest" href="/manifest.json">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Costs and pricing | BarrelCompare">
+<meta property="og:description" content="Why barrel shipping prices vary and what affects your quote.">
+<meta property="og:url" content="https://barrelcompare.co.uk/costs-and-pricing/">
 <style>
 /* ============================================
    BarrelCompare, Shared stylesheet
@@ -541,6 +547,13 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 :focus-visible { outline: 3px solid var(--orange-500); outline-offset: 3px; border-radius: 4px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
+.preview-banner { background: var(--navy-700);color:#f5a623;text-align:center;padding:10px 20px;font-size:0.9rem;font-weight:500; }
+.founder-section { background: var(--navy-900); padding: 80px 0; }
+.founder-card { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 48px; }
+.founder-byline { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.founder-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--orange-500); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: var(--navy-900); flex-shrink: 0; }
+.founder-byline h3 { margin: 0 0 4px; font-size: 1.1rem; }
+.founder-byline p { margin: 0; color: var(--text-muted-dark); font-size: 0.88rem; }
 
 /* ---- SITE SEARCH ---- */
 .search-wrap { position: relative; }
@@ -623,47 +636,6 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 }
 
 </style>
-<style>
-  .preview-banner {
-    background: var(--navy-700);
-    color: #f5a623;
-    text-align: center;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-  .supplier-select-card {
-    background: rgba(255,255,255,0.04);
-    border: 1.5px solid rgba(255,255,255,0.1);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .supplier-select-card:hover { border-color: rgba(245,166,35,0.4); background: rgba(255,255,255,0.06); }
-  .supplier-select-card.selected { border-color: var(--orange-500); background: rgba(245,166,35,0.07); }
-  .supplier-select-card input[type="radio"] { accent-color: var(--orange-500); width: 18px; height: 18px; flex-shrink: 0; }
-  .supplier-select-card .supplier-label { font-weight: 600; font-size: 0.97rem; }
-  .supplier-select-card .supplier-sub { font-size: 0.82rem; color: var(--text-muted-dark); margin-top: 2px; }
-  .verified-badge { background: rgba(37,211,102,0.12); color: #6fe39d; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.04em; text-transform: uppercase; margin-left: auto; flex-shrink: 0; }
-  .step-indicator { display: flex; gap: 8px; align-items: center; margin-bottom: 32px; }
-  .step-dot { width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
-  .step-dot.active { background: var(--orange-500); color: var(--navy-900); }
-  .step-dot.done { background: var(--green-500); color: var(--white); }
-  .step-dot.pending { background: rgba(255,255,255,0.1); color: var(--text-muted-dark); }
-  .step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.08); }
-  .step-line.done { background: var(--green-500); }
-  .form-section { display: none; }
-  .form-section.active { display: block; }
-  .gdpr-notice { background: rgba(45,108,223,0.08); border: 1px solid rgba(45,108,223,0.25); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 24px; font-size: 0.88rem; color: var(--text-muted-dark); }
-  .gdpr-notice strong { color: var(--white); }
-  /* Honeypot */
-  .hp-field { opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; }
-</style>
 </head>
 <body>
 
@@ -695,12 +667,12 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <header class="site-header">
   <div class="container header-inner">
     <div>
-      <a href="/" class="logo">Barrel<span class="accent">Compare</span></a>
+      <a href="/" class="active" class="logo">Barrel<span class="accent">Compare</span></a>
       <span style="display:block;font-size:0.8rem;font-style:italic;color:#f5a623;margin-top:2px;font-weight:400;">Ship It Easy</span>
     </div>
     <nav class="nav-desktop" aria-label="Primary">
       <a href="/compare/">Compare options</a>
-      <a href="/quote/" class="active">Get a quote</a>
+      <a href="/quote/">Get a quote</a>
       <a href="/faq/">FAQ</a>
       <a href="/about/">About</a>
       <a href="/blog/">Blogs</a>
@@ -714,7 +686,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 </header>
 <nav class="nav-scroll-bar" aria-label="Mobile navigation">
   <a href="/compare/">Compare options</a>
-  <a href="/quote/" class="active">Get a quote</a>
+  <a href="/quote/">Get a quote</a>
   <a href="/faq/">FAQ</a>
   <a href="/about/">About</a>
   <a href="/blog/">Blogs</a>
@@ -722,213 +694,35 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
   <a href="https://wa.me/+447542539430" style="color:#25d366;">WhatsApp Us</a>
 </nav>
 
-<div style="background:rgba(245,166,35,0.1);border-bottom:2px solid var(--orange-500);padding:14px 20px;text-align:center;font-size:0.92rem;"><strong style="color:var(--orange-500);">Quote requests coming soon.</strong> <span style="color:var(--text-on-dark);">While we confirm our verified suppliers, get in touch directly via <a href="https://wa.me/447542539430" style="color:var(--orange-500);text-decoration:underline;">WhatsApp</a> or <a href="/contact/" style="color:var(--orange-500);text-decoration:underline;">email</a>.</span></div>
 <section class="page-header">
   <div class="container">
-    <h1>Request a <span class="accent">Quote</span></h1>
-    <p>Select a verified supplier and send your details directly to them. Free. No obligation.</p>
+    <h1>Costs and pricing</h1>
+    <p>Why we don't publish fixed prices — and what affects what you pay.</p>
   </div>
 </section>
-
-<section>
-  <div class="container">
-    <div class="form-wrapper" style="max-width: 680px;">
-
-      <!-- Step indicator -->
-      <div class="step-indicator">
-        <div class="step-dot active" id="dot1">1</div>
-        <div class="step-line" id="line1"></div>
-        <div class="step-dot pending" id="dot2">2</div>
-        <div class="step-line" id="line2"></div>
-        <div class="step-dot pending" id="dot3">3</div>
-      </div>
-
-      <div class="form-success" id="successMsg" style="display:none;">
-        ✓ Quote request sent. The supplier will be in touch directly. BarrelCompare has been copied in.
-      </div>
-      <div class="form-error" id="errorMsg" style="display:none;">
-        Something went wrong. Please try again or contact us via <a href="/contact/" style="color:var(--orange-500);">the contact page</a>.
-      </div>
-
-      <!-- SECTION 1: Choose supplier -->
-      <div class="form-section active" id="section1">
-        <h2 style="font-size:1.3rem; margin-bottom:6px;">Step 1, Choose your supplier</h2>
-        <p style="color:var(--text-muted-dark); font-size:0.92rem; margin-bottom:20px;">Only verified suppliers are shown. <a href="/compare/" style="color:var(--orange-500);">Compare all suppliers first.</a></p>
-
-        <div id="supplierList">
-          <!--
-            =====================================================================
-            SUPPLIER LIST, ADD YOUR SUPPLIERS HERE
-            For each supplier:
-            1. Create a Formspree form at formspree.io
-            2. Add hello@barrelcompare.co.uk as a CC recipient in that form
-            3. Copy the form ID (e.g. xabcd123) into data-formid below
-            4. Duplicate the block for each supplier
-            =====================================================================
-          -->
-
-          <label class="supplier-select-card" id="card_supplier1">
-            <input type="radio" name="supplier_select" value="supplier1" data-formid="FORM_ID_HERE" data-suppliername="Supplier Name Here">
-            <div>
-              <div class="supplier-label">Supplier Name Here</div>
-              <div class="supplier-sub">Destinations covered · e.g. Jamaica, Trinidad</div>
-            </div>
-            <span class="verified-badge">Verified</span>
-          </label>
-
-          <label class="supplier-select-card" id="card_supplier2">
-            <input type="radio" name="supplier_select" value="supplier2" data-formid="FORM_ID_HERE" data-suppliername="Supplier Name Here">
-            <div>
-              <div class="supplier-label">Supplier Name Here</div>
-              <div class="supplier-sub">Destinations covered · e.g. Guyana, Barbados</div>
-            </div>
-            <span class="verified-badge">Verified</span>
-          </label>
-
-          <!-- Add more supplier blocks above this line -->
-        </div>
-
-        <button class="btn btn-orange btn-block" style="margin-top:24px;" id="toStep2" disabled>Continue to shipment details →</button>
-      </div>
-
-      <!-- SECTION 2: Shipment details -->
-      <div class="form-section" id="section2">
-        <h2 style="font-size:1.3rem; margin-bottom:6px;">Step 2, Your shipment</h2>
-        <p style="color:var(--text-muted-dark); font-size:0.92rem; margin-bottom:20px;">Tell the supplier what you're sending and where.</p>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="destination">Destination <span class="required">*</span></label>
-            <select id="destination" name="destination" class="form-control" required>
-              <option value="">Choose territory...</option>
-              <option>Jamaica</option>
-              <option>Trinidad &amp; Tobago</option>
-              <option>Guyana</option>
-              <option>Barbados</option>
-              <option>St Lucia</option>
-              <option>Grenada</option>
-              <option>Dominica</option>
-<option>The Bahamas</option>
-              <option>Antigua &amp; Barbuda</option>
-              <option>St Vincent &amp; the Grenadines</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="destination_town">Delivery town / area</label>
-            <input type="text" id="destination_town" name="destination_town" class="form-control" placeholder="e.g. Kingston, Bridgetown">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="barrel_size">Barrel size <span class="required">*</span></label>
-            <select id="barrel_size" name="barrel_size" class="form-control" required>
-              <option value="">Choose...</option>
-              <option>Standard (55 US gallons)</option>
-              <option>Large (44 Imperial gallons)</option>
-              <option>Not sure, need advice</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="barrel_qty">Number of barrels <span class="required">*</span></label>
-            <select id="barrel_qty" name="barrel_qty" class="form-control" required>
-              <option value="">Choose...</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5+</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="contents">What are you sending? <span class="required">*</span></label>
-          <select id="contents" name="contents" class="form-control" required>
-            <option value="">Choose...</option>
-            <option>Food and groceries</option>
-            <option>Clothing and textiles</option>
-            <option>Mixed goods</option>
-            <option>Electronics</option>
-            <option>Toiletries and personal care</option>
-            <option>Household items</option>
-            <option>Other, please specify in notes</option>
-          </select>
-          <small style="color:var(--text-muted-dark);">Customs restrictions may apply depending on your destination.</small>
-        </div>
-
-        <div class="form-group">
-          <label for="collection_postcode">Your UK collection postcode <span class="required">*</span></label>
-          <input type="text" id="collection_postcode" name="collection_postcode" class="form-control" required placeholder="e.g. E1 7AZ" style="text-transform:uppercase;" maxlength="8">
-        </div>
-
-        <div class="form-group">
-          <label for="notes">Anything else the supplier should know?</label>
-          <textarea id="notes" name="notes" class="form-control" placeholder="e.g. access restrictions, specific fragile items, preferred collection date..."></textarea>
-        </div>
-
-        <div style="display:flex; gap:12px;">
-          <button class="btn btn-secondary" id="backToStep1" style="flex:0 0 auto;">← Back</button>
-          <button class="btn btn-orange btn-block" id="toStep3">Continue to your details →</button>
-        </div>
-      </div>
-
-      <!-- SECTION 3: Customer contact details -->
-      <div class="form-section" id="section3">
-        <h2 style="font-size:1.3rem; margin-bottom:6px;">Step 3, Your contact details</h2>
-
-        <div class="gdpr-notice">
-          <strong>Your data is protected.</strong> Your contact details will only be shared with the supplier you selected, <span id="selectedSupplierName" style="color:var(--orange-500); font-weight:600;"></span>, and with BarrelCompare. They will not be used for marketing or passed to any third party. Read our <a href="/disclosure/" style="color:var(--orange-500);">full data disclosure</a>.
-        </div>
-
-        <form id="quoteForm" method="POST" novalidate>
-          <!-- Honeypot anti-spam -->
-          <input class="hp-field" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-          <input type="hidden" name="_subject" id="formSubject" value="New Quote Request, BarrelCompare">
-          <input type="hidden" name="_cc" value="hello@barrelcompare.co.uk">
-          <!-- Hidden fields carried from steps 1 & 2 -->
-          <input type="hidden" name="selected_supplier" id="hiddenSupplier">
-          <input type="hidden" name="destination" id="hiddenDestination">
-          <input type="hidden" name="destination_town" id="hiddenTown">
-          <input type="hidden" name="barrel_size" id="hiddenBarrelSize">
-          <input type="hidden" name="barrel_qty" id="hiddenBarrelQty">
-          <input type="hidden" name="contents" id="hiddenContents">
-          <input type="hidden" name="collection_postcode" id="hiddenPostcode">
-          <input type="hidden" name="notes" id="hiddenNotes">
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="customer_name">Your full name <span class="required">*</span></label>
-              <input type="text" id="customer_name" name="customer_name" class="form-control" required>
-            </div>
-            <div class="form-group">
-              <label for="customer_phone">Phone number <span class="required">*</span></label>
-              <input type="tel" id="customer_phone" name="customer_phone" class="form-control" required placeholder="e.g. 07700 900000">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="customer_email">Email address <span class="required">*</span></label>
-            <input type="email" id="customer_email" name="customer_email" class="form-control" required>
-          </div>
-
-          <div class="form-group">
-            <div class="checkbox-row">
-              <input type="checkbox" id="gdpr_consent" name="gdpr_consent" value="agreed" required>
-              <label for="gdpr_consent">I agree to my contact details being shared with the selected supplier for the purpose of receiving a quote. I have read the <a href="/disclosure/" style="color:var(--orange-500);">BarrelCompare data disclosure</a>. <span class="required">*</span></label>
-            </div>
-          </div>
-
-          <div style="display:flex; gap:12px; margin-top:8px;">
-            <button type="button" class="btn btn-secondary" id="backToStep2" style="flex:0 0 auto;">← Back</button>
-            <button type="submit" class="btn btn-orange btn-block" id="submitBtn">Send quote request</button>
-          </div>
-          <p style="text-align:center; color:var(--text-muted-dark); font-size:0.8rem; margin-top:12px;">Your details go directly to the supplier. BarrelCompare receives a copy.</p>
-        </form>
-      </div>
-
-    </div>
-  </div>
+<section style="background:var(--navy-800);padding:64px 0;">
+  <div class="container"><div class="prose">
+    <h2>Why we don't publish fixed prices</h2>
+    <p>Barrel shipping prices change regularly. Fuel costs, port fees, exchange rates and seasonal demand all affect what shippers charge. A price published today may be out of date by the time you book. We help you understand what drives the cost so you can ask the right questions and compare quotes fairly.</p>
+    <h2>What affects the price</h2>
+    <ul>
+      <li><strong>Destination</strong> — shipping to Jamaica is priced differently from shipping to Dominica or Guyana.</li>
+      <li><strong>Collection vs drop-off</strong> — home collection typically costs more than dropping the barrel at the shipper's depot.</li>
+      <li><strong>Door-to-door vs port-to-port</strong> — door-to-door includes delivery to an address in the destination country.</li>
+      <li><strong>Barrel size and weight</strong> — larger or heavier barrels cost more. Overweight charges add up quickly.</li>
+      <li><strong>Season</strong> — prices rise around Christmas and Easter as demand increases.</li>
+      <li><strong>Customs and port fees</strong> — some quotes include all charges to the door; others quote the shipping fee only.</li>
+    </ul>
+    <h2>Typical price range</h2>
+    <p>For a standard barrel shipped door-to-door from London to Jamaica, typical prices range from approximately <strong style="color:var(--orange-500);">£90 to £180</strong>. This is a guide only.</p>
+    <h2>Getting the best value</h2>
+    <ul>
+      <li>Request quotes from at least two or three shippers before deciding.</li>
+      <li>Ask exactly what is included — and what is not.</li>
+      <li>Find out when the next sailing is, so you can plan ahead.</li>
+      <li>Book early during peak seasons.</li>
+    </ul>
+  </div><p style="margin-top:40px;"><a href="/" style="color:var(--orange-500);">← Back to home</a></p></div>
 </section>
 
 <footer>
@@ -990,120 +784,6 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
     </div>
   </div>
 </footer>
-
-<script>
-  // ---- Step management ----
-  function showSection(n) {
-    document.querySelectorAll('.form-section').forEach((s, i) => {
-      s.classList.toggle('active', i + 1 === n);
-    });
-    ['dot1','dot2','dot3'].forEach((id, i) => {
-      const dot = document.getElementById(id);
-      dot.className = 'step-dot ' + (i + 1 < n ? 'done' : i + 1 === n ? 'active' : 'pending');
-    });
-    ['line1','line2'].forEach((id, i) => {
-      document.getElementById(id).className = 'step-line' + (i + 1 < n ? ' done' : '');
-    });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // ---- Step 1: Supplier selection ----
-  let selectedFormId = null;
-  let selectedSupplierName = null;
-
-  document.querySelectorAll('input[name="supplier_select"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      document.querySelectorAll('.supplier-select-card').forEach(c => c.classList.remove('selected'));
-      radio.closest('.supplier-select-card').classList.add('selected');
-      selectedFormId = radio.dataset.formid;
-      selectedSupplierName = radio.dataset.suppliername;
-      document.getElementById('toStep2').disabled = false;
-    });
-  });
-
-  document.getElementById('toStep2').addEventListener('click', () => showSection(2));
-
-  // ---- Step 2 navigation ----
-  document.getElementById('backToStep1').addEventListener('click', () => showSection(1));
-  document.getElementById('toStep3').addEventListener('click', () => {
-    // Basic validation
-    const required = ['destination', 'barrel_size', 'barrel_qty', 'contents', 'collection_postcode'];
-    let valid = true;
-    required.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el.value) { el.style.borderColor = 'var(--red-500)'; valid = false; }
-      else el.style.borderColor = '';
-    });
-    if (!valid) return;
-
-    // Pass values to hidden fields in step 3
-    document.getElementById('hiddenSupplier').value = selectedSupplierName;
-    document.getElementById('hiddenDestination').value = document.getElementById('destination').value;
-    document.getElementById('hiddenTown').value = document.getElementById('destination_town').value;
-    document.getElementById('hiddenBarrelSize').value = document.getElementById('barrel_size').value;
-    document.getElementById('hiddenBarrelQty').value = document.getElementById('barrel_qty').value;
-    document.getElementById('hiddenContents').value = document.getElementById('contents').value;
-    document.getElementById('hiddenPostcode').value = document.getElementById('collection_postcode').value;
-    document.getElementById('hiddenNotes').value = document.getElementById('notes').value;
-    document.getElementById('formSubject').value = 'Quote Request, ' + selectedSupplierName + ', BarrelCompare';
-    document.getElementById('selectedSupplierName').textContent = selectedSupplierName;
-
-    // Set form action to selected supplier's Formspree ID
-    document.getElementById('quoteForm').action = 'https://formspree.io/f/' + selectedFormId;
-
-    showSection(3);
-  });
-
-  document.getElementById('backToStep2').addEventListener('click', () => showSection(2));
-
-  // ---- Step 3: Submit ----
-  const quoteForm = document.getElementById('quoteForm');
-  const successMsg = document.getElementById('successMsg');
-  const errorMsg = document.getElementById('errorMsg');
-
-  quoteForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // Honeypot check
-    if (quoteForm._gotcha && quoteForm._gotcha.value) return;
-
-    // Rate limit, one submission per session per supplier
-    const rateKey = 'quote_' + selectedFormId;
-    if (sessionStorage.getItem(rateKey)) {
-      errorMsg.textContent = 'You have already submitted a quote request to this supplier in this session.';
-      errorMsg.style.display = 'block';
-      return;
-    }
-
-    const submitBtn = document.getElementById('submitBtn');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-
-    const data = new FormData(quoteForm);
-
-    try {
-      const response = await fetch(quoteForm.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        document.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
-        successMsg.style.display = 'block';
-        sessionStorage.setItem(rateKey, 'true');
-        window.scrollTo({ top: successMsg.offsetTop - 100, behavior: 'smooth' });
-      } else {
-        throw new Error('Failed');
-      }
-    } catch {
-      errorMsg.style.display = 'block';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send quote request';
-    }
-  });
-</script>
-
 
     <ul class="search-results" id="searchResults"></ul>
   </div>

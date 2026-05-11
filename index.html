@@ -43,7 +43,7 @@
 
 :root {
   /* Brand colours */
-  --navy-900: #061327;
+  --navy-900: #0a1f3d;
   --navy-800: #0a1f3d;
   --navy-700: #112a4d;
   --navy-600: #1a3760;
@@ -54,7 +54,7 @@
   --green-500: #25d366;
   --red-500: #ef4444;
   --white: #ffffff;
-  --grey-100: #f5f7fa;
+  --grey-100: #0a1f3d;
   --grey-200: #e4e9f0;
   --grey-400: #9aa5b5;
   --grey-600: #5d6b7e;
@@ -102,7 +102,9 @@ section { padding: 64px 0; }
   font-weight: 600;
   padding: 8px 0;
   overflow: hidden;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 90;
 }
 .alerts-bar .live-tag {
   background: var(--navy-900);
@@ -140,7 +142,7 @@ section { padding: 64px 0; }
 .site-header {
   padding: 20px 0;
   position: sticky;
-  top: 0;
+  top: 40px;
   z-index: 100;
   background: rgba(10, 31, 61, 0.95);
   backdrop-filter: blur(8px);
@@ -337,7 +339,7 @@ section { padding: 64px 0; }
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius-lg);
   padding: 28px;
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; align-self: stretch;
   transition: border-color 0.2s, transform 0.2s;
 }
 .supplier-card:hover { border-color: rgba(245,166,35,0.4); transform: translateY(-2px); }
@@ -524,12 +526,44 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .coming-soon-block p { color: var(--text-muted-dark); margin-bottom: 20px; }
 
 /* ---- ACCESSIBILITY ---- */
+
+/* ---- MOBILE SCROLL NAV ---- */
+.nav-scroll-bar {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  white-space: nowrap;
+  background: var(--navy-900);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-scroll-bar::-webkit-scrollbar { display: none; }
+.nav-scroll-bar a, .nav-scroll-bar button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 13px 18px;
+  font-size: 0.88rem;
+  color: var(--text-muted-dark);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  text-decoration: none;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+  font-family: var(--font);
+}
+.nav-scroll-bar a.active { color: var(--orange-500); border-bottom-color: var(--orange-500); }
+.nav-scroll-bar a:hover { color: var(--white); }
+@media (min-width: 900px) { .nav-scroll-bar { display: none; } }
+
 :focus-visible { outline: 3px solid var(--orange-500); outline-offset: 3px; border-radius: 4px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 /* ---- HOMEPAGE ADDITIONAL STYLES ---- */
 .preview-banner {
-  background: #ffffff;
+  background: var(--navy-700);
   color: #f5a623;
   text-align: center;
   padding: 10px 20px;
@@ -538,25 +572,25 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 }
 
 /* Hero on white */
-.hero { background: #ffffff; padding: 64px 0 80px; text-align: center; }
-.hero .hero-badge { background: rgba(6,19,39,0.08); color: var(--navy-700); }
-.hero .hero-badge .dot { background: var(--green-500); }
-.hero h1 { color: var(--navy-900); }
-.hero p.lede { color: var(--navy-800); }
-.hero p.sub { color: var(--grey-600); }
-.hero .hero-meta { color: var(--grey-600); }
-.hero .trustpilot-strip { background: rgba(6,19,39,0.05); color: var(--grey-600); }
-.hero .chip { background: rgba(6,19,39,0.06); border-color: rgba(6,19,39,0.15); color: var(--navy-800); }
-.hero .chip:hover { background: rgba(6,19,39,0.1); border-color: rgba(6,19,39,0.3); }
+.hero { background: var(--navy-800); padding: 64px 0 80px; text-align: center; }
+.hero .hero-badge { background: rgba(37,211,102,0.12); color: #6fe39d; }
+.hero .hero-badge .dot { background: var(--green-500); animation: pulse 2s ease-in-out infinite; }
+.hero h1 { color: var(--white); }
+.hero p.lede { color: var(--text-on-dark); }
+.hero p.sub { color: var(--text-muted-dark); }
+.hero .hero-meta { color: var(--text-muted-dark); }
+.hero .trustpilot-strip { background: rgba(255,255,255,0.04); color: var(--text-muted-dark); }
+.hero .chip { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: var(--text-on-dark); }
+.hero .chip:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); }
 .hero .chip.active { background: var(--blue-500); border-color: var(--blue-500); color: #fff; }
 
 /* How it works on white */
-.how-section { background: #ffffff; }
-.how-section .section-title { color: var(--navy-900); }
-.how-section .section-lede { color: var(--grey-600); }
-.how-section .step-card { background: rgba(6,19,39,0.04); border-color: rgba(6,19,39,0.1); }
-.how-section .step-card h3 { color: var(--navy-900); }
-.how-section .step-card p { color: var(--grey-600); }
+.how-section { background: var(--navy-800); }
+.how-section .section-title { color: var(--white); }
+.how-section .section-lede { color: var(--text-muted-dark); }
+.how-section .step-card { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); }
+.how-section .step-card h3 { color: var(--white); }
+.how-section .step-card p { color: var(--text-muted-dark); }
 
 /* Barrel sizes */
 .barrel-section { background: var(--navy-800); padding: 80px 0; }
@@ -712,23 +746,22 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 
 /* ---- WELCOME BANNER ---- */
 .welcome-banner {
-  background: var(--blue-600);
+  background: #2d6cdf;
   color: var(--white);
-  padding: 10px 20px;
+  padding: 14px 20px;
   font-size: 0.88rem;
-  font-weight: 500;
   line-height: 1.5;
+  text-align: center;
 }
 
 </style>
 </head>
 <body>
 
-<!-- Welcome message (always visible, above fold) -->
-<div class="welcome-banner" id="welcomeBanner">
-  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-    <span>You're viewing a preview of our new website. Welcome, and well done on finding us so early. We'll continue refining and enhancing the experience over the coming weeks, and we'd love to hear your feedback along the way.</span>
-    <button onclick="document.getElementById('welcomeBanner').style.display='none'" aria-label="Dismiss" style="background:none;border:none;color:inherit;font-size:1.2rem;cursor:pointer;opacity:0.7;flex-shrink:0;">&times;</button>
+<!-- Welcome message -->
+<div class="welcome-banner">
+  <div class="container">
+    You&#x2019;re viewing a preview of our new website. Welcome, and well done on finding us so early. We&#x2019;ll continue refining and enhancing the experience over the coming weeks, and we&#x2019;d love to hear your feedback along the way.
   </div>
 </div>
 
@@ -761,31 +794,24 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
       <a href="/quote/">Get a quote</a>
       <a href="/faq/">FAQ</a>
       <a href="/about/">About</a>
-      <a href="/blog/">Caribbean shipping guides</a>
+      <a href="/blog/">Blogs</a>
       <button class="search-toggle" id="searchToggle" aria-label="Search">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         Search
       </button>
-      <a href="https://wa.me/+447542539430?text=Hi%20BarrelCompare" class="btn btn-whatsapp" style="padding:8px 14px;min-height:0;font-size:0.88rem;">WhatsApp Us</a>
+      <a href="https://wa.me/+447542539430" style="color:#25d366;">WhatsApp Us</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <button class="search-toggle" id="searchToggleMobile" aria-label="Search" style="display:inline-flex;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </button>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
   </div>
-  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
-      <a href="/compare/">Compare options</a>
-      <a href="/quote/">Get a quote</a>
-      <a href="/faq/">FAQ</a>
-      <a href="/about/">About</a>
-      <a href="/blog/">Caribbean shipping guides</a>
-    <a href="https://wa.me/+447542539430?text=Hi%20BarrelCompare" class="btn btn-whatsapp btn-block whatsapp-cta">WhatsApp Us</a>
-  </nav>
 </header>
+<nav class="nav-scroll-bar" aria-label="Mobile navigation">
+  <a href="/compare/">Compare options</a>
+  <a href="/quote/">Get a quote</a>
+  <a href="/faq/">FAQ</a>
+  <a href="/about/">About</a>
+  <a href="/blog/">Blogs</a>
+  <button class="search-toggle" id="searchToggleMobile" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search</button>
+  <a href="https://wa.me/+447542539430" style="color:#25d366;">WhatsApp Us</a>
+</nav>
 
 <!-- Hero -->
 <section class="hero">
@@ -812,6 +838,11 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
       <a href="/compare/" class="btn btn-orange" style="font-size:1.1rem; padding:18px 40px; border-radius:var(--radius);">Compare UK Barrel Shippers</a>
     </div>
     <p class="hero-meta">Free service · No obligation · Independent of shipping companies</p>
+
+    <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="69d3d7b3ea7a3bcec15beabd" data-style-height="24px" data-style-width="100%" data-theme="dark">
+      <a href="https://uk.trustpilot.com/review/barrelcompare.co.uk" target="_blank" rel="noopener">Trustpilot</a>
+    </div>
+    <script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 
     <div class="trustpilot-strip">
       <span class="trustpilot-star">★★★★★</span>
@@ -919,7 +950,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
             <span class="badge pending-badge">Verification in progress</span>
             <h3>Supplier #2</h3>
             <p class="supplier-meta">Adding next, verification in progress</p>
-            <div class="price-row"><span class="price">, </span><span class="price-label">awaiting confirmation</span></div>
+            <div class="price-row"><span class="price">TBC</span><span class="price-label">awaiting confirmation</span></div>
             <p class="transit">Want to see a specific shipper here? <a href="/contact/" style="color:var(--orange-500);">Tell us</a></p>
             <ul>
               <li>Verifying licence &amp; insurance</li>
@@ -1091,7 +1122,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <!-- Blog section -->
 <section class="blog-section">
   <div class="container">
-    <div class="section-eyebrow">Caribbean shipping guides</div>
+    <div class="section-eyebrow">Blogs</div>
     <h2 class="section-title" style="margin-bottom:8px;">Expert guides for shipping barrels to the Caribbean from the UK</h2>
     <p class="section-lede" style="margin-bottom:40px;">Everything you need to know before you pack and ship.</p>
     <div class="blog-grid">
@@ -1171,7 +1202,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
         <h4>Resources</h4>
         <ul>
           <li><a href="/faq/">FAQ</a></li>
-          <li><a href="/blog/">Caribbean shipping guides</a></li>
+          <li><a href="/blog/">Blogs</a></li>
           <li><a href="/country-rules/">Country rules</a></li>
           <li><a href="/barrel-sizes/">Barrel sizes</a></li>
           <li><a href="/costs-and-pricing/">Costs and pricing</a></li>
@@ -1205,24 +1236,6 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 </footer>
 
 <script>
-// Mobile menu — no scroll-to-top
-const toggle = document.getElementById('menuToggle');
-const nav = document.getElementById('mobileNav');
-if (toggle && nav) {
-  toggle.addEventListener('click', (e) => {
-    e.preventDefault();
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    nav.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-  }));
-}
-// Mobile search toggle
-const searchToggleMobile = document.getElementById('searchToggleMobile');
-if (searchToggleMobile) searchToggleMobile.addEventListener('click', openSearch);
-
 // Desktop: supplier + share side by side
 function setGridLayout() {
   const grid = document.getElementById('supplierShareGrid');
@@ -1311,11 +1324,15 @@ document.getElementById('postcodeInput').addEventListener('keydown', (e) => {
 });
 </script>
 
+    <ul class="search-results" id="searchResults"></ul>
+  </div>
+</div>
+
 <!-- Site search overlay -->
 <div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Site search">
   <div class="search-box">
     <div class="search-input-row">
-      <input type="text" class="search-input" id="searchInput" placeholder="Search BarrelCompare..." autocomplete="off" autofocus>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search pages, destinations, guides..." autocomplete="off">
       <button class="search-close" id="searchClose" aria-label="Close search">Close</button>
     </div>
     <ul class="search-results" id="searchResults"></ul>
@@ -1323,27 +1340,23 @@ document.getElementById('postcodeInput').addEventListener('keydown', (e) => {
 </div>
 
 <script>
-// ── SITE SEARCH ──────────────────────────────────────────────────────────
 const SEARCH_INDEX = [
   { title: 'Compare barrel shippers', desc: 'Side-by-side comparison of UK barrel shipping companies', url: '/compare/' },
   { title: 'Get a quote', desc: 'Request a quote from a barrel shipper', url: '/quote/' },
   { title: 'FAQ', desc: 'Frequently asked questions about barrel shipping', url: '/faq/' },
   { title: 'About BarrelCompare', desc: 'Who we are and how BarrelCompare works', url: '/about/' },
-  { title: 'Caribbean shipping guides', desc: 'Guides, packing tips, costs and more', url: '/blog/' },
+  { title: 'Blogs', desc: 'Guides, packing tips, costs and more', url: '/blog/' },
   { title: 'Contact us', desc: 'Get in touch with BarrelCompare', url: '/contact/' },
   { title: 'Barrel sizes', desc: 'Standard vs large barrel, dimensions and capacity', url: '/barrel-sizes/' },
-  { title: 'Country rules, what can I send?', desc: 'Country-by-country rules for barrel contents', url: '/country-rules/' },
+  { title: 'Country rules', desc: 'Country-by-country rules for barrel contents', url: '/country-rules/' },
   { title: 'Costs and pricing', desc: 'How barrel shipping is priced and what to expect', url: '/costs-and-pricing/' },
   { title: 'Hidden fees guide', desc: 'Common hidden fees in barrel shipping and how to avoid them', url: '/hidden-fees/' },
-  { title: 'Packing guide', desc: 'How to pack your barrel safely and efficiently', url: '/packing-guide/' },
-  { title: 'Seasonal shipping', desc: 'Christmas, Easter and peak season booking advice', url: '/seasonal-shipping/' },
-  { title: 'Lost or damaged barrel', desc: 'What to do if your barrel is lost or damaged', url: '/lost-or-damaged-barrel/' },
-  { title: 'Barrel shipping glossary', desc: 'Key terms explained: LCL, FCL, manifest, Bill of Lading', url: '/glossary/' },
-  { title: 'What does BarrelCompare do?', desc: 'How the platform works and how it stays free', url: '/what-does-barrelcompare-do/' },
+  { title: 'Barrel shipping glossary', desc: 'Key terms: LCL, FCL, manifest, Bill of Lading', url: '/glossary/' },
+  { title: 'What does BarrelCompare do?', desc: 'How the platform works', url: '/what-does-barrelcompare-do/' },
   { title: 'Privacy policy', desc: 'How we handle your data', url: '/privacy/' },
   { title: 'Terms of use', desc: 'Our terms of service', url: '/terms/' },
   { title: 'Jamaica shipping', desc: 'Compare shippers to Jamaica', url: '/compare/?destination=jamaica' },
-  { title: 'Trinidad & Tobago shipping', desc: 'Compare shippers to Trinidad', url: '/compare/?destination=trinidad' },
+  { title: 'Trinidad shipping', desc: 'Compare shippers to Trinidad', url: '/compare/?destination=trinidad' },
   { title: 'Guyana shipping', desc: 'Compare shippers to Guyana', url: '/compare/?destination=guyana' },
   { title: 'Barbados shipping', desc: 'Compare shippers to Barbados', url: '/compare/?destination=barbados' },
   { title: 'Grenada shipping', desc: 'Compare shippers to Grenada', url: '/compare/?destination=grenada' },
@@ -1353,46 +1366,55 @@ const SEARCH_INDEX = [
   { title: 'St Vincent shipping', desc: 'Compare shippers to St Vincent', url: '/compare/?destination=stvincent' },
   { title: 'The Bahamas shipping', desc: 'Compare shippers to The Bahamas', url: '/compare/?destination=bahamas' },
 ];
-
+const DEFAULT_SUGGESTIONS = [
+  { title: 'Compare barrel shippers', desc: 'Side-by-side comparison', url: '/compare/' },
+  { title: 'Get a quote', desc: 'Request a quote from a barrel shipper', url: '/quote/' },
+  { title: 'Country rules', desc: 'What can I send?', url: '/country-rules/' },
+  { title: 'FAQ', desc: 'Frequently asked questions', url: '/faq/' },
+  { title: 'Barrel sizes', desc: 'Standard and large barrel dimensions', url: '/barrel-sizes/' },
+];
 const searchOverlay = document.getElementById('searchOverlay');
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 const searchClose = document.getElementById('searchClose');
 const searchToggle = document.getElementById('searchToggle');
-
+const searchToggleMobile = document.getElementById('searchToggleMobile');
+function renderResults(items) {
+  if (!searchResults) return;
+  searchResults.innerHTML = '';
+  items.forEach(item => {
+    const li = document.createElement('li');
+    li.innerHTML = '<a href="' + item.url + '"><strong>' + item.title + '</strong><span class="result-desc">' + item.desc + '</span></a>';
+    searchResults.appendChild(li);
+  });
+}
 function openSearch() {
+  if (!searchOverlay) return;
   searchOverlay.classList.add('open');
-  setTimeout(() => searchInput && searchInput.focus(), 50);
+  renderResults(DEFAULT_SUGGESTIONS);
+  setTimeout(() => { if (searchInput) searchInput.focus(); }, 50);
 }
 function closeSearch() {
+  if (!searchOverlay) return;
   searchOverlay.classList.remove('open');
-  if (searchInput) { searchInput.value = ''; searchResults.innerHTML = ''; }
+  if (searchInput) searchInput.value = '';
+  if (searchResults) searchResults.innerHTML = '';
 }
 if (searchToggle) searchToggle.addEventListener('click', openSearch);
+if (searchToggleMobile) searchToggleMobile.addEventListener('click', openSearch);
 if (searchClose) searchClose.addEventListener('click', closeSearch);
-searchOverlay.addEventListener('click', (e) => { if (e.target === searchOverlay) closeSearch(); });
-document.addEventListener('keydown', (e) => {
+if (searchOverlay) searchOverlay.addEventListener('click', e => { if (e.target === searchOverlay) closeSearch(); });
+document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeSearch();
   if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) { e.preventDefault(); openSearch(); }
 });
-
 if (searchInput) {
   searchInput.addEventListener('input', () => {
     const q = searchInput.value.trim().toLowerCase();
-    searchResults.innerHTML = '';
-    if (!q) return;
-    const hits = SEARCH_INDEX.filter(item =>
-      item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q)
-    ).slice(0, 8);
-    if (!hits.length) {
-      searchResults.innerHTML = '<li class="search-no-results">No results found.</li>';
-      return;
-    }
-    hits.forEach(item => {
-      const li = document.createElement('li');
-      li.innerHTML = `<a href="${item.url}"><strong>${item.title}</strong><span class="result-desc">${item.desc}</span></a>`;
-      searchResults.appendChild(li);
-    });
+    if (!q) { renderResults(DEFAULT_SUGGESTIONS); return; }
+    const hits = SEARCH_INDEX.filter(i => i.title.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q)).slice(0, 8);
+    if (!hits.length) { searchResults.innerHTML = '<li class="search-no-results">No results found.</li>'; return; }
+    renderResults(hits);
   });
 }
 </script>
