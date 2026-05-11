@@ -1015,6 +1015,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <form id="reviewForm" action="https://formspree.io/f/xrejbkjz" method="POST" novalidate>
  <input type="hidden" name="_subject" value="New Community Review, BarrelCompare">
  <input type="hidden" name="_cc" value="hello@barrelcompare.co.uk">
+ <input type="hidden" name="_timestamp" id="reviewTimestamp">
  <input type="text" name="_gotcha" style="display:none;" tabindex="-1">
 
  <div class="form-group">
@@ -1451,6 +1452,12 @@ if (reviewForm) {
  });
  if (res.ok) {
  document.getElementById('reviewSuccess').style.display = 'block';
+ if (typeof gtag !== 'undefined') {
+  gtag('event', 'review_submit', {
+   event_category: 'Forms',
+   event_label: document.getElementById('reviewSupplier') ? document.getElementById('reviewSupplier').value : '',
+  });
+ }
  reviewForm.querySelectorAll('input,textarea,select,button').forEach(el => el.disabled = true);
  btn.style.display = 'none';
  } else { throw new Error(); }
