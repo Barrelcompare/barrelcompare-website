@@ -1053,6 +1053,11 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <select id="reviewSupplier" name="supplier" class="form-control" required>
  <option value="">Choose shipper...</option>
  <option>West Indies Direct</option>
+ <option>Zan Shipping</option>
+ <option>Uni Metro</option>
+ <option>Ramsay Shipping</option>
+ <option>Express Freight Forwarders</option>
+ <option>Trans P Shipping</option>
  <option>Other, I'll name them in my review</option>
  </select>
  </div>
@@ -1479,7 +1484,7 @@ if (reviewForm) {
  reviewForm.querySelectorAll('input,textarea,select,button').forEach(el => el.disabled = true);
  btn.style.display = 'none';
  } else { throw new Error(); }
- } catch { btn.disabled = false; btn.textContent = 'Submit review'; alert('Something went wrong. Please try again.'); }
+ } catch (err) { btn.disabled = false; btn.textContent = 'Submit Review'; alert('Something went wrong. Please try again.'); }
  });
 }
 
