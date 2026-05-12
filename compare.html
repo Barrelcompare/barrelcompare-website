@@ -557,7 +557,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .supplier-table { width:100%;border-collapse:collapse;display:none;overflow-x:auto; }
 .supplier-table.visible { display:table; }
 .supplier-grid.hidden { display:none; }
-.supplier-table th { text-align:left;padding:12px 16px;background:var(--navy-900);color:var(--text-muted-dark);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid rgba(255,255,255,0.08);white-space:nowrap;position:relative; }
+.supplier-table th { text-align:left;padding:12px 16px;background:var(--navy-900);color:var(--text-muted-dark);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid rgba(255,255,255,0.08);white-space:nowrap;position:sticky;top:0;z-index:5; }
 .supplier-table td { padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.9rem;vertical-align:middle; }
 .supplier-table tr:hover td { background:rgba(255,255,255,0.02); }
 
@@ -759,48 +759,59 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 
  <label for="destination">Destination</label>
  <select id="destination" aria-label="Filter by destination">
- <optgroup label="Jamaica">
- <option value="jamaica">Jamaica, Kingston (main)</option>
- <option value="jamaica-montego">Jamaica, Montego Bay</option>
- <option value="jamaica-ocho">Jamaica, Ocho Rios</option>
- <option value="jamaica-portland">Jamaica, Port Antonio</option>
+ <option value="all" selected>All destinations</option>
+ <optgroup label="Antigua &amp; Barbuda">
+ <option value="antigua-all">Antigua &amp; Barbuda — ALL ports</option>
+ <option value="antigua">Antigua, St John's / Deep Water Harbour</option>
+ <option value="antigua-crabbs">Antigua, Crabbs Port</option>
  </optgroup>
- <optgroup label="Trinidad &amp; Tobago">
- <option value="trinidad">Trinidad, Port of Spain (main)</option>
- <option value="trinidad-lisas">Trinidad, Pointe Lisas</option>
+ <optgroup label="Barbados">
+ <option value="barbados-all">Barbados — ALL ports</option>
+ <option value="barbados">Barbados, Bridgetown (main)</option>
+ <option value="barbados-stcharles">Barbados, Port St Charles</option>
+ <option value="barbados-ferdinand">Barbados, Port Ferdinand</option>
+ </optgroup>
+ <optgroup label="Dominica">
+ <option value="dominica-all">Dominica — ALL ports</option>
+ <option value="dominica">Dominica, Roseau</option>
+ </optgroup>
+ <optgroup label="Grenada">
+ <option value="grenada-all">Grenada — ALL ports</option>
+ <option value="grenada">Grenada, St George's (main)</option>
+ <option value="grenada-grenville">Grenada, Grenville</option>
  </optgroup>
  <optgroup label="Guyana">
+ <option value="guyana-all">Guyana — ALL ports</option>
  <option value="guyana">Guyana, Port of Georgetown (main)</option>
  <option value="guyana-amsterdam">Guyana, Port of Amsterdam</option>
  <option value="guyana-linden">Guyana, Port of Linden</option>
  <option value="guyana-parika">Guyana, Port of Parika</option>
  </optgroup>
-<optgroup label="Barbados">
- <option value="barbados">Barbados, Bridgetown (main)</option>
- <option value="barbados-stcharles">Barbados, Port St Charles</option>
- <option value="barbados-ferdinand">Barbados, Port Ferdinand</option>
+ <optgroup label="Jamaica">
+ <option value="jamaica-all">Jamaica — ALL ports</option>
+ <option value="jamaica">Jamaica, Kingston (main)</option>
+ <option value="jamaica-montego">Jamaica, Montego Bay</option>
+ <option value="jamaica-ocho">Jamaica, Ocho Rios</option>
+ <option value="jamaica-portland">Jamaica, Port Antonio</option>
  </optgroup>
  <optgroup label="St Lucia">
+ <option value="stlucia-all">St Lucia — ALL ports</option>
  <option value="stlucia">St Lucia, Castries (main)</option>
  <option value="stlucia-vieuxfort">St Lucia, Vieux Fort</option>
  </optgroup>
- <optgroup label="Antigua &amp; Barbuda">
- <option value="antigua">Antigua, St John's / Deep Water Harbour (main)</option>
- <option value="antigua-crabbs">Antigua, Crabbs Port</option>
- </optgroup>
- <optgroup label="Grenada">
- <option value="grenada">Grenada, St George's (main)</option>
- <option value="grenada-grenville">Grenada, Grenville</option>
- </optgroup>
- <optgroup label="Dominica">
- <option value="dominica">Dominica, Roseau</option>
- </optgroup>
- <optgroup label="The Bahamas">
- <option value="bahamas">The Bahamas, Nassau (main)</option>
- </optgroup>
  <optgroup label="St Vincent &amp; the Grenadines">
+ <option value="stvincent-all">St Vincent — ALL ports</option>
  <option value="stvincent">St Vincent, Kingstown / Port Elizabeth (main)</option>
  <option value="stvincent-campden">St Vincent, Campden Park</option>
+ </optgroup>
+ <optgroup label="The Bahamas">
+ <option value="bahamas-all">The Bahamas — ALL ports</option>
+ <option value="bahamas">The Bahamas, Nassau (main)</option>
+ </optgroup>
+ <optgroup label="Trinidad &amp; Tobago">
+ <option value="trinidad-all">Trinidad &amp; Tobago — ALL ports</option>
+ <option value="trinidad">Trinidad, Port of Spain (main)</option>
+ <option value="trinidad-lisas">Trinidad, Pointe Lisas</option>
  </optgroup>
  </select>
 
@@ -826,7 +837,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 
  <label for="sort" style="font-weight:700;color:var(--text-on-dark);">Sort by</label>
  <select id="sort" aria-label="Sort suppliers" style="border-color:rgba(245,166,35,0.4);">
- <option value="verified">Verified first</option>
+ <option value="verified">Confirmed pricing first</option>
  <option value="alpha">Alphabetical</option>
  <option value="price">Price (low to high)</option>
  <option value="transit">Transit time (fastest)</option>
@@ -843,7 +854,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </button>
  </div>
 
- <span class="results-count" id="resultsCount">1 verified · 5 pending</span>
+ <span class="results-count" id="resultsCount">1 pricing confirmed · 5 unverified</span>
  </div>
 </div>
 
@@ -890,9 +901,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <!-- CARD VIEW (default) -->
  <div class="supplier-grid" id="supplierGrid">
 
- <!-- West Indies Direct — Verified -->
+ <!-- West Indies Direct -->
  <article class="supplier-card" data-service="door pickup dropoff" data-verified="true">
- <span class="badge">Verified</span>
  <h3>West Indies Direct</h3>
  <p class="supplier-meta">London-based · Sea freight · Caribbean specialist</p>
  <div style="margin-bottom:12px;">
@@ -911,7 +921,6 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </ul>
  <div class="cta-row">
  <a href="/quote/?supplier=west-indies-direct" class="btn btn-primary quote-btn" style="flex:1;" data-supplier="West Indies Direct">Get a Quote</a>
- <a href="https://wa.me/447542539430" class="btn btn-whatsapp" style="flex:1;">WhatsApp</a>
  </div>
  </article>
 
@@ -1013,8 +1022,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
 
  <!-- TABLE VIEW -->
- <div style="overflow-x:auto;">
- <table class="supplier-table" id="supplierTable">
+ <div style="overflow-x:auto;overflow-y:auto;max-height:440px;border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);">
+ <table class="supplier-table" id="supplierTable" style="position:relative;">
  <thead>
  <tr>
  <th>
@@ -1041,7 +1050,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <tbody id="tableBody">
  <tr data-service="door pickup dropoff" data-verified="true">
  <td><strong>West Indies Direct</strong><br><small style="color:var(--text-muted-dark);">London-based · Caribbean specialist</small></td>
- <td><span class="badge" style="display:inline-block;">Verified</span></td>
+ <td><span class="badge pending-badge" style="display:inline-block;background:rgba(245,166,35,0.15);color:var(--orange-500);">Pricing confirmed</span></td>
  <td>Door-to-door &amp; drop-off</td>
  <td style="color:var(--orange-500);font-weight:700;">From £95</td>
  <td>~3–4 weeks</td>
@@ -1156,7 +1165,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <li><a href="/barrel-sizes/">Barrel sizes</a></li>
  <li><a href="/costs-and-pricing/">Costs and pricing</a></li>
  <li><a href="/hidden-fees/">Hidden fees guide</a></li>
- <li><a href="/glossary/">Glossary</a></li>
+ <li><a href="/glossary/">Definitions</a></li>
  <li><a href="/country-rules/">Customs and duty</a></li>
  </ul>
  </div>
@@ -1288,7 +1297,7 @@ const SEARCH_INDEX = [
  { title: 'Country rules', desc: 'Country-by-country rules for barrel contents', url: '/country-rules/' },
  { title: 'Costs and pricing', desc: 'How barrel shipping is priced and what to expect', url: '/costs-and-pricing/' },
  { title: 'Hidden fees guide', desc: 'Common hidden fees in barrel shipping and how to avoid them', url: '/hidden-fees/' },
- { title: 'Barrel shipping glossary', desc: 'Key terms: LCL, FCL, manifest, Bill of Lading', url: '/glossary/' },
+ { title: 'Barrel shipping definitions', desc: 'Key terms: LCL, FCL, manifest, Bill of Lading', url: '/glossary/' },
  { title: 'What does BarrelCompare do?', desc: 'How the platform works', url: '/what-does-barrelcompare-do/' },
  { title: 'Privacy policy', desc: 'How we handle your data', url: '/privacy/' },
  { title: 'Terms of use', desc: 'Our terms of service', url: '/terms/' },
