@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGD2KRLRH9"></script>
+<!-- Google tag (gtag.js) — Consent Mode v2 -->
 <script>
  window.dataLayer = window.dataLayer || [];
  function gtag(){dataLayer.push(arguments);}
+ gtag('consent', 'default', {'analytics_storage': 'denied', 'ad_storage': 'denied'});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGD2KRLRH9"></script>
+<script>
  gtag('js', new Date());
- gtag('config', 'G-MGD2KRLRH9');
+ gtag('config', 'G-MGD2KRLRH9', {'anonymize_ip': true});
 </script>
 
 <meta charset="UTF-8">
@@ -634,6 +637,22 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  text-align: center;
 }
 
+
+/* ---- COOKIE BANNER ---- */
+.cookie-banner {
+ position: fixed; bottom: 0; left: 0; right: 0;
+ background: var(--navy-700);
+ border-top: 2px solid var(--orange-500);
+ z-index: 9999; padding: 16px 20px;
+ box-shadow: 0 -4px 24px rgba(0,0,0,0.3);
+}
+.cookie-inner {
+ max-width: var(--max-width); margin: 0 auto;
+ display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.cookie-text { flex: 1; min-width: 200px; margin: 0; font-size: 0.88rem; color: var(--text-muted-dark); }
+.cookie-btns { display: flex; gap: 10px; flex-shrink: 0; }
+
 </style>
 </head>
 <body>
@@ -914,6 +933,39 @@ if (searchInput) {
  renderResults(hits);
  });
 }
+</script>
+
+<!-- Cookie consent banner -->
+<div id="cookieBanner" class="cookie-banner" style="display:none;" role="dialog" aria-label="Cookie consent">
+ <div class="cookie-inner">
+  <p class="cookie-text">We use cookies to analyse traffic and improve your experience. Only essential cookies are set by default. <a href="/privacy/" style="color:var(--orange-500);">Privacy policy</a></p>
+  <div class="cookie-btns">
+   <button id="cookieAccept" class="btn btn-orange" style="min-height:40px;padding:10px 20px;font-size:0.9rem;">Accept cookies</button>
+   <button id="cookieDecline" class="btn btn-secondary" style="min-height:40px;padding:10px 20px;font-size:0.9rem;">Decline</button>
+  </div>
+ </div>
+</div>
+<script>
+(function() {
+ var consent = localStorage.getItem('bc_cookie_consent');
+ if (consent === 'accepted') {
+  if (typeof gtag !== 'undefined') gtag('consent', 'update', {'analytics_storage': 'granted'});
+  return;
+ }
+ if (consent === 'declined') return;
+ var banner = document.getElementById('cookieBanner');
+ if (!banner) return;
+ banner.style.display = 'block';
+ document.getElementById('cookieAccept').addEventListener('click', function() {
+  localStorage.setItem('bc_cookie_consent', 'accepted');
+  if (typeof gtag !== 'undefined') gtag('consent', 'update', {'analytics_storage': 'granted'});
+  banner.style.display = 'none';
+ });
+ document.getElementById('cookieDecline').addEventListener('click', function() {
+  localStorage.setItem('bc_cookie_consent', 'declined');
+  banner.style.display = 'none';
+ });
+})();
 </script>
 </body>
 </html>
