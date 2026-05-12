@@ -587,7 +587,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .how-section { background: var(--navy-800); }
 .how-section .section-title { color: var(--white); }
 .how-section .section-lede { color: var(--text-muted-dark); }
-.how-section .step-card { background: var(--grey-100); border-color: rgba(255,255,255,0.12); }
+.how-section .step-card { background: var(--navy-700); border-color: rgba(255,255,255,0.14); }
 .how-section .step-card h3 { color: var(--white); }
 .how-section .step-card p { color: var(--text-muted-dark); }
 
@@ -818,7 +818,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <!-- Welcome message -->
 <div class="welcome-banner">
  <div class="container">
- You&#x2019;re viewing a preview of our new website. Welcome, and well done on finding us so early. We&#x2019;ll continue refining and enhancing the experience over the coming weeks, and we&#x2019;d love to hear your feedback along the way.
+ ⚠️ This site is not yet fully functional. Some features are still being built and prices shown may not be current. We&#x2019;re working to get everything live shortly — thank you for your patience.
  </div>
 </div>
 
@@ -1438,12 +1438,12 @@ document.addEventListener('DOMContentLoaded', () => {
  <ul>
  <li><a href="/faq/">FAQ</a></li>
  <li><a href="/blog/">Blogs</a></li>
- <li><a href="/country-rules/">Country rules</a></li>
+ <li><a href="/country-rules/">🔒 Country rules</a></li>
  <li><a href="/barrel-sizes/">Barrel sizes</a></li>
  <li><a href="/costs-and-pricing/">Costs and pricing</a></li>
- <li><a href="/hidden-fees/">Hidden fees guide</a></li>
+ <li><a href="/hidden-fees/">🔒 Hidden fees guide</a></li>
  <li><a href="/glossary/">Definitions</a></li>
- <li><a href="/country-rules/">Customs and duty</a></li>
+ <li><a href="/country-rules/">🔒 Customs and duty</a></li>
  </ul>
  </div>
  <div class="footer-col">
@@ -1633,6 +1633,7 @@ function renderResults(items) {
 }
 function openSearch() {
  if (!searchOverlay) return;
+ if (searchInput) searchInput.value = '';
  searchOverlay.classList.add('open');
  renderResults(DEFAULT_SUGGESTIONS);
  setTimeout(() => { if (searchInput) searchInput.focus(); }, 50);
