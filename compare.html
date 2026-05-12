@@ -862,17 +862,32 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <div class="container">
 
  <!-- Terminology key -->
- <div class="terminology-key">
- <details>
- <summary>What do these terms mean?</summary>
- <div class="term-grid">
- <div class="term-item"><strong>Door-to-door</strong><span>Supplier collects from your UK address and delivers to the recipient's address overseas.</span></div>
- <div class="term-item"><strong>Drop-off</strong><span>You take the barrel to the supplier's UK depot. Recipient collects from the overseas port.</span></div>
- <div class="term-item"><strong>UK pickup</strong><span>Supplier collects from your UK address. Recipient collects from the overseas port.</span></div>
- <div class="term-item"><strong>Distribution</strong><span>Supplier handles onward delivery from the overseas port to the final address.</span></div>
+ <!-- What do the terms mean — toggle buttons -->
+ <div style="margin-bottom:24px;">
+  <h2 style="font-size:1.3rem;color:var(--orange-500);margin-bottom:6px;">What do the terms mean?</h2>
+  <p style="color:var(--text-muted-dark);font-size:0.92rem;margin-bottom:16px;">The most common service types explained — so you know exactly what you're paying for.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+   <button id="cmp-btn-door" type="button" onclick="cmpToggleDef('door')" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);color:var(--text-on-dark);padding:10px 18px;border-radius:50px;font-size:0.92rem;font-family:inherit;cursor:pointer;transition:all .15s;">Door to Door</button>
+   <button id="cmp-btn-pickup" type="button" onclick="cmpToggleDef('pickup')" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);color:var(--text-on-dark);padding:10px 18px;border-radius:50px;font-size:0.92rem;font-family:inherit;cursor:pointer;transition:all .15s;">UK Pick Up</button>
+   <button id="cmp-btn-dropoff" type="button" onclick="cmpToggleDef('dropoff')" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);color:var(--text-on-dark);padding:10px 18px;border-radius:50px;font-size:0.92rem;font-family:inherit;cursor:pointer;transition:all .15s;">Drop Off</button>
+   <button id="cmp-btn-dist" type="button" onclick="cmpToggleDef('dist')" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);color:var(--text-on-dark);padding:10px 18px;border-radius:50px;font-size:0.92rem;font-family:inherit;cursor:pointer;transition:all .15s;">Distribution</button>
+  </div>
+  <div id="cmp-def-door" style="display:none;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:0.92rem;color:var(--text-muted-dark);"><strong style="color:var(--text-on-dark);">Door to Door —</strong> Supplier collects from your UK address and delivers to the recipient's address overseas.</div>
+  <div id="cmp-def-pickup" style="display:none;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:0.92rem;color:var(--text-muted-dark);"><strong style="color:var(--text-on-dark);">UK Pick Up —</strong> Supplier collects from your UK address. Recipient collects from the overseas port.</div>
+  <div id="cmp-def-dropoff" style="display:none;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:0.92rem;color:var(--text-muted-dark);"><strong style="color:var(--text-on-dark);">Drop Off —</strong> You take the barrel to the supplier's UK depot. Recipient collects from the overseas port.</div>
+  <div id="cmp-def-dist" style="display:none;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:0.92rem;color:var(--text-muted-dark);"><strong style="color:var(--text-on-dark);">Distribution —</strong> Supplier handles onward delivery from the overseas port to the final address.</div>
  </div>
- </details>
- </div>
+ <script>
+ function cmpToggleDef(key) {
+  var el = document.getElementById('cmp-def-' + key);
+  var btn = document.getElementById('cmp-btn-' + key);
+  var open = el.style.display !== 'none';
+  el.style.display = open ? 'none' : 'block';
+  btn.style.background = open ? 'rgba(255,255,255,0.06)' : 'rgba(245,166,35,0.15)';
+  btn.style.borderColor = open ? 'rgba(255,255,255,0.15)' : 'rgba(245,166,35,0.5)';
+  btn.style.color = open ? '' : 'var(--orange-500)';
+ }
+ </script>
 
  <!-- Customs note -->
  <div style="background:rgba(245,166,35,0.08);border:1.5px solid rgba(245,166,35,0.3);border-radius:10px;padding:14px 20px;margin-bottom:20px;font-size:0.95rem;cursor:pointer;" onclick="window.location='/faq/'">
