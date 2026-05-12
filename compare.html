@@ -824,7 +824,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </button>
  </div>
 
- <span class="results-count" id="resultsCount">1 verified · 3 pending</span>
+ <span class="results-count" id="resultsCount">1 verified · 5 pending</span>
  </div>
 </div>
 
@@ -871,17 +871,22 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <!-- CARD VIEW (default) -->
  <div class="supplier-grid" id="supplierGrid">
 
+ <!-- West Indies Direct — Verified -->
  <article class="supplier-card" data-service="door pickup dropoff" data-verified="true">
- <!-- Verified badge removed - Phase 2 -->
- <!-- BC RECOMMENDED BADGE - PHASE 2 ACTIVATION -->
- <!-- <span class="badge" style="background:var(--orange-500);">BarrelCompare Recommended</span> -->
+ <span class="badge">Verified</span>
  <h3>West Indies Direct</h3>
  <p class="supplier-meta">London-based · Sea freight · Caribbean specialist</p>
- <div class="price-row"><span class="price">Contact</span><span class="price-label">for current pricing</span></div>
+ <div style="margin-bottom:12px;">
+ <div style="font-size:0.82rem;color:var(--text-muted-dark);margin-bottom:6px;font-weight:600;">PRICING PER BARREL</div>
+ <div style="font-size:0.95rem;margin-bottom:4px;">Jamaica (Kingston) <span style="color:var(--orange-500);font-weight:700;float:right;">£95</span></div>
+ <div style="font-size:0.95rem;margin-bottom:4px;">Jamaica (Montego Bay) <span style="color:var(--orange-500);font-weight:700;float:right;">£125</span></div>
+ <div style="font-size:0.95rem;margin-bottom:8px;">Trinidad &amp; Guyana <span style="color:var(--orange-500);font-weight:700;float:right;">£120</span></div>
+ <div style="font-size:0.78rem;color:var(--text-muted-dark);">~£5 surcharge may apply for selected London postcodes and locations outside London.</div>
+ </div>
  <p class="transit">Transit: ~3–4 weeks · Total delivery: ~4–6 weeks · Door-to-door &amp; drop-off</p>
  <ul>
  <li>UK-wide collection available</li>
- <li>Delivery to all parishes (Jamaica)</li>
+ <li>Delivery to all parishes in Jamaica</li>
  <li>Tracked sea freight</li>
  <li>Established Caribbean operator</li>
  </ul>
@@ -891,51 +896,98 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
  </article>
 
- <article class="supplier-card pending" data-service="all" data-verified="false">
+ <!-- Zan Shipping -->
+ <article class="supplier-card pending" data-service="door pickup" data-verified="false">
  <span class="badge pending-badge">Verification in progress</span>
- <h3>Supplier slot, Caribbean</h3>
- <p class="supplier-meta">Adding next · awaiting confirmed pricing</p>
- <div class="price-row"><span class="price">, </span><span class="price-label">to be confirmed</span></div>
- <p class="transit">We're verifying: licence, insurance, customer track record.</p>
+ <h3>Zan Shipping</h3>
+ <p class="supplier-meta">London-based · Air &amp; sea freight · International shipping specialist</p>
+ <div class="price-row"><span class="price">Contact</span><span class="price-label">for current pricing</span></div>
+ <p class="transit">Transit: Varies by destination · Door-to-door &amp; port delivery available</p>
  <ul>
- <li>Checking Companies House registration</li>
- <li>Confirming freight forwarder credentials</li>
- <li>Gathering community reviews</li>
+ <li>UK-wide collection service</li>
+ <li>Shipping to the Caribbean, Africa, USA &amp; Europe</li>
+ <li>Air freight and sea cargo options</li>
+ <li>Commercial and personal cargo accepted</li>
+ <li>Vehicle shipping services available</li>
  </ul>
  <div class="cta-row">
- <a href="/contact/" class="btn btn-secondary" style="flex:1;">Ask Questions</a>
+ <a href="/quote/?supplier=zan-shipping" class="btn btn-primary quote-btn" style="flex:1;" data-supplier="Zan Shipping">Get a Quote</a>
  </div>
  </article>
 
- <article class="supplier-card pending" data-service="door" data-verified="false">
+ <!-- Uni Metro -->
+ <article class="supplier-card pending" data-service="door pickup dropoff" data-verified="false">
  <span class="badge pending-badge">Verification in progress</span>
- <h3>Supplier slot, Door-to-door specialist</h3>
- <p class="supplier-meta">Premium service · adding next</p>
- <div class="price-row"><span class="price">, </span><span class="price-label">to be confirmed</span></div>
- <p class="transit">For door collection &amp; door delivery overseas.</p>
+ <h3>Uni Metro</h3>
+ <p class="supplier-meta">UK-based · Courier &amp; logistics provider · Storage &amp; distribution</p>
+ <div class="price-row"><span class="price">Contact</span><span class="price-label">for current pricing</span></div>
+ <p class="transit">Same-day, next-day &amp; international delivery options available</p>
  <ul>
- <li>UK doorstep collection</li>
- <li>Overseas address delivery</li>
- <li>Customs handling included</li>
+ <li>Domestic and international shipping</li>
+ <li>Storage and removals services</li>
+ <li>Distribution and courier support</li>
+ <li>Flexible business logistics solutions</li>
+ <li>Commercial freight handling available</li>
  </ul>
  <div class="cta-row">
- <a href="/quote/" class="btn btn-secondary" style="flex:1;">Get a Quote</a>
+ <a href="/quote/?supplier=uni-metro" class="btn btn-primary quote-btn" style="flex:1;" data-supplier="Uni Metro">Get a Quote</a>
  </div>
  </article>
 
+ <!-- Ramsay Shipping -->
+ <article class="supplier-card pending" data-service="door pickup dropoff" data-verified="false">
+ <span class="badge pending-badge">Verification in progress</span>
+ <h3>Ramsay Shipping</h3>
+ <p class="supplier-meta">London-based · Freight forwarding · Removals &amp; shipping specialist</p>
+ <div class="price-row"><span class="price">Contact</span><span class="price-label">for current pricing</span></div>
+ <p class="transit">Sea freight and relocation services available</p>
+ <ul>
+ <li>Personal and commercial shipping</li>
+ <li>UK removals and international relocation support</li>
+ <li>Freight forwarding services</li>
+ <li>Caribbean shipping options available</li>
+ <li>Collection and delivery support</li>
+ </ul>
+ <div class="cta-row">
+ <a href="/quote/?supplier=ramsay-shipping" class="btn btn-primary quote-btn" style="flex:1;" data-supplier="Ramsay Shipping">Get a Quote</a>
+ </div>
+ </article>
+
+ <!-- Express Freight Forwarders -->
  <article class="supplier-card pending" data-service="dropoff" data-verified="false">
  <span class="badge pending-badge">Verification in progress</span>
- <h3>Supplier slot, Budget option</h3>
- <p class="supplier-meta">Drop-off only · adding next</p>
- <div class="price-row"><span class="price">, </span><span class="price-label">to be confirmed</span></div>
- <p class="transit">For self-drop-off at UK warehouse · lowest-cost tier.</p>
+ <h3>Express Freight Forwarders</h3>
+ <p class="supplier-meta">London Gateway-based · Freight forwarding · Commercial cargo specialist</p>
+ <div class="price-row"><span class="price">Contact</span><span class="price-label">for current pricing</span></div>
+ <p class="transit">Transit times vary by destination and shipment type</p>
  <ul>
- <li>You drop barrel at UK depot</li>
- <li>Recipient collects from overseas port</li>
- <li>Lowest-cost tier</li>
+ <li>Sea freight and logistics solutions</li>
+ <li>Commercial cargo handling</li>
+ <li>Import and export support</li>
+ <li>UK port-based operations</li>
+ <li>Distribution and freight management services</li>
  </ul>
  <div class="cta-row">
- <a href="/quote/" class="btn btn-secondary" style="flex:1;">Get a Quote</a>
+ <a href="/quote/?supplier=express-freight" class="btn btn-primary quote-btn" style="flex:1;" data-supplier="Express Freight Forwarders">Get a Quote</a>
+ </div>
+ </article>
+
+ <!-- Trans P Shipping -->
+ <article class="supplier-card pending" data-service="door dropoff" data-verified="false">
+ <span class="badge pending-badge">Verification in progress</span>
+ <h3>Trans P Shipping</h3>
+ <p class="supplier-meta">London-based · Freight forwarding · International cargo services</p>
+ <div class="price-row"><span class="price">Contact</span><span class="price-label">for current pricing</span></div>
+ <p class="transit">Sea freight and cargo forwarding options available</p>
+ <ul>
+ <li>International shipping support</li>
+ <li>Personal and commercial cargo accepted</li>
+ <li>Freight forwarding services</li>
+ <li>London cargo drop-off available</li>
+ <li>Distribution and logistics assistance</li>
+ </ul>
+ <div class="cta-row">
+ <a href="/quote/?supplier=trans-p-shipping" class="btn btn-primary quote-btn" style="flex:1;" data-supplier="Trans P Shipping">Get a Quote</a>
  </div>
  </article>
 
@@ -972,37 +1024,55 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <td><strong>West Indies Direct</strong><br><small style="color:var(--text-muted-dark);">London-based · Caribbean specialist</small></td>
  <td><span class="badge" style="display:inline-block;">Verified</span></td>
  <td>Door-to-door &amp; drop-off</td>
- <td style="color:var(--orange-500);font-weight:700;">Contact for pricing</td>
+ <td style="color:var(--orange-500);font-weight:700;">From £95</td>
  <td>~3–4 weeks</td>
  <td>~4–6 weeks</td>
  <td><a href="/quote/?supplier=west-indies-direct" class="btn btn-primary quote-btn" style="padding:8px 14px;font-size:0.82rem;" data-supplier="West Indies Direct">Get a Quote</a></td>
  </tr>
- <tr data-service="all" data-verified="false">
- <td><strong>Supplier slot, Caribbean</strong><br><small style="color:var(--text-muted-dark);">Adding next</small></td>
+ <tr data-service="door pickup" data-verified="false">
+ <td><strong>Zan Shipping</strong><br><small style="color:var(--text-muted-dark);">London-based · Air &amp; sea freight</small></td>
  <td><span class="badge pending-badge" style="display:inline-block;">Verification in progress</span></td>
- <td>, </td>
- <td style="color:var(--text-muted-dark);">, </td>
- <td>, </td>
- <td>, </td>
- <td><a href="/contact/" class="btn btn-secondary" style="padding:8px 14px;font-size:0.82rem;">Ask Questions</a></td>
+ <td>Door-to-door &amp; port delivery</td>
+ <td style="color:var(--text-muted-dark);">Contact for pricing</td>
+ <td>Varies</td>
+ <td>Varies</td>
+ <td><a href="/quote/?supplier=zan-shipping" class="btn btn-primary quote-btn" style="padding:8px 14px;font-size:0.82rem;" data-supplier="Zan Shipping">Get a Quote</a></td>
  </tr>
- <tr data-service="door" data-verified="false">
- <td><strong>Supplier slot, Door-to-door</strong><br><small style="color:var(--text-muted-dark);">Premium service</small></td>
+ <tr data-service="door pickup dropoff" data-verified="false">
+ <td><strong>Uni Metro</strong><br><small style="color:var(--text-muted-dark);">UK-based · Courier &amp; logistics</small></td>
  <td><span class="badge pending-badge" style="display:inline-block;">Verification in progress</span></td>
- <td>Door-to-door</td>
- <td style="color:var(--text-muted-dark);">, </td>
- <td>, </td>
- <td>, </td>
- <td><a href="/quote/" class="btn btn-secondary" style="padding:8px 14px;font-size:0.82rem;">Get a Quote</a></td>
+ <td>Door-to-door &amp; drop-off</td>
+ <td style="color:var(--text-muted-dark);">Contact for pricing</td>
+ <td>Varies</td>
+ <td>Varies</td>
+ <td><a href="/quote/?supplier=uni-metro" class="btn btn-primary quote-btn" style="padding:8px 14px;font-size:0.82rem;" data-supplier="Uni Metro">Get a Quote</a></td>
+ </tr>
+ <tr data-service="door pickup dropoff" data-verified="false">
+ <td><strong>Ramsay Shipping</strong><br><small style="color:var(--text-muted-dark);">London-based · Freight forwarding</small></td>
+ <td><span class="badge pending-badge" style="display:inline-block;">Verification in progress</span></td>
+ <td>Collection &amp; delivery</td>
+ <td style="color:var(--text-muted-dark);">Contact for pricing</td>
+ <td>Varies</td>
+ <td>Varies</td>
+ <td><a href="/quote/?supplier=ramsay-shipping" class="btn btn-primary quote-btn" style="padding:8px 14px;font-size:0.82rem;" data-supplier="Ramsay Shipping">Get a Quote</a></td>
  </tr>
  <tr data-service="dropoff" data-verified="false">
- <td><strong>Supplier slot, Budget</strong><br><small style="color:var(--text-muted-dark);">Drop-off only</small></td>
+ <td><strong>Express Freight Forwarders</strong><br><small style="color:var(--text-muted-dark);">London Gateway · Commercial cargo</small></td>
  <td><span class="badge pending-badge" style="display:inline-block;">Verification in progress</span></td>
- <td>Drop-off</td>
- <td style="color:var(--text-muted-dark);">, </td>
- <td>, </td>
- <td>, </td>
- <td><a href="/quote/" class="btn btn-secondary" style="padding:8px 14px;font-size:0.82rem;">Get a Quote</a></td>
+ <td>Drop-off &amp; port</td>
+ <td style="color:var(--text-muted-dark);">Contact for pricing</td>
+ <td>Varies</td>
+ <td>Varies</td>
+ <td><a href="/quote/?supplier=express-freight" class="btn btn-primary quote-btn" style="padding:8px 14px;font-size:0.82rem;" data-supplier="Express Freight Forwarders">Get a Quote</a></td>
+ </tr>
+ <tr data-service="door dropoff" data-verified="false">
+ <td><strong>Trans P Shipping</strong><br><small style="color:var(--text-muted-dark);">London-based · International cargo</small></td>
+ <td><span class="badge pending-badge" style="display:inline-block;">Verification in progress</span></td>
+ <td>Door-to-door &amp; drop-off</td>
+ <td style="color:var(--text-muted-dark);">Contact for pricing</td>
+ <td>Varies</td>
+ <td>Varies</td>
+ <td><a href="/quote/?supplier=trans-p-shipping" class="btn btn-primary quote-btn" style="padding:8px 14px;font-size:0.82rem;" data-supplier="Trans P Shipping">Get a Quote</a></td>
  </tr>
  </tbody>
  </table>
