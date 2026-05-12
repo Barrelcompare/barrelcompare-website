@@ -1,18 +1,238 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://barrelcompare.co.uk/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://barrelcompare.co.uk/compare/</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://barrelcompare.co.uk/compare/?destination=jamaica</loc><priority>0.8</priority></url>
-  <url><loc>https://barrelcompare.co.uk/compare/?destination=trinidad</loc><priority>0.8</priority></url>
-  <url><loc>https://barrelcompare.co.uk/compare/?destination=guyana</loc><priority>0.8</priority></url>
-  <url><loc>https://barrelcompare.co.uk/compare/?destination=ghana</loc><priority>0.8</priority></url>
-  <url><loc>https://barrelcompare.co.uk/compare/?destination=nigeria</loc><priority>0.8</priority></url>
-  <url><loc>https://barrelcompare.co.uk/quote/</loc><priority>0.9</priority></url>
-  <url><loc>https://barrelcompare.co.uk/faq/</loc><priority>0.7</priority></url>
-  <url><loc>https://barrelcompare.co.uk/about/</loc><priority>0.6</priority></url>
-  <url><loc>https://barrelcompare.co.uk/disclosure/</loc><priority>0.5</priority></url>
-  <url><loc>https://barrelcompare.co.uk/contact/</loc><priority>0.6</priority></url>
-  <url><loc>https://barrelcompare.co.uk/blog/</loc><priority>0.5</priority></url>
-  <url><loc>https://barrelcompare.co.uk/collection-finder/</loc><priority>0.5</priority></url>
-  <url><loc>https://barrelcompare.co.uk/share/</loc><priority>0.6</priority></url>
+
+  <!-- ====================================================
+       CORE PAGES — highest crawl priority
+       ==================================================== -->
+
+  <url>
+    <loc>https://barrelcompare.co.uk/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/quote/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- ====================================================
+       DESTINATION PAGES — high commercial intent, long-tail SEO
+       ==================================================== -->
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/?destination=jamaica</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/?destination=trinidad</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/?destination=barbados</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/?destination=guyana</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/?destination=grenada</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/?destination=st-lucia</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/?destination=antigua</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/?destination=st-vincent</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/?destination=dominica</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/?destination=nigeria</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/compare/?destination=ghana</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ====================================================
+       INFORMATIONAL PAGES — FAQ, blog, guides
+       ==================================================== -->
+
+  <url>
+    <loc>https://barrelcompare.co.uk/faq/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/costs-and-pricing/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/barrel-sizes/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/hidden-fees/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/glossary/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/country-rules/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/what-does-barrelcompare-do/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/collection-finder/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ====================================================
+       BLOG — updated frequently, good for long-tail
+       ==================================================== -->
+
+  <url>
+    <loc>https://barrelcompare.co.uk/blog/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/blog/barrel-shipping-costs-uk-caribbean-2026/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- ====================================================
+       TRUST & ENGAGEMENT PAGES
+       ==================================================== -->
+
+  <url>
+    <loc>https://barrelcompare.co.uk/share/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/about/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/contact/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <!-- ====================================================
+       LEGAL — low priority, Google doesn't need to crawl often
+       ==================================================== -->
+
+  <url>
+    <loc>https://barrelcompare.co.uk/disclosure/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/terms/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://barrelcompare.co.uk/privacy/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
