@@ -25,6 +25,9 @@
 <meta property="og:description" content="Compare verified barrel shipping prices to the Caribbean. Independent. Free. No obligation.">
 <meta property="og:url" content="https://barrelcompare.co.uk">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://barrelcompare.co.uk/og-image.svg">
+<meta name="twitter:image" content="https://barrelcompare.co.uk/og-image.svg">
+<link rel="canonical" href="https://barrelcompare.co.uk/">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -1663,37 +1666,6 @@ if (searchInput) {
 }
 </script>
 
-<!-- Cookie consent banner -->
-<div id="cookieBanner" class="cookie-banner" style="display:none;" role="dialog" aria-label="Cookie consent">
- <div class="cookie-inner">
-  <p class="cookie-text">We use cookies to analyse traffic and improve your experience. Only essential cookies are set by default. <a href="/privacy/" style="color:var(--orange-500);">Privacy policy</a></p>
-  <div class="cookie-btns">
-   <button id="cookieAccept" class="btn btn-orange" style="min-height:40px;padding:10px 20px;font-size:0.9rem;">Accept cookies</button>
-   <button id="cookieDecline" class="btn btn-secondary" style="min-height:40px;padding:10px 20px;font-size:0.9rem;">Decline</button>
-  </div>
- </div>
-</div>
-<script>
-(function() {
- var consent = localStorage.getItem('bc_cookie_consent');
- if (consent === 'accepted') {
-  if (typeof gtag !== 'undefined') gtag('consent', 'update', {'analytics_storage': 'granted'});
-  return;
- }
- if (consent === 'declined') return;
- var banner = document.getElementById('cookieBanner');
- if (!banner) return;
- banner.style.display = 'block';
- document.getElementById('cookieAccept').addEventListener('click', function() {
-  localStorage.setItem('bc_cookie_consent', 'accepted');
-  if (typeof gtag !== 'undefined') gtag('consent', 'update', {'analytics_storage': 'granted'});
-  banner.style.display = 'none';
- });
- document.getElementById('cookieDecline').addEventListener('click', function() {
-  localStorage.setItem('bc_cookie_consent', 'declined');
-  banner.style.display = 'none';
- });
-})();
-</script>
+<script src="/cookie-consent.js" defer></script>
 </body>
 </html>

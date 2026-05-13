@@ -541,3 +541,27 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 /* ---- ACCESSIBILITY ---- */
 :focus-visible { outline: 3px solid var(--orange-500); outline-offset: 3px; border-radius: 4px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* ---- COOKIE CONSENT BANNER (injected by cookie-consent.js) ---- */
+#bc-cookie-banner {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--navy-700);
+  border-top: 2px solid var(--orange-500);
+  z-index: 9999; padding: 16px 20px;
+  box-shadow: 0 -4px 24px rgba(0,0,0,.3);
+}
+#bc-cookie-inner {
+  max-width: var(--max-width); margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+#bc-cookie-text { flex: 1; min-width: 200px; margin: 0; font-size: .88rem; color: var(--text-muted-dark); }
+#bc-cookie-text a { color: var(--orange-500); }
+#bc-cookie-btns { display: flex; gap: 10px; flex-shrink: 0; }
+.bc-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 20px; border-radius: var(--radius);
+  font-weight: 600; font-size: .9rem; min-height: 40px;
+  cursor: pointer; border: none; font-family: var(--font);
+}
+.bc-btn-accept { background: var(--orange-500); color: var(--navy-900); }
+.bc-btn-decline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.3); }

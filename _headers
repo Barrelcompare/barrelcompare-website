@@ -1,0 +1,8 @@
+# BarrelCompare — Netlify / Cloudflare Pages response headers
+
+# Prevent indexing of admin/utility pages
+/supplier-gdpr-form.html
+  X-Robots-Tag: noindex, nofollow
+
+/supplier-standards.html
+  X-Robots-Tag: noindex, nofollow

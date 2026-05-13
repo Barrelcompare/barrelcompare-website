@@ -1,0 +1,16 @@
+# BarrelCompare — Netlify / Cloudflare Pages redirect rules
+# -------------------------------------------------------
+
+# 1. Redirect barrelcompare.com to the canonical .co.uk domain (301 permanent)
+https://barrelcompare.com/*        https://barrelcompare.co.uk/:splat   301!
+https://www.barrelcompare.com/*    https://barrelcompare.co.uk/:splat   301!
+https://www.barrelcompare.co.uk/*  https://barrelcompare.co.uk/:splat   301!
+
+# 2. Legacy flat .html pages → clean folder URLs (301 permanent)
+/about.html        /about/       301
+/compare.html      /compare/     301
+/contact.html      /contact/     301
+/disclosure.html   /disclosure/  301
+/quote.html        /quote/       301
+/blog-index.html   /blog/        301
+/blog-article.html /blog/        301
