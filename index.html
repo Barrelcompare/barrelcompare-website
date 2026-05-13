@@ -209,7 +209,7 @@ section { padding: 64px 0; }
 .btn-block { display: flex; width: 100%; }
 
 /* ---- HERO ---- */
-.hero { padding: 64px 0 80px; text-align: center; }
+.hero { padding: 28px 0 16px; text-align: center; }
 .hero-badge {
  display: inline-flex;
  align-items: center;
@@ -227,13 +227,13 @@ section { padding: 64px 0; }
 .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-.hero h1 { font-size: 2.25rem; max-width: 720px; margin: 0 auto 20px; }
+.hero h1 { font-size: 2.25rem; max-width: 720px; margin: 0 auto 12px; }
 .hero h1 .highlight { color: var(--orange-500); }
-@media (min-width: 768px) { .hero h1 { font-size: 3.5rem; } }
-@media (min-width: 1024px) { .hero h1 { font-size: 4rem; } }
+@media (min-width: 768px) { .hero h1 { font-size: 3rem; } }
+@media (min-width: 1024px) { .hero h1 { font-size: 3.4rem; } }
 
-.hero p.lede { font-size: 1.125rem; max-width: 580px; margin: 0 auto 12px; color: var(--text-on-dark); }
-.hero p.sub { font-size: 0.95rem; color: var(--text-muted-dark); margin: 0 auto 36px; }
+.hero p.lede { font-size: 1.05rem; max-width: 580px; margin: 0 auto 6px; color: var(--text-on-dark); }
+.hero p.sub { font-size: 0.9rem; color: var(--text-muted-dark); margin: 0 auto 14px; }
 
 /* ---- PAGE HEADER (inner pages) ---- */
 .page-header {
@@ -273,7 +273,7 @@ section { padding: 64px 0; }
 .trustpilot-star { color: #00b67a; font-size: 1.1rem; }
 
 /* ---- TRUST STRIP ---- */
-.trust-strip { background: var(--navy-700); padding: 40px 0; }
+.trust-strip { background: var(--navy-700); padding: 20px 0; }
 .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
 .trust-stat .num { font-size: 2.25rem; font-weight: 800; color: var(--orange-500); display: block; }
 .trust-stat .label { font-size: 0.8rem; color: var(--text-muted-dark); letter-spacing: 0.02em; }
@@ -750,9 +750,9 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .welcome-banner {
  background: #2d6cdf;
  color: var(--white);
- padding: 14px 20px;
- font-size: 0.88rem;
- line-height: 1.5;
+ padding: 7px 20px;
+ font-size: 0.82rem;
+ line-height: 1.4;
  text-align: center;
 }
 
@@ -875,7 +875,6 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <!-- Hero -->
 <section class="hero">
  <div class="container">
- <div class="hero-badge"><span class="dot"></span>UK's first independent barrel comparison</div>
  <h1>Sending a barrel home?<br><span class="highlight" style="color:var(--orange-500);">Know your options</span> before you ship.</h1>
  <p class="lede">Compare typical costs, delivery times and what to expect so you can send with confidence.</p>
  <p class="sub">No guesswork. No pressure. Just clearer choices.</p>
@@ -885,7 +884,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
  <script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 
- <div class="trustpilot-strip" style="flex-direction:column;gap:10px;padding:16px 28px;">
+ <div class="trustpilot-strip" style="flex-direction:column;gap:6px;padding:10px 20px;margin-bottom:10px;">
  <div style="display:flex;align-items:center;gap:8px;">
  <span class="trustpilot-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
  <span>Independent &middot; Powered by community reviews</span>
@@ -909,10 +908,10 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <a href="/compare/?destination=stvincent" class="chip">St Vincent &amp; the Grenadines</a>
  </div>
 
- <div class="hero-cta" style="justify-content:center; margin-top:32px;">
- <a href="/compare/" class="btn btn-orange" style="font-size:1.1rem; padding:18px 40px; border-radius:var(--radius);">Compare UK Barrel Shippers</a>
+ <div class="hero-cta" style="justify-content:center; margin-top:14px;">
+ <a href="/compare/" class="btn btn-orange" style="font-size:1.05rem; padding:14px 36px; border-radius:var(--radius);">Compare UK Barrel Shippers</a>
  </div>
- <p class="hero-meta">Free service · No obligation · Independent of shipping companies</p>
+ <p class="hero-meta" style="margin-top:8px;">Free service · No obligation · Independent of shipping companies</p>
  </div>
 </section>
 
