@@ -1120,11 +1120,9 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  });
 
  if (response.ok) {
- document.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
- successMsg.style.display = 'block';
  sessionStorage.setItem(rateKey, 'true');
- window.scrollTo({ top: successMsg.offsetTop - 100, behavior: 'smooth' });
  if (typeof gtag !== 'undefined') gtag('event', 'quote_submit', { event_category: 'Forms' });
+ window.location.href = '/thank-you/';
  } else {
  throw new Error('Failed');
  }
