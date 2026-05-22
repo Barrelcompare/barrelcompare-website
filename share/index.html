@@ -47,7 +47,7 @@
  <a href="/" class="logo">Barrel<span class="accent">Compare</span><span class="tagline">Independent · UK · Free</span></a>
  <nav class="nav-desktop" aria-label="Primary">
  <a href="/compare/">Compare prices</a>
- <a href="/quote/">Get a quote</a>
+ <a href="/quote/">Get a Quote</a>
  <a href="/faq/">FAQ</a>
  <a href="/about/">About</a>
  <a href="https://wa.me/447542539430?text=Hi%2C+I+found+BarrelCompare+and+would+like+help+comparing+barrel+shipping+options." class="btn btn-whatsapp" style="padding: 10px 18px; min-height: 0;">WhatsApp us</a>
@@ -58,7 +58,7 @@
  </div>
  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
  <a href="/compare/">Compare prices</a>
- <a href="/quote/">Get a quote</a>
+ <a href="/quote/">Get a Quote</a>
  <a href="/faq/">FAQ</a>
  <a href="/about/">About</a>
  <a href="/blog/">Guides &amp; news</a>
@@ -117,9 +117,9 @@
 
  <div class="form-row">
  <div class="form-group">
- <label for="supplier">Which shipper did you use? <span class="required">*</span></label>
+ <label for="supplier">Which supplier/agent did you use? <span class="required">*</span></label>
  <input type="text" id="supplier" name="supplier" class="form-control" placeholder="e.g. West Indies Direct" required>
- <span class="field-error" id="supplier-error">Please enter the shipper name.</span>
+ <span class="field-error" id="supplier-error">Please enter the supplier/agent name.</span>
  </div>
  <div class="form-group">
  <label for="destination">Destination <span class="required">*</span></label>
@@ -148,6 +148,13 @@
  <option value="1">★ Avoid</option>
  </select>
  <span class="field-error" id="rating-error">Please select a rating.</span>
+ <div class="star-legend" style="justify-content:flex-start;margin-top:8px;margin-bottom:0;">
+ <span>&#9733; Avoid</span>
+ <span>&#9733;&#9733; Poor</span>
+ <span>&#9733;&#9733;&#9733; OK</span>
+ <span>&#9733;&#9733;&#9733;&#9733; Good</span>
+ <span>&#9733;&#9733;&#9733;&#9733;&#9733; Excellent</span>
+ </div>
  </div>
  <div class="form-group">
  <label for="shipDate">Approximate ship date</label>
@@ -217,7 +224,7 @@
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) { showErr('email', 'Please enter a valid email address.'); valid = false; }
   else clearErr('email');
 
-  if (!document.getElementById('supplier').value.trim()) { showErr('supplier', 'Please enter the shipper name.'); valid = false; } else clearErr('supplier');
+  if (!document.getElementById('supplier').value.trim()) { showErr('supplier', 'Please enter the supplier/agent name.'); valid = false; } else clearErr('supplier');
   if (!document.getElementById('destination').value) { showErr('destination', 'Please select a destination.'); valid = false; } else clearErr('destination');
   if (!document.getElementById('rating').value) { showErr('rating', 'Please select a rating.'); valid = false; } else clearErr('rating');
   if (!document.getElementById('reviewText').value.trim()) { showErr('reviewText', 'Please write your review.'); valid = false; } else clearErr('reviewText');
@@ -250,6 +257,14 @@
 })();
 </script>
 
+ <div class="star-legend" style="margin-top:32px;">
+ <span>&#9733; Avoid</span>
+ <span>&#9733;&#9733; Poor</span>
+ <span>&#9733;&#9733;&#9733; OK</span>
+ <span>&#9733;&#9733;&#9733;&#9733; Good</span>
+ <span>&#9733;&#9733;&#9733;&#9733;&#9733; Excellent</span>
+ </div>
+ <p class="rating-note">Our rating system reflects the overall shipping experience. Every review is verified before publication.</p>
  </div>
  </div>
 </section>
@@ -292,7 +307,7 @@
  </div>
  <div class="footer-bottom">
  <div>&copy; 2026 BarrelCompare</div>
- <div class="disclosure">Independent of all shipping companies · Read our <a href="/disclosure/" style="color: var(--orange-500);">funding disclosure</a></div>
+ <div class="disclosure">Independent of all shipping companies · ICO Registration: ZC146517 · Read our <a href="/disclosure/" style="color: var(--orange-500);">funding disclosure</a></div>
  </div>
  </div>
 </footer>

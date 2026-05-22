@@ -17,7 +17,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BarrelCompare, Compare UK Barrel Shipping to the Caribbean | Independent &amp; Free</title>
 <meta name="description" content="Compare verified UK barrel shipping companies side by side. Real prices, transit times and reviews for shipping barrels to Jamaica, Trinidad, Guyana, Barbados and the Caribbean. Free, independent, no obligation.">
-<meta name="theme-color" content="#0a1f3d">
+<meta name="theme-color" content="#2c2c2c">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="manifest" href="/manifest.json">
 <meta property="og:type" content="website">
@@ -46,25 +46,28 @@
 
 :root {
  /* Brand colours */
- --navy-900: #0a1f3d;
- --navy-800: #0a1f3d;
- --navy-700: #112a4d;
- --navy-600: #1a3760;
- --orange-500: #f5a623;
- --orange-600: #e6951a;
- --blue-500: #2d6cdf;
- --blue-600: #1f57c4;
+ /* Option 02: Community & Warmth */
+ --navy-900: #1e1e1e;
+ --navy-800: #2c2c2c;
+ --navy-700: #3a3a3a;
+ --navy-600: #484848;
+ --orange-500: #1abcb0;
+ --orange-600: #15a99e;
+ --blue-500: #1abcb0;
+ --blue-600: #15a99e;
  --green-500: #25d366;
  --red-500: #ef4444;
  --white: #ffffff;
- --grey-100: #0a1f3d;
- --grey-200: #e4e9f0;
+ --grey-100: #f5ecd7;
+ --grey-200: #eeddc4;
  --grey-400: #9aa5b5;
- --grey-600: #5d6b7e;
+ --grey-600: #6b5e4e;
 
- /* Text colours on dark backgrounds */
+ /* Text colours */
  --text-on-dark: rgba(255, 255, 255, 0.92);
  --text-muted-dark: rgba(255, 255, 255, 0.65);
+ --text-on-light: #2c2c2c;
+ --text-muted-light: #6b5e4e;
 
  /* Layout */
  --radius: 12px;
@@ -143,7 +146,7 @@ section { padding: 64px 0; }
 .site-header {
  padding: 20px 0;
 
- background: rgba(10, 31, 61, 0.95);
+ background: rgba(44, 44, 44, 0.97);
  backdrop-filter: blur(8px);
  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
@@ -587,13 +590,13 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .hero .chip:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); }
 .hero .chip.active { background: var(--blue-500); border-color: var(--blue-500); color: #fff; }
 
-/* How it works on white */
+/* How it works */
 .how-section { background: var(--navy-800); }
 .how-section .section-title { color: var(--white); }
 .how-section .section-lede { color: var(--text-muted-dark); }
-.how-section .step-card { background: var(--navy-700); border-color: rgba(255,255,255,0.14); }
-.how-section .step-card h3 { color: var(--white); }
-.how-section .step-card p { color: var(--text-muted-dark); }
+.how-section .step-card { background: var(--grey-100); border-color: var(--grey-200); }
+.how-section .step-card h3 { color: var(--text-on-light); }
+.how-section .step-card p { color: var(--text-muted-light); }
 
 /* Barrel sizes */
 .barrel-section { background: var(--navy-800); padding: 80px 0; }
@@ -761,27 +764,50 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 }
 
 
-/* ---- REVIEWS CAROUSEL ---- */
-.reviews-carousel-wrap { position: relative; overflow: hidden; }
-.reviews-carousel-track { display: flex; gap: 20px; transition: transform 0.4s ease; }
-.reviews-carousel-track .review-card { flex: 0 0 calc(25% - 15px); min-width: 220px; }
-@media (max-width: 1024px) { .reviews-carousel-track .review-card { flex: 0 0 calc(33.333% - 14px); } }
-@media (max-width: 768px) { .reviews-carousel-track .review-card { flex: 0 0 calc(50% - 10px); } }
-@media (max-width: 500px) { .reviews-carousel-track .review-card { flex: 0 0 90%; } }
-.carousel-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
-.carousel-btn {
- background: rgba(255,255,255,0.08);
- border: 1px solid rgba(255,255,255,0.15);
- color: var(--text-on-dark);
- border-radius: 8px;
- padding: 10px 18px;
- cursor: pointer;
- font-size: 1rem;
- transition: background 0.2s;
+/* ---- REVIEWS VERTICAL FEED ---- */
+.reviews-feed-outer {
+ position: relative;
+ height: 540px;
+ overflow: hidden;
+ border-radius: var(--radius-lg);
 }
-.carousel-btn:hover { background: rgba(255,255,255,0.15); }
-.carousel-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-.star-legend { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 0.8rem; color: var(--text-muted-dark); }
+.reviews-feed-outer::before,
+.reviews-feed-outer::after {
+ content: '';
+ position: absolute;
+ left: 0; right: 0;
+ height: 80px;
+ z-index: 2;
+ pointer-events: none;
+}
+.reviews-feed-outer::before {
+ top: 0;
+ background: linear-gradient(to bottom, var(--navy-700) 10%, transparent);
+}
+.reviews-feed-outer::after {
+ bottom: 0;
+ background: linear-gradient(to top, var(--navy-700) 10%, transparent);
+}
+.reviews-feed-track {
+ display: flex;
+ flex-direction: column;
+ gap: 16px;
+ will-change: transform;
+ animation: reviewScrollV 32s linear infinite;
+}
+.reviews-feed-outer:hover .reviews-feed-track,
+.reviews-feed-outer:focus-within .reviews-feed-track {
+ animation-play-state: paused;
+}
+@keyframes reviewScrollV {
+ 0% { transform: translateY(0); }
+ 100% { transform: translateY(-50%); }
+}
+.reviews-feed-track .review-card { flex-shrink: 0; }
+.star-legend {
+ display: flex; flex-wrap: wrap; justify-content: center;
+ gap: 10px 22px; font-size: 0.8rem; color: var(--text-muted-dark); margin-top: 20px;
+}
 .star-legend span { display: inline-flex; align-items: center; gap: 4px; }
 .reviews-filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 24px; }
 .reviews-filter-row label { font-size: 0.88rem; color: var(--text-muted-dark); }
@@ -830,7 +856,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <!-- News ticker (site-wide) -->
 <div class="alerts-bar" aria-label="Live shipping alerts">
  <div class="container" style="display:flex;align-items:center;overflow:hidden;">
- <span class="live-tag">LIVE</span>
+ <span class="live-tag" style="flex-shrink:0;">LIVE</span>
  <div style="overflow:hidden;flex:1;min-width:0;">
  <div class="ticker">
  <span>Jamaica: 3-week transit holding steady</span>
@@ -851,14 +877,14 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <div class="container header-inner">
  <div>
  <a href="/" class="logo">Barrel<span class="accent">Compare</span></a>
- <span style="display:block;font-size:0.8rem;font-style:italic;color:#f5a623;margin-top:2px;font-weight:400;">Ship It Easy</span>
+ <span style="display:block;font-size:0.8rem;font-style:italic;color:var(--orange-500);margin-top:2px;font-weight:400;">Ship It Easy</span>
  </div>
  <nav class="nav-desktop" aria-label="Primary">
- <a href="/charity/">Suggest a Charity</a>
- <a href="/quote/">Get a quote</a>
+ <a href="/quote/">Get a Quote</a>
  <a href="/faq/">FAQ</a>
  <a href="/about/">About</a>
  <a href="/blog/">Blogs</a>
+ <a href="/charity/">Suggest a Charity</a>
  <button class="search-toggle" id="searchToggle" aria-label="Search">
  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
  Search
@@ -869,11 +895,11 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 </header>
 </div>
 <nav class="nav-scroll-bar" aria-label="Mobile navigation">
- <a href="/charity/">Suggest a Charity</a>
- <a href="/quote/">Get a quote</a>
+ <a href="/quote/">Get a Quote</a>
  <a href="/faq/">FAQ</a>
  <a href="/about/">About</a>
  <a href="/blog/">Blogs</a>
+ <a href="/charity/">Suggest a Charity</a>
  <button class="search-toggle" id="searchToggleMobile" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search</button>
  <a href="https://wa.me/447542539430?text=Hi%2C+I+found+BarrelCompare+and+would+like+help+comparing+barrel+shipping+options." style="color:#25d366;">WhatsApp Us</a>
 </nav>
@@ -881,9 +907,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <!-- Hero -->
 <section class="hero">
  <div class="container">
- <h1>Sending a barrel home?<br><span class="highlight" style="color:var(--orange-500);">Know your options</span> before you ship.</h1>
- <p class="lede">Compare typical costs, delivery times and what to expect so you can send with confidence.</p>
- <p class="sub">No guesswork. No pressure. Just clearer choices.</p>
+ <h1>Know your options before you<br><span class="highlight" style="color:var(--orange-500);">ship to the Caribbean.</span></h1>
+ <p class="lede">Three simple steps to send with confidence.</p>
 
  <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="69d3d7b3ea7a3bcec15beabd" data-style-height="24px" data-style-width="100%" data-theme="dark">
  <a href="https://uk.trustpilot.com/review/barrelcompare.co.uk" target="_blank" rel="noopener">Trustpilot</a>
@@ -1001,9 +1026,9 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
 
  <div class="form-group">
- <label for="reviewSupplier" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-dark);">Shipper name <span style="color:var(--orange-500);">*</span></label>
+ <label for="reviewSupplier" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-dark);">Supplier/Agent name <span style="color:var(--orange-500);">*</span></label>
  <select id="reviewSupplier" name="supplier" class="form-control" required>
- <option value="">Choose shipper...</option>
+ <option value="">Choose supplier/agent...</option>
  <option>West Indies Direct</option>
  <option>Zan Shipping</option>
  <option>Uni Metro</option>
@@ -1012,7 +1037,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <option>Trans P Shipping</option>
  <option>Other, I'll name them in my review</option>
  </select>
- <span class="field-error" id="reviewSupplier-error">Please select a shipper.</span>
+ <span class="field-error" id="reviewSupplier-error">Please select a supplier/agent.</span>
  </div>
 
  <div class="form-group">
@@ -1080,7 +1105,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
 </section>
 
-<!-- Reviews carousel -->
+<!-- Reviews vertical feed -->
 <section class="reviews-strip">
  <div class="container">
  <div class="section-eyebrow">Reviews</div>
@@ -1089,7 +1114,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 
  <div class="reviews-filter-row">
  <label for="reviewThemeFilter">Filter by topic:</label>
- <select id="reviewThemeFilter" onchange="filterReviews()">
+ <select id="reviewThemeFilter" onchange="filterReviewFeed()">
  <option value="">All topics</option>
  <option value="shipping-speed">Shipping speed</option>
  <option value="collection-reliability">Collection reliability</option>
@@ -1102,8 +1127,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </select>
  </div>
 
- <div class="reviews-carousel-wrap" id="reviewsCarouselWrap">
- <div class="reviews-carousel-track" id="reviewsCarouselTrack">
+ <div class="reviews-feed-outer" id="reviewsFeedOuter">
+ <div class="reviews-feed-track" id="reviewsFeedTrack">
 
  <div class="review-card" data-themes="shipping-speed,collection-reliability">
  <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -1143,9 +1168,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 
  </div>
  </div>
+ <p id="reviewsFeedEmpty" class="reviews-empty" style="display:none;">No reviews match this filter. Try a different topic.</p>
 
- <div class="carousel-controls">
- <button class="carousel-btn" id="carouselPrev" onclick="carouselStep(-1)" disabled>&larr; Previous</button>
  <div class="star-legend">
  <span>&#9733; Poor</span>
  <span>&#9733;&#9733; Fair</span>
@@ -1153,84 +1177,95 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <span>&#9733;&#9733;&#9733;&#9733; Very good</span>
  <span>&#9733;&#9733;&#9733;&#9733;&#9733; Excellent</span>
  </div>
- <button class="carousel-btn" id="carouselNext" onclick="carouselStep(1)">Next &rarr;</button>
- </div>
 
  <p class="rating-note">Reviews are moderated before publication. Our rating criteria covers multiple aspects of the shipping experience.</p>
  </div>
 </section>
 
 <script>
-// Reviews carousel
-let carouselIndex = 0;
-let carouselAutoInterval;
-const VISIBLE = 4;
+// Reviews vertical scroll feed
+(function() {
+ function buildFeed() {
+ var outer = document.getElementById('reviewsFeedOuter');
+ var track = document.getElementById('reviewsFeedTrack');
+ var emptyMsg = document.getElementById('reviewsFeedEmpty');
+ if (!outer || !track) return;
 
-function getVisibleCount() {
- const w = window.innerWidth;
- if (w <= 500) return 1;
- if (w <= 768) return 2;
- if (w <= 1024) return 3;
- return 4;
-}
+ var sel = document.getElementById('reviewThemeFilter');
+ var theme = sel ? sel.value : '';
 
-function getCards() {
- return Array.from(document.querySelectorAll('#reviewsCarouselTrack .review-card'))
- .filter(c => c.style.display !== 'none');
-}
+ // Remove any clones from previous run
+ var clones = track.querySelectorAll('.review-card-clone');
+ for (var i = 0; i < clones.length; i++) clones[i].remove();
 
-function updateCarousel() {
- const track = document.getElementById('reviewsCarouselTrack');
- const cards = getCards();
- const vis = getVisibleCount();
- const maxIndex = Math.max(0, cards.length - vis);
- carouselIndex = Math.min(carouselIndex, maxIndex);
-
- if (!track || !cards.length) return;
- const cardWidth = cards[0].offsetWidth + 20; // gap
- track.style.transform = `translateX(-${carouselIndex * cardWidth}px)`;
-
- const prev = document.getElementById('carouselPrev');
- const next = document.getElementById('carouselNext');
- if (prev) prev.disabled = carouselIndex <= 0;
- if (next) next.disabled = carouselIndex >= maxIndex;
-}
-
-function carouselStep(dir) {
- carouselIndex += dir;
- updateCarousel();
- resetAutoScroll();
-}
-
-function resetAutoScroll() {
- clearInterval(carouselAutoInterval);
- carouselAutoInterval = setInterval(() => {
- const cards = getCards();
- const vis = getVisibleCount();
- const maxIndex = Math.max(0, cards.length - vis);
- if (carouselIndex >= maxIndex) { carouselIndex = 0; } else { carouselIndex++; }
- updateCarousel();
- }, 5000);
-}
-
-function filterReviews() {
- const theme = document.getElementById('reviewThemeFilter').value;
- const allCards = document.querySelectorAll('#reviewsCarouselTrack .review-card');
- allCards.forEach(c => {
- const themes = c.dataset.themes || '';
- c.style.display = (!theme || themes.includes(theme)) ? '' : 'none';
+ // Original cards
+ var originals = Array.from(track.querySelectorAll('.review-card'));
+ var visible = originals.filter(function(c) {
+ var themes = c.dataset.themes || '';
+ return !theme || themes.includes(theme);
  });
- carouselIndex = 0;
- updateCarousel();
-}
 
-window.addEventListener('resize', updateCarousel);
-  var rts = document.getElementById('reviewTimestamp'); if (rts) rts.value = new Date().toISOString();
+ // Show/hide originals
+ originals.forEach(function(c) {
+ c.style.display = visible.includes(c) ? '' : 'none';
+ });
 
-document.addEventListener('DOMContentLoaded', () => {
- updateCarousel();
- resetAutoScroll();
-});
+ // No results state
+ if (!visible.length) {
+ outer.style.display = 'none';
+ if (emptyMsg) emptyMsg.style.display = '';
+ return;
+ }
+ outer.style.display = '';
+ if (emptyMsg) emptyMsg.style.display = 'none';
+
+ // Duplicate visible cards for seamless loop
+ visible.forEach(function(c) {
+ var clone = c.cloneNode(true);
+ clone.classList.add('review-card-clone');
+ clone.removeAttribute('data-themes');
+ track.appendChild(clone);
+ });
+
+ // Reset animation cleanly
+ track.style.animation = 'none';
+ void track.offsetHeight; // force reflow
+ var dur = Math.max(14, visible.length * 5);
+ track.style.animation = 'reviewScrollV ' + dur + 's linear infinite';
+
+ // Set outer height to show ~2.6 cards at a time
+ var cardH = visible[0].offsetHeight + 16;
+ outer.style.height = Math.round(cardH * 2.6) + 'px';
+ }
+
+ // Expose for onchange handler
+ window.filterReviewFeed = buildFeed;
+
+ document.addEventListener('DOMContentLoaded', function() {
+ buildFeed();
+
+ var outer = document.getElementById('reviewsFeedOuter');
+ if (outer) {
+ // Pause on touch (swipe-friendly)
+ outer.addEventListener('touchstart', function() {
+ var t = document.getElementById('reviewsFeedTrack');
+ if (t) t.style.animationPlayState = 'paused';
+ }, { passive: true });
+ outer.addEventListener('touchend', function() {
+ var t = document.getElementById('reviewsFeedTrack');
+ if (t) t.style.animationPlayState = 'running';
+ }, { passive: true });
+ }
+
+ // Recalculate outer height on resize
+ var resizeTimer;
+ window.addEventListener('resize', function() {
+ clearTimeout(resizeTimer);
+ resizeTimer = setTimeout(buildFeed, 200);
+ });
+ });
+})();
+ var rts = document.getElementById('reviewTimestamp'); if (rts) rts.value = new Date().toISOString();
 </script>
 
 <!-- Barrel sizes -->
@@ -1332,11 +1367,17 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 
 <!-- Charity CTA -->
-<section style="background:var(--navy-900);padding:48px 0;text-align:center;border-top:1px solid rgba(255,255,255,0.06);">
+<section style="background:var(--navy-900);padding:56px 0;text-align:center;border-top:1px solid rgba(255,255,255,0.06);">
  <div class="container">
  <div class="section-eyebrow">Community &amp; giving back</div>
- <h2 style="font-size:1.5rem;margin-bottom:12px;">Suggest a Charity</h2>
- <p style="color:var(--text-muted-dark);max-width:520px;margin:0 auto 24px;font-size:1rem;">Suggest a charity in the Caribbean that is doing good work and would benefit from support. Charity begins at home — and that's what we propose to do here.</p>
+ <h2 style="font-size:1.75rem;margin-bottom:20px;">Suggest a Charity</h2>
+ <div style="max-width:620px;margin:0 auto 28px;text-align:left;">
+  <p style="color:var(--text-muted-dark);font-size:1rem;line-height:1.7;margin-bottom:14px;">There is a well-known saying that charity begins at home, and at BarrelCompare we believe that sending a barrel home is often exactly that.</p>
+  <p style="color:var(--text-muted-dark);font-size:1rem;line-height:1.7;margin-bottom:14px;">With that spirit in mind, we wanted to take things one step further by supporting small charities doing meaningful work across the Caribbean and the UK.</p>
+  <p style="color:var(--text-muted-dark);font-size:1rem;line-height:1.7;margin-bottom:14px;">Through the support of our community, we aim to shine a light on organisations focused on empowerment, education, opportunity and community support.</p>
+  <p style="color:var(--text-muted-dark);font-size:1rem;line-height:1.7;margin-bottom:14px;">As BarrelCompare grows, our intention is to donate a percentage of annual profits to selected charities, meaning that by helping yourself and your family, you are also helping others.</p>
+  <p style="color:var(--text-muted-dark);font-size:1rem;line-height:1.7;margin-bottom:0;">To us, that is what community truly means.</p>
+ </div>
  <a href="/charity/" class="btn btn-orange" style="font-size:1rem;padding:14px 32px;">Suggest a charity →</a>
  </div>
 </section>
@@ -1358,7 +1399,7 @@ document.addEventListener('DOMContentLoaded', () => {
  <div class="footer-grid">
  <div class="footer-col">
  <div class="logo" style="margin-bottom:4px;">Barrel<span class="accent">Compare</span></div>
- <div style="font-size:0.8rem;font-style:italic;color:#f5a623;margin-bottom:12px;font-weight:400;">Ship It Easy</div>
+ <div style="font-size:0.8rem;font-style:italic;color:var(--orange-500);margin-bottom:12px;font-weight:400;">Ship It Easy</div>
  <p class="footer-tagline">UK's first independent barrel shipping comparison platform. Built for the West Indian community.</p>
  </div>
  <div class="footer-col">
@@ -1542,7 +1583,7 @@ document.getElementById('postcodeInput').addEventListener('keydown', (e) => {
 <div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Site search">
  <div class="search-box">
  <div class="search-input-row">
- <input type="text" class="search-input" id="searchInput" placeholder="Search by postcode, destination or supplier..." autocomplete="off">
+ <input type="text" class="search-input" id="searchInput" placeholder="Search by destination, supplier or topic..." autocomplete="off">
  <button class="search-close" id="searchClose" aria-label="Close search">Close</button>
  </div>
  <ul class="search-results" id="searchResults"></ul>
@@ -1565,7 +1606,7 @@ const SEARCH_INDEX = [
  { title: 'Country rules', desc: 'Country-by-country rules for barrel contents', url: '/country-rules/' },
  { title: 'Barrel sizes', desc: 'Standard vs large barrel, dimensions and capacity', url: '/barrel-sizes/' },
  { title: 'Costs and pricing', desc: 'How barrel shipping is priced and what to expect', url: '/costs-and-pricing/' },
- { title: 'Hidden fees guide', desc: 'Common hidden fees in barrel shipping and how to avoid them', url: '/hidden-fees/' },
+ { title: 'Hidden fees', desc: 'Common hidden fees in barrel shipping and how to avoid them', url: '/hidden-fees/' },
  { title: 'Shipping insurance', desc: 'Are your barrel contents insured? What you need to know', url: '/shipping-insurance/' },
  { title: 'Definitions of Terms', desc: 'Key shipping terms: LCL, FCL, manifest, Bill of Lading', url: '/glossary/' },
  { title: 'Collection finder', desc: 'Find barrel collection points near you', url: '/collection-finder/' },
@@ -1591,11 +1632,14 @@ const SEARCH_INDEX = [
  { title: 'Disclosure', desc: 'How BarrelCompare makes money', url: '/disclosure/' },
 ];
 const DEFAULT_SUGGESTIONS = [
- { title: 'Compare barrel shippers', desc: 'Side-by-side comparison', url: '/compare/' },
- { title: 'Get a quote', desc: 'Request a quote from a barrel shipper', url: '/quote/' },
- { title: 'Country rules', desc: 'What can I send?', url: '/country-rules/' },
- { title: 'FAQ', desc: 'Frequently asked questions', url: '/faq/' },
- { title: 'Barrel sizes', desc: 'Standard and large barrel dimensions', url: '/barrel-sizes/' },
+ { title: 'Collection finder', desc: 'Find barrel collection points near you', url: '/collection-finder/' },
+ { title: 'Compare barrel shippers', desc: 'Side-by-side comparison of UK barrel shipping companies', url: '/compare/' },
+ { title: 'Country rules', desc: 'Country-by-country rules for barrel contents', url: '/country-rules/' },
+ { title: 'Customs and duties', desc: 'Import taxes and customs rules for Caribbean barrel shipping', url: '/customs-and-duties/' },
+ { title: 'Definitions of Terms', desc: 'Key shipping terms explained', url: '/glossary/' },
+ { title: 'Hidden fees', desc: 'Common hidden fees in barrel shipping and how to avoid them', url: '/hidden-fees/' },
+ { title: 'How it works', desc: 'Three steps to compare and ship with confidence', url: '/#how' },
+ { title: 'Reviews', desc: 'Real reviews from the UK Caribbean shipping community', url: '/share/' },
 ];
 const searchOverlay = document.getElementById('searchOverlay');
 const searchInput = document.getElementById('searchInput');
@@ -1637,8 +1681,14 @@ if (searchInput) {
  searchInput.addEventListener('input', () => {
  const q = searchInput.value.trim().toLowerCase();
  if (!q) { renderResults(DEFAULT_SUGGESTIONS); return; }
- const hits = SEARCH_INDEX.filter(i => i.title.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q)).slice(0, 8);
- if (!hits.length) { searchResults.innerHTML = '<li class="search-no-results">No results found.</li>'; return; }
+ const hits = SEARCH_INDEX
+  .filter(i => i.title.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q))
+  .sort((a, b) => a.title.localeCompare(b.title))
+  .slice(0, 8);
+ if (!hits.length) {
+  searchResults.innerHTML = '<li class="search-no-results">No results for &ldquo;' + searchInput.value.trim() + '&rdquo; &mdash; try a destination or topic.</li>';
+  return;
+ }
  renderResults(hits);
  });
 }

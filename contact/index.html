@@ -17,7 +17,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact BarrelCompare, Ask a Question or Suggest a Supplier</title>
 <meta name="description" content="Contact BarrelCompare. Ask a question, suggest a UK barrel shipper to verify, report a problem, or share feedback. We do our best to respond on the same day.">
-<meta name="theme-color" content="#0a1f3d">
+<meta name="theme-color" content="#2c2c2c">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="manifest" href="/manifest.json">
 <style>
@@ -28,18 +28,18 @@
 
 :root {
  /* Brand colours */
- --navy-900: #0a1f3d;
- --navy-800: #0a1f3d;
- --navy-700: #112a4d;
- --navy-600: #1a3760;
- --orange-500: #f5a623;
- --orange-600: #e6951a;
- --blue-500: #2d6cdf;
- --blue-600: #1f57c4;
+ --navy-900: #1e1e1e;
+ --navy-800: #2c2c2c;
+ --navy-700: #3a3a3a;
+ --navy-600: #484848;
+ --orange-500: #1abcb0;
+ --orange-600: #15a99e;
+ --blue-500: #1abcb0;
+ --blue-600: #15a99e;
  --green-500: #25d366;
  --red-500: #ef4444;
  --white: #ffffff;
- --grey-100: #0a1f3d;
+ --grey-100: #f5ecd7;
  --grey-200: #e4e9f0;
  --grey-400: #9aa5b5;
  --grey-600: #5d6b7e;
@@ -125,7 +125,7 @@ section { padding: 64px 0; }
 .site-header {
  padding: 20px 0;
 
- background: rgba(10, 31, 61, 0.95);
+ background: rgba(44, 44, 44, 0.97);
  backdrop-filter: blur(8px);
  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
@@ -544,7 +544,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 :focus-visible { outline: 3px solid var(--orange-500); outline-offset: 3px; border-radius: 4px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
-.preview-banner { background: var(--navy-700);color:#f5a623;text-align:center;padding:10px 20px;font-size:0.9rem;font-weight:500; }
+.preview-banner { background: var(--navy-700);color:var(--orange-500);text-align:center;padding:10px 20px;font-size:0.9rem;font-weight:500; }
 
 /* ---- SITE SEARCH ---- */
 .search-wrap { position: relative; }
@@ -677,8 +677,9 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <!-- News ticker (site-wide) -->
 <div class="alerts-bar" aria-label="Live shipping alerts">
  <div class="container" style="display:flex;align-items:center;overflow:hidden;">
- <span class="live-tag">LIVE</span>
- <div class="ticker">
+  <span class="live-tag" style="flex-shrink:0;">LIVE</span>
+  <div style="overflow:hidden;flex:1;min-width:0;">
+  <div class="ticker">
  <span>Jamaica: 3-week transit holding steady</span>
  <span>Christmas cut-off: book by mid-November for Caribbean arrival</span>
  <span>Trinidad: clearance fees updated for 2026</span>
@@ -696,11 +697,11 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <div class="container header-inner">
  <div>
  <a href="/" class="logo">Barrel<span class="accent">Compare</span></a>
- <span style="display:block;font-size:0.8rem;font-style:italic;color:#f5a623;margin-top:2px;font-weight:400;">Ship It Easy</span>
+ <span style="display:block;font-size:0.8rem;font-style:italic;color:var(--orange-500);margin-top:2px;font-weight:400;">Ship It Easy</span>
  </div>
  <nav class="nav-desktop" aria-label="Primary">
+ <a href="/quote/">Get a Quote</a>
  <a href="/charity/">Suggest a Charity</a>
- <a href="/quote/">Get a quote</a>
  <a href="/faq/">FAQ</a>
  <a href="/about/">About</a>
  <a href="/blog/">Blogs</a>
@@ -714,8 +715,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 </header>
 </div>
 <nav class="nav-scroll-bar" aria-label="Mobile navigation">
+ <a href="/quote/">Get a Quote</a>
  <a href="/charity/">Suggest a Charity</a>
- <a href="/quote/">Get a quote</a>
  <a href="/faq/">FAQ</a>
  <a href="/about/">About</a>
  <a href="/blog/">Blogs</a>
@@ -830,7 +831,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <div class="footer-grid">
  <div class="footer-col">
  <div class="logo" style="margin-bottom:4px;">Barrel<span class="accent">Compare</span></div>
- <div style="font-size:0.8rem;font-style:italic;color:#f5a623;margin-bottom:12px;font-weight:400;">Ship It Easy</div>
+ <div style="font-size:0.8rem;font-style:italic;color:var(--orange-500);margin-bottom:12px;font-weight:400;">Ship It Easy</div>
  <p class="footer-tagline">UK's first independent barrel shipping comparison platform. Built for the West Indian community.</p>
  </div>
  <div class="footer-col">
@@ -856,7 +857,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <li><a href="/country-rules/">🔒 Country rules</a></li>
  <li><a href="/barrel-sizes/">Barrel sizes</a></li>
  <li><a href="/costs-and-pricing/">Costs and pricing</a></li>
- <li><a href="/hidden-fees/">🔒 Hidden fees guide</a></li>
+ <li><a href="/hidden-fees/">🔒 Hidden fees</a></li>
  <li><a href="/glossary/">Definitions of Terms</a></li>
  <li><a href="/customs-and-duties/">Customs and duty</a></li>
  </ul>
@@ -1013,7 +1014,7 @@ const SEARCH_INDEX = [
  { title: 'Barrel sizes', desc: 'Standard vs large barrel, dimensions and capacity', url: '/barrel-sizes/' },
  { title: 'Country rules', desc: 'Country-by-country rules for barrel contents', url: '/country-rules/' },
  { title: 'Costs and pricing', desc: 'How barrel shipping is priced and what to expect', url: '/costs-and-pricing/' },
- { title: 'Hidden fees guide', desc: 'Common hidden fees in barrel shipping and how to avoid them', url: '/hidden-fees/' },
+ { title: 'Hidden fees', desc: 'Common hidden fees in barrel shipping and how to avoid them', url: '/hidden-fees/' },
  { title: 'Barrel shipping definitions', desc: 'Key terms: LCL, FCL, manifest, Bill of Lading', url: '/glossary/' },
  { title: 'What does BarrelCompare do?', desc: 'How the platform works', url: '/what-does-barrelcompare-do/' },
  { title: 'Privacy policy', desc: 'How we handle your data', url: '/privacy/' },
