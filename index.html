@@ -622,6 +622,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .barrel-weight { background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.2); border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; color: var(--text-muted-dark); }
 .barrel-weight strong { color: var(--orange-500); }
 .barrel-placeholder { background: rgba(255,255,255,0.06); border: 2px dashed rgba(255,255,255,0.15); border-radius: var(--radius); width: 100px; height: 120px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted-dark); font-size: 0.75rem; text-align: center; padding: 8px; }
+.barrel-img { width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius); margin-bottom: 20px; display: block; }
 
 /* Reviews strip */
 .reviews-strip { background: var(--navy-700); padding: 80px 0; }
@@ -927,7 +928,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
 
  <div class="hero-cta" style="justify-content:center; margin-top:14px;">
- <a href="/compare/" class="btn btn-orange" style="font-size:1.05rem; padding:14px 36px; border-radius:var(--radius);">Compare UK Barrel Shippers</a>
+ <a href="/compare/" class="btn btn-orange" style="font-size:1.05rem; padding:14px 36px; border-radius:var(--radius);">Compare UK Barrel Suppliers/Agents</a>
  </div>
  <p class="hero-meta" style="margin-top:8px;">Free service · No obligation · Independent of shipping companies</p>
  </div>
@@ -954,7 +955,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <article class="step-card">
  <div class="step-num">1</div>
  <h3>Choose your destination</h3>
- <p>Tell us where you're shipping to across the Caribbean. We'll show you every shipper covering that route.</p>
+ <p>Tell us where you're shipping to across the Caribbean. We'll show you every supplier/agent covering that route.</p>
  </article>
  <article class="step-card">
  <div class="step-num">2</div>
@@ -983,7 +984,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </article>
  <article class="why-card">
  <h3>Supplier comparison</h3>
- <p>Every shipper on our platform is checked.</p>
+ <p>Every supplier/agent on our platform is checked.</p>
  </article>
  <article class="why-card">
  <h3>Real community reviews</h3>
@@ -1005,7 +1006,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <div class="share-form-wrap" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:32px;">
  <div class="section-eyebrow">Reviews</div>
  <h2 style="font-size:1.5rem;margin-bottom:8px;">Share your experience</h2>
- <p style="color:var(--text-muted-dark);font-size:0.92rem;margin-bottom:24px;">Used a barrel shipper? Tell the community how it went. Your review helps others make better decisions.</p>
+ <p style="color:var(--text-muted-dark);font-size:0.92rem;margin-bottom:24px;">Used a barrel supplier/agent? Tell the community how it went. Your review helps others make better decisions.</p>
 
  <form id="reviewForm" action="https://formspree.io/f/mrejrnva" method="POST" novalidate>
  <input type="hidden" name="_subject" value="New Community Review, BarrelCompare">
@@ -1044,16 +1045,16 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <label for="reviewDestination" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-dark);">Destination <span style="color:var(--orange-500);">*</span></label>
  <select id="reviewDestination" name="destination" class="form-control" required>
  <option value="">Choose destination...</option>
- <option>Jamaica</option>
- <option>Trinidad &amp; Tobago</option>
- <option>Guyana</option>
- <option>Barbados</option>
- <option>St Lucia</option>
- <option>Grenada</option>
- <option>Dominica</option>
- <option>The Bahamas</option>
  <option>Antigua &amp; Barbuda</option>
+ <option>Barbados</option>
+ <option>Dominica</option>
+ <option>Grenada</option>
+ <option>Guyana</option>
+ <option>Jamaica</option>
+ <option>St Lucia</option>
  <option>St Vincent &amp; the Grenadines</option>
+ <option>The Bahamas</option>
+ <option>Trinidad &amp; Tobago</option>
  </select>
  <span class="field-error" id="reviewDestination-error">Please select a destination.</span>
  </div>
@@ -1109,7 +1110,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <section class="reviews-strip">
  <div class="container">
  <div class="section-eyebrow">Reviews</div>
- <h2 style="font-size:1.75rem;margin-bottom:8px;">What our community says about our shippers</h2>
+ <h2 style="font-size:1.75rem;margin-bottom:8px;">What our community says about our suppliers/agents</h2>
  <p class="section-lede">Real reviews submitted after barrels arrived. Moderated before publication.</p>
 
  <div class="reviews-filter-row">
@@ -1276,25 +1277,22 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <p class="section-lede">Choose the right size for your shipment. All weights are approximate, confirm with your supplier.</p>
  <div class="barrel-grid">
  <div class="barrel-card">
- <div class="barrel-placeholder"><span>Standard barrel<br>Image<br>[Replace me]</span></div>
+ <img src="/images/barrels/barrel-standard.jpg" alt="Standard plastic barrel used for UK to Caribbean shipping" class="barrel-img" loading="lazy">
  <h3>Standard barrel</h3>
  <div class="barrel-size">Approx. 85&ndash;90cm tall &middot; 55&ndash;57cm wide</div>
  <p>The most common option used by UK shipping companies. Lighter than steel barrels and easier to handle. Many people reuse them at the destination for storage, including water storage.</p>
  <div class="barrel-weight"><strong>Best for:</strong> Clothing, food, toiletries, household goods, children's items</div>
  </div>
  <div class="barrel-card">
- <div class="barrel-placeholder"><span>Large barrel<br>Image<br>[Replace me]</span></div>
+ <img src="/images/barrels/barrel-large.jpg" alt="Large blue barrel for UK to Caribbean shipping" class="barrel-img" loading="lazy">
  <h3>Large barrel</h3>
  <div class="barrel-size">Approx. 100&ndash;107cm tall &middot; 57&ndash;60cm wide</div>
- <p>Offers extra space for larger shipments. Some shipping companies charge a higher rate for this size. Not all shippers offer large barrels, so always check before booking.</p>
+ <p>Offers extra space for larger shipments. Some shipping companies charge a higher rate for this size. Not all suppliers/agents offer large barrels, so always check before booking.</p>
  <div class="barrel-weight"><strong>Best for:</strong> Larger loads, extra clothing, bulkier household items</div>
  </div>
  <div class="barrel-card">
- <!-- IMAGE PLACEHOLDER: Box shipping, replace src with copyright-free image URL -->
- <div class="barrel-placeholder">
- <span>Box Shipping<br>Image<br>[Replace me]</span>
- </div>
- <h3>Box Shipping</h3>
+ <img src="/images/barrels/box-shipping.jpg" alt="Cardboard box for smaller shipments" class="barrel-img" loading="lazy">
+ <h3>Box shipping</h3>
  <div class="barrel-size">Various sizes</div>
  <p>Ideal for smaller shipments, fragile items, or when a full barrel isn't needed. Size and weight limits vary by supplier.</p>
  <div class="barrel-weight"><strong>Typical max weight:</strong> Depends on courier</div>
@@ -1308,7 +1306,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <div class="container">
  <div class="section-eyebrow">Collection finder</div>
  <h2 class="section-title" style="margin-bottom:12px;">Which suppliers collect near you?</h2>
- <p class="section-lede">Enter your postcode to find barrel shippers that collect in your area.</p>
+ <p class="section-lede">Enter your postcode to find barrel suppliers/agents that collect in your area.</p>
  <div class="finder-box">
  <div class="finder-input-row">
  <input type="text" id="postcodeInput" class="finder-input" placeholder="Enter your postcode e.g. SW1A 1AA" maxlength="8" style="text-transform:uppercase;">
@@ -1353,7 +1351,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <div class="container" style="text-align:center;">
  <div class="section-eyebrow">Trustpilot</div>
  <h2 style="font-size:1.75rem;margin-bottom:8px;">What people say about BarrelCompare</h2>
- <p style="color:var(--text-muted-dark);max-width:480px;margin:0 auto 32px;font-size:1rem;">Reviews of our platform, independent of individual shipper reviews above.</p>
+ <p style="color:var(--text-muted-dark);max-width:480px;margin:0 auto 32px;font-size:1rem;">Reviews of our platform, independent of individual supplier/agent reviews above.</p>
  <div style="max-width:560px;margin:0 auto;">
  <div class="trustpilot-widget" data-locale="en-GB" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="69d3d7b3ea7a3bcec15beabd" data-style-height="52px" data-style-width="100%" data-theme="dark">
  <a href="https://uk.trustpilot.com/review/barrelcompare.co.uk" target="_blank" rel="noopener">Trustpilot</a>
@@ -1593,8 +1591,8 @@ document.getElementById('postcodeInput').addEventListener('keydown', (e) => {
 <script>
 const SEARCH_INDEX = [
  // Core pages
- { title: 'Compare barrel shippers', desc: 'Side-by-side comparison of UK barrel shipping companies', url: '/compare/' },
- { title: 'Get a quote', desc: 'Request a quote from a barrel shipper', url: '/quote/' },
+ { title: 'Compare barrel suppliers/agents', desc: 'Side-by-side comparison of UK barrel shipping companies', url: '/compare/' },
+ { title: 'Get a quote', desc: 'Request a quote from a barrel supplier/agent', url: '/quote/' },
  { title: 'FAQ', desc: 'Frequently asked questions about barrel shipping', url: '/faq/' },
  { title: 'About BarrelCompare', desc: 'Who we are and how BarrelCompare works', url: '/about/' },
  { title: 'Blogs', desc: 'Guides, packing tips, costs and more', url: '/blog/' },
@@ -1623,9 +1621,9 @@ const SEARCH_INDEX = [
  { title: 'St Vincent barrel shipping guide', desc: 'Prices, ports, customs and tips for St Vincent', url: '/destination-guide-barrel-shipping-uk-to-st-vincent/' },
  { title: 'Bahamas barrel shipping guide', desc: 'Prices, ports, customs and tips for The Bahamas', url: '/destination-guide-barrel-shipping-uk-to-bahamas/' },
  // Comparison pages
- { title: 'Jamaica shipping', desc: 'Compare barrel shippers to Jamaica', url: '/barrel-shipping-jamaica/' },
- { title: 'Trinidad shipping', desc: 'Compare barrel shippers to Trinidad', url: '/barrel-shipping-trinidad/' },
- { title: 'Barbados shipping', desc: 'Compare barrel shippers to Barbados', url: '/barrel-shipping-barbados/' },
+ { title: 'Jamaica shipping', desc: 'Compare barrel suppliers/agents to Jamaica', url: '/barrel-shipping-jamaica/' },
+ { title: 'Trinidad shipping', desc: 'Compare barrel suppliers/agents to Trinidad', url: '/barrel-shipping-trinidad/' },
+ { title: 'Barbados shipping', desc: 'Compare barrel suppliers/agents to Barbados', url: '/barrel-shipping-barbados/' },
  // Company
  { title: 'Privacy policy', desc: 'How we handle your data', url: '/privacy/' },
  { title: 'Terms of use', desc: 'Our terms of service', url: '/terms/' },
@@ -1633,7 +1631,7 @@ const SEARCH_INDEX = [
 ];
 const DEFAULT_SUGGESTIONS = [
  { title: 'Collection finder', desc: 'Find barrel collection points near you', url: '/collection-finder/' },
- { title: 'Compare barrel shippers', desc: 'Side-by-side comparison of UK barrel shipping companies', url: '/compare/' },
+ { title: 'Compare barrel suppliers/agents', desc: 'Side-by-side comparison of UK barrel shipping companies', url: '/compare/' },
  { title: 'Country rules', desc: 'Country-by-country rules for barrel contents', url: '/country-rules/' },
  { title: 'Customs and duties', desc: 'Import taxes and customs rules for Caribbean barrel shipping', url: '/customs-and-duties/' },
  { title: 'Definitions of Terms', desc: 'Key shipping terms explained', url: '/glossary/' },

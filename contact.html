@@ -16,7 +16,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact BarrelCompare, Ask a Question or Suggest a Supplier</title>
-<meta name="description" content="Contact BarrelCompare. Ask a question, suggest a UK barrel shipper to verify, report a problem, or share feedback. We do our best to respond on the same day.">
+<meta name="description" content="Contact BarrelCompare. Ask a question, suggest a UK barrel supplier/agent to verify, report a problem, or share feedback. We do our best to respond on the same day.">
 <meta name="theme-color" content="#2c2c2c">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="manifest" href="/manifest.json">
@@ -870,7 +870,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Site search">
  <div class="search-box">
  <div class="search-input-row">
- <input type="text" class="search-input" id="searchInput" placeholder="Search by postcode, destination or supplier..." autocomplete="off">
+ <input type="text" class="search-input" id="searchInput" placeholder="Search by destination, supplier or topic..." autocomplete="off">
  <button class="search-close" id="searchClose" aria-label="Close search">Close</button>
  </div>
  <ul class="search-results" id="searchResults"></ul>
@@ -878,125 +878,50 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 </div>
 
 <script>
-// ── Contact form ──────────────────────────────────────────────────────────────
-// FORMSPREE ENDPOINT: replace xrejbkjz with your dedicated contact form ID
-var FS_CONTACT = 'mrejrnva';
-
-document.getElementById('contactTimestamp').value = new Date().toISOString();
-
-var contactForm = document.getElementById('contactForm');
-var contactSubmitBtn = document.getElementById('contactSubmitBtn');
-var contactBtnText = document.getElementById('contactBtnText');
-var contactBtnSpinner = document.getElementById('contactBtnSpinner');
-var contactSuccess = document.getElementById('successMsg');
-var contactError = document.getElementById('errorMsg');
-
-if (contactForm) {
-  // Update subject line based on department selection
-  var deptSelect = document.getElementById('department');
-  if (deptSelect) {
-    deptSelect.addEventListener('change', function() {
-      var subj = document.getElementById('contactSubject');
-      if (subj) subj.value = 'Contact: ' + (this.value || 'General') + ' | BarrelCompare';
-    });
-  }
-
-  contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    contactError.style.display = 'none';
-
-    // Validate required fields
-    var fields = ['name', 'email', 'department', 'message'];
-    var valid = true;
-    fields.forEach(function(id) {
-      var el = document.getElementById(id);
-      if (!el || !el.value.trim()) {
-        if (el) el.style.borderColor = 'var(--red-500)';
-        valid = false;
-      } else {
-        if (el) el.style.borderColor = '';
-      }
-    });
-    if (!valid) {
-      contactError.textContent = 'Please fill in all required fields.';
-      contactError.style.display = 'block';
-      return;
-    }
-
-    // Honeypot check
-    var hp = contactForm.querySelector('input[name="_gotcha"]');
-    if (hp && hp.value) return;
-
-    // Loading state
-    contactSubmitBtn.disabled = true;
-    contactBtnText.style.display = 'none';
-    contactBtnSpinner.style.display = 'inline';
-
-    try {
-      var res = await fetch('https://formspree.io/f/' + FS_CONTACT, {
-        method: 'POST',
-        body: new FormData(contactForm),
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        contactForm.style.display = 'none';
-        contactSuccess.style.display = 'block';
-        contactSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        // GA4 event
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'contact_submit', {
-            event_category: 'Forms',
-            event_label: document.getElementById('department') ? document.getElementById('department').value : 'unknown'
-          });
-        }
-      } else {
-        throw new Error('failed');
-      }
-    } catch(err) {
-      contactError.textContent = 'Something went wrong. Please try again or email hello@barrelcompare.co.uk directly.';
-      contactError.style.display = 'block';
-      contactSubmitBtn.disabled = false;
-      contactBtnText.style.display = 'inline';
-      contactBtnSpinner.style.display = 'none';
-    }
-  });
-}
-</script>
-
-<script>
 const SEARCH_INDEX = [
- { title: 'Compare barrel shippers', desc: 'Side-by-side comparison of UK barrel shipping companies', url: '/compare/' },
- { title: 'Get a quote', desc: 'Request a quote from a barrel shipper', url: '/quote/' },
+ { title: 'Compare barrel suppliers/agents', desc: 'Side-by-side comparison of UK barrel shipping companies', url: '/compare/' },
+ { title: 'Get a quote', desc: 'Request a quote from a barrel supplier/agent', url: '/quote/' },
  { title: 'FAQ', desc: 'Frequently asked questions about barrel shipping', url: '/faq/' },
  { title: 'About BarrelCompare', desc: 'Who we are and how BarrelCompare works', url: '/about/' },
  { title: 'Blogs', desc: 'Guides, packing tips, costs and more', url: '/blog/' },
  { title: 'Contact us', desc: 'Get in touch with BarrelCompare', url: '/contact/' },
- { title: 'Barrel sizes', desc: 'Standard vs large barrel, dimensions and capacity', url: '/barrel-sizes/' },
+ { title: 'Share a review', desc: 'Submit your barrel shipping experience', url: '/share/' },
+ { title: 'Suggest a charity', desc: 'Recommend a charity that benefits from barrel donations', url: '/charity/' },
+ { title: 'Customs and duties', desc: 'Import taxes and customs rules for Caribbean barrel shipping', url: '/customs-and-duties/' },
  { title: 'Country rules', desc: 'Country-by-country rules for barrel contents', url: '/country-rules/' },
+ { title: 'Barrel sizes', desc: 'Standard vs large barrel, dimensions and capacity', url: '/barrel-sizes/' },
  { title: 'Costs and pricing', desc: 'How barrel shipping is priced and what to expect', url: '/costs-and-pricing/' },
  { title: 'Hidden fees', desc: 'Common hidden fees in barrel shipping and how to avoid them', url: '/hidden-fees/' },
- { title: 'Barrel shipping definitions', desc: 'Key terms: LCL, FCL, manifest, Bill of Lading', url: '/glossary/' },
+ { title: 'Shipping insurance', desc: 'Are your barrel contents insured? What you need to know', url: '/shipping-insurance/' },
+ { title: 'Definitions of Terms', desc: 'Key shipping terms: LCL, FCL, manifest, Bill of Lading', url: '/glossary/' },
+ { title: 'Collection finder', desc: 'Find barrel collection points near you', url: '/collection-finder/' },
  { title: 'What does BarrelCompare do?', desc: 'How the platform works', url: '/what-does-barrelcompare-do/' },
+ { title: 'Jamaica barrel shipping guide', desc: 'Prices, ports, customs and tips for shipping to Jamaica', url: '/destination-guide-barrel-shipping-uk-to-jamaica/' },
+ { title: 'Trinidad barrel shipping guide', desc: 'Prices, ports, customs and tips for shipping to Trinidad', url: '/destination-guide-barrel-shipping-uk-to-trinidad/' },
+ { title: 'Barbados barrel shipping guide', desc: 'Prices, ports, customs and tips for shipping to Barbados', url: '/destination-guide-barrel-shipping-uk-to-barbados/' },
+ { title: 'Guyana barrel shipping guide', desc: 'Prices, ports, customs and tips for shipping to Guyana', url: '/destination-guide-barrel-shipping-uk-to-guyana/' },
+ { title: 'St Lucia barrel shipping guide', desc: 'Prices, ports, customs and tips for shipping to St Lucia', url: '/destination-guide-barrel-shipping-uk-to-saint-lucia/' },
+ { title: 'Grenada barrel shipping guide', desc: 'Prices, ports, customs and tips for shipping to Grenada', url: '/destination-guide-barrel-shipping-uk-to-grenada/' },
+ { title: 'Dominica barrel shipping guide', desc: 'Prices, ports, customs and tips for shipping to Dominica', url: '/destination-guide-barrel-shipping-uk-to-dominica/' },
+ { title: 'Antigua barrel shipping guide', desc: 'Prices, ports, customs and tips for shipping to Antigua', url: '/destination-guide-barrel-shipping-uk-to-antigua/' },
+ { title: 'St Vincent barrel shipping guide', desc: 'Prices, ports, customs and tips for St Vincent', url: '/destination-guide-barrel-shipping-uk-to-st-vincent/' },
+ { title: 'Bahamas barrel shipping guide', desc: 'Prices, ports, customs and tips for The Bahamas', url: '/destination-guide-barrel-shipping-uk-to-bahamas/' },
+ { title: 'Jamaica shipping', desc: 'Compare barrel suppliers/agents to Jamaica', url: '/barrel-shipping-jamaica/' },
+ { title: 'Trinidad shipping', desc: 'Compare barrel suppliers/agents to Trinidad', url: '/barrel-shipping-trinidad/' },
+ { title: 'Barbados shipping', desc: 'Compare barrel suppliers/agents to Barbados', url: '/barrel-shipping-barbados/' },
  { title: 'Privacy policy', desc: 'How we handle your data', url: '/privacy/' },
  { title: 'Terms of use', desc: 'Our terms of service', url: '/terms/' },
- { title: 'Jamaica shipping', desc: 'Compare shippers to Jamaica', url: '/compare/?destination=jamaica' },
- { title: 'Trinidad shipping', desc: 'Compare shippers to Trinidad', url: '/compare/?destination=trinidad' },
- { title: 'Guyana shipping', desc: 'Compare shippers to Guyana', url: '/compare/?destination=guyana' },
- { title: 'Barbados shipping', desc: 'Compare shippers to Barbados', url: '/compare/?destination=barbados' },
- { title: 'Grenada shipping', desc: 'Compare shippers to Grenada', url: '/compare/?destination=grenada' },
- { title: 'St Lucia shipping', desc: 'Compare shippers to St Lucia', url: '/compare/?destination=stlucia' },
- { title: 'Dominica shipping', desc: 'Compare shippers to Dominica', url: '/compare/?destination=dominica' },
- { title: 'Antigua shipping', desc: 'Compare shippers to Antigua', url: '/compare/?destination=antigua' },
- { title: 'St Vincent shipping', desc: 'Compare shippers to St Vincent', url: '/compare/?destination=stvincent' },
- { title: 'The Bahamas shipping', desc: 'Compare shippers to The Bahamas', url: '/compare/?destination=bahamas' },
+ { title: 'Disclosure', desc: 'How BarrelCompare makes money', url: '/disclosure/' },
 ];
 const DEFAULT_SUGGESTIONS = [
- { title: 'Compare barrel shippers', desc: 'Side-by-side comparison', url: '/compare/' },
- { title: 'Get a quote', desc: 'Request a quote from a barrel shipper', url: '/quote/' },
- { title: 'Country rules', desc: 'What can I send?', url: '/country-rules/' },
- { title: 'FAQ', desc: 'Frequently asked questions', url: '/faq/' },
- { title: 'Barrel sizes', desc: 'Standard and large barrel dimensions', url: '/barrel-sizes/' },
+ { title: 'Collection finder', desc: 'Find barrel collection points near you', url: '/collection-finder/' },
+ { title: 'Compare barrel suppliers/agents', desc: 'Side-by-side comparison of UK barrel shipping companies', url: '/compare/' },
+ { title: 'Country rules', desc: 'Country-by-country rules for barrel contents', url: '/country-rules/' },
+ { title: 'Customs and duties', desc: 'Import taxes and customs rules for Caribbean barrel shipping', url: '/customs-and-duties/' },
+ { title: 'Definitions of Terms', desc: 'Key shipping terms explained', url: '/glossary/' },
+ { title: 'Hidden fees', desc: 'Common hidden fees in barrel shipping and how to avoid them', url: '/hidden-fees/' },
+ { title: 'How it works', desc: 'Three steps to compare and ship with confidence', url: '/#how' },
+ { title: 'Reviews', desc: 'Real reviews from the UK Caribbean shipping community', url: '/share/' },
 ];
 const searchOverlay = document.getElementById('searchOverlay');
 const searchInput = document.getElementById('searchInput');
@@ -1015,6 +940,7 @@ function renderResults(items) {
 }
 function openSearch() {
  if (!searchOverlay) return;
+ if (searchInput) searchInput.value = '';
  searchOverlay.classList.add('open');
  renderResults(DEFAULT_SUGGESTIONS);
  setTimeout(() => { if (searchInput) searchInput.focus(); }, 50);
@@ -1037,8 +963,14 @@ if (searchInput) {
  searchInput.addEventListener('input', () => {
  const q = searchInput.value.trim().toLowerCase();
  if (!q) { renderResults(DEFAULT_SUGGESTIONS); return; }
- const hits = SEARCH_INDEX.filter(i => i.title.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q)).slice(0, 8);
- if (!hits.length) { searchResults.innerHTML = '<li class="search-no-results">No results found.</li>'; return; }
+ const hits = SEARCH_INDEX
+  .filter(i => i.title.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q))
+  .sort((a, b) => a.title.localeCompare(b.title))
+  .slice(0, 8);
+ if (!hits.length) {
+  searchResults.innerHTML = '<li class="search-no-results">No results for &ldquo;' + searchInput.value.trim() + '&rdquo; &mdash; try a destination or topic.</li>';
+  return;
+ }
  renderResults(hits);
  });
 }
