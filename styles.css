@@ -533,6 +533,13 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .star-legend span { display: inline-flex; align-items: center; gap: 4px; }
 .rating-note { margin-top: 24px; text-align: center; color: var(--text-muted-dark); font-size: 0.82rem; font-style: italic; max-width: 560px; margin-left: auto; margin-right: auto; }
 
+/* ---- SUPPLIER RATING ROW ---- */
+.supplier-rating-row { display:flex; align-items:center; gap:10px; padding:10px 0; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:16px; }
+.supplier-star-display { color:var(--orange-500); font-size:1rem; letter-spacing:1px; line-height:1; }
+.supplier-rating-label { font-size:0.8rem; color:var(--text-muted-dark); }
+.supplier-rating-label a { color:var(--orange-500); text-decoration:none; }
+.supplier-rating-label a:hover { text-decoration:underline; }
+
 /* ---- BARREL CARD IMAGES ---- */
 .barrel-img { width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius); margin-bottom: 20px; display: block; }
 

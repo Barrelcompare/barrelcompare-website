@@ -472,6 +472,9 @@ textarea.form-control { min-height: 120px; resize: vertical; }
 
 /* ---- COMPARE PREVIEW (homepage) ---- */
 .compare-preview { background: var(--navy-700); }
+.reviews-combined-grid { display:grid; gap:40px; align-items:start; grid-template-columns:1fr; }
+@media (min-width: 1024px) { .reviews-combined-grid { grid-template-columns:1fr 1fr; } }
+.reviews-feed-col { min-width: 0; }
 
 /* ---- FINAL CTA ---- */
 .final-cta {
@@ -974,8 +977,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <!-- Why BarrelCompare -->
 <section class="why-section">
  <div class="container">
- <div class="section-eyebrow">Why BarrelCompare</div>
- <h2 class="section-title">A consumer champion for the community.</h2>
+ <div class="section-eyebrow">Why BarrelCompare?</div>
  <p class="section-lede">For too long, sending a barrel home has meant patchy WhatsApp groups, unverifiable claims, and "trust me, my cousin uses them." We're changing that.</p>
  <div class="why-grid">
  <article class="why-card">
@@ -1001,8 +1003,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <!-- Supplier preview + Share your experience side by side -->
 <section class="compare-preview">
  <div class="container">
- <div style="display:grid; gap:40px; grid-template-columns:1fr;" id="supplierShareGrid">
- <!-- Share your experience -->
+ <div class="reviews-combined-grid" id="supplierShareGrid">
+ <!-- LEFT: Reviews submission tile -->
  <div class="share-form-wrap" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:32px;">
  <div class="section-eyebrow">Reviews</div>
  <h2 style="font-size:1.5rem;margin-bottom:8px;">Share your experience</h2>
@@ -1098,20 +1100,20 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 
  <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);">
  <p style="color:var(--text-muted-dark);font-size:0.8rem;font-style:italic;text-align:center;">Our rating system takes a range of factors into consideration when determining supplier scores. Customer feedback and reviews play an important role in helping maintain the quality, trust and reliability of our network.</p>
- <!-- GOOGLE REVIEWS INTEGRATION - ACTIVATE WHEN API KEY CONFIRMED -->
- <!-- <div id="googleReviewsWidget"></div> -->
+ </div>
+ <!-- Star rating key inside Reviews tile -->
+ <div class="star-legend" style="margin-top:16px;justify-content:center;">
+ <span>&#9733; Poor</span>
+ <span>&#9733;&#9733; Fair</span>
+ <span>&#9733;&#9733;&#9733; Good</span>
+ <span>&#9733;&#9733;&#9733;&#9733; Very good</span>
+ <span>&#9733;&#9733;&#9733;&#9733;&#9733; Excellent</span>
  </div>
  </div>
- </div>
- </div>
-</section>
 
-<!-- Reviews vertical feed -->
-<section class="reviews-strip">
- <div class="container">
- <div class="section-eyebrow">Reviews</div>
- <h2 style="font-size:1.75rem;margin-bottom:8px;">What our community says about our suppliers/agents</h2>
- <p class="section-lede">Real reviews submitted after barrels arrived. Moderated before publication.</p>
+ <!-- RIGHT: Community reviews feed -->
+ <div class="reviews-feed-col">
+ <h2 style="font-size:1.35rem;margin-bottom:16px;">What our community says</h2>
 
  <div class="reviews-filter-row">
  <label for="reviewThemeFilter">Filter by topic:</label>
@@ -1170,18 +1172,13 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
  </div>
  <p id="reviewsFeedEmpty" class="reviews-empty" style="display:none;">No reviews match this filter. Try a different topic.</p>
-
- <div class="star-legend">
- <span>&#9733; Poor</span>
- <span>&#9733;&#9733; Fair</span>
- <span>&#9733;&#9733;&#9733; Good</span>
- <span>&#9733;&#9733;&#9733;&#9733; Very good</span>
- <span>&#9733;&#9733;&#9733;&#9733;&#9733; Excellent</span>
+ <p class="rating-note" style="margin-top:16px;">Reviews are moderated before publication. Our rating criteria covers multiple aspects of the shipping experience.</p>
  </div>
 
- <p class="rating-note">Reviews are moderated before publication. Our rating criteria covers multiple aspects of the shipping experience.</p>
+ </div>
  </div>
 </section>
+
 
 <script>
 // Reviews vertical scroll feed
