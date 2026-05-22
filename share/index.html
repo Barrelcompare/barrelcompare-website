@@ -21,6 +21,10 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="manifest" href="/manifest.json">
 <link rel="stylesheet" href="/styles.css">
+<style>
+.field-error { display: none; color: #ef4444; font-size: 0.8rem; margin-top: 4px; }
+.form-control.invalid { border-color: #ef4444 !important; }
+</style>
 <link rel="canonical" href="https://barrelcompare.co.uk/share/">
 <meta name="robots" content="noindex, follow">
 <script type="application/ld+json">
@@ -86,20 +90,27 @@
 
  <form id="reviewForm" action="https://formspree.io/f/xrejbkjz" method="POST" novalidate>
  <input type="hidden" name="_next" value="https://barrelcompare.co.uk/thank-you/">
+ <input type="hidden" name="_replyto" id="reviewReplyTo">
+ <input type="hidden" name="_autoresponse" value="Thank you for submitting your review to BarrelCompare. We check every review before publishing to ensure fairness and accuracy. We aim to verify and publish within 2–3 working days. If we need anything further from you, we will be in touch. Thank you for helping the community make better decisions. — The BarrelCompare Team">
 
  <div class="form-success" id="successMsg" style="display: none;">
- ✓ Review submitted. We'll verify and publish within 3 working days.
+ ✓ Review received. We verify every submission before publishing — you'll receive a confirmation email shortly. We aim to publish within 2–3 working days.
+ </div>
+ <div class="form-error" id="formErrorMsg" style="display: none;">
+ Something went wrong. Please try again or email <a href="mailto:hello@barrelcompare.co.uk" style="color:var(--orange-500);">hello@barrelcompare.co.uk</a>.
  </div>
 
  <div class="form-row">
  <div class="form-group">
  <label for="firstName">Your first name <span class="required">*</span></label>
  <input type="text" id="firstName" name="firstName" class="form-control" required>
+ <span class="field-error" id="firstName-error">Please enter your first name.</span>
  <small>Only your first name will be published.</small>
  </div>
  <div class="form-group">
  <label for="email">Email <span class="required">*</span></label>
  <input type="email" id="email" name="email" class="form-control" required>
+ <span class="field-error" id="email-error">Please enter a valid email address.</span>
  <small>For verification only - never published.</small>
  </div>
  </div>
@@ -108,6 +119,7 @@
  <div class="form-group">
  <label for="supplier">Which shipper did you use? <span class="required">*</span></label>
  <input type="text" id="supplier" name="supplier" class="form-control" placeholder="e.g. West Indies Direct" required>
+ <span class="field-error" id="supplier-error">Please enter the shipper name.</span>
  </div>
  <div class="form-group">
  <label for="destination">Destination <span class="required">*</span></label>
@@ -120,6 +132,7 @@
  <option value="Nigeria">Nigeria</option>
  <option value="Other">Other</option>
  </select>
+ <span class="field-error" id="destination-error">Please select a destination.</span>
  </div>
  </div>
 
@@ -134,6 +147,7 @@
  <option value="2">★★ Poor</option>
  <option value="1">★ Avoid</option>
  </select>
+ <span class="field-error" id="rating-error">Please select a rating.</span>
  </div>
  <div class="form-group">
  <label for="shipDate">Approximate ship date</label>
@@ -144,18 +158,21 @@
  <div class="form-group">
  <label for="reviewText">Your review <span class="required">*</span></label>
  <textarea id="reviewText" name="reviewText" class="form-control" required placeholder="What was the price? Did the barrel arrive on time? Was it handled well? Any hidden fees? What would you tell a friend?"></textarea>
+ <span class="field-error" id="reviewText-error">Please write your review.</span>
  <small>Be specific and factual. We won't publish unverifiable accusations or personal attacks.</small>
  </div>
 
  <div class="form-group">
- <label for="proof">Proof of shipping (helps us verify faster)</label>
- <input type="text" id="proof" name="proof" class="form-control" placeholder="e.g. tracking number, booking reference">
- <small>Optional but speeds up verification. Never published.</small>
+ <label for="bookingRef">Booking Reference / Shipment Code <span class="required">*</span></label>
+ <input type="text" id="bookingRef" name="booking_reference" class="form-control" required placeholder="e.g. WID-2025-0041">
+ <span class="field-error" id="bookingRef-error">Please enter your booking or shipment reference.</span>
+ <small>Your booking/shipment reference helps us verify your review. You'll find this on your confirmation email or receipt. Never published.</small>
  </div>
 
  <div class="form-group checkbox-row">
  <input type="checkbox" id="consent" name="consent" required>
  <label for="consent">I confirm this is my honest experience and I'm happy for my first name and review text to be published. <span class="required">*</span></label>
+ <span class="field-error" id="consent-error" style="display:none;">You must confirm this before submitting.</span>
  </div>
 
  <button type="submit" class="btn btn-orange btn-block">Submit review</button>
@@ -163,12 +180,74 @@
 
  </form>
 <script>
-document.getElementById('reviewForm').addEventListener('submit', function(){
- if (typeof gtag !== 'undefined') gtag('event', 'review_submit', {
-  event_category: 'Forms',
-  event_label: (document.getElementById('supplier') ? document.getElementById('supplier').value : '')
+(function() {
+ var form = document.getElementById('reviewForm');
+ if (!form) return;
+
+ function showErr(id, msg) {
+  var el = document.getElementById(id);
+  var err = document.getElementById(id + '-error');
+  if (el) el.classList.add('invalid');
+  if (err) { if (msg) err.textContent = msg; err.style.display = 'block'; }
+ }
+ function clearErr(id) {
+  var el = document.getElementById(id);
+  var err = document.getElementById(id + '-error');
+  if (el) el.classList.remove('invalid');
+  if (err) err.style.display = 'none';
+ }
+
+ ['firstName','email','supplier','destination','rating','reviewText','bookingRef'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('input', function() { clearErr(id); });
+  el.addEventListener('change', function() { clearErr(id); });
  });
-});
+
+ form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  document.getElementById('formErrorMsg').style.display = 'none';
+  var valid = true;
+
+  var fname = document.getElementById('firstName').value.trim();
+  if (!fname) { showErr('firstName', 'Please enter your first name.'); valid = false; } else clearErr('firstName');
+
+  var emailVal = document.getElementById('email').value.trim();
+  if (!emailVal) { showErr('email', 'Email is required.'); valid = false; }
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) { showErr('email', 'Please enter a valid email address.'); valid = false; }
+  else clearErr('email');
+
+  if (!document.getElementById('supplier').value.trim()) { showErr('supplier', 'Please enter the shipper name.'); valid = false; } else clearErr('supplier');
+  if (!document.getElementById('destination').value) { showErr('destination', 'Please select a destination.'); valid = false; } else clearErr('destination');
+  if (!document.getElementById('rating').value) { showErr('rating', 'Please select a rating.'); valid = false; } else clearErr('rating');
+  if (!document.getElementById('reviewText').value.trim()) { showErr('reviewText', 'Please write your review.'); valid = false; } else clearErr('reviewText');
+  if (!document.getElementById('bookingRef').value.trim()) { showErr('bookingRef', 'Please enter your booking or shipment reference.'); valid = false; } else clearErr('bookingRef');
+
+  var consent = document.getElementById('consent');
+  var consentErr = document.getElementById('consent-error');
+  if (!consent.checked) { consentErr.style.display = 'block'; consent.classList.add('invalid'); valid = false; }
+  else { consentErr.style.display = 'none'; consent.classList.remove('invalid'); }
+
+  if (!valid) { form.querySelector('.invalid').focus(); return; }
+
+  document.getElementById('reviewReplyTo').value = document.getElementById('email').value;
+
+  var btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true; btn.textContent = 'Sending...';
+
+  try {
+   var res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+   if (res.ok) {
+    form.style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+    if (typeof gtag !== 'undefined') gtag('event', 'review_submit', { event_category: 'Forms', event_label: document.getElementById('supplier').value });
+   } else throw new Error();
+  } catch(err) {
+   btn.disabled = false; btn.textContent = 'Submit review';
+   document.getElementById('formErrorMsg').style.display = 'block';
+  }
+ });
+})();
 </script>
 
  </div>
@@ -185,9 +264,9 @@ document.getElementById('reviewForm').addEventListener('submit', function(){
  <div class="footer-col">
  <h4>Compare</h4>
  <ul>
- <li><a href="/barrel-shipping-jamaica/">Jamaica</a></li>
- <li><a href="/barrel-shipping-trinidad/">Trinidad &amp; Tobago</a></li>
- <li><a href="/compare/?destination=guyana">Guyana</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-jamaica/">Jamaica</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-trinidad/">Trinidad &amp; Tobago</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-guyana/">Guyana</a></li>
  <li><a href="/compare/?destination=ghana">Ghana</a></li>
  <li><a href="/compare/?destination=nigeria">Nigeria</a></li>
  </ul>

@@ -1,3 +1,8 @@
 /caribbean-barrel-shipping-costs.html  /costs-and-pricing/  301
 /customs-duty.html                     /country-rules/       301
 /reviews.html                          /compare/             301
+
+# Destination guide redirects — canonical pages already exist at shorter URLs
+/destination-guide-barrel-shipping-uk-to-jamaica/   /barrel-shipping-jamaica/   301
+/destination-guide-barrel-shipping-uk-to-trinidad/  /barrel-shipping-trinidad/  301
+/destination-guide-barrel-shipping-uk-to-barbados/  /barrel-shipping-barbados/  301

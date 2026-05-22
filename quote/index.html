@@ -432,6 +432,8 @@ textarea.form-control { min-height: 120px; resize: vertical; }
  padding: 16px 20px; border-radius: var(--radius);
  margin-bottom: 24px;
 }
+.field-error { display: none; color: #ef4444; font-size: 0.8rem; margin-top: 4px; }
+.form-control.invalid { border-color: #ef4444 !important; }
 
 /* ---- CARDS / GENERIC ---- */
 .card {
@@ -640,6 +642,14 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .cookie-text { flex: 1; min-width: 200px; margin: 0; font-size: 0.88rem; color: var(--text-muted-dark); }
 .cookie-btns { display: flex; gap: 10px; flex-shrink: 0; }
 
+/* ---- INSURANCE MODAL ---- */
+#insuranceModal { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(10,31,61,0.88); align-items: center; justify-content: center; padding: 20px; }
+#insuranceModal.open { display: flex; }
+.insurance-card { background: var(--navy-700); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-lg); max-width: 480px; width: 100%; padding: 36px 32px; text-align: center; }
+.insurance-card h2 { font-size: 1.35rem; margin-bottom: 12px; }
+.insurance-card p { color: var(--text-muted-dark); font-size: 0.95rem; margin-bottom: 28px; line-height: 1.6; }
+.insurance-actions { display: flex; flex-direction: column; gap: 10px; }
+
 </style>
 <style>
  .preview-banner {
@@ -735,7 +745,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <span style="display:block;font-size:0.8rem;font-style:italic;color:#f5a623;margin-top:2px;font-weight:400;">Ship It Easy</span>
  </div>
  <nav class="nav-desktop" aria-label="Primary">
- <a href="/compare/">Compare options</a>
+ <a href="/charity/">Suggest a Charity</a>
  <a href="/quote/" class="active">Get a quote</a>
  <a href="/faq/">FAQ</a>
  <a href="/about/">About</a>
@@ -750,7 +760,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 </header>
 </div>
 <nav class="nav-scroll-bar" aria-label="Mobile navigation">
- <a href="/compare/">Compare options</a>
+ <a href="/charity/">Suggest a Charity</a>
  <a href="/quote/" class="active">Get a quote</a>
  <a href="/faq/">FAQ</a>
  <a href="/about/">About</a>
@@ -838,10 +848,11 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <option>St Lucia</option>
  <option>Grenada</option>
  <option>Dominica</option>
-<option>The Bahamas</option>
+ <option>The Bahamas</option>
  <option>Antigua &amp; Barbuda</option>
  <option>St Vincent &amp; the Grenadines</option>
  </select>
+ <span class="field-error" id="destination-error">Please select a destination.</span>
  </div>
  <div class="form-group">
  <label for="destination_town">Delivery town / area</label>
@@ -858,6 +869,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <option>Large (44 Imperial gallons)</option>
  <option>Not sure, need advice</option>
  </select>
+ <span class="field-error" id="barrel_size-error">Please select a barrel size.</span>
  </div>
  <div class="form-group">
  <label for="barrel_qty">Number of barrels <span class="required">*</span></label>
@@ -869,6 +881,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <option>4</option>
  <option>5+</option>
  </select>
+ <span class="field-error" id="barrel_qty-error">Please select a quantity.</span>
  </div>
  </div>
 
@@ -884,12 +897,14 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <option>Household items</option>
  <option>Other, please specify in notes</option>
  </select>
+ <span class="field-error" id="contents-error">Please select what you are sending.</span>
  <small style="color:var(--text-muted-dark);">Customs restrictions may apply depending on your destination.</small>
  </div>
 
  <div class="form-group">
  <label for="collection_postcode">Your UK collection postcode <span class="required">*</span></label>
  <input type="text" id="collection_postcode" name="collection_postcode" class="form-control" required placeholder="e.g. E1 7AZ" style="text-transform:uppercase;" maxlength="8">
+ <span class="field-error" id="collection_postcode-error">Please enter your collection postcode.</span>
  </div>
 
  <div class="form-group">
@@ -916,6 +931,9 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <input class="hp-field" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
          <input type="hidden" name="_timestamp" id="quoteTimestamp">
          <input type="hidden" name="_source" id="quoteSource">
+ <input type="hidden" name="_replyto" id="quoteReplyTo">
+ <input type="hidden" name="_autoresponse" value="Thank you for requesting a quote through BarrelCompare. We have forwarded your details to the supplier you selected. You should hear from them directly within 2–3 working days. If you do not receive a reply, please contact us at hello@barrelcompare.co.uk and we will follow up on your behalf. — The BarrelCompare Team">
+ <input type="hidden" name="insurance_interest" id="insuranceInterest" value="not_shown">
  <input type="hidden" name="_subject" id="formSubject" value="New Quote Request, BarrelCompare">
  <!-- Hidden fields carried from steps 1 & 2 -->
  <input type="hidden" name="selected_supplier" id="hiddenSupplier">
@@ -931,16 +949,19 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <div class="form-group">
  <label for="customer_name">Your full name <span class="required">*</span></label>
  <input type="text" id="customer_name" name="customer_name" class="form-control" required>
+ <span class="field-error" id="customer_name-error">Please enter your full name.</span>
  </div>
  <div class="form-group">
  <label for="customer_phone">Phone number <span class="required">*</span></label>
  <input type="tel" id="customer_phone" name="customer_phone" class="form-control" required placeholder="e.g. 07700 900000">
+ <span class="field-error" id="customer_phone-error">Please enter a phone number.</span>
  </div>
  </div>
 
  <div class="form-group">
  <label for="customer_email">Email address <span class="required">*</span></label>
  <input type="email" id="customer_email" name="customer_email" class="form-control" required>
+ <span class="field-error" id="customer_email-error">Please enter a valid email address.</span>
  </div>
 
  <div class="form-group">
@@ -948,6 +969,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <input type="checkbox" id="gdpr_consent" name="gdpr_consent" value="agreed" required>
  <label for="gdpr_consent">I agree to my contact details being shared with the selected supplier for the purpose of receiving a quote. I have read the <a href="/disclosure/" style="color:var(--orange-500);">BarrelCompare data disclosure</a>. <span class="required">*</span></label>
  </div>
+ <span class="field-error" id="gdpr_consent-error">You must agree before submitting.</span>
  </div>
 
  <div style="display:flex; gap:12px; margin-top:8px;">
@@ -973,16 +995,16 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <div class="footer-col">
  <h4>Compare</h4>
  <ul>
- <li><a href="/barrel-shipping-jamaica/">Jamaica</a></li>
- <li><a href="/barrel-shipping-trinidad/">Trinidad &amp; Tobago</a></li>
- <li><a href="/compare/?destination=guyana">Guyana</a></li>
- <li><a href="/barrel-shipping-barbados/">Barbados</a></li>
- <li><a href="/compare/?destination=stlucia">St Lucia</a></li>
- <li><a href="/compare/?destination=grenada">Grenada</a></li>
- <li><a href="/compare/?destination=dominica">Dominica</a></li>
- <li><a href="/compare/?destination=bahamas">The Bahamas</a></li>
- <li><a href="/compare/?destination=antigua">Antigua &amp; Barbuda</a></li>
- <li><a href="/compare/?destination=stvincent">St Vincent &amp; the Grenadines</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-jamaica/">Jamaica</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-trinidad/">Trinidad &amp; Tobago</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-guyana/">Guyana</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-barbados/">Barbados</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-saint-lucia/">St Lucia</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-grenada/">Grenada</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-dominica/">Dominica</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-bahamas/">The Bahamas</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-antigua/">Antigua &amp; Barbuda</a></li>
+ <li><a href="/destination-guide-barrel-shipping-uk-to-st-vincent/">St Vincent &amp; the Grenadines</a></li>
  </ul>
  </div>
  <div class="footer-col">
@@ -994,8 +1016,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <li><a href="/barrel-sizes/">Barrel sizes</a></li>
  <li><a href="/costs-and-pricing/">Costs and pricing</a></li>
  <li><a href="/hidden-fees/">🔒 Hidden fees guide</a></li>
- <li><a href="/glossary/">Definitions</a></li>
- <li><a href="/country-rules/">🔒 Customs and duty</a></li>
+ <li><a href="/glossary/">Definitions of Terms</a></li>
+ <li><a href="/customs-and-duties/">Customs and duty</a></li>
  </ul>
  </div>
  <div class="footer-col">
@@ -1017,7 +1039,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
  <div class="footer-bottom">
  <div>&copy; 2026 BarrelCompare &middot; Independent comparison service &middot; Last updated: May 2026</div>
- <div class="disclosure">Independent of all shipping companies &middot; ICO Registration: [ICO registration pending]</div>
+ <div class="disclosure">Independent of all shipping companies &middot; ICO Registration: ZC146517</div>
  </div>
  </div>
 </footer>
@@ -1056,16 +1078,31 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 
  // ---- Step 2 navigation ----
  document.getElementById('backToStep1').addEventListener('click', () => showSection(1));
- document.getElementById('toStep3').addEventListener('click', () => {
- // Basic validation
- const required = ['destination', 'barrel_size', 'barrel_qty', 'contents', 'collection_postcode'];
- let valid = true;
- required.forEach(id => {
+ function showQErr(id, msg) {
+ var el = document.getElementById(id);
+ var err = document.getElementById(id + '-error');
+ if (el) el.classList.add('invalid');
+ if (err) { if (msg) err.textContent = msg; err.style.display = 'block'; }
+ }
+ function clearQErr(id) {
+ var el = document.getElementById(id);
+ var err = document.getElementById(id + '-error');
+ if (el) el.classList.remove('invalid');
+ if (err) err.style.display = 'none';
+ }
+ ['destination','barrel_size','barrel_qty','contents','collection_postcode'].forEach(id => {
  const el = document.getElementById(id);
- if (!el.value) { el.style.borderColor = 'var(--red-500)'; valid = false; }
- else el.style.borderColor = '';
+ if (el) { el.addEventListener('change', () => clearQErr(id)); el.addEventListener('input', () => clearQErr(id)); }
  });
- if (!valid) return;
+
+ document.getElementById('toStep3').addEventListener('click', () => {
+ const checks = ['destination', 'barrel_size', 'barrel_qty', 'contents', 'collection_postcode'];
+ let valid = true;
+ checks.forEach(id => {
+ const el = document.getElementById(id);
+ if (!el || !el.value) { showQErr(id); valid = false; } else clearQErr(id);
+ });
+ if (!valid) { document.getElementById('step2').querySelector('.invalid').focus(); return; }
 
  // Pass values to hidden fields in step 3
  document.getElementById('hiddenSupplier').value = selectedSupplierName;
@@ -1082,7 +1119,20 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  // Set form action to selected supplier's Formspree ID
  document.getElementById('quoteForm').action = 'https://formspree.io/f/' + selectedFormId;
 
- showSection(3);
+ document.getElementById('insuranceInterest').value = 'offered';
+ document.getElementById('insuranceModal').classList.add('open');
+ });
+
+ // Insurance modal actions
+ document.getElementById('insuranceYes').addEventListener('click', () => {
+  document.getElementById('insuranceInterest').value = 'yes';
+  document.getElementById('insuranceModal').classList.remove('open');
+  showSection(3);
+ });
+ document.getElementById('insuranceNo').addEventListener('click', () => {
+  document.getElementById('insuranceInterest').value = 'no';
+  document.getElementById('insuranceModal').classList.remove('open');
+  showSection(3);
  });
 
  document.getElementById('backToStep2').addEventListener('click', () => showSection(2));
@@ -1092,8 +1142,25 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  const successMsg = document.getElementById('successMsg');
  const errorMsg = document.getElementById('errorMsg');
 
+ ['customer_name','customer_phone','customer_email'].forEach(id => {
+ const el = document.getElementById(id);
+ if (el) { el.addEventListener('input', () => clearQErr(id)); }
+ });
+ document.getElementById('gdpr_consent').addEventListener('change', () => clearQErr('gdpr_consent'));
+
  quoteForm.addEventListener('submit', async (e) => {
  e.preventDefault();
+
+ // Validate step 3 fields
+ let s3valid = true;
+ if (!document.getElementById('customer_name').value.trim()) { showQErr('customer_name', 'Please enter your full name.'); s3valid = false; } else clearQErr('customer_name');
+ if (!document.getElementById('customer_phone').value.trim()) { showQErr('customer_phone', 'Please enter a phone number.'); s3valid = false; } else clearQErr('customer_phone');
+ const emailEl = document.getElementById('customer_email');
+ if (!emailEl.value.trim()) { showQErr('customer_email', 'Email is required.'); s3valid = false; }
+ else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) { showQErr('customer_email', 'Please enter a valid email address.'); s3valid = false; }
+ else clearQErr('customer_email');
+ if (!document.getElementById('gdpr_consent').checked) { showQErr('gdpr_consent', 'You must agree before submitting.'); s3valid = false; } else clearQErr('gdpr_consent');
+ if (!s3valid) { document.getElementById('step3').querySelector('.invalid') && document.getElementById('step3').querySelector('.invalid').focus(); return; }
 
  // Honeypot check
  if (quoteForm._gotcha && quoteForm._gotcha.value) return;
@@ -1105,6 +1172,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  errorMsg.style.display = 'block';
  return;
  }
+
+ document.getElementById('quoteReplyTo').value = document.getElementById('customer_email').value;
 
  const submitBtn = document.getElementById('submitBtn');
  submitBtn.disabled = true;
@@ -1284,5 +1353,19 @@ if (searchInput) {
   });
 })();
 </script>
+
+<!-- Insurance modal -->
+<div id="insuranceModal" role="dialog" aria-modal="true" aria-labelledby="insuranceModalTitle">
+ <div class="insurance-card">
+  <div style="font-size:2.2rem;margin-bottom:16px;">🛡️</div>
+  <h2 id="insuranceModalTitle">Would you like shipping insurance?</h2>
+  <p>Barrel contents are not automatically insured in transit. A small premium can protect your goods against loss, damage, or theft on the way home.</p>
+  <div class="insurance-actions">
+   <button class="btn btn-orange btn-block" id="insuranceYes">Yes, I'm interested in insurance</button>
+   <a href="/shipping-insurance/" class="btn btn-secondary btn-block" target="_blank" rel="noopener" id="insuranceLearnMore">Learn more about cover options</a>
+   <button class="btn btn-secondary btn-block" id="insuranceNo" style="opacity:0.65;">No thanks, continue without insurance</button>
+  </div>
+ </div>
+</div>
 </body>
 </html>
