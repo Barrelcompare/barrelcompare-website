@@ -1399,9 +1399,28 @@ footer { background: #eeddc4; border-top: 1px solid rgba(0,0,0,0.08); }
  var dur = Math.max(14, visible.length * 5);
  track.style.animation = 'reviewScrollV ' + dur + 's linear infinite';
 
- // Set outer height to show ~2.6 cards at a time
- var cardH = visible[0].offsetHeight + 16;
- outer.style.height = Math.round(cardH * 2.6) + 'px';
+ // Sync feed height to match the review form tile
+ syncFeedHeight();
+ }
+
+ function syncFeedHeight() {
+ var formTile = document.querySelector('.share-form-wrap');
+ var outer = document.getElementById('reviewsFeedOuter');
+ if (!formTile || !outer) return;
+ // On mobile (single column) let CSS handle it naturally
+ if (window.innerWidth < 1024) { outer.style.height = ''; return; }
+ // Measure space taken by siblings above/below the feed outer
+ var col = outer.parentNode;
+ var reservedH = 0;
+ if (col) {
+  Array.from(col.children).forEach(function(el) {
+  if (el === outer) return;
+  var st = window.getComputedStyle(el);
+  reservedH += el.offsetHeight + parseFloat(st.marginTop||0) + parseFloat(st.marginBottom||0);
+  });
+ }
+ var targetH = Math.max(300, formTile.offsetHeight - reservedH);
+ outer.style.height = targetH + 'px';
  }
 
  // Expose for onchange handler
@@ -1423,11 +1442,11 @@ footer { background: #eeddc4; border-top: 1px solid rgba(0,0,0,0.08); }
  }, { passive: true });
  }
 
- // Recalculate outer height on resize
+ // Recalculate on resize
  var resizeTimer;
  window.addEventListener('resize', function() {
  clearTimeout(resizeTimer);
- resizeTimer = setTimeout(buildFeed, 200);
+ resizeTimer = setTimeout(function() { buildFeed(); syncFeedHeight(); }, 200);
  });
  });
 })();
