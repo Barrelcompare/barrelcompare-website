@@ -145,18 +145,17 @@ section { padding: 64px 0; }
 /* ---- HEADER ---- */
 .site-header {
  padding: 20px 0;
-
- background: rgba(44, 44, 44, 0.97);
+ background: #f5ecd7;
  backdrop-filter: blur(8px);
- border-bottom: 1px solid rgba(255,255,255,0.06);
+ border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text-on-light); }
 .logo .accent { color: var(--orange-500); }
-.logo .tagline { display: block; font-size: 0.75rem; font-weight: 400; color: var(--text-muted-dark); margin-top: -2px; letter-spacing: 0.02em; }
+.logo .tagline { display: block; font-size: 0.75rem; font-weight: 400; color: var(--text-muted-light); margin-top: -2px; letter-spacing: 0.02em; }
 
 .nav-desktop { display: none; gap: 28px; align-items: center; }
-.nav-desktop a { font-size: 0.95rem; color: var(--text-on-dark); transition: color 0.2s; }
+.nav-desktop a { font-size: 0.95rem; color: var(--text-on-light); transition: color 0.2s; }
 .nav-desktop a:hover, .nav-desktop a.active { color: var(--orange-500); }
 @media (min-width: 900px) { .nav-desktop { display: flex; } .menu-toggle { display: none; } }
 
@@ -164,9 +163,9 @@ section { padding: 64px 0; }
  width: 44px; height: 44px;
  display: inline-flex;
  align-items: center; justify-content: center;
- background: rgba(255,255,255,0.06);
+ background: rgba(0,0,0,0.06);
  border-radius: 8px;
- color: inherit;
+ color: var(--text-on-light);
 }
 .menu-toggle svg { width: 24px; height: 24px; }
 
@@ -276,10 +275,10 @@ section { padding: 64px 0; }
 .trustpilot-star { color: #00b67a; font-size: 1.1rem; }
 
 /* ---- TRUST STRIP ---- */
-.trust-strip { background: var(--navy-700); padding: 20px 0; }
+.trust-strip { background: #ffffff; padding: 20px 0; }
 .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
 .trust-stat .num { font-size: 2.25rem; font-weight: 800; color: var(--orange-500); display: block; }
-.trust-stat .label { font-size: 0.8rem; color: var(--text-muted-dark); letter-spacing: 0.02em; }
+.trust-stat .label { font-size: 0.8rem; color: var(--text-on-light); letter-spacing: 0.02em; }
 @media (min-width: 768px) {
  .trust-stat .num { font-size: 3rem; }
  .trust-stat .label { font-size: 0.95rem; }
@@ -472,9 +471,9 @@ textarea.form-control { min-height: 120px; resize: vertical; }
 
 /* ---- COMPARE PREVIEW (homepage) ---- */
 .compare-preview { background: var(--navy-700); }
-.reviews-combined-grid { display:grid; gap:40px; align-items:start; grid-template-columns:1fr; }
+.reviews-combined-grid { display:grid; gap:40px; align-items:stretch; grid-template-columns:1fr; }
 @media (min-width: 1024px) { .reviews-combined-grid { grid-template-columns:1fr 1fr; } }
-.reviews-feed-col { min-width: 0; }
+.reviews-feed-col { min-width: 0; display:flex; flex-direction:column; }
 
 /* ---- FINAL CTA ---- */
 .final-cta {
@@ -542,8 +541,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  overflow-x: auto;
  scrollbar-width: none;
  white-space: nowrap;
- background: var(--navy-900);
- border-bottom: 1px solid rgba(255,255,255,0.08);
+ background: #f5ecd7;
+ border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 .nav-scroll-bar::-webkit-scrollbar { display: none; }
 .nav-scroll-bar a, .nav-scroll-bar button {
@@ -552,7 +551,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  gap: 6px;
  padding: 13px 18px;
  font-size: 0.88rem;
- color: var(--text-muted-dark);
+ color: var(--text-muted-light);
  border-bottom: 2px solid transparent;
  white-space: nowrap;
  text-decoration: none;
@@ -564,7 +563,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  font-family: var(--font);
 }
 .nav-scroll-bar a.active { color: var(--orange-500); border-bottom-color: var(--orange-500); }
-.nav-scroll-bar a:hover { color: var(--white); }
+.nav-scroll-bar a:hover { color: var(--text-on-light); }
 @media (min-width: 900px) { .nav-scroll-bar { display: none; } }
 
 :focus-visible { outline: 3px solid var(--orange-500); outline-offset: 3px; border-radius: 4px; }
@@ -594,12 +593,30 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .hero .chip.active { background: var(--blue-500); border-color: var(--blue-500); color: #fff; }
 
 /* How it works */
-.how-section { background: var(--navy-800); }
-.how-section .section-title { color: var(--white); }
-.how-section .section-lede { color: var(--text-muted-dark); }
-.how-section .step-card { background: var(--grey-100); border-color: var(--grey-200); }
+.how-section { background: #1abc80; padding: 28px 0; }
+.how-section .section-eyebrow { color: rgba(255,255,255,0.88); }
+.how-section .section-title,
+.how-section .section-lede { display: none; }
+.how-section .step-card {
+ background: #f5ecd7;
+ border-color: rgba(0,0,0,0.08);
+ padding: 20px 24px;
+}
 .how-section .step-card h3 { color: var(--text-on-light); }
-.how-section .step-card p { color: var(--text-muted-light); }
+.how-section .step-card p { color: var(--text-muted-light); margin: 0; }
+.how-section .step-num {
+ font-size: 0.9rem;
+ font-weight: 700;
+ color: #ffffff;
+ background: var(--navy-800);
+ width: 30px; height: 30px;
+ border-radius: 50%;
+ display: inline-flex;
+ align-items: center; justify-content: center;
+ margin-bottom: 10px;
+ letter-spacing: 0;
+ line-height: 1;
+}
 
 /* Barrel sizes */
 .barrel-section { background: var(--navy-800); padding: 80px 0; }
@@ -625,7 +642,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .barrel-weight { background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.2); border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; color: var(--text-muted-dark); }
 .barrel-weight strong { color: var(--orange-500); }
 .barrel-placeholder { background: rgba(255,255,255,0.06); border: 2px dashed rgba(255,255,255,0.15); border-radius: var(--radius); width: 100px; height: 120px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted-dark); font-size: 0.75rem; text-align: center; padding: 8px; }
-.barrel-img { width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius); margin-bottom: 20px; display: block; }
+.barrel-img { width: 100%; height: 180px; object-fit: contain; border-radius: var(--radius); margin-bottom: 20px; display: block; background: transparent; }
 
 /* Reviews strip */
 .reviews-strip { background: var(--navy-700); padding: 80px 0; }
@@ -687,9 +704,9 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 /* ---- SITE SEARCH ---- */
 .search-wrap { position: relative; }
 .search-toggle {
- background: rgba(255,255,255,0.06);
- border: 1px solid rgba(255,255,255,0.12);
- color: var(--text-on-dark);
+ background: rgba(0,0,0,0.06);
+ border: 1px solid rgba(0,0,0,0.14);
+ color: var(--text-on-light);
  border-radius: 8px;
  padding: 8px 12px;
  cursor: pointer;
@@ -699,7 +716,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  font-size: 0.88rem;
  transition: background 0.2s;
 }
-.search-toggle:hover { background: rgba(255,255,255,0.1); }
+.search-toggle:hover { background: rgba(0,0,0,0.1); }
 .search-overlay {
  display: none;
  position: fixed;
@@ -771,7 +788,9 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 /* ---- REVIEWS VERTICAL FEED ---- */
 .reviews-feed-outer {
  position: relative;
- height: 540px;
+ flex: 1;
+ height: auto;
+ min-height: 400px;
  overflow: hidden;
  border-radius: var(--radius-lg);
 }
@@ -844,6 +863,150 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .cookie-text { flex: 1; min-width: 200px; margin: 0; font-size: 0.88rem; color: var(--text-muted-dark); }
 .cookie-btns { display: flex; gap: 10px; flex-shrink: 0; }
 
+/* ---- AMAZON ESSENTIALS ---- */
+.amazon-section { background: #ffffff; border-radius: var(--radius-lg); border: 1px solid rgba(0,0,0,0.08); padding: 32px; margin: 0 0 0 0; }
+.amazon-section h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; color: var(--text-on-light); }
+.amazon-section .amazon-lede { color: var(--text-muted-light); font-size: 0.9rem; margin-bottom: 18px; }
+.amazon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
+.amazon-item { background: #f5ecd7; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; padding: 12px 8px; text-align: center; font-size: 0.8rem; font-weight: 600; text-decoration: none; color: var(--text-on-light); transition: box-shadow 0.15s, transform 0.15s; display: flex; flex-direction: column; align-items: center; }
+.amazon-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-1px); }
+.amazon-item .a-icon { font-size: 1.5rem; display: block; margin-bottom: 5px; }
+.amazon-item .a-link { font-size: 0.72rem; color: var(--orange-500); font-weight: 700; display: block; margin-top: 4px; }
+.amazon-disclaimer { font-size: 0.75rem; color: var(--text-muted-light); margin-top: 14px; }
+
+/* ---- LIGHT MODE CONVERSION ---- */
+body { background: #f5ecd7; color: var(--text-on-light); }
+
+/* Hero → beige */
+.hero { background: #f5ecd7; }
+.hero h1 { color: var(--text-on-light); }
+.hero h1 .highlight { color: var(--orange-500); }
+.hero .hero-badge { background: rgba(0,0,0,0.06); color: var(--text-muted-light); }
+.hero .hero-badge .dot { background: rgba(0,0,0,0.25); }
+.hero p.lede, .hero p.sub { color: var(--text-muted-light); }
+.hero .hero-meta { color: var(--text-muted-light); }
+.hero .trustpilot-strip { background: rgba(0,0,0,0.05); color: var(--text-muted-light); }
+.hero .chip { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.12); color: var(--text-on-light); }
+.hero .chip:hover { border-color: rgba(0,0,0,0.25); background: rgba(0,0,0,0.08); }
+
+/* Section headings */
+h2.section-title, h3.section-title { color: var(--text-on-light); }
+.section-lede { color: var(--text-muted-light); }
+.section-eyebrow { color: var(--orange-500); }
+
+/* Why section → beige */
+.why-section { background: #f5ecd7; }
+.why-card h3 { color: var(--text-on-light); }
+.why-card p { color: var(--text-muted-light); }
+.why-card .icon { background: rgba(26,188,176,0.12); }
+
+/* Step cards (outside how-section green) */
+.step-card { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.08); }
+.step-card h3 { color: var(--text-on-light); }
+.step-card p { color: var(--text-muted-light); }
+.step-num { color: rgba(0,0,0,0.1); }
+
+/* Compare preview → slightly deeper beige for contrast */
+.compare-preview { background: #eeddc4; }
+.supplier-card { background: #ffffff; border-color: rgba(0,0,0,0.08); }
+.supplier-card h3 { color: var(--text-on-light); }
+.supplier-card .supplier-meta { color: var(--text-muted-light); }
+.supplier-card .transit { color: var(--text-muted-light); }
+.supplier-card ul li { color: var(--text-on-light); }
+.supplier-card .price-label { color: var(--text-muted-light); }
+.supplier-card .badge.pending-badge { background: rgba(0,0,0,0.08); color: var(--text-muted-light); }
+
+/* Reviews strip → beige */
+.reviews-strip { background: #f5ecd7; }
+.review-card { background: #ffffff; border: 1.5px solid rgba(0,0,0,0.18) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+.review-card .review-text { color: var(--text-on-light); }
+.review-card .reviewer { color: var(--text-muted-light); }
+.reviews-empty { border-color: rgba(0,0,0,0.15); color: var(--text-muted-light); }
+.rating-note { color: var(--text-muted-light); }
+.star-legend { color: var(--text-muted-light); }
+.reviews-filter-row label { color: var(--text-muted-light); }
+.reviews-filter-row select { background: #ffffff; color: var(--text-on-light); border-color: rgba(0,0,0,0.12); }
+
+/* Share/submit review → beige */
+.share-section { background: #f5ecd7; }
+.share-form-wrap { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); }
+.form-group label { color: var(--text-on-light); }
+.form-group small { color: var(--text-muted-light); }
+.form-control { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.12); color: var(--text-on-light); }
+.form-control:focus { background: rgba(0,0,0,0.06); }
+.form-control::placeholder { color: rgba(0,0,0,0.3); }
+.checkbox-row label { color: var(--text-muted-light); }
+.star-select button { color: rgba(0,0,0,0.2); }
+
+/* Barrel section → beige */
+.barrel-section { background: #f5ecd7; }
+.barrel-card { background: #ffffff; border-color: rgba(0,0,0,0.08); }
+.barrel-card h3 { color: var(--text-on-light); }
+.barrel-card p { color: var(--text-muted-light); }
+.barrel-weight { background: rgba(26,188,176,0.08); border-color: rgba(26,188,176,0.2); color: var(--text-muted-light); }
+
+/* Collection finder → beige */
+.collection-section { background: #f5ecd7; }
+.finder-box { background: #ffffff; border-color: rgba(0,0,0,0.08); }
+.finder-input { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.12); color: var(--text-on-light); }
+.finder-input::placeholder { color: rgba(0,0,0,0.3); }
+.finder-result { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); }
+.finder-result h4 { color: var(--text-on-light); }
+.finder-result p { color: var(--text-muted-light); }
+.finder-section-label { color: var(--orange-500); }
+
+/* Blog section → beige */
+.blog-section { background: #f5ecd7; }
+.blog-card { background: #ffffff; border-color: rgba(0,0,0,0.08); }
+.blog-card h3 { color: var(--text-on-light); }
+.blog-card p { color: var(--text-muted-light); }
+
+/* FAQ → beige */
+.faq-section { background: #f5ecd7; }
+details { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); }
+details[open] { background: rgba(0,0,0,0.07); }
+summary { color: var(--text-on-light); }
+details p, details ul { color: var(--text-muted-light); }
+
+/* Generic cards → light */
+.card { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); }
+
+/* Final CTA → warm beige gradient */
+.final-cta { background: linear-gradient(135deg, #eeddc4 0%, #f5ecd7 100%); }
+.final-cta h2 { color: var(--text-on-light); }
+.final-cta p { color: var(--text-muted-light); }
+.btn-secondary { color: var(--text-on-light); border-color: rgba(0,0,0,0.25); }
+.btn-secondary:hover { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.4); }
+
+/* Page header (inner page banners) → beige */
+.page-header { background: linear-gradient(180deg, #eeddc4 0%, #f5ecd7 100%); }
+.page-header h1 { color: var(--text-on-light); }
+.page-header p { color: var(--text-muted-light); }
+
+/* Trustpilot / community sections */
+.trustpilot-star { color: var(--orange-500); }
+
+/* FAQ category headings */
+.faq-category h2 { color: var(--orange-500); }
+
+/* Prose / article */
+.prose h2 { color: var(--orange-500); }
+.prose h3 { color: var(--text-on-light); }
+.prose p, .prose li { color: var(--text-on-light); }
+.prose strong { color: var(--text-on-light); }
+
+/* Reviews feed fade → beige */
+.reviews-feed-outer::before { background: linear-gradient(to bottom, #f5ecd7 10%, transparent); }
+.reviews-feed-outer::after { background: linear-gradient(to top, #f5ecd7 10%, transparent); }
+
+/* Footer → beige */
+footer { background: #eeddc4; border-top: 1px solid rgba(0,0,0,0.08); }
+.footer-col a { color: var(--text-muted-light); }
+.footer-col a:hover { color: var(--text-on-light); }
+.footer-tagline { color: var(--text-muted-light); }
+.footer-bottom { border-top-color: rgba(0,0,0,0.08); color: var(--text-muted-light); }
+.logo { color: var(--text-on-light); }
+
 </style>
 <link rel="canonical" href="https://barrelcompare.co.uk/">
 </head>
@@ -881,7 +1044,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <div class="container header-inner">
  <div>
  <a href="/" class="logo">Barrel<span class="accent">Compare</span></a>
- <span style="display:block;font-size:0.8rem;font-style:italic;color:var(--orange-500);margin-top:2px;font-weight:400;">Ship It Easy</span>
+ <span style="display:block;font-size:0.8rem;font-style:italic;color:var(--text-muted-light);margin-top:2px;font-weight:400;">Ship It Easy</span>
  </div>
  <nav class="nav-desktop" aria-label="Primary">
  <a href="/quote/">Get a Quote</a>
@@ -912,39 +1075,27 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <section class="hero">
  <div class="container">
  <h1>Know your options before you<br><span class="highlight" style="color:var(--orange-500);">ship to the Caribbean.</span></h1>
- <p class="lede">Three simple steps to send with confidence.</p>
 
  <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="69d3d7b3ea7a3bcec15beabd" data-style-height="24px" data-style-width="100%" data-theme="dark">
  <a href="https://uk.trustpilot.com/review/barrelcompare.co.uk" target="_blank" rel="noopener">Trustpilot</a>
  </div>
  <script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 
- <div class="trustpilot-strip" style="flex-direction:column;gap:6px;padding:10px 20px;margin-bottom:10px;">
+ <div class="trustpilot-strip" style="flex-direction:column;gap:5px;padding:8px 18px;margin-bottom:10px;font-size:0.75rem;">
  <div style="display:flex;align-items:center;gap:8px;">
- <span class="trustpilot-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+ <span class="trustpilot-star" style="font-size:0.95rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
  <span>Independent &middot; Powered by community reviews</span>
  </div>
  <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
- <a href="https://uk.trustpilot.com/review/barrelcompare.co.uk" target="_blank" rel="noopener" style="color:#00b67a;font-size:0.82rem;font-weight:600;">Read reviews on Trustpilot ↗</a>
- <a href="https://uk.trustpilot.com/evaluate/barrelcompare.co.uk" target="_blank" rel="noopener" style="color:var(--orange-500);font-size:0.82rem;font-weight:600;">Leave us a review ↗</a>
+ <a href="https://uk.trustpilot.com/review/barrelcompare.co.uk" target="_blank" rel="noopener" style="color:#00b67a;font-size:0.72rem;font-weight:600;">Read reviews on Trustpilot ↗</a>
+ <a href="https://uk.trustpilot.com/evaluate/barrelcompare.co.uk" target="_blank" rel="noopener" style="color:var(--orange-500);font-size:0.72rem;font-weight:600;">Leave us a review ↗</a>
  </div>
  </div>
 
  <div class="hero-cta" style="justify-content:center; margin-top:14px;">
- <a href="/compare/" class="btn btn-orange" style="font-size:1.05rem; padding:14px 36px; border-radius:var(--radius);">Compare UK Barrel Suppliers/Agents</a>
+ <a href="/compare/" class="btn btn-orange" style="font-size:0.9rem; padding:11px 28px; border-radius:var(--radius);">Compare UK Barrel Suppliers/Agents</a>
  </div>
  <p class="hero-meta" style="margin-top:8px;">Free service · No obligation · Independent of shipping companies</p>
- </div>
-</section>
-
-<!-- Trust strip -->
-<section class="trust-strip">
- <div class="container">
- <div class="trust-grid">
- <div class="trust-stat"><span class="num">10</span><span class="label">Destinations covered</span></div>
- <div class="trust-stat"><span class="num">100%</span><span class="label">Independent &amp; unbiased</span></div>
- <div class="trust-stat"><span class="num">£0</span><span class="label">Cost to use our service</span></div>
- </div>
  </div>
 </section>
 
@@ -958,18 +1109,29 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <article class="step-card">
  <div class="step-num">1</div>
  <h3>Choose your destination</h3>
- <p>Tell us where you're shipping to across the Caribbean. We'll show you every supplier/agent covering that route.</p>
+ <p>Select where you're shipping to. We show every supplier/agent covering that route.</p>
  </article>
  <article class="step-card">
  <div class="step-num">2</div>
  <h3>Compare side-by-side</h3>
- <p>Real prices, transit times, what's included and what's not. Filter by collection area, drop-off, or door-to-door. Free and independent. Reliability indicators for every supplier in one place.</p>
+ <p>Real prices, transit times, what's included. Filter by collection area, drop-off, or door-to-door.</p>
  </article>
  <article class="step-card">
  <div class="step-num">3</div>
  <h3>Request a quote</h3>
- <p>Choose the supplier that fits. Request a quote directly.</p>
+ <p>Choose the supplier that fits. Request a quote directly — free.</p>
  </article>
+ </div>
+ </div>
+</section>
+
+<!-- Trust strip -->
+<section class="trust-strip">
+ <div class="container">
+ <div class="trust-grid">
+ <div class="trust-stat"><span class="num">10</span><span class="label">Destinations covered</span></div>
+ <div class="trust-stat"><span class="num">100%</span><span class="label">Independent &amp; unbiased</span></div>
+ <div class="trust-stat"><span class="num">£0</span><span class="label">Cost to use our service</span></div>
  </div>
  </div>
 </section>
@@ -1005,7 +1167,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <div class="container">
  <div class="reviews-combined-grid" id="supplierShareGrid">
  <!-- LEFT: Reviews submission tile -->
- <div class="share-form-wrap" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:32px;">
+ <div class="share-form-wrap" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-lg);padding:32px;">
  <div class="section-eyebrow">Reviews</div>
  <h2 style="font-size:1.5rem;margin-bottom:8px;">Share your experience</h2>
  <p style="color:var(--text-muted-dark);font-size:0.92rem;margin-bottom:24px;">Used a barrel supplier/agent? Tell the community how it went. Your review helps others make better decisions.</p>
@@ -1016,7 +1178,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  <input type="text" name="_gotcha" style="display:none;" tabindex="-1">
 
  <div class="form-group">
- <label style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-dark);">Your rating <span style="color:var(--orange-500);">*</span></label>
+ <label style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-light);">Your rating <span style="color:var(--orange-500);">*</span></label>
  <div class="star-select" id="starSelect">
  <button type="button" data-star="1" aria-label="1 star">★</button>
  <button type="button" data-star="2" aria-label="2 stars">★</button>
@@ -1029,7 +1191,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
 
  <div class="form-group">
- <label for="reviewSupplier" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-dark);">Supplier/Agent name <span style="color:var(--orange-500);">*</span></label>
+ <label for="reviewSupplier" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-light);">Supplier/Agent name <span style="color:var(--orange-500);">*</span></label>
  <select id="reviewSupplier" name="supplier" class="form-control" required>
  <option value="">Choose supplier/agent...</option>
  <option>West Indies Direct</option>
@@ -1044,7 +1206,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
 
  <div class="form-group">
- <label for="reviewDestination" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-dark);">Destination <span style="color:var(--orange-500);">*</span></label>
+ <label for="reviewDestination" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-light);">Destination <span style="color:var(--orange-500);">*</span></label>
  <select id="reviewDestination" name="destination" class="form-control" required>
  <option value="">Choose destination...</option>
  <option>Antigua &amp; Barbuda</option>
@@ -1062,7 +1224,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
 
  <div class="form-group">
- <label for="reviewTopic" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-dark);">Review topic <span style="color:var(--orange-500);">*</span></label>
+ <label for="reviewTopic" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-light);">Review topic <span style="color:var(--orange-500);">*</span></label>
  <select id="reviewTopic" name="review_topic" class="form-control" required>
  <option value="">Choose a topic...</option>
  <option value="shipping-speed">Shipping speed</option>
@@ -1079,15 +1241,21 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
 
  <div class="form-group">
- <label for="reviewText" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-dark);">Your review <span style="color:var(--orange-500);">*</span></label>
+ <label for="reviewText" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-light);">Your review <span style="color:var(--orange-500);">*</span></label>
  <textarea id="reviewText" name="review" class="form-control" required placeholder="Tell us about your experience, what went well, what could be better..." style="min-height:100px;"></textarea>
  <span class="field-error" id="reviewText-error">Please write your review.</span>
  </div>
 
  <div class="form-group">
- <label for="reviewerName" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-dark);">Your first name <span style="color:var(--orange-500);">*</span></label>
+ <label for="reviewerName" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-light);">Your first name <span style="color:var(--orange-500);">*</span></label>
  <input type="text" id="reviewerName" name="reviewer_name" class="form-control" required placeholder="e.g. Sharon">
  <span class="field-error" id="reviewerName-error">Please enter your first name.</span>
+ </div>
+
+ <div class="form-group">
+ <label for="shippingRef" style="display:block;font-size:0.88rem;font-weight:600;margin-bottom:8px;color:var(--text-on-light);">Shipping Reference Number <span style="color:var(--text-muted-light);font-weight:400;">(optional)</span></label>
+ <input type="text" id="shippingRef" name="shipping_reference" class="form-control" placeholder="e.g. BC-2026-00123">
+ <small style="color:var(--text-muted-light);">Enter the reference number issued by BarrelCompare, if you have one.</small>
  </div>
 
  <div class="form-success" id="reviewSuccess" style="display:none;">
@@ -1095,11 +1263,11 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
 
  <button type="submit" class="btn btn-orange btn-block">Submit Review</button>
- <p style="text-align:center;color:var(--text-muted-dark);font-size:0.78rem;margin-top:10px;">Reviews are moderated before publication. We do not publish unverified reviews.</p>
+ <p style="text-align:center;color:var(--text-muted-light);font-size:0.78rem;margin-top:10px;">Reviews are moderated before publication. We do not publish unverified reviews.</p>
  </form>
 
- <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);">
- <p style="color:var(--text-muted-dark);font-size:0.8rem;font-style:italic;text-align:center;">Our rating system takes a range of factors into consideration when determining supplier scores. Customer feedback and reviews play an important role in helping maintain the quality, trust and reliability of our network.</p>
+ <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);">
+ <p style="color:var(--text-muted-light);font-size:0.8rem;font-style:italic;text-align:center;">Our rating system takes a range of factors into consideration when determining supplier scores. Customer feedback and reviews play an important role in helping maintain the quality, trust and reliability of our network.</p>
  </div>
  <!-- Star rating key inside Reviews tile -->
  <div class="star-legend" style="margin-top:16px;justify-content:center;">
@@ -1327,7 +1495,6 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 <section class="blog-section">
  <div class="container">
  <div class="section-eyebrow">Blogs</div>
- <h2 class="section-title" style="margin-bottom:8px;">Expert guides for shipping barrels to the Caribbean from the UK</h2>
  <p class="section-lede" style="margin-bottom:40px;">Everything you need to know before you pack and ship.</p>
  <div class="blog-grid">
  <article class="blog-card">
@@ -1344,11 +1511,11 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 </section>
 
 <!-- Trustpilot CTA -->
-<section style="background:var(--navy-800);padding:64px 0;border-top:1px solid rgba(255,255,255,0.06);">
+<section style="background:#f5ecd7;padding:64px 0;border-top:1px solid rgba(0,0,0,0.06);">
  <div class="container" style="text-align:center;">
  <div class="section-eyebrow">Trustpilot</div>
- <h2 style="font-size:1.75rem;margin-bottom:8px;">What people say about BarrelCompare</h2>
- <p style="color:var(--text-muted-dark);max-width:480px;margin:0 auto 32px;font-size:1rem;">Reviews of our platform, independent of individual supplier/agent reviews above.</p>
+ <h2 style="font-size:1.75rem;margin-bottom:8px;color:var(--text-on-light);">What people say about BarrelCompare</h2>
+ <p style="color:var(--text-muted-light);max-width:480px;margin:0 auto 32px;font-size:1rem;">Reviews of our platform, independent of individual supplier/agent reviews above.</p>
  <div style="max-width:560px;margin:0 auto;">
  <div class="trustpilot-widget" data-locale="en-GB" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="69d3d7b3ea7a3bcec15beabd" data-style-height="52px" data-style-width="100%" data-theme="dark">
  <a href="https://uk.trustpilot.com/review/barrelcompare.co.uk" target="_blank" rel="noopener">Trustpilot</a>
@@ -1361,30 +1528,51 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  </div>
 </section>
 
+<!-- Amazon Essentials -->
+<section style="background:#eeddc4;padding:56px 0;border-top:1px solid rgba(0,0,0,0.06);">
+ <div class="container">
+  <div class="section-eyebrow">Pack your barrel properly</div>
+  <h2 class="section-title" style="margin-bottom:8px;">Amazon Essentials</h2>
+  <p class="section-lede" style="margin-bottom:32px;">Everything you need to pack safely. Click to buy on Amazon.</p>
+  <div class="amazon-section">
+   <div class="amazon-grid">
+    <a class="amazon-item" href="https://amzn.to/47GIsSf" target="_blank" rel="noopener sponsored"><span class="a-icon">🫧</span>Bubble Wrap<span class="a-link">Amazon →</span></a>
+    <a class="amazon-item" href="https://amzn.to/47A16LF" target="_blank" rel="noopener sponsored"><span class="a-icon">📦</span>Brown Tape<span class="a-link">Amazon →</span></a>
+    <a class="amazon-item" href="https://amzn.to/41FnnUN" target="_blank" rel="noopener sponsored"><span class="a-icon">🥜</span>Eco Peanuts<span class="a-link">Amazon →</span></a>
+    <a class="amazon-item" href="https://amzn.to/4sal3jz" target="_blank" rel="noopener sponsored"><span class="a-icon">⚠️</span>Fragile Labels<span class="a-link">Amazon →</span></a>
+    <a class="amazon-item" href="https://amzn.to/4tmpCbA" target="_blank" rel="noopener sponsored"><span class="a-icon">🔗</span>Cable Ties<span class="a-link">Amazon →</span></a>
+    <a class="amazon-item" href="https://amzn.to/4siO2BW" target="_blank" rel="noopener sponsored"><span class="a-icon">📜</span>Honeycomb Paper<span class="a-link">Amazon →</span></a>
+    <a class="amazon-item" href="https://amzn.to/3NZhUFd" target="_blank" rel="noopener sponsored"><span class="a-icon">📍</span>GPS Tracker<span class="a-link">Amazon →</span></a>
+   </div>
+   <p class="amazon-disclaimer">BarrelCompare participates in the Amazon Associates Programme. As an Amazon Associate we earn from qualifying purchases at no extra cost to you.</p>
+  </div>
+ </div>
+</section>
+
 <!-- Charity CTA -->
-<section style="background:var(--navy-900);padding:56px 0;text-align:center;border-top:1px solid rgba(255,255,255,0.06);">
+<section style="background:#eeddc4;padding:56px 0;text-align:center;border-top:1px solid rgba(0,0,0,0.06);">
  <div class="container">
  <div class="section-eyebrow">Community &amp; giving back</div>
- <h2 style="font-size:1.75rem;margin-bottom:20px;">Suggest a Charity</h2>
+ <h2 style="font-size:1.75rem;margin-bottom:20px;color:var(--text-on-light);">Suggest a Charity</h2>
  <div style="max-width:620px;margin:0 auto 28px;text-align:left;">
-  <p style="color:var(--text-muted-dark);font-size:1rem;line-height:1.7;margin-bottom:14px;">There is a well-known saying that charity begins at home, and at BarrelCompare we believe that sending a barrel home is often exactly that.</p>
-  <p style="color:var(--text-muted-dark);font-size:1rem;line-height:1.7;margin-bottom:14px;">With that spirit in mind, we wanted to take things one step further by supporting small charities doing meaningful work across the Caribbean and the UK.</p>
-  <p style="color:var(--text-muted-dark);font-size:1rem;line-height:1.7;margin-bottom:14px;">Through the support of our community, we aim to shine a light on organisations focused on empowerment, education, opportunity and community support.</p>
-  <p style="color:var(--text-muted-dark);font-size:1rem;line-height:1.7;margin-bottom:14px;">As BarrelCompare grows, our intention is to donate a percentage of annual profits to selected charities, meaning that by helping yourself and your family, you are also helping others.</p>
-  <p style="color:var(--text-muted-dark);font-size:1rem;line-height:1.7;margin-bottom:0;">To us, that is what community truly means.</p>
+  <p style="color:var(--text-muted-light);font-size:1rem;line-height:1.7;margin-bottom:14px;">There is a well-known saying that charity begins at home.</p>
+  <p style="color:var(--text-muted-light);font-size:1rem;line-height:1.7;margin-bottom:14px;">With that spirit in mind, we wanted to take things one step further by supporting small charities doing meaningful work across the Caribbean and the UK.</p>
+  <p style="color:var(--text-muted-light);font-size:1rem;line-height:1.7;margin-bottom:14px;">Through the support of our community, we aim to shine a light on organisations focused on empowerment, education, opportunity and community support.</p>
+  <p style="color:var(--text-muted-light);font-size:1rem;line-height:1.7;margin-bottom:14px;">As BarrelCompare grows, our intention is to donate a percentage of annual profits to selected charities, meaning that by helping yourself and your family, you are also helping others.</p>
+  <p style="color:var(--text-muted-light);font-size:1rem;line-height:1.7;margin-bottom:0;">To us, that is what community truly means.</p>
  </div>
  <a href="/charity/" class="btn btn-orange" style="font-size:1rem;padding:14px 32px;">Suggest a charity →</a>
  </div>
 </section>
 
 <!-- WhatsApp CTA -->
-<section style="background:var(--navy-700);padding:64px 0;text-align:center;">
+<section style="background:#f5ecd7;padding:64px 0;text-align:center;border-top:1px solid rgba(0,0,0,0.06);">
  <div class="container">
  <div class="section-eyebrow">Stay in the loop</div>
- <h2 style="font-size:1.75rem;margin-bottom:12px;">Join the BarrelCompare community</h2>
- <p style="color:var(--text-muted-dark);max-width:520px;margin:0 auto 24px;font-size:1.05rem;">Get alerts, tips and insider secrets. Join for practical updates that make a real difference.</p>
+ <h2 style="font-size:1.75rem;margin-bottom:12px;color:var(--text-on-light);">Join the BarrelCompare community</h2>
+ <p style="color:var(--text-muted-light);max-width:520px;margin:0 auto 24px;font-size:1.05rem;">Get alerts, tips and insider secrets. Join for practical updates that make a real difference.</p>
  <a href="https://whatsapp.com/channel/0029VbBupyg4CrfhoYuYlx14" class="btn btn-whatsapp" style="font-size:1.05rem;padding:16px 32px;">Join on WhatsApp</a>
- <p style="color:var(--text-muted-dark);font-size:0.82rem;margin-top:16px;">By joining you agree to our Privacy Policy and Terms of Use.</p>
+ <p style="color:var(--text-muted-light);font-size:0.82rem;margin-top:16px;">By joining you agree to our Privacy Policy and Terms of Use.</p>
  </div>
 </section>
 
@@ -1526,49 +1714,69 @@ if (reviewForm) {
 }
 
 // Collection finder
-const suppliers = [
- { name: 'West Indies Direct', areas: ['London','E','N','NW','SE','SW','W','EC','WC','EN','HA','IG','KT','RM','SM','TW','UB','WD','BR','CR','DA','SL','RH','GU','AL','CM','SS','CO','IP','CB','SG','LU','MK','NN','OX','HP','RG','SO','BN','TN','ME','CT','SP','DT','BS','BA','GL','CV','B','WV','ST','LE','DE','NG','LN','PE','NR','IP'], coverage: 'London, Home Counties & wider South', nationwide: false },
- { name: 'Zan Shipping', areas: [], coverage: 'UK-wide — contact to confirm', nationwide: true },
- { name: 'Uni Metro', areas: [], coverage: 'UK-wide — contact to confirm', nationwide: true },
- { name: 'Ramsay Shipping', areas: [], coverage: 'UK-wide — contact to confirm', nationwide: true },
- { name: 'Express Freight Forwarders', areas: [], coverage: 'Drop-off service — London Gateway', nationwide: true },
- { name: 'Trans P Shipping', areas: [], coverage: 'London & surrounding areas — contact to confirm', nationwide: true },
-];
-const nationwideSuppliers = suppliers.filter(s => s.nationwide);
+// ── Supplier location data for Collection Finder ──
+var supplierLocs = {
+ 'West Indies Direct':        { areas:['E','EC','N','NW','SE','SW','W','WC','BR','CR','DA','EN','HA','IG','KT','RM','SM','TW','UB','WD'], note:'London & Home Counties', lat:51.575, lng:0.183 },
+ 'Zan Shipping':              { areas:['ALL'], note:'UK-wide — contact to confirm' },
+ 'Uni Metro':                 { areas:['ALL'], note:'UK-wide — contact to confirm' },
+ 'Ramsay Shipping':           { areas:['ALL'], note:'UK-wide — contact to confirm' },
+ 'Express Freight Forwarders':{ areas:['ALL'], note:'Drop-off service — London Gateway' },
+ 'Trans P Shipping':          { areas:['ALL'], note:'London & surrounding areas — contact to confirm' }
+};
 
-function searchPostcode() {
- const raw = document.getElementById('postcodeInput').value.trim().toUpperCase();
- if (!raw) return;
- const district = raw.split(' ')[0].replace(/[0-9]/g, '').trim();
- const resultsDiv = document.getElementById('finderResults');
- const localDiv = document.getElementById('localResults');
- const nationalDiv = document.getElementById('nationwideResults');
- const localLabel = document.getElementById('localLabel');
- localDiv.innerHTML = ''; nationalDiv.innerHTML = '';
+var pcCoords = {
+ 'E':{lat:51.532,lng:0.050},'EC':{lat:51.515,lng:-0.098},'N':{lat:51.567,lng:-0.109},
+ 'NW':{lat:51.559,lng:-0.178},'SE':{lat:51.468,lng:-0.065},'SW':{lat:51.470,lng:-0.170},
+ 'W':{lat:51.502,lng:-0.224},'WC':{lat:51.517,lng:-0.120},'BR':{lat:51.406,lng:-0.014},
+ 'CR':{lat:51.372,lng:-0.098},'DA':{lat:51.446,lng:0.218},'EN':{lat:51.652,lng:-0.083},
+ 'HA':{lat:51.580,lng:-0.336},'IG':{lat:51.559,lng:0.075},'KT':{lat:51.411,lng:-0.306},
+ 'RM':{lat:51.575,lng:0.183},'SM':{lat:51.370,lng:-0.194},'TW':{lat:51.449,lng:-0.336},
+ 'UB':{lat:51.546,lng:-0.476},'WD':{lat:51.659,lng:-0.395},'LU':{lat:51.879,lng:-0.420},
+ 'MK':{lat:52.041,lng:-0.759},'LE':{lat:52.636,lng:-1.139},'CV':{lat:52.408,lng:-1.510},
+ 'B':{lat:52.480,lng:-1.890},'NG':{lat:52.955,lng:-1.149},'S':{lat:53.383,lng:-1.466},
+ 'WS':{lat:52.586,lng:-1.984},'SL':{lat:51.511,lng:-0.596},'DE':{lat:52.922,lng:-1.474}
+};
 
- const local = suppliers.filter(s => !s.nationwide && s.areas.some(a => raw.startsWith(a) || district === a));
- if (local.length > 0) {
- localLabel.textContent = `✅ Suppliers collecting near ${raw}:`;
- local.forEach(s => {
- localDiv.innerHTML += `<div class="finder-result"><h4>${s.name}</h4><p>${s.coverage}</p></div>`;
- });
- } else {
- localLabel.textContent = `No local suppliers confirmed for ${raw} area. Nationwide options:`;
- }
-
- const national = suppliers.filter(s => s.nationwide);
- national.forEach(s => {
- nationalDiv.innerHTML += `<div class="finder-result"><h4>${s.name}</h4><p>${s.coverage}</p></div>`;
- });
-
- if (national.length === 0) {
- nationalDiv.innerHTML = '<div class="finder-result"><p style="color:var(--text-muted-dark);">Nationwide options being confirmed, check back soon.</p></div>';
- }
-
- resultsDiv.style.display = 'block';
+function haversine(la1, lo1, la2, lo2) {
+ var R=3959, dL=(la2-la1)*Math.PI/180, dG=(lo2-lo1)*Math.PI/180;
+ var x=Math.sin(dL/2)*Math.sin(dL/2)+Math.cos(la1*Math.PI/180)*Math.cos(la2*Math.PI/180)*Math.sin(dG/2)*Math.sin(dG/2);
+ return Math.round(R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x)));
 }
 
-document.getElementById('postcodeInput').addEventListener('keydown', (e) => {
+function searchPostcode() {
+ var raw = (document.getElementById('postcodeInput').value||'').trim().toUpperCase().replace(/\s/g,'');
+ var out = document.getElementById('finderResults');
+ var localDiv = document.getElementById('localResults');
+ var nationalDiv = document.getElementById('nationwideResults');
+ var localLabel = document.getElementById('localLabel');
+ var emptyDiv = document.getElementById('finderEmpty');
+ if (!raw || raw.length < 2) return;
+ var prefix = (raw.match(/^[A-Z]{1,2}/)||[])[0];
+ if (!prefix) return;
+ var uc = pcCoords[prefix];
+ var local = [], national = [];
+ Object.keys(supplierLocs).forEach(function(name) {
+  var s = supplierLocs[name];
+  var distStr = '';
+  if (uc && s.lat) distStr = ' <span style="color:var(--orange-500);font-weight:600">~' + haversine(uc.lat,uc.lng,s.lat,s.lng) + ' miles away</span>';
+  if (s.areas.indexOf('ALL') > -1) {
+   national.push('<div class="finder-result"><h4>' + name + '</h4><p>' + s.note + '</p></div>');
+  } else if (s.areas.indexOf(prefix) > -1) {
+   local.push('<div class="finder-result"><h4>' + name + '</h4><p>' + s.note + distStr + '</p></div>');
+  }
+ });
+ localDiv.innerHTML = local.join('');
+ nationalDiv.innerHTML = national.join('');
+ if (local.length > 0) {
+  localLabel.textContent = '✅ Suppliers collecting near ' + raw + ':';
+ } else {
+  localLabel.textContent = 'No local suppliers confirmed for ' + prefix + ' area. Nationwide options:';
+ }
+ if (emptyDiv) emptyDiv.style.display = 'none';
+ out.style.display = 'block';
+}
+
+document.getElementById('postcodeInput').addEventListener('keydown', function(e) {
  if (e.key === 'Enter') searchPostcode();
 });
 </script>

@@ -653,6 +653,50 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .cookie-text { flex: 1; min-width: 200px; margin: 0; font-size: 0.88rem; color: var(--text-muted-dark); }
 .cookie-btns { display: flex; gap: 10px; flex-shrink: 0; }
 
+/* ---- LIGHT MODE CONVERSION ---- */
+body { background: #f5ecd7 !important; color: var(--text-on-light); }
+.site-header { background: #f5ecd7 !important; border-bottom: 1px solid rgba(0,0,0,0.08) !important; }
+.logo { color: var(--text-on-light) !important; }
+.nav-desktop a { color: var(--text-on-light) !important; }
+.search-toggle { background: rgba(0,0,0,0.06) !important; border-color: rgba(0,0,0,0.12) !important; color: var(--text-on-light) !important; }
+.hero { background: #f5ecd7; }
+.hero p.lede { color: var(--text-on-light); }
+.hero p.sub { color: var(--text-muted-light); }
+.hero-meta { color: var(--text-muted-light); }
+.page-header { background: linear-gradient(180deg, #eeddc4 0%, #f5ecd7 100%) !important; }
+.page-header p { color: var(--text-muted-light) !important; }
+.chip { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.12); color: var(--text-on-light); }
+.chip:hover { border-color: rgba(0,0,0,0.3); background: rgba(0,0,0,0.1); }
+.chip.active { background: var(--orange-500); border-color: var(--orange-500); color: #fff; }
+.trust-strip { background: #ffffff !important; }
+.trust-stat .label { color: var(--text-on-light) !important; }
+.trust-stat .value { color: var(--text-on-light); }
+.why-section { background: #f5ecd7 !important; }
+.why-card { background: #ffffff; border-radius: var(--radius); }
+.why-card p { color: var(--text-muted-light) !important; }
+.filter-bar { background: #eeddc4 !important; border-bottom-color: rgba(0,0,0,0.08) !important; }
+.filter-row label { color: var(--text-muted-light) !important; }
+.filter-row select { background: #ffffff; border-color: rgba(0,0,0,0.15); color: var(--text-on-light); }
+.filter-row .results-count { color: var(--text-muted-light); }
+.faq-section { background: #f5ecd7 !important; }
+.faq-category h2 { color: var(--text-on-light); }
+details { background: rgba(0,0,0,0.04) !important; border-color: rgba(0,0,0,0.08) !important; }
+details[open] { background: rgba(0,0,0,0.06) !important; }
+summary { color: var(--text-on-light) !important; }
+summary::after { color: var(--text-on-light); }
+details p { color: var(--text-muted-light) !important; }
+details ul { color: var(--text-muted-light) !important; }
+.final-cta { background: linear-gradient(135deg, #eeddc4 0%, #f5ecd7 100%) !important; }
+.final-cta p { color: var(--text-muted-light) !important; }
+footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) !important; }
+.footer-col h4 { color: var(--orange-500); }
+.footer-col a { color: var(--text-muted-light) !important; }
+.footer-col a:hover { color: var(--text-on-light) !important; }
+.footer-tagline { color: var(--text-muted-light); }
+.footer-bottom { color: var(--text-muted-light); border-top-color: rgba(0,0,0,0.08); }
+.cookie-banner { background: #eeddc4 !important; border-top-color: var(--orange-500) !important; }
+.cookie-text { color: var(--text-muted-light) !important; }
+
 </style>
 <link rel="canonical" href="https://barrelcompare.co.uk/faq/">
 <script type="application/ld+json">
@@ -750,7 +794,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
     <p>Everything you need to know about barrel shipping from the UK to the Caribbean.</p>
   </div>
 </section>
-<section style="background:var(--navy-800);padding:64px 0;">
+<section class="faq-section" style="padding:64px 0;">
   <div class="container">
 
     <div class="faq-category">
