@@ -35,7 +35,10 @@
 </head>
 <body>
 
-<div class="beta-banner">Beta - collection finder coming soon. <a href="/quote/" style="text-decoration: underline;">Get a quote in the meantime</a></div>
+<div class="sticky-header-group" style="position:sticky;top:0;z-index:100;">
+<div class="welcome-banner" style="background:var(--orange-500);color:var(--white);padding:14px 20px;font-size:0.88rem;line-height:1.5;text-align:center;">
+ <div class="container">You&#x2019;re viewing a preview of our new website. Welcome, and well done on finding us so early. We&#x2019;ll continue refining and enhancing the experience over the coming weeks, and we&#x2019;d love to hear your feedback along the way.</div>
+</div>
 
 <header class="site-header">
  <div class="container header-inner">
@@ -45,6 +48,10 @@
  <a href="/quote/">Get a Quote</a>
  <a href="/faq/">FAQ</a>
  <a href="/about/">About</a>
+ <button class="search-toggle" id="searchToggle" aria-label="Search" style="background:rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.12);color:inherit;border-radius:8px;padding:8px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:0.88rem;">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  Search
+ </button>
  <a href="https://wa.me/447542539430?text=Hi%2C+I+found+BarrelCompare+and+would+like+help+comparing+barrel+shipping+options." class="btn btn-whatsapp" style="padding: 10px 18px; min-height: 0;">WhatsApp us</a>
  </nav>
  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
@@ -61,6 +68,7 @@
  <a href="https://wa.me/447542539430?text=Hi%2C+I+found+BarrelCompare+and+would+like+help+comparing+barrel+shipping+options." class="btn btn-whatsapp btn-block whatsapp-cta">WhatsApp us</a>
  </nav>
 </header>
+</div>
 
 <section class="page-header">
  <div class="container">

@@ -26,6 +26,7 @@
  --orange-500: #1abcb0; --orange-600: #15a99e; --blue-500: #1abcb0;
  --green-500: #25d366; --red-500: #ef4444; --white: #ffffff;
  --text-on-dark: rgba(255,255,255,0.92); --text-muted-dark: rgba(255,255,255,0.65);
+ --text-on-light: #1a1a1a; --text-muted-light: #5d6b7e;
  --radius: 12px; --radius-lg: 20px; --max-width: 1180px;
  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -89,6 +90,7 @@ body { background: #f5ecd7 !important; color: var(--text-on-light); }
 .page-header { background: linear-gradient(180deg, #eeddc4 0%, #f5ecd7 100%) !important; }
 .page-header p { color: var(--text-muted-light) !important; }
 footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) !important; }
+.footer-col h4 { color: var(--text-muted-light) !important; }
 .footer-col a { color: var(--text-muted-light) !important; }
 .footer-col a:hover { color: var(--text-on-light) !important; }
 .footer-tagline { color: var(--text-muted-light); }
@@ -98,6 +100,12 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
 .content-block { background: #ffffff !important; border-color: rgba(0,0,0,0.08) !important; }
 .content-block h2 { color: var(--text-on-light) !important; }
 .content-block li { color: var(--text-muted-light) !important; }
+.info-card p, .info-card li { color: var(--text-muted-light) !important; }
+.info-card h2 { color: var(--orange-500) !important; }
+.info-card { background: #ffffff !important; border-color: rgba(0,0,0,0.08) !important; }
+.page-header h1 { color: var(--text-on-light) !important; }
+.cta-section h2 { color: var(--text-on-light) !important; }
+.cta-section p { color: var(--text-muted-light) !important; }
 .cta-section { background: #eeddc4 !important; border-top-color: rgba(0,0,0,0.08) !important; }
 </style>
 </head>
@@ -156,8 +164,7 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
 
    <div class="info-card" style="border-color:rgba(245,166,35,0.3);">
     <h2>Insurance comparison — coming soon</h2>
-    <p>We are working on a dedicated insurance comparison tool for barrel suppliers/agents. When live, you will be able to compare transit insurance options from verified providers in one place.</p>
-    <p style="margin-top:12px;">To be notified when this launches, <a href="/contact/">contact us</a> and mention insurance in your message.</p>
+    <p>We are working on an insurance partnership to ensure an extra level of security is provided for barrel senders because we know what you send matters.</p>
    </div>
 
   </div>
@@ -180,7 +187,7 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
   <div class="footer-grid">
    <div class="footer-col">
     <div class="logo" style="margin-bottom:4px;">Barrel<span class="accent">Compare</span></div>
-    <p style="color:var(--text-muted-dark);font-size:0.85rem;margin-top:8px;">UK's first independent barrel shipping comparison platform.</p>
+    <p class="footer-tagline">UK's first independent barrel shipping comparison platform.</p>
    </div>
    <div class="footer-col">
     <h4>Compare</h4>
@@ -212,7 +219,7 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
   </div>
   <div class="footer-bottom">
    <div>&copy; 2026 BarrelCompare</div>
-   <div>ICO registration: ZC146517</div>
+   <div>Independent of all shipping companies &middot; ICO: ZC146517 &middot; <a href="/disclosure/" style="color:var(--orange-500);">Funding disclosure</a></div>
   </div>
  </div>
 </footer>

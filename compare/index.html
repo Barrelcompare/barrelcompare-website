@@ -556,7 +556,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 /* View toggle */
 .view-toggle { display:flex;gap:6px;align-items:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:10px;padding:4px; }
 .view-toggle-label { font-size:0.78rem;color:var(--text-muted-light);padding:0 6px 0 4px;white-space:nowrap; }
-.view-btn { display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;font-size:0.82rem;font-weight:600;background:transparent;border:none;color:var(--text-muted-light);cursor:pointer;transition:all 0.2s;white-space:nowrap; }
+.view-btn { display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;font-size:0.9rem;font-weight:600;background:transparent;border:none;color:var(--text-muted-light);cursor:pointer;transition:all 0.2s;white-space:nowrap; }
 .view-btn.active { background:var(--orange-500);color:var(--white);box-shadow:0 1px 4px rgba(0,0,0,0.25); }
 
 /* Table view */
@@ -923,12 +923,12 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
  <div class="view-toggle" role="group" aria-label="Switch view">
  <span class="view-toggle-label">View:</span>
  <button class="view-btn active" id="cardViewBtn" aria-label="Tile view" aria-pressed="true">
-  <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
-  Cards
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+  Tile view
  </button>
  <button class="view-btn" id="tableViewBtn" aria-label="Table view" aria-pressed="false">
-  <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="14" height="3" rx="1"/><rect x="1" y="6" width="14" height="3" rx="1"/><rect x="1" y="11" width="14" height="3" rx="1"/></svg>
-  Table
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="14" height="3" rx="1"/><rect x="1" y="6" width="14" height="3" rx="1"/><rect x="1" y="11" width="14" height="3" rx="1"/></svg>
+  Table view
  </button>
  </div>
 
@@ -967,13 +967,24 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
  </div>
  <script>
  function cmpToggleDef(key) {
+  var keys = ['door','pickup','dropoff','dist'];
   var el = document.getElementById('cmp-def-' + key);
-  var btn = document.getElementById('cmp-btn-' + key);
-  var open = el.style.display !== 'none';
-  el.style.display = open ? 'none' : 'block';
-  btn.style.background = open ? 'rgba(255,255,255,0.06)' : 'rgba(245,166,35,0.15)';
-  btn.style.borderColor = open ? 'rgba(255,255,255,0.15)' : 'rgba(245,166,35,0.5)';
-  btn.style.color = open ? '' : 'var(--orange-500)';
+  var alreadyOpen = el.style.display !== 'none';
+  // Close all first
+  keys.forEach(function(k) {
+   var d = document.getElementById('cmp-def-' + k);
+   var b = document.getElementById('cmp-btn-' + k);
+   if (d) { d.style.display = 'none'; }
+   if (b) { b.style.background='rgba(255,255,255,0.06)'; b.style.borderColor='rgba(255,255,255,0.15)'; b.style.color=''; }
+  });
+  // Open selected (unless it was already open — click again to close)
+  if (!alreadyOpen) {
+   el.style.display = 'block';
+   var btn = document.getElementById('cmp-btn-' + key);
+   btn.style.background = 'rgba(245,166,35,0.15)';
+   btn.style.borderColor = 'rgba(245,166,35,0.5)';
+   btn.style.color = 'var(--orange-500)';
+  }
  }
  </script>
 
@@ -1039,7 +1050,7 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
  <p class="transit">Transit: Varies by destination · Door-to-door &amp; port delivery available</p>
  <ul>
  <li>UK-wide collection service</li>
- <li>Shipping to the Caribbean, Africa, USA &amp; Europe</li>
+ <li>Shipping to the Caribbean</li>
  <li>Air freight and sea cargo options</li>
  <li>Commercial and personal cargo accepted</li>
  <li>Vehicle shipping services available</li>
