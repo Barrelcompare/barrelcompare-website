@@ -46,7 +46,7 @@ section { padding:64px 0; }
 .ticker span { display:inline-flex; align-items:center; gap:8px; }
 @keyframes scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
 
-.site-header { padding:20px 0; background:rgba(44,44,44,0.97); backdrop-filter:blur(8px); border-bottom:1px solid rgba(255,255,255,0.06); }
+.site-header { padding:20px 0; background:#f5ecd7; border-bottom:1px solid rgba(0,0,0,0.08); }
 .header-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; }
 .logo { font-size:1.5rem; font-weight:800; letter-spacing:-0.02em; }
 .logo .accent { color:var(--orange-500); }
@@ -54,10 +54,11 @@ section { padding:64px 0; }
 .nav-desktop a { font-size:0.95rem; color:var(--text-on-dark); transition:color 0.2s; }
 .nav-desktop a:hover,.nav-desktop a.active { color:var(--orange-500); }
 @media (min-width:900px) { .nav-desktop { display:flex; } }
-.nav-scroll-bar { display:flex; overflow-x:auto; scrollbar-width:none; white-space:nowrap; background:var(--navy-900); border-bottom:1px solid rgba(255,255,255,0.08); }
+.nav-scroll-bar { display:flex; overflow-x:auto; scrollbar-width:none; white-space:nowrap; background:#f5ecd7; border-bottom:1px solid rgba(0,0,0,0.08); }
 .nav-scroll-bar::-webkit-scrollbar { display:none; }
-.nav-scroll-bar a,.nav-scroll-bar button { display:inline-flex; align-items:center; gap:6px; padding:13px 18px; font-size:0.88rem; color:var(--text-muted-dark); border-bottom:2px solid transparent; white-space:nowrap; text-decoration:none; background:none; border-top:none; border-left:none; border-right:none; cursor:pointer; font-family:var(--font); }
-.nav-scroll-bar a:hover { color:var(--white); }
+.nav-scroll-bar a,.nav-scroll-bar button { display:inline-flex; align-items:center; gap:6px; padding:13px 18px; font-size:0.88rem; color:var(--text-muted-light); border-bottom:2px solid transparent; white-space:nowrap; text-decoration:none; background:none; border-top:none; border-left:none; border-right:none; cursor:pointer; font-family:var(--font); }
+.nav-scroll-bar a:hover { color:var(--text-on-light); }
+.nav-scroll-bar a.active { color:var(--orange-500); border-bottom-color:var(--orange-500); }
 @media (min-width:900px) { .nav-scroll-bar { display:none; } }
 
 .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 24px; border-radius:var(--radius); font-weight:600; font-size:1rem; transition:transform 0.15s,background 0.2s; text-align:center; min-height:48px; }
@@ -110,7 +111,8 @@ footer { background:var(--navy-900); padding:64px 0 32px; border-top:1px solid r
 .footer-tagline { color:var(--text-muted-dark); font-size:0.95rem; max-width:320px; }
 .footer-bottom { padding-top:24px; border-top:1px solid rgba(255,255,255,0.06); display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; font-size:0.85rem; color:var(--text-muted-dark); }
 .sticky-header-group { position:sticky; top:0; z-index:100; }
-.search-toggle { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:var(--text-on-dark); border-radius:8px; padding:8px 12px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; font-size:0.88rem; }
+.search-toggle { background:rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.14); color:var(--text-on-light); border-radius:8px; padding:8px 12px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; font-size:0.88rem; transition:background 0.2s; }
+.search-toggle:hover { background:rgba(0,0,0,0.1); }
 .search-overlay { display:none; position:fixed; inset:0; background:rgba(6,19,39,0.92); z-index:200; align-items:flex-start; justify-content:center; padding-top:80px; }
 .search-overlay.open { display:flex; }
 .search-box { background:var(--navy-700); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius-lg); padding:24px; width:100%; max-width:640px; margin:0 20px; }
@@ -497,15 +499,95 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
    </div><!-- end country sections -->
   </div><!-- end customs-layout -->
 
-  <div style="margin-top:48px;text-align:center;padding:40px 32px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);">
-   <h2 style="font-size:1.4rem;margin-bottom:8px;">Ready to compare shipping companies?</h2>
-   <p style="color:var(--text-muted-dark);margin-bottom:24px;">Use BarrelCompare to find verified UK barrel suppliers/agents with real prices and community reviews.</p>
+  <div style="margin-top:48px;text-align:center;padding:40px 32px;background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-lg);">
+   <h2 style="font-size:1.4rem;margin-bottom:8px;color:var(--text-on-light);">Ready to compare shipping companies?</h2>
+   <p style="color:var(--text-muted-light);margin-bottom:24px;">Use BarrelCompare to find verified UK barrel suppliers/agents with real prices and community reviews.</p>
    <a href="/compare/" class="btn btn-orange" style="margin-right:12px;">Compare UK Barrel Suppliers/Agents</a>
-   <a href="/quote/" class="btn" style="background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.3);">Get a Quote</a>
+   <a href="/quote/" class="btn btn-secondary">Get a Quote</a>
   </div>
 
  </div>
 </section>
+
+<!-- Trust strip -->
+<section style="background:#ffffff;padding:40px 0;border-top:1px solid rgba(0,0,0,0.06);border-bottom:1px solid rgba(0,0,0,0.06);">
+ <div class="container">
+  <div class="trust-grid">
+   <div class="trust-stat" style="text-align:center;">
+    <span class="num">🔒</span>
+    <span class="label" style="color:var(--text-on-light);font-size:0.9rem;font-weight:600;display:block;margin-top:8px;">Information you can trust</span>
+    <span style="color:var(--text-muted-light);font-size:0.8rem;display:block;margin-top:4px;">Every guide verified independently</span>
+   </div>
+   <div class="trust-stat" style="text-align:center;">
+    <span class="num">100%</span>
+    <span class="label" style="color:var(--text-on-light);">Independent &amp; unbiased</span>
+   </div>
+   <div class="trust-stat" style="text-align:center;">
+    <span class="num">£0</span>
+    <span class="label" style="color:var(--text-on-light);">Free to use, always</span>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- Email signup / stay updated -->
+<section style="background:#f5ecd7;padding:56px 0;">
+ <div class="container">
+  <div style="max-width:560px;margin:0 auto;text-align:center;">
+   <div class="section-eyebrow">Stay informed</div>
+   <h2 style="font-size:1.75rem;margin-bottom:12px;color:var(--text-on-light);">Get customs rule updates by email</h2>
+   <p style="color:var(--text-muted-light);margin-bottom:32px;font-size:1rem;">Customs duties and import rules change. We'll send you a plain-English update when anything affects your destination — no spam, unsubscribe anytime.</p>
+   <form id="customsSignupForm" action="https://formspree.io/f/mrejrnva" method="POST" novalidate style="display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto;">
+    <input type="hidden" name="_subject" value="Customs updates signup | BarrelCompare">
+    <input type="hidden" name="source" value="customs-and-duties-page">
+    <input type="email" name="email" placeholder="Your email address" required
+     style="width:100%;padding:14px 16px;border-radius:var(--radius);border:1.5px solid rgba(0,0,0,0.15);background:#ffffff;font-size:1rem;color:var(--text-on-light);font-family:var(--font);"
+     id="customsEmailInput">
+    <div id="customsEmailError" style="display:none;color:#c0392b;font-size:0.85rem;text-align:left;">Please enter a valid email address.</div>
+    <button type="submit" class="btn btn-orange btn-block" id="customsSignupBtn">
+     <span id="customsSignupBtnText">Send me updates — it's free</span>
+    </button>
+    <p style="font-size:0.78rem;color:var(--text-muted-light);margin:0;">No spam. No sales. Just useful updates when rules change.</p>
+   </form>
+   <div id="customsSignupSuccess" style="display:none;margin-top:20px;padding:16px 20px;background:rgba(26,188,176,0.1);border:1px solid var(--orange-500);border-radius:var(--radius);color:#0a7c60;font-weight:600;">
+    ✓ You're on the list. We'll be in touch when rules change.
+   </div>
+  </div>
+ </div>
+</section>
+<script>
+(function(){
+ var form = document.getElementById('customsSignupForm');
+ if (!form) return;
+ form.addEventListener('submit', function(e){
+  e.preventDefault();
+  var email = document.getElementById('customsEmailInput');
+  var err   = document.getElementById('customsEmailError');
+  var btn   = document.getElementById('customsSignupBtnText');
+  var ok    = document.getElementById('customsSignupSuccess');
+  if (!email || !email.value.includes('@')) {
+   if (err) err.style.display = 'block';
+   return;
+  }
+  if (err) err.style.display = 'none';
+  if (btn) btn.textContent = 'Sending…';
+  fetch(form.action, {
+   method: 'POST',
+   headers: {'Accept':'application/json','Content-Type':'application/x-www-form-urlencoded'},
+   body: new URLSearchParams(new FormData(form))
+  }).then(function(r){
+   if (r.ok) {
+    form.style.display = 'none';
+    if (ok) ok.style.display = 'block';
+   } else {
+    if (btn) btn.textContent = 'Send me updates — it\'s free';
+   }
+  }).catch(function(){
+   if (btn) btn.textContent = 'Send me updates — it\'s free';
+  });
+ });
+})();
+</script>
 
 <footer>
  <div class="container">
