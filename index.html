@@ -794,9 +794,6 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  overflow: hidden;
  border-radius: var(--radius-lg);
 }
-@media (min-width: 1024px) {
- .reviews-feed-outer { height: 0; min-height: 0; }
-}
 .reviews-feed-outer::before,
 .reviews-feed-outer::after {
  content: '';
@@ -1406,8 +1403,25 @@ footer { background: #eeddc4; border-top: 1px solid rgba(0,0,0,0.08); }
  }
 
  function syncFeedHeight() {
+ var formTile = document.querySelector('.share-form-wrap');
  var outer = document.getElementById('reviewsFeedOuter');
- if (outer) outer.style.height = '';
+ var feedCol = document.querySelector('.reviews-feed-col');
+ if (!formTile || !outer || !feedCol) return;
+ if (window.innerWidth < 1024) {
+  outer.style.flex = '';
+  outer.style.height = '';
+  return;
+ }
+ var formH = formTile.offsetHeight;
+ var sibH = 0;
+ Array.from(feedCol.children).forEach(function(el) {
+  if (el === outer) return;
+  var cs = window.getComputedStyle(el);
+  sibH += el.offsetHeight + parseFloat(cs.marginTop || 0) + parseFloat(cs.marginBottom || 0);
+ });
+ // flex:none (0 0 auto) makes the browser respect the explicit height property
+ outer.style.flex = 'none';
+ outer.style.height = Math.max(200, formH - sibH) + 'px';
  }
 
  // Expose for onchange handler
