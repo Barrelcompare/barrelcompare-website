@@ -565,12 +565,27 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .view-btn.active:hover { background:var(--orange-600); }
 
 /* Table view */
-.supplier-table { width:100%;border-collapse:collapse;display:none;overflow-x:auto; }
+.supplier-table { width:100%;border-collapse:collapse;display:none;min-width:640px; }
 .supplier-table.visible { display:table; }
 .supplier-grid.hidden { display:none; }
 .supplier-table th { text-align:left;padding:12px 16px;background:var(--navy-900);color:var(--text-muted-light);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid rgba(255,255,255,0.08);white-space:nowrap;position:sticky;top:0;z-index:5; }
 .supplier-table td { padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.9rem;vertical-align:middle; }
 .supplier-table tr:hover td { background:rgba(255,255,255,0.02); }
+
+/* Sticky first column */
+.supplier-table thead tr th:first-child { position:sticky;left:0;z-index:10; }
+.supplier-table tbody tr td:first-child { position:sticky;left:0;z-index:4;background:#ffffff; }
+.supplier-table tbody tr:nth-child(even) td:first-child { background:#faf7f2; }
+.supplier-table thead tr th:first-child::after,
+.supplier-table tbody tr td:first-child::after { content:'';position:absolute;top:0;right:-8px;bottom:0;width:8px;background:linear-gradient(to right,rgba(0,0,0,0.06),transparent);pointer-events:none; }
+
+/* Scroll wrapper with right-fade shadow */
+.table-scroll-outer { position:relative; }
+.table-scroll-outer::after { content:'';position:absolute;top:0;right:0;bottom:0;width:56px;background:linear-gradient(to right,transparent,rgba(238,221,196,0.95));pointer-events:none;border-radius:0 var(--radius) var(--radius) 0;transition:opacity 0.25s;z-index:3; }
+.table-scroll-outer.at-end::after { opacity:0; }
+.table-scroll-wrap { overflow-x:auto;overflow-y:auto;max-height:480px;border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius);-webkit-overflow-scrolling:touch; }
+.table-scroll-hint { display:none;text-align:center;font-size:0.78rem;color:var(--text-muted-light);margin-top:10px;letter-spacing:0.02em; }
+@media (max-width:899px) { .table-scroll-hint { display:block; } }
 
 /* Tooltip on table headers */
 .th-tooltip { position:relative;display:inline-flex;align-items:center;gap:6px;cursor:help; }
@@ -741,6 +756,9 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
 .supplier-table th { background: #eeddc4 !important; color: var(--text-on-light) !important; }
 .supplier-table td { border-color: rgba(0,0,0,0.06) !important; color: var(--text-on-light) !important; }
 .supplier-table tr:nth-child(even) { background: rgba(0,0,0,0.02) !important; }
+.supplier-table thead tr th:first-child { background: #eeddc4 !important; }
+.supplier-table tbody tr td:first-child { background: #ffffff !important; }
+.supplier-table tbody tr:nth-child(even) td:first-child { background: #faf7f2 !important; }
 .coming-soon-block { background: rgba(0,0,0,0.04) !important; border-color: rgba(0,0,0,0.08) !important; }
 .beta-banner { background: #eeddc4 !important; color: var(--text-on-light) !important; }
 .preview-banner { background: #eeddc4 !important; }
@@ -1118,8 +1136,9 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
  </div>
 
  <!-- TABLE VIEW -->
- <div style="overflow-x:auto;overflow-y:auto;max-height:440px;border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);">
- <table class="supplier-table" id="supplierTable" style="position:relative;">
+ <div class="table-scroll-outer">
+ <div class="table-scroll-wrap" id="tableScrollWrap">
+ <table class="supplier-table" id="supplierTable">
  <thead>
  <tr>
  <th>
@@ -1200,6 +1219,8 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
  </tr>
  </tbody>
  </table>
+ </div>
+ <p class="table-scroll-hint">&#8592; Swipe left or right to see all columns &#8594;</p>
  </div>
 
  <!-- Ask Questions section -->
@@ -1360,6 +1381,19 @@ tableViewBtn.addEventListener('click', () => {
  tableViewBtn.classList.add('active'); tableViewBtn.setAttribute('aria-pressed','true');
  cardViewBtn.classList.remove('active'); cardViewBtn.setAttribute('aria-pressed','false');
 });
+
+// Table scroll shadow — hide right-fade when fully scrolled
+const tableScrollWrap = document.getElementById('tableScrollWrap');
+const tableScrollOuter = tableScrollWrap ? tableScrollWrap.closest('.table-scroll-outer') : null;
+function updateScrollShadow() {
+ if (!tableScrollWrap || !tableScrollOuter) return;
+ const atEnd = tableScrollWrap.scrollLeft + tableScrollWrap.clientWidth >= tableScrollWrap.scrollWidth - 4;
+ tableScrollOuter.classList.toggle('at-end', atEnd);
+}
+if (tableScrollWrap) {
+ tableScrollWrap.addEventListener('scroll', updateScrollShadow, { passive: true });
+ updateScrollShadow();
+}
 
 // Service filter — delegates to filterResults() so dest + service work together
 document.getElementById('service').addEventListener('change', filterResults);
