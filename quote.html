@@ -1175,15 +1175,24 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
  });
 
  // Insurance modal actions
- document.getElementById('insuranceYes').addEventListener('click', () => {
-  document.getElementById('insuranceInterest').value = 'yes';
+ function closeInsuranceModal(choice) {
+  document.getElementById('insuranceInterest').value = choice;
   document.getElementById('insuranceModal').classList.remove('open');
   showSection(3);
+ }
+ document.getElementById('insuranceYes').addEventListener('click', () => closeInsuranceModal('yes'));
+ document.getElementById('insuranceNo').addEventListener('click', () => closeInsuranceModal('no'));
+ // "Learn more" opens the info page AND continues the quote so the modal doesn't trap users
+ document.getElementById('insuranceLearnMore').addEventListener('click', () => closeInsuranceModal('learn_more'));
+ // Backdrop click (clicking the dark overlay outside the card) dismisses the modal
+ document.getElementById('insuranceModal').addEventListener('click', function(e) {
+  if (e.target === this) closeInsuranceModal('skipped');
  });
- document.getElementById('insuranceNo').addEventListener('click', () => {
-  document.getElementById('insuranceInterest').value = 'no';
-  document.getElementById('insuranceModal').classList.remove('open');
-  showSection(3);
+ // ESC key dismisses the modal
+ document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('insuranceModal').classList.contains('open')) {
+   closeInsuranceModal('skipped');
+  }
  });
 
  document.getElementById('backToStep2').addEventListener('click', () => showSection(2));
