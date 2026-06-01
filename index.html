@@ -472,7 +472,7 @@ textarea.form-control { min-height: 120px; resize: vertical; }
 
 /* ---- COMPARE PREVIEW (homepage) ---- */
 .compare-preview { background: var(--navy-700); }
-.reviews-combined-grid { display:grid; gap:40px; align-items:stretch; grid-template-columns:1fr; }
+.reviews-combined-grid { display:grid; gap:40px; align-items:start; grid-template-columns:1fr; }
 @media (min-width: 1024px) { .reviews-combined-grid { grid-template-columns:1fr 1fr; } }
 .reviews-feed-col { min-width: 0; display:flex; flex-direction:column; }
 
@@ -790,7 +790,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .reviews-feed-outer {
  position: relative;
  flex: 1;
- min-height: 400px;
+ min-height: 200px;
  overflow: hidden;
  border-radius: var(--radius-lg);
 }
@@ -1093,7 +1093,7 @@ footer { background: #eeddc4; border-top: 1px solid rgba(0,0,0,0.08); }
  </div>
 
  <div class="hero-cta" style="justify-content:center; margin-top:14px;">
- <a href="/compare/" class="btn btn-orange" style="font-size:1.15rem; font-weight:700; padding:22px 52px; border-radius:var(--radius-lg); box-shadow:inset 0 2px 0 rgba(255,255,255,0.45), inset 2px 0 0 rgba(255,255,255,0.3), 0 8px 28px rgba(26,188,176,0.4);">Compare UK Barrel Suppliers</a>
+ <a href="/compare/" class="btn btn-orange" style="font-size:1.72rem; font-weight:700; padding:33px 78px; border-radius:var(--radius-lg); box-shadow:inset 0 5px 0 rgba(255,255,255,0.7), inset 6px 0 0 rgba(255,255,255,0.5), -6px -10px 32px rgba(26,188,176,0.65), 0 0 36px rgba(26,188,176,0.45), 0 16px 48px rgba(0,90,90,0.4);">Compare UK Barrel Suppliers</a>
  </div>
  <p class="hero-meta" style="margin-top:8px;">Free service · No obligation · Independent</p>
  </div>
@@ -1418,7 +1418,7 @@ footer { background: #eeddc4; border-top: 1px solid rgba(0,0,0,0.08); }
   reservedH += el.offsetHeight + parseFloat(st.marginTop||0) + parseFloat(st.marginBottom||0);
   });
  }
- var targetH = Math.max(300, formTile.offsetHeight - reservedH);
+ var targetH = Math.max(200, formTile.offsetHeight - reservedH);
  outer.style.height = targetH + 'px';
  }
 
@@ -1448,6 +1448,8 @@ footer { background: #eeddc4; border-top: 1px solid rgba(0,0,0,0.08); }
  resizeTimer = setTimeout(function() { buildFeed(); syncFeedHeight(); }, 200);
  });
  });
+ // Re-sync after fonts/images fully loaded (more accurate measurements)
+ window.addEventListener('load', syncFeedHeight);
 })();
  var rts = document.getElementById('reviewTimestamp'); if (rts) rts.value = new Date().toISOString();
 </script>
