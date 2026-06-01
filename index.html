@@ -126,6 +126,7 @@ section { padding: 64px 0; }
  white-space: nowrap;
  animation: scroll 40s linear infinite;
 }
+@media (max-width: 767px) { .ticker { animation-duration: 20s; } }
 .ticker span { display: inline-flex; align-items: center; gap: 8px; }
 @keyframes scroll {
  from { transform: translateX(0); }
@@ -471,9 +472,9 @@ textarea.form-control { min-height: 120px; resize: vertical; }
 
 /* ---- COMPARE PREVIEW (homepage) ---- */
 .compare-preview { background: var(--navy-700); }
-.reviews-combined-grid { display:grid; gap:40px; align-items:start; grid-template-columns:1fr; }
+.reviews-combined-grid { display:grid; gap:40px; align-items:stretch; grid-template-columns:1fr; }
 @media (min-width: 1024px) { .reviews-combined-grid { grid-template-columns:1fr 1fr; } }
-.reviews-feed-col { min-width: 0; display:flex; flex-direction:column; max-height:700px; overflow-y:auto; }
+.reviews-feed-col { min-width: 0; display:flex; flex-direction:column; }
 
 /* ---- FINAL CTA ---- */
 .final-cta {
@@ -789,7 +790,6 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .reviews-feed-outer {
  position: relative;
  flex: 1;
- height: auto;
  min-height: 400px;
  overflow: hidden;
  border-radius: var(--radius-lg);

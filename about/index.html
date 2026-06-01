@@ -109,6 +109,7 @@ section { padding: 64px 0; }
  white-space: nowrap;
  animation: scroll 40s linear infinite;
 }
+@media (max-width: 767px) { .ticker { animation-duration: 20s; } }
 .ticker span { display: inline-flex; align-items: center; gap: 8px; }
 @keyframes scroll {
  from { transform: translateX(0); }

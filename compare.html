@@ -109,6 +109,7 @@ section { padding: 64px 0; }
  white-space: nowrap;
  animation: scroll 40s linear infinite;
 }
+@media (max-width: 767px) { .ticker { animation-duration: 20s; } }
 .ticker span { display: inline-flex; align-items: center; gap: 8px; }
 @keyframes scroll {
  from { transform: translateX(0); }
@@ -956,60 +957,15 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
 <section>
  <div class="container">
 
- <!-- Terminology key -->
- <!-- What do the terms mean — toggle buttons -->
- <div style="margin-bottom:24px;">
-  <h2 style="font-size:1.3rem;color:var(--orange-500);margin-bottom:6px;">What do the terms mean?</h2>
-  <p style="color:var(--text-muted-light);font-size:0.92rem;margin-bottom:16px;">The most common service types explained — so you know exactly what you're paying for.</p>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
-   <button id="cmp-btn-door" type="button" onclick="cmpToggleDef('door')" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);color:var(--text-on-light);padding:10px 18px;border-radius:50px;font-size:0.92rem;font-family:inherit;cursor:pointer;transition:all .15s;">Door to Door</button>
-   <button id="cmp-btn-pickup" type="button" onclick="cmpToggleDef('pickup')" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);color:var(--text-on-light);padding:10px 18px;border-radius:50px;font-size:0.92rem;font-family:inherit;cursor:pointer;transition:all .15s;">UK Pick Up</button>
-   <button id="cmp-btn-dropoff" type="button" onclick="cmpToggleDef('dropoff')" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);color:var(--text-on-light);padding:10px 18px;border-radius:50px;font-size:0.92rem;font-family:inherit;cursor:pointer;transition:all .15s;">Drop Off</button>
-   <button id="cmp-btn-dist" type="button" onclick="cmpToggleDef('dist')" style="background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);color:var(--text-on-light);padding:10px 18px;border-radius:50px;font-size:0.92rem;font-family:inherit;cursor:pointer;transition:all .15s;">Distribution</button>
-  </div>
-  <div id="cmp-def-door" style="display:none;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:0.92rem;color:var(--text-muted-light);"><strong style="color:var(--text-on-light);">Door to Door —</strong> Supplier collects from your UK address and delivers to the recipient's address overseas.</div>
-  <div id="cmp-def-pickup" style="display:none;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:0.92rem;color:var(--text-muted-light);"><strong style="color:var(--text-on-light);">UK Pick Up —</strong> Supplier collects from your UK address. Recipient collects from the destination port.</div>
-  <div id="cmp-def-dropoff" style="display:none;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:0.92rem;color:var(--text-muted-light);"><strong style="color:var(--text-on-light);">Drop Off —</strong> You take the barrel to the supplier's UK depot. Recipient collects from the destination port.</div>
-  <div id="cmp-def-dist" style="display:none;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:0.92rem;color:var(--text-muted-light);"><strong style="color:var(--text-on-light);">Distribution —</strong> Supplier handles onward delivery from the destination port to the final address.</div>
- </div>
- <script>
- function cmpToggleDef(key) {
-  var keys = ['door','pickup','dropoff','dist'];
-  var el = document.getElementById('cmp-def-' + key);
-  var alreadyOpen = el.style.display !== 'none';
-  // Close all first
-  keys.forEach(function(k) {
-   var d = document.getElementById('cmp-def-' + k);
-   var b = document.getElementById('cmp-btn-' + k);
-   if (d) { d.style.display = 'none'; }
-   if (b) { b.style.background='rgba(255,255,255,0.06)'; b.style.borderColor='rgba(255,255,255,0.15)'; b.style.color=''; }
-  });
-  // Open selected (unless it was already open — click again to close)
-  if (!alreadyOpen) {
-   el.style.display = 'block';
-   var btn = document.getElementById('cmp-btn-' + key);
-   btn.style.background = 'rgba(245,166,35,0.15)';
-   btn.style.borderColor = 'rgba(245,166,35,0.5)';
-   btn.style.color = 'var(--orange-500)';
-  }
- }
- </script>
-
- <!-- Customs note -->
+ <!-- Customs notice (kept as quick reminder, full explanation on FAQ page) -->
  <div style="background:rgba(245,166,35,0.08);border:1.5px solid rgba(245,166,35,0.3);border-radius:10px;padding:14px 20px;margin-bottom:20px;font-size:0.95rem;cursor:pointer;" onclick="window.location='/faq/'">
- ⚠️ <strong style="color:var(--orange-500);">Customs &amp; duty notice:</strong> Customs restrictions and duties may apply depending on your destination. Click to read our customs guide. <span style="color:var(--orange-500);font-size:0.85rem;">Learn more →</span>
+ ⚠️ <strong style="color:var(--orange-500);">Customs &amp; duty notice:</strong> Customs restrictions and duties may apply depending on your destination. <a href="/faq/" style="color:var(--orange-500);font-size:0.85rem;">See our FAQ for full guidance →</a>
  </div>
 
  <!-- Delivery town -->
  <div style="margin-bottom:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
  <label for="deliveryTown" style="font-size:0.88rem;color:var(--text-muted-light);white-space:nowrap;">Delivery town / area:</label>
- <input type="text" id="deliveryTown" placeholder="e.g. Kingston, Bridgetown..." style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--text-on-light);padding:10px 14px;border-radius:8px;font-size:0.92rem;min-width:220px;font-family:inherit;">
- </div>
-
- <!-- Contact for pricing explainer -->
- <div class="card" style="margin-bottom:28px;border-color:rgba(245,166,35,0.3);">
- <h3 style="font-size:1.05rem;margin-bottom:6px;color:var(--orange-500);">Why some prices say "contact for pricing"</h3>
- <p style="margin:0;color:var(--text-muted-light);font-size:0.92rem;">We recommend choosing a supplier where possible whose pricing has been confirmed. Suppliers whose pricing has been confirmed have had their credentials and customer track record independently confirmed by BarrelCompare. Others are in our queue, we are checking their details before we can display confirmed pricing.</p>
+ <input type="text" id="deliveryTown" placeholder="e.g. Kingston, Bridgetown..." style="background:#ffffff;border:1px solid rgba(0,0,0,0.12);color:var(--text-on-light);padding:10px 14px;border-radius:8px;font-size:0.92rem;min-width:220px;font-family:inherit;">
  </div>
 
  <h2 style="font-size:1.4rem;margin-bottom:20px;">Suppliers shipping to <span style="color:var(--orange-500);" id="destLabel">Jamaica</span></h2>

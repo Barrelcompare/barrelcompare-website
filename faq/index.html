@@ -109,6 +109,7 @@ section { padding: 64px 0; }
  white-space: nowrap;
  animation: scroll 40s linear infinite;
 }
+@media (max-width: 767px) { .ticker { animation-duration: 20s; } }
 .ticker span { display: inline-flex; align-items: center; gap: 8px; }
 @keyframes scroll {
  from { transform: translateX(0); }
@@ -957,6 +958,46 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
       <details>
         <summary>Why don't you list more suppliers yet?</summary>
         <p>We're building this carefully. Quality first. Adding suppliers we haven't checked properly would defeat the whole purpose. If you've used a UK barrel supplier/agent you'd recommend, <a href="/contact/" style="color:var(--orange-500);">tell us</a> and we'll prioritise verifying them.</p>
+      </details>
+    </div>
+
+    <div class="faq-category">
+      <h2>Service types &amp; terminology</h2>
+      <p style="color:var(--text-muted-light);font-size:0.95rem;margin-bottom:24px;">The most common service types explained — so you know exactly what you're paying for.</p>
+
+      <details>
+        <summary>What does Door to Door mean?</summary>
+        <p>The supplier collects your barrel from your UK address and delivers it directly to the recipient's home address overseas. This is the most convenient option — you don't need to arrange any onward delivery at the destination end.</p>
+      </details>
+
+      <details>
+        <summary>What does UK Pick Up mean?</summary>
+        <p>The supplier collects your barrel from your UK address. However, the recipient will need to collect from the destination port themselves — onward delivery is not included. This is typically cheaper than Door to Door.</p>
+      </details>
+
+      <details>
+        <summary>What does Drop Off mean?</summary>
+        <p>You take the barrel to the supplier's UK depot yourself — they don't collect from your home. The recipient then collects from the destination port. This is usually the most affordable option since you're handling both ends of the collection.</p>
+      </details>
+
+      <details>
+        <summary>What is Distribution?</summary>
+        <p>The supplier handles onward delivery from the destination port to the final address overseas. Some suppliers offer this as an add-on or as part of a Door to Door service. It is worth confirming exactly what is included before booking.</p>
+      </details>
+
+      <details>
+        <summary>What is a "delivery town / area" and why does it matter?</summary>
+        <p>Some suppliers charge more (or less) depending on where in the destination country the barrel needs to go. Rural or remote areas often carry a surcharge. When comparing suppliers on the Compare page, entering your delivery town or area helps you get the most accurate price for your specific route.</p>
+      </details>
+
+      <details>
+        <summary>Why do some prices say "contact for pricing"?</summary>
+        <p>We recommend choosing a supplier whose pricing has been confirmed where possible. Suppliers with confirmed pricing have had their credentials and customer track record independently verified by BarrelCompare. Others are in our queue — we are checking their details before we can display confirmed pricing.</p>
+      </details>
+
+      <details>
+        <summary>Do customs duties apply to barrel shipments?</summary>
+        <p>⚠️ Yes — customs restrictions and duties may apply depending on your destination country. Rules vary significantly between Jamaica, Trinidad, Barbados, Guyana and other Caribbean islands. We strongly recommend reading our <a href="/customs-and-duties/" style="color:var(--orange-500);">full customs guide</a> before you ship.</p>
       </details>
     </div>
 
