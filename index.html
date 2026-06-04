@@ -146,17 +146,19 @@ section { padding: 64px 0; }
 /* ---- HEADER ---- */
 .site-header {
  padding: 20px 0;
- background: #f5ecd7;
+ background: #2c2c2c;
  backdrop-filter: blur(8px);
- border-bottom: 1px solid rgba(0,0,0,0.08);
+ border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text-on-light); }
 .logo .accent { color: var(--orange-500); }
 .logo .tagline { display: block; font-size: 0.75rem; font-weight: 400; color: var(--text-muted-light); margin-top: -2px; letter-spacing: 0.02em; }
+.site-header .logo { color: #f5ecd7; }
+.site-header .logo .accent { color: #1abcb0; }
 
 .nav-desktop { display: none; gap: 28px; align-items: center; }
-.nav-desktop a { font-size: 0.95rem; color: var(--text-on-light); transition: color 0.2s; }
+.nav-desktop a { font-size: 0.95rem; color: #f5ecd7; transition: color 0.2s; }
 .nav-desktop a:hover, .nav-desktop a.active { color: var(--orange-500); }
 @media (min-width: 900px) { .nav-desktop { display: flex; } .menu-toggle { display: none; } }
 
@@ -164,9 +166,9 @@ section { padding: 64px 0; }
  width: 44px; height: 44px;
  display: inline-flex;
  align-items: center; justify-content: center;
- background: rgba(0,0,0,0.06);
+ background: rgba(255,255,255,0.08);
  border-radius: 8px;
- color: var(--text-on-light);
+ color: #f5ecd7;
 }
 .menu-toggle svg { width: 24px; height: 24px; }
 
@@ -205,8 +207,9 @@ section { padding: 64px 0; }
 .btn-primary:hover { background: var(--blue-600); }
 .btn-secondary { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); }
 .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
-.btn-orange { background: var(--orange-500); color: var(--navy-900); }
-.btn-orange:hover { background: var(--orange-600); }
+.btn-orange { background: var(--orange-500); color: var(--white); }
+.btn-orange:hover { background: #159a90; color: var(--white); }
+.btn-orange:active { background: #0f7a72; color: var(--white); }
 .btn-whatsapp { background: var(--green-500); color: var(--white); }
 .btn-whatsapp:hover { background: #1eba56; }
 .btn-block { display: flex; width: 100%; }
@@ -276,10 +279,10 @@ section { padding: 64px 0; }
 .trustpilot-star { color: #00b67a; font-size: 1.1rem; }
 
 /* ---- TRUST STRIP ---- */
-.trust-strip { background: #ffffff; padding: 20px 0; }
+.trust-strip { background: #1abcb0; padding: 20px 0; }
 .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
-.trust-stat .num { font-size: 2.25rem; font-weight: 800; color: var(--orange-500); display: block; }
-.trust-stat .label { font-size: 0.8rem; color: var(--text-on-light); letter-spacing: 0.02em; }
+.trust-stat .num { font-size: 2.25rem; font-weight: 800; color: #ffffff; display: block; }
+.trust-stat .label { font-size: 0.8rem; color: #2c2c2c; letter-spacing: 0.02em; }
 @media (min-width: 768px) {
  .trust-stat .num { font-size: 3rem; }
  .trust-stat .label { font-size: 0.95rem; }
@@ -542,8 +545,8 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  overflow-x: auto;
  scrollbar-width: none;
  white-space: nowrap;
- background: #f5ecd7;
- border-bottom: 1px solid rgba(0,0,0,0.08);
+ background: #2c2c2c;
+ border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .nav-scroll-bar::-webkit-scrollbar { display: none; }
 .nav-scroll-bar a, .nav-scroll-bar button {
@@ -552,7 +555,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  gap: 6px;
  padding: 13px 18px;
  font-size: 0.88rem;
- color: var(--text-muted-light);
+ color: rgba(245,236,215,0.65);
  border-bottom: 2px solid transparent;
  white-space: nowrap;
  text-decoration: none;
@@ -564,7 +567,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  font-family: var(--font);
 }
 .nav-scroll-bar a.active { color: var(--orange-500); border-bottom-color: var(--orange-500); }
-.nav-scroll-bar a:hover { color: var(--text-on-light); }
+.nav-scroll-bar a:hover { color: #f5ecd7; }
 @media (min-width: 900px) { .nav-scroll-bar { display: none; } }
 
 :focus-visible { outline: 3px solid var(--orange-500); outline-offset: 3px; border-radius: 4px; }
@@ -594,12 +597,12 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 .hero .chip.active { background: var(--blue-500); border-color: var(--blue-500); color: #fff; }
 
 /* How it works */
-.how-section { background: #1abc80; padding: 28px 0; }
+.how-section { background: #1abcb0; padding: 28px 0; }
 .how-section .section-eyebrow { color: rgba(255,255,255,0.88); }
 .how-section .section-title,
 .how-section .section-lede { display: none; }
 .how-section .step-card {
- background: #f5ecd7;
+ background: #ffffff;
  border-color: rgba(0,0,0,0.08);
  padding: 20px 24px;
 }
@@ -705,9 +708,9 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 /* ---- SITE SEARCH ---- */
 .search-wrap { position: relative; }
 .search-toggle {
- background: rgba(0,0,0,0.06);
- border: 1px solid rgba(0,0,0,0.14);
- color: var(--text-on-light);
+ background: rgba(255,255,255,0.08);
+ border: 1px solid rgba(255,255,255,0.15);
+ color: #f5ecd7;
  border-radius: 8px;
  padding: 8px 12px;
  cursor: pointer;
@@ -717,7 +720,7 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
  font-size: 0.88rem;
  transition: background 0.2s;
 }
-.search-toggle:hover { background: rgba(0,0,0,0.1); }
+.search-toggle:hover { background: rgba(255,255,255,0.14); }
 .search-overlay {
  display: none;
  position: fixed;
@@ -877,17 +880,18 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 /* ---- LIGHT MODE CONVERSION ---- */
 body { background: #f5ecd7; color: var(--text-on-light); }
 
-/* Hero → beige */
-.hero { background: #f5ecd7; }
-.hero h1 { color: var(--text-on-light); }
+/* Hero → dark charcoal */
+.hero { background: #2c2c2c; }
+.hero h1 { color: #ffffff; }
 .hero h1 .highlight { color: var(--orange-500); }
-.hero .hero-badge { background: rgba(0,0,0,0.06); color: var(--text-muted-light); }
-.hero .hero-badge .dot { background: rgba(0,0,0,0.25); }
-.hero p.lede, .hero p.sub { color: var(--text-muted-light); }
-.hero .hero-meta { color: var(--text-muted-light); }
-.hero .trustpilot-strip { background: rgba(0,0,0,0.05); color: var(--text-muted-light); }
-.hero .chip { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.12); color: var(--text-on-light); }
-.hero .chip:hover { border-color: rgba(0,0,0,0.25); background: rgba(0,0,0,0.08); }
+.hero .hero-badge { background: rgba(255,255,255,0.08); color: rgba(245,236,215,0.65); }
+.hero .hero-badge .dot { background: rgba(255,255,255,0.4); }
+.hero p.lede { color: #f5ecd7; }
+.hero p.sub { color: rgba(245,236,215,0.75); }
+.hero .hero-meta { color: #f5ecd7; }
+.hero .trustpilot-strip { background: rgba(255,255,255,0.04); color: #f5ecd7; }
+.hero .chip { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.92); }
+.hero .chip:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); }
 
 /* Section headings */
 h2.section-title, h3.section-title { color: var(--text-on-light); }
@@ -896,6 +900,7 @@ h2.section-title, h3.section-title { color: var(--text-on-light); }
 
 /* Why section → beige */
 .why-section { background: #f5ecd7; }
+.why-card { background: #ffffff; border-left: 3px solid #1abcb0; border-radius: 0; }
 .why-card h3 { color: var(--text-on-light); }
 .why-card p { color: var(--text-muted-light); }
 .why-card .icon { background: rgba(26,188,176,0.12); }
@@ -999,13 +1004,43 @@ details p, details ul { color: var(--text-muted-light); }
 .reviews-feed-outer::before { background: linear-gradient(to bottom, #f5ecd7 10%, transparent); }
 .reviews-feed-outer::after { background: linear-gradient(to top, #f5ecd7 10%, transparent); }
 
+/* ---- NAV LINK HIERARCHY ---- */
+.nav-desktop a[href*='quote'] { opacity: 1; font-weight: 600; }
+.nav-desktop a[href*='faq'], .nav-desktop a[href*='blog'] { opacity: 0.80; font-weight: 400; }
+.nav-desktop a[href*='about'], .nav-desktop a[href*='charity'] { opacity: 0.55; font-weight: 400; font-size: 0.9em; }
+.nav-desktop a[href*='whatsapp'] { color: #25d366 !important; opacity: 1 !important; }
+.nav-scroll-bar a[href*='whatsapp'] { color: #25d366 !important; }
+
+/* ---- HERO SECONDARY LINK ---- */
+.hero-secondary-link {
+ display: block;
+ margin-top: 14px;
+ font-size: 13px;
+ color: #f5ecd7;
+ text-decoration: underline;
+ text-underline-offset: 3px;
+ opacity: 0.75;
+ background: none;
+ border: none;
+ cursor: pointer;
+}
+.hero-secondary-link:hover { opacity: 1; color: #1abcb0; }
+
+/* ---- HERO MICROCOPY ---- */
+.hero-microcopy {
+ color: #f5ecd7 !important;
+ font-size: 13px;
+ opacity: 0.85;
+ letter-spacing: 0.03em;
+}
+
 /* Footer → beige */
 footer { background: #eeddc4; border-top: 1px solid rgba(0,0,0,0.08); }
 .footer-col a { color: var(--text-muted-light); }
 .footer-col a:hover { color: var(--text-on-light); }
 .footer-tagline { color: var(--text-muted-light); }
 .footer-bottom { border-top-color: rgba(0,0,0,0.08); color: var(--text-muted-light); }
-.logo { color: var(--text-on-light); }
+footer .logo { color: var(--text-on-light); }
 
 </style>
 <link rel="canonical" href="https://barrelcompare.co.uk/">
@@ -1044,7 +1079,7 @@ footer { background: #eeddc4; border-top: 1px solid rgba(0,0,0,0.08); }
  <div class="container header-inner">
  <div>
  <a href="/" class="logo">Barrel<span class="accent">Compare</span></a>
- <span style="display:block;font-size:0.8rem;font-style:italic;color:var(--text-muted-light);margin-top:2px;font-weight:400;">Ship It Easy</span>
+ <span style="display:block;font-size:0.8rem;font-style:italic;color:rgba(245,236,215,0.65);margin-top:2px;font-weight:400;">Ship It Easy</span>
  </div>
  <nav class="nav-desktop" aria-label="Primary">
  <a href="/quote/">Get a Quote</a>
@@ -1095,12 +1130,13 @@ footer { background: #eeddc4; border-top: 1px solid rgba(0,0,0,0.08); }
  <div class="hero-cta" style="justify-content:center; margin-top:14px;">
  <a href="/compare/" class="btn btn-orange" style="font-size:1.72rem; font-weight:700; padding:33px 78px; border-radius:var(--radius-lg); box-shadow:inset 0 5px 0 rgba(255,255,255,0.7), inset 6px 0 0 rgba(255,255,255,0.5), -6px -10px 32px rgba(26,188,176,0.65), 0 0 36px rgba(26,188,176,0.45), 0 16px 48px rgba(0,90,90,0.4);">Compare UK Barrel Suppliers</a>
  </div>
- <p class="hero-meta" style="margin-top:8px;">Free service · No obligation · Independent</p>
+ <a href="#how-it-works" class="hero-secondary-link">Not sure? See how it works ↓</a>
+ <p class="hero-meta hero-microcopy" style="margin-top:8px;">Free service · No obligation · Completely independent</p>
  </div>
 </section>
 
 <!-- How it works -->
-<section class="how-section">
+<section class="how-section" id="how-it-works">
  <div class="container">
  <div class="section-eyebrow">How it works</div>
  <h2 class="section-title">Three simple steps to send with confidence.</h2>

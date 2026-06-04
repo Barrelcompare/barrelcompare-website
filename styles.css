@@ -569,24 +569,27 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 body { background: #f5ecd7; color: var(--text-on-light); }
 
 /* Header */
-.site-header { background: #f5ecd7; border-bottom: 1px solid rgba(0,0,0,0.08); }
+.site-header { background: #2c2c2c; border-bottom: 1px solid rgba(255,255,255,0.08); }
 .logo { color: var(--text-on-light); }
+.site-header .logo { color: #f5ecd7; }
+.site-header .logo .accent { color: #1abcb0; }
 .logo .tagline, .logo-standfirst { color: var(--text-muted-light); }
-.nav-desktop a { color: var(--text-on-light); }
+.site-header .logo .tagline, .site-header .logo-standfirst { color: rgba(245,236,215,0.65); }
+.nav-desktop a { color: #f5ecd7; }
 .nav-desktop a:hover, .nav-desktop a.active { color: var(--orange-500); }
-.menu-toggle { background: rgba(0,0,0,0.06); color: var(--text-on-light); }
-.nav-mobile { background: #f5ecd7; }
-.nav-mobile a { color: var(--text-on-light); border-bottom-color: rgba(0,0,0,0.08); }
+.menu-toggle { background: rgba(255,255,255,0.08); color: #f5ecd7; }
+.nav-mobile { background: #2c2c2c; }
+.nav-mobile a { color: #f5ecd7; border-bottom-color: rgba(255,255,255,0.08); }
 
 /* Mobile scroll nav */
-.nav-scroll-bar { background: #f5ecd7; border-bottom: 1px solid rgba(0,0,0,0.08); }
-.nav-scroll-bar a, .nav-scroll-bar button { color: var(--text-muted-light); }
+.nav-scroll-bar { background: #2c2c2c; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.nav-scroll-bar a, .nav-scroll-bar button { color: rgba(245,236,215,0.65); }
 .nav-scroll-bar a.active { color: var(--orange-500); border-bottom-color: var(--orange-500); }
-.nav-scroll-bar a:hover { color: var(--text-on-light); }
+.nav-scroll-bar a:hover { color: #f5ecd7; }
 
 /* Search toggle */
-.search-toggle { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.14); color: var(--text-on-light); }
-.search-toggle:hover { background: rgba(0,0,0,0.1); }
+.search-toggle { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); color: #f5ecd7; }
+.search-toggle:hover { background: rgba(255,255,255,0.14); }
 
 /* Hero */
 .hero { background: #f5ecd7; }
