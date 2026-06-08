@@ -645,8 +645,7 @@ if (charityForm) {
   submitBtnText.style.display = 'none';
   submitBtnSpinner.style.display = '';
 
-  var params = new URLSearchParams({
-   'form-name': 'charity-suggestion',
+  var payload = JSON.stringify({
    'timestamp': document.getElementById('timestampField').value,
    'country_selected': countrySelectedField.value,
    'charity_clicked': charityClickedField.value,
@@ -654,10 +653,10 @@ if (charityForm) {
    'user_email': document.getElementById('userEmail').value
   });
 
-  fetch('/', {
+  fetch('/.netlify/functions/charity-vote', {
    method: 'POST',
-   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-   body: params.toString()
+   headers: { 'Content-Type': 'application/json' },
+   body: payload
   })
   .then(function(res) {
    if (res.ok) {
