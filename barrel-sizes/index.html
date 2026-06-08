@@ -52,6 +52,10 @@
  --text-on-dark: rgba(255, 255, 255, 0.92);
  --text-muted-dark: rgba(255, 255, 255, 0.65);
 
+ /* Text colours on light backgrounds */
+ --text-on-light: #2c2c2c;
+ --text-muted-light: #6b5e4e;
+
  /* Layout */
  --radius: 12px;
  --radius-lg: 20px;
@@ -656,10 +660,19 @@ footer { background: var(--navy-900); padding: 64px 0 32px; border-top: 1px soli
 
 /* ---- LIGHT MODE CONVERSION ---- */
 body { background: #f5ecd7 !important; color: var(--text-on-light); }
-.site-header, header.site-header { background: #f5ecd7 !important; border-bottom: 1px solid rgba(0,0,0,0.08) !important; }
+.site-header, header.site-header { background: #2c2c2c !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; }
+.site-header .logo { color: #f5ecd7 !important; }
+.site-header .logo .accent { color: #1abcb0 !important; }
+.site-header .logo .tagline { color: rgba(245,236,215,0.65) !important; }
 .logo { color: var(--text-on-light) !important; }
-.nav-desktop a { color: var(--text-on-light) !important; }
-.search-toggle { background: rgba(0,0,0,0.06) !important; border-color: rgba(0,0,0,0.12) !important; color: var(--text-on-light) !important; }
+.nav-desktop a { color: #f5ecd7 !important; }
+.menu-toggle { background: rgba(255,255,255,0.08) !important; color: #f5ecd7 !important; }
+.nav-mobile { background: #2c2c2c !important; }
+.nav-mobile a { color: #f5ecd7 !important; }
+.nav-scroll-bar { background: #2c2c2c !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; }
+.nav-scroll-bar a, .nav-scroll-bar button { color: rgba(245,236,215,0.65) !important; }
+.nav-scroll-bar a:hover { color: #f5ecd7 !important; }
+.search-toggle { background: rgba(255,255,255,0.08) !important; border-color: rgba(255,255,255,0.15) !important; color: #f5ecd7 !important; }
 .hero { background: #f5ecd7 !important; }
 .hero p.lede, .hero p.sub { color: var(--text-muted-light) !important; }
 .hero-meta { color: var(--text-muted-light) !important; }
@@ -779,35 +792,35 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
 <section style="background:#f5ecd7;padding:64px 0;">
  <div class="container">
  <div style="display:grid;gap:24px;grid-template-columns:1fr;max-width:860px;">
- <div style="background:var(--navy-700);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:36px;">
+ <div style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-lg);padding:36px;">
  <div class="section-eyebrow">Most common</div>
  <h2 style="font-size:1.6rem;margin-bottom:4px;">Standard barrel</h2>
  <div style="font-size:1.1rem;font-weight:700;color:var(--orange-500);margin-bottom:16px;">55 US gallons &nbsp;·&nbsp; 208 litres</div>
  <div style="display:grid;gap:16px;grid-template-columns:1fr 1fr 1fr;margin-bottom:20px;">
- <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">85–90 cm</div><div style="font-size:0.82rem;color:var(--text-muted-light);margin-top:4px;">Height</div></div>
- <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">55–57 cm</div><div style="font-size:0.82rem;color:var(--text-muted-light);margin-top:4px;">Diameter</div></div>
- <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">50–60 kg</div><div style="font-size:0.82rem;color:var(--text-muted-light);margin-top:4px;">Max weight</div></div>
+ <div style="background:rgba(0,0,0,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">85–90 cm</div><div style="font-size:0.82rem;color:#6b5e4e;margin-top:4px;">Height</div></div>
+ <div style="background:rgba(0,0,0,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">55–57 cm</div><div style="font-size:0.82rem;color:#6b5e4e;margin-top:4px;">Diameter</div></div>
+ <div style="background:rgba(0,0,0,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">50–60 kg</div><div style="font-size:0.82rem;color:#6b5e4e;margin-top:4px;">Max weight</div></div>
  </div>
- <p style="color:var(--text-muted-light);">The most widely used barrel size across the Caribbean and West Indies community. Holds the equivalent of roughly 4–5 large suitcases of goods. Suitable for clothing, food, household goods and personal effects. Weight limits vary by supplier/agent - always confirm before you pack.</p>
+ <p style="color:#6b5e4e;">The most widely used barrel size across the Caribbean and West Indies community. Holds the equivalent of roughly 4–5 large suitcases of goods. Suitable for clothing, food, household goods and personal effects. Weight limits vary by supplier/agent - always confirm before you pack.</p>
  </div>
- <div style="background:var(--navy-700);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:36px;">
+ <div style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-lg);padding:36px;">
  <div class="section-eyebrow">Larger capacity</div>
  <h2 style="font-size:1.6rem;margin-bottom:4px;">Large barrel</h2>
  <div style="font-size:1.1rem;font-weight:700;color:var(--orange-500);margin-bottom:16px;">65 US gallons &nbsp;·&nbsp; 246 litres</div>
  <div style="display:grid;gap:16px;grid-template-columns:1fr 1fr 1fr;margin-bottom:20px;">
- <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">100–107 cm</div><div style="font-size:0.82rem;color:var(--text-muted-light);margin-top:4px;">Height</div></div>
- <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">57–60 cm</div><div style="font-size:0.82rem;color:var(--text-muted-light);margin-top:4px;">Diameter</div></div>
- <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">60–70 kg</div><div style="font-size:0.82rem;color:var(--text-muted-light);margin-top:4px;">Max weight</div></div>
+ <div style="background:rgba(0,0,0,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">100–107 cm</div><div style="font-size:0.82rem;color:#6b5e4e;margin-top:4px;">Height</div></div>
+ <div style="background:rgba(0,0,0,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">57–60 cm</div><div style="font-size:0.82rem;color:#6b5e4e;margin-top:4px;">Diameter</div></div>
+ <div style="background:rgba(0,0,0,0.04);border-radius:var(--radius);padding:16px;text-align:center;"><div style="font-size:1.6rem;font-weight:800;color:var(--orange-500);">60–70 kg</div><div style="font-size:0.82rem;color:#6b5e4e;margin-top:4px;">Max weight</div></div>
  </div>
- <p style="color:var(--text-muted-light);">Roughly 20% more capacity than a standard barrel - equivalent to 5–6 large suitcases. Not all suppliers/agents offer large barrels, so confirm availability when requesting a quote.</p>
+ <p style="color:#6b5e4e;">Roughly 20% more capacity than a standard barrel - equivalent to 5–6 large suitcases. Not all suppliers/agents offer large barrels, so confirm availability when requesting a quote.</p>
  </div>
- <div style="background:var(--navy-700);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:36px;">
+ <div style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-lg);padding:36px;">
  <div class="section-eyebrow">Alternative</div>
  <h2 style="font-size:1.6rem;margin-bottom:12px;">Box shipping</h2>
- <p style="color:var(--text-muted-light);">Some suppliers/agents accept large cardboard boxes. Useful for bulkier or oddly shaped items. Pricing and availability varies , ask your supplier/agent.</p>
+ <p style="color:#6b5e4e;">Some suppliers/agents accept large cardboard boxes. Useful for bulkier or oddly shaped items. Pricing and availability varies , ask your supplier/agent.</p>
  </div>
  </div>
- <div style="background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);border-radius:var(--radius);padding:16px 20px;max-width:720px;margin-top:32px;"><p style="margin:0;font-size:0.88rem;color:var(--text-muted-light);">⚠️ <strong style="color:var(--white);">Weight limits vary by supplier/agent.</strong> Always confirm the maximum weight and overweight charge before you pack.</p></div>
+ <div style="background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.3);border-radius:var(--radius);padding:16px 20px;max-width:720px;margin-top:32px;"><p style="margin:0;font-size:0.88rem;color:#6b5e4e;">⚠️ <strong style="color:#2c2c2c;">Weight limits vary by supplier/agent.</strong> Always confirm the maximum weight and overweight charge before you pack.</p></div>
  <p style="margin-top:40px;"><a href="/" style="color:var(--orange-500);">← Back to home</a></p>
  </div>
 </section>
