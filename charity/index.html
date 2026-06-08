@@ -143,7 +143,18 @@ footer { background:var(--navy-900); padding:64px 0 32px; border-top:1px solid r
 .charity-card h3 { font-size:1.05rem; margin-bottom:4px; }
 .charity-card h3 a { color:var(--orange-500); text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(245,166,35,0.4); }
 .charity-card h3 a:hover { color:var(--white); text-decoration-color:var(--white); }
-.charity-card .charity-meta { font-size:0.82rem; color:var(--text-muted-light); }
+.charity-card .charity-meta { font-size:0.82rem; color:var(--text-muted-light); margin-bottom:0; }
+.charity-vote-row { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; flex-wrap:wrap; }
+.vote-tally { font-size:0.82rem; color:var(--text-muted-light); }
+.vote-count { font-weight:700; color:var(--orange-500); }
+.btn-vote { background:var(--orange-500); color:#ffffff; padding:8px 18px; border-radius:8px; font-size:0.85rem; font-weight:600; min-height:0; border:none; cursor:pointer; transition:background 0.2s; }
+.btn-vote:hover { background:var(--orange-600); }
+.btn-voted { background:rgba(0,0,0,0.06); color:var(--text-muted-light); padding:8px 18px; border-radius:8px; font-size:0.85rem; font-weight:600; min-height:0; border:none; cursor:default; }
+.vote-confirm-panel { margin-top:16px; padding:16px 18px; background:rgba(26,188,176,0.07); border:1px solid rgba(26,188,176,0.25); border-radius:var(--radius); }
+.vote-confirm-panel p { font-size:0.92rem; margin:0 0 10px; }
+.vote-confirm-panel .form-control { font-size:0.9rem; padding:10px 14px; margin-bottom:10px; }
+.vote-error { font-size:0.85rem; color:#c0392b; margin-top:8px; }
+.charity-loading { color:var(--text-muted-light); font-size:0.9rem; padding:12px 0; }
 .charity-reveal { animation:fadeInUp 0.35s ease both; }
 @keyframes fadeInUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
 .charity-divider { border:none; border-top:1px solid rgba(255,255,255,0.08); margin:36px 0; }
@@ -202,7 +213,10 @@ footer { background: #eeddc4 !important; border-top: 1px solid rgba(0,0,0,0.08) 
 .welcome-banner { background: var(--orange-500) !important; }
 .charity-card { background: #ffffff !important; border-color: rgba(0,0,0,0.08) !important; }
 .charity-card h3 { color: var(--text-on-light); }
+.charity-card h3 a:hover { color: var(--orange-500) !important; text-decoration-color: var(--orange-500) !important; }
 .charity-step { color: var(--text-muted-light); }
+.btn-voted { background: rgba(0,0,0,0.06) !important; color: var(--text-muted-light) !important; }
+.vote-confirm-panel { background: rgba(26,188,176,0.06) !important; }
 
 </style>
 <link rel="canonical" href="https://barrelcompare.co.uk/charity/">
@@ -576,8 +590,145 @@ var charityCards = document.getElementById('charityCards');
 var countrySelectedField = document.getElementById('countrySelectedField');
 var charityClickedField = document.getElementById('charityClickedField');
 
+var currentCountryKey = '';
+var currentCountryLabel = '';
+
+// Escape helpers
+function escapeHtml(s) {
+ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escapeAttr(s) {
+ return String(s).replace(/"/g,'&quot;');
+}
+
+// One-vote-per-charity per browser (localStorage)
+function storageKey(countryKey, charityName) {
+ return 'bc_voted_' + countryKey + '_' + charityName.toLowerCase().replace(/\W+/g,'_');
+}
+function hasVoted(countryKey, charityName) {
+ try { return !!localStorage.getItem(storageKey(countryKey, charityName)); } catch(e) { return false; }
+}
+function markVoted(countryKey, charityName) {
+ try { localStorage.setItem(storageKey(countryKey, charityName), '1'); } catch(e) {}
+}
+
+// Fetch vote tallies from Airtable via Netlify function
+function fetchTallies(countryLbl, callback) {
+ fetch('/.netlify/functions/get-charity-votes?country=' + encodeURIComponent(countryLbl))
+  .then(function(r){ return r.ok ? r.json() : {}; })
+  .then(function(d){ callback(d || {}); })
+  .catch(function(){ callback({}); });
+}
+
+// Build charity cards with tally + vote button
+function buildCards(countryKey, data, tallies) {
+ var html = '';
+ data.items.forEach(function(c, i) {
+  var voted = hasVoted(countryKey, c.name);
+  var count = tallies[c.name] || 0;
+  var voteLabel = count === 1 ? '1 vote' : count + ' votes';
+  html += '<div class="charity-card charity-reveal" role="listitem" style="animation-delay:' + (i*0.08) + 's">' +
+   '<h3><a href="' + c.url + '" target="_blank" rel="noopener noreferrer" data-charity-name="' + escapeAttr(c.name) + '">' + escapeHtml(c.name) + ' &nearr;</a></h3>' +
+   '<p class="charity-meta">' + escapeHtml(data.label) + '</p>' +
+   '<div class="charity-vote-row">' +
+    '<span class="vote-tally" id="tally-' + i + '"><span class="vote-count">' + count + '</span> ' + (count === 1 ? 'vote' : 'votes') + '</span>' +
+    (voted
+     ? '<button class="btn btn-voted" disabled>&#10003; Voted</button>'
+     : '<button class="btn btn-vote" data-idx="' + i + '" data-name="' + escapeAttr(c.name) + '">Vote for this charity</button>') +
+   '</div>' +
+   '<div class="vote-confirm-panel" id="vcp-' + i + '" style="display:none;">' +
+    '<p>Confirm your vote for <strong>' + escapeHtml(c.name) + '</strong></p>' +
+    '<input type="email" class="form-control vote-email" placeholder="Your email (optional — helps us prevent duplicate votes)">' +
+    '<div style="display:flex;gap:10px;flex-wrap:wrap;">' +
+     '<button class="btn btn-orange btn-confirm-vote" data-idx="' + i + '" data-name="' + escapeAttr(c.name) + '" style="flex:1;min-width:120px;">Confirm vote</button>' +
+     '<button class="btn btn-cancel-vote" data-idx="' + i + '" style="padding:10px 20px;background:rgba(0,0,0,0.06);color:var(--text-on-light);">Cancel</button>' +
+    '</div>' +
+    '<div class="vote-error" id="verr-' + i + '" style="display:none;"></div>' +
+   '</div>' +
+  '</div>';
+ });
+ charityCards.innerHTML = html;
+
+ // Track charity link clicks for the suggestion form
+ charityCards.querySelectorAll('a[data-charity-name]').forEach(function(link) {
+  link.addEventListener('click', function() {
+   charityClickedField.value = this.getAttribute('data-charity-name');
+  });
+ });
+
+ // Vote button → show confirm panel
+ charityCards.querySelectorAll('.btn-vote').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+   var idx = this.getAttribute('data-idx');
+   charityCards.querySelectorAll('.vote-confirm-panel').forEach(function(p){ p.style.display='none'; });
+   var panel = document.getElementById('vcp-' + idx);
+   panel.style.display = 'block';
+   panel.querySelector('.vote-email').focus();
+  });
+ });
+
+ // Cancel
+ charityCards.querySelectorAll('.btn-cancel-vote').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+   document.getElementById('vcp-' + this.getAttribute('data-idx')).style.display = 'none';
+  });
+ });
+
+ // Confirm vote
+ charityCards.querySelectorAll('.btn-confirm-vote').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+   var idx = this.getAttribute('data-idx');
+   var charityName = this.getAttribute('data-name');
+   var panel = document.getElementById('vcp-' + idx);
+   var email = panel.querySelector('.vote-email').value.trim();
+   var errEl = document.getElementById('verr-' + idx);
+   var self = this;
+
+   errEl.style.display = 'none';
+   self.disabled = true;
+   self.textContent = '···';
+
+   fetch('/.netlify/functions/charity-vote', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+     country_selected: currentCountryLabel,
+     charity_clicked: charityName,
+     custom_suggestion: '',
+     user_email: email,
+     timestamp: new Date().toISOString()
+    })
+   })
+   .then(function(res){ if(!res.ok) throw new Error(); return res; })
+   .then(function() {
+    // Mark voted in localStorage
+    markVoted(currentCountryKey, charityName);
+    // Update tally display
+    var tallyEl = document.getElementById('tally-' + idx);
+    var countEl = tallyEl.querySelector('.vote-count');
+    var newCount = (parseInt(countEl.textContent, 10) || 0) + 1;
+    tallyEl.innerHTML = '<span class="vote-count">' + newCount + '</span> ' + (newCount === 1 ? 'vote' : 'votes');
+    // Swap vote button to Voted
+    var voteRow = panel.previousElementSibling;
+    var voteBtn = voteRow.querySelector('.btn-vote');
+    if (voteBtn) voteBtn.outerHTML = '<button class="btn btn-voted" disabled>&#10003; Voted</button>';
+    // Hide panel
+    panel.style.display = 'none';
+   })
+   .catch(function() {
+    self.disabled = false;
+    self.textContent = 'Confirm vote';
+    errEl.textContent = 'Something went wrong — please try again.';
+    errEl.style.display = 'block';
+   });
+  });
+ });
+}
+
 countrySelect.addEventListener('change', function() {
  var val = this.value;
+ currentCountryKey = val;
+
  if (!val) {
   step2.style.display = 'none';
   step3.style.display = 'none';
@@ -587,41 +738,24 @@ countrySelect.addEventListener('change', function() {
  var data = CHARITIES[val];
  if (!data) return;
 
+ currentCountryLabel = data.label;
  countryLabel.textContent = data.label;
  countrySelectedField.value = data.label;
  charityClickedField.value = '';
 
- // Build charity cards
- var html = '';
- data.items.forEach(function(c, i) {
-  html += '<div class="charity-card" role="listitem" style="animation-delay:' + (i * 0.08) + 's">' +
-   '<h3><a href="' + c.url + '" target="_blank" rel="noopener noreferrer" data-charity-name="' + escapeAttr(c.name) + '">' + escapeHtml(c.name) + ' &nearr;</a></h3>' +
-   '<p class="charity-meta">' + escapeHtml(data.label) + '</p>' +
-   '</div>';
- });
- charityCards.innerHTML = html;
-
- // Attach click tracking to charity links
- charityCards.querySelectorAll('a[data-charity-name]').forEach(function(link) {
-  link.addEventListener('click', function() {
-   charityClickedField.value = this.getAttribute('data-charity-name');
-  });
- });
-
+ // Show loading state
+ charityCards.innerHTML = '<p class="charity-loading">Loading votes&#8230;</p>';
  step2.style.display = '';
  step2.classList.add('charity-reveal');
  formDivider.style.display = '';
  step3.style.display = '';
  step3.classList.add('charity-reveal');
-});
 
-// Escape helpers
-function escapeHtml(s) {
- return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-function escapeAttr(s) {
- return s.replace(/"/g,'&quot;');
-}
+ // Fetch tallies then build cards
+ fetchTallies(data.label, function(tallies) {
+  buildCards(val, data, tallies);
+ });
+});
 
 // Form submission via Netlify Forms
 var charityForm = document.getElementById('charityForm');
