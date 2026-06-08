@@ -1,2 +1,17 @@
-*.py
-Screenshot 2026-05-13 at 16.52.09.png
+# Mac
+.DS_Store
+**/.DS_Store
+
+# Claude / editor
+.claude/
+*.launch.json
+
+# Screenshots & local images not part of the site
+BC screenshots*/
+barrelcompare-colour-mockups.png
+preview-homepage.html
+*.png
+!favicon.png
+!og-image.png
+!/assets/**/*.png
+!/images/**/*.png
