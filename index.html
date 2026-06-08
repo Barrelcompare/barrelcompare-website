@@ -1034,6 +1034,15 @@ details p, details ul { color: var(--text-muted-light); }
  letter-spacing: 0.03em;
 }
 
+/* ---- REMOVE CTA BUTTON GLOW ---- */
+.btn-orange,
+.btn-orange:hover,
+.btn-orange:focus,
+.btn-orange:active {
+ box-shadow: none !important;
+ filter: none !important;
+}
+
 /* Footer → beige */
 footer { background: #eeddc4; border-top: 1px solid rgba(0,0,0,0.08); }
 .footer-col a { color: var(--text-muted-light); }
@@ -1128,7 +1137,7 @@ footer .logo { color: var(--text-on-light); }
  </div>
 
  <div class="hero-cta" style="justify-content:center; margin-top:14px;">
- <a href="/compare/" class="btn btn-orange" style="font-size:1.72rem; font-weight:700; padding:33px 78px; border-radius:var(--radius-lg); box-shadow:inset 0 5px 0 rgba(255,255,255,0.7), inset 6px 0 0 rgba(255,255,255,0.5), -6px -10px 32px rgba(26,188,176,0.65), 0 0 36px rgba(26,188,176,0.45), 0 16px 48px rgba(0,90,90,0.4);">Compare UK Barrel Suppliers</a>
+ <a href="/compare/" class="btn btn-orange" style="font-size:1.72rem; font-weight:700; padding:33px 78px; border-radius:var(--radius-lg);">Compare UK Barrel Suppliers</a>
  </div>
  <a href="#how-it-works" class="hero-secondary-link">Not sure? See how it works ↓</a>
  <p class="hero-meta hero-microcopy" style="margin-top:8px;">Free service · No obligation · Completely independent</p>
